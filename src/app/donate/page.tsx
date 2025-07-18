@@ -2,7 +2,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+<<<<<<< Updated upstream
 import { useRouter } from 'next/navigation';
+=======
+>>>>>>> Stashed changes
+import { DonationFormData, CheckoutRequest, CheckoutResponse, DonationError, DonationErrorType } from '@/types/stripe';
+import { validateDonationForm, formatCurrency } from '@/lib/stripe-helpers';
 
 const paymentMethods = [
   'Debit/Credit Card, Apple Pay, Google Pay',
@@ -85,6 +90,10 @@ export default function DonatePage() {
   const [paymentMethod, setPaymentMethod] = useState(paymentMethods[0]);
   const [category, setCategory] = useState(givingCategories[0]);
   const [frequency, setFrequency] = useState(frequencies[1]);
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [generalError, setGeneralError] = useState<string>('');
   const amountInputRef = useRef<HTMLInputElement>(null);
 
   // Focus input when editingAmount becomes true
@@ -93,6 +102,108 @@ export default function DonatePage() {
       amountInputRef.current.focus();
     }
   }, [editingAmount]);
+
+  // Clear errors when form data changes
+  useEffect(() => {
+    if (Object.keys(errors).length > 0 || generalError) {
+      setErrors({});
+      setGeneralError('');
+    }
+  }, [amount, category, tab, frequency, email]);
+
+  // Helper function to convert frequency display to API format
+  const getFrequencyValue = (displayFreq: string): string => {
+    switch (displayFreq) {
+      case 'Every Week':
+        return 'weekly';
+      case 'Every Month':
+        return 'monthly';
+      case 'Every Year':
+        return 'yearly';
+      default:
+        return 'monthly';
+    }
+  };
+
+  // Form submission handler
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    setErrors({});
+    setGeneralError('');
+
+    try {
+      // Prepare form data
+      const formData: DonationFormData = {
+        amount: parseFloat(amount) || 0,
+        category: category as 'Tithes' | 'Offerings' | 'Building Fund' | 'Missions',
+        type: tab === 'oneoff' ? 'oneoff' : 'recurring',
+        frequency: tab === 'regular' ? getFrequencyValue(frequency) as 'weekly' | 'monthly' | 'yearly' : undefined,
+        email: email.trim() || undefined,
+      };
+
+      // Validate form data
+      const validation = validateDonationForm(formData);
+      if (!validation.isValid) {
+        setErrors(validation.errors);
+        setIsLoading(false);
+        return;
+      }
+
+      // Prepare API request
+      const checkoutRequest: CheckoutRequest = {
+        amount: formData.amount,
+        category: formData.category,
+        type: formData.type === 'oneoff' ? 'payment' : 'subscription',
+        frequency: formData.frequency,
+        email: formData.email,
+      };
+
+      // Make API call to create checkout session
+      const response = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(checkoutRequest),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+<<<<<<< Updated upstream
+        // If API endpoint doesn't exist or other server error, fallback to signin
+        if (response.status === 404 || response.status === 500) {
+          router.push('/signin');
+          return;
+        }
+        
+=======
+>>>>>>> Stashed changes
+        // Handle API errors
+        if (data.details && typeof data.details === 'object') {
+          setErrors(data.details);
+        } else {
+          setGeneralError(data.error || 'An error occurred while processing your donation');
+        }
+        setIsLoading(false);
+        return;
+      }
+
+      // Redirect to Stripe Checkout
+      const checkoutResponse: CheckoutResponse = data;
+      window.location.href = checkoutResponse.url;
+
+    } catch (error) {
+      console.error('Donation submission error:', error);
+<<<<<<< Updated upstream
+      // If there's a network error or the API is not available, fallback to signin
+      router.push('/signin');
+=======
+      setGeneralError('Network error. Please check your connection and try again.');
+      setIsLoading(false);
+>>>>>>> Stashed changes
+    }
+  };
 
   return (
     <motion.section 
@@ -124,7 +235,7 @@ export default function DonatePage() {
         >
           <motion.label
             htmlFor="amount"
-            className="text-[#FF602E] text-lg md:text-xl font-semibold mb-2 cursor-pointer"
+            className={`text-[#FF602E] text-lg md:text-xl font-semibold mb-2 cursor-pointer ${errors.amount ? 'text-red-400' : ''}`}
             onClick={() => setEditingAmount(true)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -161,6 +272,16 @@ export default function DonatePage() {
             >
               ${amount || '0.00'}
             </motion.div>
+          )}
+          {errors.amount && (
+            <motion.p 
+              className="text-red-400 text-sm mt-2 max-w-[320px]"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {errors.amount}
+            </motion.p>
           )}
         </motion.div>
         {/* Form Overlay (right) */}
@@ -229,12 +350,22 @@ export default function DonatePage() {
                 id="category"
                 value={category}
                 onChange={e => setCategory(e.target.value)}
-                className="w-full px-4 py-2 rounded bg-white/80 text-gray-800 border-none focus:ring-2 focus:ring-[#FF602E] outline-none"
+                className={`w-full px-4 py-2 rounded bg-white/80 text-gray-800 border-none focus:ring-2 focus:ring-[#FF602E] outline-none ${errors.category ? 'ring-2 ring-red-500' : ''}`}
               >
                 {givingCategories.map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
                 ))}
               </select>
+              {errors.category && (
+                <motion.p 
+                  className="text-red-400 text-sm mt-1"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {errors.category}
+                </motion.p>
+              )}
             </motion.div>
             {/* Frequency for Regular Donation */}
             {tab === 'regular' && (
@@ -252,7 +383,7 @@ export default function DonatePage() {
                     <motion.button
                       key={freq}
                       type="button"
-                      className={`px-4 py-2 rounded font-semibold text-sm transition border border-white/30 ${frequency === freq ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80'}`}
+                      className={`px-4 py-2 rounded font-semibold text-sm transition border border-white/30 ${frequency === freq ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80'} ${errors.frequency ? 'border-red-500' : ''}`}
                       onClick={() => setFrequency(freq)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -261,8 +392,59 @@ export default function DonatePage() {
                     </motion.button>
                   ))}
                 </div>
+                {errors.frequency && (
+                  <motion.p 
+                    className="text-red-400 text-sm mt-1"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {errors.frequency}
+                  </motion.p>
+                )}
               </motion.div>
             )}
+
+            {/* Email Field */}
+            <motion.div 
+              className="mb-4"
+              variants={itemVariants}
+            >
+              <label htmlFor="email" className="block text-white/80 font-medium mb-1">
+                Email Address {tab === 'regular' && <span className="text-red-400">*</span>}
+                <span className="text-xs text-white/60 block">For donation receipts and confirmations</span>
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="your.email@example.com"
+                className={`w-full px-4 py-2 rounded bg-white/80 text-gray-800 border-none focus:ring-2 focus:ring-[#FF602E] outline-none ${errors.email ? 'ring-2 ring-red-500' : ''}`}
+              />
+              {errors.email && (
+                <motion.p 
+                  className="text-red-400 text-sm mt-1"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {errors.email}
+                </motion.p>
+              )}
+            </motion.div>
+            {/* General Error Display */}
+            {generalError && (
+              <motion.div 
+                className="mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded text-red-400 text-sm"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {generalError}
+              </motion.div>
+            )}
+
             {/* Amount Input (hidden, controlled by left overlay) */}
             <input
               id="amount"
@@ -276,18 +458,35 @@ export default function DonatePage() {
               tabIndex={-1}
               aria-hidden="true"
             />
+            
             <motion.button
               type="button"
-              onClick={() => router.push('/signin')}
-              className="w-full mt-4 bg-[#FF602E] text-white px-6 py-3 rounded font-semibold text-base shadow hover:opacity-90 transition"
+              onClick={handleSubmit}
+              disabled={isLoading}
+              className={`w-full mt-4 px-6 py-3 rounded font-semibold text-base shadow transition relative ${
+                isLoading 
+                  ? 'bg-gray-500 cursor-not-allowed' 
+                  : 'bg-[#FF602E] hover:opacity-90'
+              } text-white`}
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={!isLoading ? { 
                 scale: 1.05,
                 boxShadow: "0 10px 25px rgba(255, 96, 46, 0.3)"
-              }}
-              whileTap={{ scale: 0.95 }}
+              } : {}}
+              whileTap={!isLoading ? { scale: 0.95 } : {}}
             >
-              Submit
+              {isLoading ? (
+                <div className="flex items-center justify-center">
+                  <motion.div
+                    className="w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  />
+                  Processing...
+                </div>
+              ) : (
+                `Submit ${tab === 'oneoff' ? 'Donation' : 'Subscription'}`
+              )}
             </motion.button>
           </motion.div>
         </motion.div>
