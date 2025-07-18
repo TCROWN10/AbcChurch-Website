@@ -170,15 +170,6 @@ export default function DonatePage() {
       const data = await response.json();
 
       if (!response.ok) {
-<<<<<<< Updated upstream
-        // If API endpoint doesn't exist or other server error, fallback to signin
-        if (response.status === 404 || response.status === 500) {
-          router.push('/signin');
-          return;
-        }
-        
-=======
->>>>>>> Stashed changes
         // Handle API errors
         if (data.details && typeof data.details === 'object') {
           setErrors(data.details);
@@ -195,13 +186,8 @@ export default function DonatePage() {
 
     } catch (error) {
       console.error('Donation submission error:', error);
-<<<<<<< Updated upstream
-      // If there's a network error or the API is not available, fallback to signin
-      router.push('/signin');
-=======
       setGeneralError('Network error. Please check your connection and try again.');
       setIsLoading(false);
->>>>>>> Stashed changes
     }
   };
 
