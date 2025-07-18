@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 const paymentMethods = [
   'Debit/Credit Card, Apple Pay, Google Pay',
@@ -77,6 +78,7 @@ const formVariants = {
 };
 
 export default function DonatePage() {
+  const router = useRouter();
   const [tab, setTab] = useState<'oneoff' | 'regular'>('oneoff');
   const [amount, setAmount] = useState('0.00');
   const [editingAmount, setEditingAmount] = useState(false);
@@ -276,7 +278,7 @@ export default function DonatePage() {
             />
             <motion.button
               type="button"
-              onClick={() => window.location.href = '/signin'}
+              onClick={() => router.push('/signin')}
               className="w-full mt-4 bg-[#FF602E] text-white px-6 py-3 rounded font-semibold text-base shadow hover:opacity-90 transition"
               variants={itemVariants}
               whileHover={{ 

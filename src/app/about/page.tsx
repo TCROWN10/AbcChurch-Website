@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import AboutSection from '../components/AboutSection';
 import VisionMissionSection from '../components/VisionMissionSection';
+import CoreBeliefsSection from '../components/CoreBeliefsSection';
 
 // Animation variants
 const containerVariants = {
@@ -82,7 +83,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            Our Ministry
+            About Us
           </motion.h1>
           <motion.p 
             className="text-lg md:text-2xl font-semibold drop-shadow mb-2"
@@ -96,10 +97,13 @@ export default function AboutPage() {
       </motion.section>
       <main>
         <motion.div variants={contentVariants}>
+          <VisionMissionSection />
+        </motion.div>
+        <motion.div variants={contentVariants}>
           <AboutSection />
         </motion.div>
         <motion.div variants={contentVariants}>
-          <VisionMissionSection />
+          <CoreBeliefsSection />
         </motion.div>
       </main>
     </motion.div>

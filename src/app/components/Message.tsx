@@ -68,7 +68,7 @@ const buttonVariants = {
   }
 };
 
-export default function JoinUsSection() {
+export default function Message() {
   return (
     <section className="w-full bg-[#F8F8F8] py-16 px-4">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
