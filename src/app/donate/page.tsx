@@ -2,10 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-<<<<<<< Updated upstream
 import { useRouter } from 'next/navigation';
-=======
->>>>>>> Stashed changes
 import { DonationFormData, CheckoutRequest, CheckoutResponse, DonationError, DonationErrorType } from '@/types/stripe';
 import { validateDonationForm, formatCurrency } from '@/lib/stripe-helpers';
 
