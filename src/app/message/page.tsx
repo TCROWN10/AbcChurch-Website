@@ -1,8 +1,8 @@
 "use client";
-import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import EventCard, { EventCardProps } from '../components/EventCard';
 import StepsGrid from '../components/StepsGrid';
+import Footer from '../components/Footer';
 
 const events: EventCardProps[] = [
   {
@@ -14,8 +14,8 @@ const events: EventCardProps[] = [
     highlight: true,
   },
   {
-    title: "Tuesday's Bible Study",
-    time: '7pm – 7:30pm',
+    title: "Upcoming Events",
+    time: '',
     date: '',
     thumbnail: '/Connect-pic.png',
     videoUrl: '#',
@@ -23,17 +23,9 @@ const events: EventCardProps[] = [
   },
 ];
 
-const eventListVariants = {
-  visible: {
-    transition: {
-      staggerChildren: 0.18,
-    },
-  },
-};
-
 export default function MessagePage() {
   return (
-    <div className="relative min-h-screen bg-[#232B33]">
+    <div className="relative min-h-screen bg-[#232B33] flex flex-col">
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] flex items-center justify-center overflow-hidden pt-20">
         <Image
@@ -67,23 +59,16 @@ export default function MessagePage() {
         </div>
         <div className="max-w-6xl w-full flex flex-col md:flex-row items-start gap-12 z-10 relative">
           {/* Event Cards */}
-          <motion.div
-            className="flex flex-row gap-6 mb-8 md:mb-0"
-            variants={eventListVariants}
-            initial="visible"
-            animate="visible"
-          >
-            <AnimatePresence>
-              {events.map((event, idx) => (
-                <div
-                  key={event.title}
-                  className={`relative z-10 ${idx === 0 ? 'mt-0' : 'mt-8'}`}
-                >
-                  <EventCard {...event} custom={idx} />
-                </div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          <div className="flex flex-row gap-6 mb-8 md:mb-0">
+            {events.map((event, idx) => (
+              <div
+                key={event.title}
+                className={`relative z-10 ${idx === 0 ? 'mt-0' : 'mt-8'}`}
+              >
+                <EventCard {...event} />
+              </div>
+            ))}
+          </div>
           {/* Description */}
           <div className="flex-1 flex flex-col items-start justify-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Upcoming Events</h2>
@@ -96,6 +81,7 @@ export default function MessagePage() {
 
       {/* Steps to Being Born Again Section */}
       <StepsGrid />
+      {/* <Footer /> */}
     </div>
   );
 } 

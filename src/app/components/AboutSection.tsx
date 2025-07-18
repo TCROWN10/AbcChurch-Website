@@ -28,9 +28,9 @@ export default function AboutSection() {
         </div>
         {/* Right: Card */}
         <div className="flex-1 bg-[#ECF0F1] rounded-xl p-8 flex flex-col justify-center min-w-[300px] max-w-[420px]">
-          <h2 className="text-4xl md:text-4xl font-bold text-[#3D5C67] mb-2">Our Ministry</h2>
+          <h2 className="text-4xl md:text-4xl font-bold text-[#3D5C67] mb-2">About Us</h2>
           <p className="text-[#6B6B6B] text-base md:text-lg mb-6">
-            We Are Inclusive, Spirit-filled, Prayer-focused, Sanctified.
+            The Praying Church
           </p>
           <hr className="border-[#D0D7DA] mb-6" />
           <a

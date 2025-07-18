@@ -20,7 +20,7 @@ export default function Footer() {
             <a href="#" aria-label="X" className="text-[#28505A] hover:text-[#FF602E]">
               <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M17.53 6.47a.75.75 0 0 0-1.06 0L12 10.94 7.53 6.47A.75.75 0 1 0 6.47 7.53L10.94 12l-4.47 4.47a.75.75 0 1 0 1.06 1.06L12 13.06l4.47 4.47a.75.75 0 0 0 1.06-1.06L13.06 12l4.47-4.47a.75.75 0 0 0 0-1.06z" fill="currentColor"/></svg>
             </a>
-            <a href="#" aria-label="Facebook" className="text-[#FF602E] hover:text-[#28505A]">
+            <a href="https://web.facebook.com/abcchurch.davenport.ia" aria-label="Facebook" className="text-[#FF602E] hover:text-[#28505A]" target="_blank" rel="noopener noreferrer">
               <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 5 3.66 9.13 8.44 9.88v-6.99h-2.54v-2.89h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.89h-2.34v6.99C18.34 21.13 22 17 22 12z" fill="currentColor"/></svg>
             </a>
             <a href="#" aria-label="Instagram" className="text-[#28505A] hover:text-[#FF602E]">

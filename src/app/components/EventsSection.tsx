@@ -12,8 +12,8 @@ const events = [
     highlight: true,
   },
   {
-    title: 'Tuesdays Bible Study',
-    time: '7pm – 7:30pm',
+    title: 'Upcoming Events',
+    time: 'Soon',
     thumbnail: '/Connect-pic.png',
     videoUrl: '#',
     highlight: false,
