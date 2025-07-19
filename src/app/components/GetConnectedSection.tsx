@@ -57,7 +57,7 @@ const buttonVariants = {
 
 export default function GetConnectedSection() {
   return (
-    <section className="relative w-full h-[420px] md:h-[480px] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[340px] xs:h-[380px] sm:h-[420px] md:h-[480px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <Image
         src="/Get-Connected pic.jpg"
@@ -70,31 +70,31 @@ export default function GetConnectedSection() {
       <div className="absolute inset-0 z-10" style={{background: 'linear-gradient(180deg, #12141D 0%, #12141D00 100%)'}} />
       {/* Content */}
       <motion.div 
-        className="relative z-20 flex flex-col items-center justify-center w-full h-full text-center px-4"
+        className="relative z-20 flex flex-col items-center justify-center w-full h-full text-center px-2 sm:px-4"
         variants={contentVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
         <motion.h2 
-          className="text-3xl md:text-5xl font-bold text-white mb-6"
+          className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3 sm:mb-6"
           variants={itemVariants}
         >
           Get Connected
         </motion.h2>
         <motion.p 
-          className="text-white text-lg md:text-xl max-w-2xl mx-auto mb-8"
+          className="text-white text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-4 sm:mb-8"
           variants={itemVariants}
         >
           You were never meant to walk alone. At All Believers Christian Church, we believe in building a strong community of faith where everyone feels seen, known, and loved.
         </motion.p>
         <motion.div 
-          className="flex flex-col md:flex-row gap-4 mb-4 justify-center"
+          className="flex flex-col gap-3 sm:gap-4 mb-3 sm:mb-4 justify-center w-full max-w-xs mx-auto"
           variants={itemVariants}
         >
           <motion.a 
             href="/signin" 
-            className="px-8 py-3 rounded bg-[#FF602E] text-white font-semibold text-base shadow hover:opacity-90 transition"
+            className="w-full px-6 py-3 rounded bg-[#FF602E] text-white font-semibold text-base shadow hover:opacity-90 transition"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
@@ -103,7 +103,7 @@ export default function GetConnectedSection() {
           </motion.a>
           <motion.a 
             href="/signin" 
-            className="px-8 py-3 rounded border border-white text-white font-semibold text-base shadow hover:bg-white hover:text-[#12141D] transition"
+            className="w-full px-6 py-3 rounded border border-white text-white font-semibold text-base shadow hover:bg-white hover:text-[#12141D] transition"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"

@@ -103,7 +103,7 @@ const titleVariants = {
 
 export default function CoreBeliefsSection() {
   return (
-    <section className="relative w-full py-16 px-4 overflow-hidden">
+    <section className="relative w-full py-10 px-2 sm:px-4 overflow-hidden">
       {/* Background Image */}
       <Image
         src="/Mission-Background.png"
@@ -118,7 +118,7 @@ export default function CoreBeliefsSection() {
       {/* Content */}
       <div className="relative z-20 max-w-4xl mx-auto">
         <motion.h2
-          className="text-2xl md:text-3xl font-bold text-center text-gray-200 mb-8 z-10 relative"
+          className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-gray-200 mb-4 sm:mb-8 z-10 relative"
           variants={titleVariants}
           initial="hidden"
           whileInView="visible"
@@ -127,9 +127,9 @@ export default function CoreBeliefsSection() {
           Our Core Beliefs
         </motion.h2>
         
-        <div className="w-full bg-[#232B33] bg-opacity-80 rounded-2xl p-6 flex flex-col gap-6 shadow-lg z-10 relative">
+        <div className="w-full bg-[#232B33] bg-opacity-80 rounded-2xl p-3 sm:p-6 flex flex-col gap-4 sm:gap-6 shadow-lg z-10 relative">
           {/* Category Groups */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 sm:gap-6">
             {beliefCategories.map((category, categoryIndex) => (
               <motion.div 
                 key={category.category}
@@ -138,10 +138,10 @@ export default function CoreBeliefsSection() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
               >
-                <h3 className="text-lg font-semibold text-gray-300 text-center mb-4">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-300 text-center mb-2 sm:mb-4">
                   {category.category}
                 </h3>
-                <div className="flex flex-col md:flex-row gap-4 justify-center">
+                <div className="flex flex-col md:flex-row gap-3 sm:gap-4 justify-center">
                   {category.beliefs.map((belief, beliefIndex) => {
                     const globalIndex = beliefCategories
                       .slice(0, categoryIndex)
@@ -150,15 +150,15 @@ export default function CoreBeliefsSection() {
                     return (
                       <motion.div
                         key={belief.title}
-                        className="flex-1 bg-[#2C3742] rounded-lg p-6 text-center shadow-xl"
+                        className="flex-1 bg-[#2C3742] rounded-lg p-4 sm:p-6 text-center shadow-xl w-full"
                         variants={cardVariants}
                         whileHover="hover"
                         custom={globalIndex}
                       >
-                        <div className="font-semibold text-[#FF602E] mb-3 text-lg">
+                        <div className="font-semibold text-[#FF602E] mb-2 sm:mb-3 text-base sm:text-lg">
                           {belief.title}
                         </div>
-                        <div className="text-gray-200 text-base leading-relaxed">
+                        <div className="text-gray-200 text-sm sm:text-base leading-relaxed">
                           {belief.description}
                         </div>
                       </motion.div>

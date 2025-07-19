@@ -70,50 +70,50 @@ const buttonVariants = {
 
 export default function Message() {
   return (
-    <section className="w-full bg-[#F8F8F8] py-16 px-4">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+    <section className="w-full bg-[#F8F8F8] py-10 px-2 sm:px-4">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-12">
         {/* Left: Text */}
         <motion.div 
-          className="flex-1 flex flex-col items-start justify-center mb-8 md:mb-0"
+          className="flex-1 flex flex-col items-start justify-center mb-6 md:mb-0 w-full"
           variants={contentVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-4" 
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4" 
             style={{ color: '#FF602EB2' }}
             variants={itemVariants}
           >
             Join Us For Worship
           </motion.h2>
           <motion.div 
-            className="text-[#425A60] text-xl mb-2"
+            className="text-[#425A60] text-base sm:text-xl mb-1 sm:mb-2"
             variants={itemVariants}
           >
             Sundays
           </motion.div>
           <motion.div 
-            className="text-3xl md:text-4xl font-bold text-[#284747] mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#284747] mb-2 sm:mb-4"
             variants={itemVariants}
           >
             9am – 11am
           </motion.div>
           <motion.div 
-            className="flex items-center gap-2 mb-6"
+            className="flex items-center gap-2 mb-4 sm:mb-6"
             variants={itemVariants}
           >
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#6BCB77" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
             <div>
               <span className="italic text-[#7A8A99] font-semibold">Bettendorf Community Center</span><br />
-              <span className="text-[#7A8A99] text-base">2204 Grant St, Bettendorf IA, 52722</span>
+              <span className="text-[#7A8A99] text-xs sm:text-base">2204 Grant St, Bettendorf IA, 52722</span>
             </div>
           </motion.div>
           <motion.a
             href="https://maps.google.com/?q=2204+Grant+St,+Bettendorf+IA,+52722"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 px-8 py-3 rounded bg-[#FF602E] text-white font-semibold text-base shadow hover:opacity-90 transition"
+            className="mt-2 sm:mt-4 px-6 sm:px-8 py-2 sm:py-3 rounded bg-[#FF602E] text-white font-semibold text-base shadow hover:opacity-90 transition"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
@@ -123,14 +123,14 @@ export default function Message() {
         </motion.div>
         {/* Right: Embedded Google Map */}
         <motion.div 
-          className="flex-1 flex items-center justify-center"
+          className="flex-1 flex items-center justify-center w-full"
           variants={mapVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.div 
-            className="rounded-2xl overflow-hidden shadow-lg w-[370px] h-[320px] md:w-[420px] md:h-[340px] bg-[#dbeafe] flex items-center justify-center"
+            className="rounded-2xl overflow-hidden shadow-lg w-full max-w-xs sm:w-[220px] sm:h-[200px] md:w-[420px] md:h-[340px] h-[180px] bg-[#dbeafe] flex items-center justify-center"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
