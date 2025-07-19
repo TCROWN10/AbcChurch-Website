@@ -1,62 +1,20 @@
 "use client";
-import { motion } from 'framer-motion';
-import HeroWithNavbar from "./components/HeroWithNavbar";
-import JoinUsSection from "./components/Message";
-import EventsSection from "./components/EventsSection";
-import DonationSection from "./components/DonationSection";
-import GetConnectedSection from "./components/GetConnectedSection";
-
-// Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      staggerChildren: 0.3
-    }
-  }
-};
-
-const sectionVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 50,
-    scale: 0.95
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.8
-    }
-  }
-};
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push('/welcome');
+  }, [router]);
+
   return (
-    <motion.div 
-      className="relative min-h-screen bg-white"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
-      <HeroWithNavbar />
-      <main>
-        <motion.div variants={sectionVariants}>
-          <JoinUsSection />
-        </motion.div>
-        <motion.div variants={sectionVariants}>
-          <EventsSection />
-        </motion.div>
-        <motion.div variants={sectionVariants}>
-          <DonationSection />
-        </motion.div>
-        <motion.div variants={sectionVariants}>
-          <GetConnectedSection />
-        </motion.div>
-      </main>
-    </motion.div>
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF602E] mx-auto mb-4"></div>
+        <p className="text-gray-600">Loading...</p>
+      </div>
+    </div>
   );
 }

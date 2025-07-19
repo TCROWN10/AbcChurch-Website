@@ -89,12 +89,14 @@ export default function GetConnectedSection() {
           You were never meant to walk alone. At All Believers Christian Church, we believe in building a strong community of faith where everyone feels seen, known, and loved.
         </motion.p>
         <motion.div 
-          className="flex flex-col gap-3 sm:gap-4 mb-3 sm:mb-4 justify-center w-full max-w-xs mx-auto"
+          className="flex flex-col md:flex-row gap-3 sm:gap-4 mb-3 sm:mb-4 justify-center w-full max-w-md mx-auto"
           variants={itemVariants}
         >
           <motion.a 
-            href="/signin" 
-            className="w-full px-6 py-3 rounded bg-[#FF602E] text-white font-semibold text-base shadow hover:opacity-90 transition"
+            href="https://www.facebook.com/allbelieverschurch" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full md:w-auto px-6 py-3 rounded bg-[#FF602E] text-white font-semibold text-base shadow hover:opacity-90 transition cursor-pointer"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
@@ -102,10 +104,12 @@ export default function GetConnectedSection() {
             Join a Group
           </motion.a>
           <motion.a 
-            href="/signin" 
-            className="w-full px-6 py-3 rounded border border-white text-white font-semibold text-base shadow hover:bg-white hover:text-[#12141D] transition"
+            href="https://www.facebook.com/allbelieverschurch" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full md:w-auto px-6 py-3 rounded border border-white text-white font-semibold text-base shadow hover:bg-white hover:text-[#12141D] transition cursor-pointer"
             variants={buttonVariants}
-            whileHover="hover"
+            whileHover="hover"  
             whileTap="tap"
           >
             Volunteer
@@ -117,8 +121,8 @@ export default function GetConnectedSection() {
         >
           Need someone to pray with you?{' '}
           <motion.a 
-            href="/signin" 
-            className="text-[#FF602E] font-semibold underline hover:opacity-80"
+            href="sms:5638891930?body=Text only - I need prayer"
+            className="text-[#FF602E] font-semibold underline hover:opacity-80 cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
