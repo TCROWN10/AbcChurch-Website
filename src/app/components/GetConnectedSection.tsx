@@ -105,7 +105,7 @@ export default function GetConnectedSection() {
             href="/signin" 
             className="w-full px-6 py-3 rounded border border-white text-white font-semibold text-base shadow hover:bg-white hover:text-[#12141D] transition"
             variants={buttonVariants}
-            whileHover="hover"
+            whileHover="hover"  
             whileTap="tap"
           >
             Volunteer
