@@ -47,9 +47,9 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          <span className="text-[#FF602E] text-xl sm:text-2xl md:text-3xl font-semibold">caring</span>
-          <span className="text-[#FF602E] text-xl sm:text-2xl md:text-3xl font-semibold">calling</span>
-          <span className="text-[#FF602E] text-xl sm:text-2xl md:text-3xl font-semibold">coming</span>
+          <span className="text-[#45EFFF] text-xl sm:text-2xl md:text-4xl font-semibold">caring</span>
+          <span className="text-[#45EFFF] text-xl sm:text-2xl md:text-4xl font-semibold">calling</span>
+          <span className="text-[#45EFFF] text-xl sm:text-2xl md:text-4xl font-semibold">coming</span>
         </motion.div>
         
         {/* Bible Verse */}

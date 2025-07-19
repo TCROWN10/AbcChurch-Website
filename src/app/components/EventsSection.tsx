@@ -11,13 +11,13 @@ const events = [
     videoUrl: '#',
     highlight: true,
   },
-  {
-    title: 'Upcoming Events',
-    time: 'Soon',
-    thumbnail: '/Connect-pic.png',
-    videoUrl: '#',
-    highlight: false,
-  },
+            {
+            title: '',
+            time: '',
+            thumbnail: '/Coming Event.jpeg',
+            videoUrl: '#',
+            highlight: false,
+          },
 ];
 
 const cardVariants = {

@@ -14,10 +14,10 @@ const events: EventCardProps[] = [
     highlight: true,
   },
   {
-    title: "Upcoming Events",
+    title: "",
     time: '',
     date: '',
-    thumbnail: '/Connect-pic.png',
+    thumbnail: '/Coming Event.jpeg',
     videoUrl: '#',
     highlight: false,
   },

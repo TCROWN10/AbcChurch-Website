@@ -117,11 +117,11 @@ export default function SuccessContent() {
   if (error) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
-          <div className="mb-6">
-            <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="max-w-sm w-full bg-white rounded-lg shadow-lg p-6 text-center">
+          <div className="mb-4">
+            <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
               <svg
-                className="w-8 h-8 text-yellow-600"
+                className="w-6 h-6 text-yellow-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -134,32 +134,32 @@ export default function SuccessContent() {
                 />
               </svg>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-xl font-bold text-gray-900 mb-2">
               Unable to Load Details
             </h1>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 mb-3 text-sm">
               {error.message}
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-2">
             {error.canRetry && (
               <button
                 onClick={fetchSessionData}
-                className="block w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+                className="block w-full bg-[#FF602E] text-white py-2 px-4 rounded-lg hover:opacity-90 transition-colors text-sm"
               >
                 Try Again
               </button>
             )}
             <a
               href="/donate"
-              className="block w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors"
+              className="block w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors text-sm"
             >
               Make Another Donation
             </a>
             <a
               href="/"
-              className="block w-full text-gray-500 py-2 px-4 hover:text-gray-700 transition-colors"
+              className="block w-full text-gray-500 py-2 px-4 hover:text-gray-700 transition-colors text-sm"
             >
               Return to Home
             </a>
@@ -172,11 +172,11 @@ export default function SuccessContent() {
   if (!sessionData) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
-          <div className="mb-6">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="max-w-sm w-full bg-white rounded-lg shadow-lg p-6 text-center">
+          <div className="mb-4">
+            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
               <svg
-                className="w-8 h-8 text-green-600"
+                className="w-6 h-6 text-green-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -189,33 +189,33 @@ export default function SuccessContent() {
                 />
               </svg>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-xl font-bold text-gray-900 mb-2">
               Thank You!
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm">
               Your donation has been processed successfully.
             </p>
           </div>
 
-          <div className="bg-gray-50 rounded-lg p-4 mb-6">
-            <p className="text-sm text-gray-600 mb-2">
+          <div className="bg-gray-50 rounded-lg p-3 mb-4">
+            <p className="text-xs text-gray-600 mb-1">
               You will receive a confirmation email shortly with your donation receipt.
             </p>
-            <p className="text-sm text-gray-600">
+            <p className="text-xs text-gray-600">
               Your generosity helps us continue our mission and serve our community.
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-2">
             <a
               href="/donate"
-              className="block w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+              className="block w-full bg-[#FF602E] text-white py-2 px-4 rounded-lg hover:opacity-90 transition-colors text-sm"
             >
               Make Another Donation
             </a>
             <a
               href="/"
-              className="block w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors"
+              className="block w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors text-sm"
             >
               Return to Home
             </a>
@@ -231,12 +231,12 @@ export default function SuccessContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center px-4">
-      <div className="max-w-lg w-full bg-white rounded-lg shadow-lg p-8">
+      <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-6">
         {/* Success Header */}
-        <div className="text-center mb-6">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="text-center mb-4">
+          <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
             <svg
-              className="w-8 h-8 text-green-600"
+              className="w-6 h-6 text-green-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -249,19 +249,19 @@ export default function SuccessContent() {
               />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <h1 className="text-xl font-bold text-gray-900 mb-2">
             Thank You!
           </h1>
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-sm">
             Your {isRecurring ? 'recurring donation' : 'donation'} has been processed successfully.
           </p>
         </div>
 
         {/* Donation Details */}
-        <div className="bg-gray-50 rounded-lg p-6 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Donation Details</h2>
+        <div className="bg-gray-50 rounded-lg p-4 mb-4">
+          <h2 className="text-base font-semibold text-gray-900 mb-3">Donation Details</h2>
           
-          <div className="space-y-3">
+          <div className="space-y-2 text-sm">
             <div className="flex justify-between">
               <span className="text-gray-600">Amount:</span>
               <span className="font-semibold text-gray-900">
@@ -284,13 +284,13 @@ export default function SuccessContent() {
             {sessionData.customer_email && (
               <div className="flex justify-between">
                 <span className="text-gray-600">Email:</span>
-                <span className="font-semibold text-gray-900">{sessionData.customer_email}</span>
+                <span className="font-semibold text-gray-900 text-xs">{sessionData.customer_email}</span>
               </div>
             )}
             
             <div className="flex justify-between">
               <span className="text-gray-600">Date:</span>
-              <span className="font-semibold text-gray-900">
+              <span className="font-semibold text-gray-900 text-xs">
                 {formatDate(sessionData.created)}
               </span>
             </div>
@@ -305,10 +305,10 @@ export default function SuccessContent() {
         </div>
 
         {/* Additional Information */}
-        <div className="bg-blue-50 rounded-lg p-4 mb-6">
+        <div className="bg-blue-50 rounded-lg p-3 mb-4">
           <div className="flex items-start">
             <svg
-              className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0"
+              className="w-4 h-4 text-blue-600 mt-0.5 mr-2 flex-shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -321,18 +321,18 @@ export default function SuccessContent() {
               />
             </svg>
             <div>
-              <p className="text-sm text-blue-800 mb-2">
+              <p className="text-xs text-blue-800 mb-1">
                 {sessionData.customer_email 
                   ? 'A confirmation email has been sent to your email address with your donation receipt.'
                   : 'Your donation has been processed successfully.'
                 }
               </p>
               {isRecurring && (
-                <p className="text-sm text-blue-800">
+                <p className="text-xs text-blue-800">
                   Your recurring donation will continue {getFrequencyText(frequency).toLowerCase()} until you choose to cancel it.
                 </p>
               )}
-              <p className="text-sm text-blue-800 mt-2">
+              <p className="text-xs text-blue-800 mt-1">
                 Your generosity helps us continue our mission and serve our community.
               </p>
             </div>
@@ -340,16 +340,16 @@ export default function SuccessContent() {
         </div>
 
         {/* Action Buttons */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           <a
             href="/donate"
-            className="block w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors text-center font-medium"
+            className="block w-full bg-[#FF602E] text-white py-2 px-4 rounded-lg hover:opacity-90 transition-colors text-center font-medium text-sm"
           >
             Make Another Donation
           </a>
           <a
             href="/"
-            className="block w-full bg-gray-100 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors text-center font-medium"
+            className="block w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors text-center font-medium text-sm"
           >
             Return to Home
           </a>
