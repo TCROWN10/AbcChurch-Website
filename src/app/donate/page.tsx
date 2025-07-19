@@ -190,7 +190,7 @@ export default function DonatePage() {
 
   return (
     <motion.section 
-      className="relative w-full h-[100vh] flex items-center justify-center overflow-hidden pt-20"
+      className="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center overflow-x-hidden pt-20 pb-8 px-2 sm:px-4"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -207,13 +207,13 @@ export default function DonatePage() {
         className="absolute top-24 left-1/2 -translate-x-1/2 z-20 w-full flex justify-center pointer-events-none"
         variants={heroVariants}
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">Make Donation</h1>
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white drop-shadow-lg">Make Donation</h1>
       </motion.div>
       {/* Overlay Content */}
-      <div className="relative z-20 w-full h-full flex items-center justify-center px-4 pt-24 md:pt-32">
-        {/* Amount Overlay (left) */}
+      <div className="relative z-20 w-full flex flex-col md:flex-row items-center justify-center gap-8 pt-32 md:pt-32">
+        {/* Amount Overlay (top on mobile, left on desktop) */}
         <motion.div 
-          className="flex-1 flex flex-col justify-center items-start h-full max-w-[400px] pl-4 md:pl-16"
+          className="w-full md:w-1/2 flex flex-col justify-center items-start max-w-[400px] mx-auto md:mx-0 md:pl-8"
           variants={itemVariants}
         >
           <motion.label
@@ -267,23 +267,23 @@ export default function DonatePage() {
             </motion.p>
           )}
         </motion.div>
-        {/* Form Overlay (right) */}
+        {/* Form Overlay (bottom on mobile, right on desktop) */}
         <motion.div 
-          className="flex-1 flex flex-col justify-center items-end h-full max-w-[600px] pr-4 md:pr-16"
+          className="w-full md:w-1/2 flex flex-col justify-center items-end max-w-[600px] mx-auto md:mx-0 md:pr-8"
           variants={formVariants}
         >
           <motion.div 
-            className="w-full max-w-xl min-w-[320px] bg-[#313131b3] rounded-lg shadow-2xl p-8 backdrop-blur-xl border border-white/10 flex flex-col gap-4 transition-all duration-300 mt-8 md:mt-12"
+            className="w-full max-w-lg min-w-[200px] bg-[#313131b3] rounded-lg shadow-2xl p-3 sm:p-6 backdrop-blur-xl border border-white/10 flex flex-col gap-2 sm:gap-3 transition-all duration-300 mt-6 md:mt-12"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
             {/* Tabs */}
             <motion.div 
-              className="flex mb-6"
+              className="flex mb-4"
               variants={itemVariants}
             >
               <motion.button
-                className={`flex-1 py-2 font-semibold rounded-tl-lg rounded-tr-none rounded-bl-lg rounded-br-none transition text-base ${tab === 'oneoff' ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80 border-b-2 border-white/30'}`}
+                className={`flex-1 py-1.5 font-semibold rounded-tl-lg rounded-tr-none rounded-bl-lg rounded-br-none transition text-sm ${tab === 'oneoff' ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80 border-b-2 border-white/30'}`}
                 onClick={() => setTab('oneoff')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -291,7 +291,7 @@ export default function DonatePage() {
                 Give One-Off
               </motion.button>
               <motion.button
-                className={`flex-1 py-2 font-semibold rounded-tr-lg rounded-tl-none rounded-br-lg rounded-bl-none transition text-base ${tab === 'regular' ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80 border-b-2 border-white/30'}`}
+                className={`flex-1 py-1.5 font-semibold rounded-tr-lg rounded-tl-none rounded-br-lg rounded-bl-none transition text-sm ${tab === 'regular' ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80 border-b-2 border-white/30'}`}
                 onClick={() => setTab('regular')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -301,16 +301,16 @@ export default function DonatePage() {
             </motion.div>
             {/* Payment Method */}
             <motion.div 
-              className="mb-4 relative"
+              className="mb-3 relative"
               variants={itemVariants}
             >
-              <label htmlFor="paymentMethod" className="block text-white/80 font-medium mb-1">Payment Method <span className="text-xs text-white/60">(Handled via Stripe once user clicks submit)</span></label>
+              <label htmlFor="paymentMethod" className="block text-white/80 font-medium mb-1 text-sm">Payment Method <span className="text-xs text-white/60">(Handled via Stripe once user clicks submit)</span></label>
               <div className="relative">
                 <select
                   id="paymentMethod"
                   value={paymentMethod}
                   onChange={e => setPaymentMethod(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-white/90 text-gray-800 border-none shadow-lg focus:ring-2 focus:ring-[#FF602E] outline-none appearance-none pr-10 text-base font-semibold transition"
+                  className="w-full px-3 py-2 rounded-xl bg-white/90 text-gray-800 border-none shadow-lg focus:ring-2 focus:ring-[#FF602E] outline-none appearance-none pr-10 text-sm font-semibold transition"
                   style={{ WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none' }}
                 >
                   {paymentMethods.map(method => (
@@ -318,22 +318,22 @@ export default function DonatePage() {
                   ))}
                 </select>
                 {/* Custom dropdown arrow */}
-                <div className="pointer-events-none absolute top-1/2 right-4 transform -translate-y-1/2 text-[#FF602E] text-xl">
-                  <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="#FF602E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <div className="pointer-events-none absolute top-1/2 right-3 transform -translate-y-1/2 text-[#FF602E] text-lg">
+                  <svg width="16" height="16" fill="none" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="#FF602E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </div>
               </div>
             </motion.div>
             {/* Giving Category */}
             <motion.div 
-              className="mb-4"
+              className="mb-3"
               variants={itemVariants}
             >
-              <label htmlFor="category" className="block text-white/80 font-medium mb-1">Giving Category</label>
+              <label htmlFor="category" className="block text-white/80 font-medium mb-1 text-sm">Giving Category</label>
               <select
                 id="category"
                 value={category}
                 onChange={e => setCategory(e.target.value)}
-                className={`w-full px-4 py-2 rounded bg-white/80 text-gray-800 border-none focus:ring-2 focus:ring-[#FF602E] outline-none ${errors.category ? 'ring-2 ring-red-500' : ''}`}
+                className={`w-full px-3 py-1.5 rounded bg-white/80 text-gray-800 border-none focus:ring-2 focus:ring-[#FF602E] outline-none text-sm ${errors.category ? 'ring-2 ring-red-500' : ''}`}
               >
                 {givingCategories.map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
@@ -341,7 +341,7 @@ export default function DonatePage() {
               </select>
               {errors.category && (
                 <motion.p 
-                  className="text-red-400 text-sm mt-1"
+                  className="text-red-400 text-xs mt-1"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
@@ -353,20 +353,20 @@ export default function DonatePage() {
             {/* Frequency for Regular Donation */}
             {tab === 'regular' && (
               <motion.div 
-                className="mb-4"
+                className="mb-3"
                 variants={itemVariants}
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <label className="block text-white/80 font-medium mb-1">Frequency</label>
-                <div className="flex gap-2">
+                <label className="block text-white/80 font-medium mb-1 text-sm">Frequency</label>
+                <div className="flex gap-1">
                   {frequencies.map(freq => (
                     <motion.button
                       key={freq}
                       type="button"
-                      className={`px-4 py-2 rounded font-semibold text-sm transition border border-white/30 ${frequency === freq ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80'} ${errors.frequency ? 'border-red-500' : ''}`}
+                      className={`px-2 py-1 rounded font-semibold text-xs transition border border-white/30 ${frequency === freq ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80'} ${errors.frequency ? 'border-red-500' : ''}`}
                       onClick={() => setFrequency(freq)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -377,7 +377,7 @@ export default function DonatePage() {
                 </div>
                 {errors.frequency && (
                   <motion.p 
-                    className="text-red-400 text-sm mt-1"
+                    className="text-red-400 text-xs mt-1"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
@@ -390,10 +390,10 @@ export default function DonatePage() {
 
             {/* Email Field */}
             <motion.div 
-              className="mb-4"
+              className="mb-3"
               variants={itemVariants}
             >
-              <label htmlFor="email" className="block text-white/80 font-medium mb-1">
+              <label htmlFor="email" className="block text-white/80 font-medium mb-1 text-sm">
                 Email Address {tab === 'regular' && <span className="text-red-400">*</span>}
                 <span className="text-xs text-white/60 block">For donation receipts and confirmations</span>
               </label>
@@ -403,11 +403,11 @@ export default function DonatePage() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="your.email@example.com"
-                className={`w-full px-4 py-2 rounded bg-white/80 text-gray-800 border-none focus:ring-2 focus:ring-[#FF602E] outline-none ${errors.email ? 'ring-2 ring-red-500' : ''}`}
+                className={`w-full px-3 py-1.5 rounded bg-white/80 text-gray-800 border-none focus:ring-2 focus:ring-[#FF602E] outline-none text-sm ${errors.email ? 'ring-2 ring-red-500' : ''}`}
               />
               {errors.email && (
                 <motion.p 
-                  className="text-red-400 text-sm mt-1"
+                  className="text-red-400 text-xs mt-1"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
@@ -419,7 +419,7 @@ export default function DonatePage() {
             {/* General Error Display */}
             {generalError && (
               <motion.div 
-                className="mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded text-red-400 text-sm"
+                className="mb-3 p-2 bg-red-500/20 border border-red-500/50 rounded text-red-400 text-xs"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
@@ -446,7 +446,7 @@ export default function DonatePage() {
               type="button"
               onClick={handleSubmit}
               disabled={isLoading}
-              className={`w-full mt-4 px-6 py-3 rounded font-semibold text-base shadow transition relative ${
+              className={`w-full mt-3 px-4 py-2 rounded font-semibold text-sm shadow transition relative ${
                 isLoading 
                   ? 'bg-gray-500 cursor-not-allowed' 
                   : 'bg-[#FF602E] hover:opacity-90'
@@ -461,7 +461,7 @@ export default function DonatePage() {
               {isLoading ? (
                 <div className="flex items-center justify-center">
                   <motion.div
-                    className="w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2"
+                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                   />

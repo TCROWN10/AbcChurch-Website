@@ -36,7 +36,7 @@ export default function HeroWithNavbar() {
   }, [currentIndex, isTyping]);
 
   return (
-    <section className="relative w-full h-[80vh] flex items-center justify-center">
+    <section className="relative w-full h-[80vh] flex items-center justify-center pt-16 md:pt-20">
       {/* Background Image */}
       <Image
         src={HERO_BG}

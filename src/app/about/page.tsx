@@ -100,7 +100,7 @@ export default function AboutPage() {
           <VisionMissionSection />
         </motion.div>
         <motion.div variants={contentVariants}>
-          <AboutSection />
+        <AboutSection />
         </motion.div>
         <motion.div variants={contentVariants}>
           <CoreBeliefsSection />

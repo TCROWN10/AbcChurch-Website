@@ -14,6 +14,7 @@ const NAV_LINKS = [
 export default function Navbar() {
   const pathname = usePathname();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown on outside click
@@ -27,9 +28,14 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-30 backdrop-blur-[84px] bg-[#31313169] flex items-center justify-between px-8 py-3"
+      className="fixed top-0 left-0 w-full z-50 backdrop-blur-[84px] bg-[#31313169] flex items-center justify-between px-4 md:px-8 py-3"
       style={{ WebkitBackdropFilter: 'blur(84px)', backdropFilter: 'blur(84px)' }}
     >
       {/* Logo as back button */}
@@ -45,8 +51,23 @@ export default function Navbar() {
           ALL BELIEVERS<br />CHRISTIAN CHURCH
         </span>
       </Link>
-      {/* Navigation Links */}
-      <div className="flex items-center gap-8">
+      {/* Hamburger for mobile */}
+      <button
+        className="md:hidden flex items-center justify-center w-10 h-10 ml-auto text-white focus:outline-none z-50 mr-8"
+        onClick={() => setMobileMenuOpen((open) => !open)}
+        aria-label="Open menu"
+        type="button"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          {mobileMenuOpen ? (
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          ) : (
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
+          )}
+        </svg>
+      </button>
+      {/* Navigation Links (desktop) */}
+      <div className="hidden md:flex items-center gap-8">
         {NAV_LINKS.map((link) => (
           link.label === 'Message' ? (
             <div key={link.label} className="relative flex items-center" ref={dropdownRef}>
@@ -77,7 +98,7 @@ export default function Navbar() {
               </button>
               {/* Dropdown menu */}
               {dropdownOpen && (
-                <div className="absolute left-0 top-full mt-2 min-w-[180px] rounded shadow-lg bg-[#313131e6] backdrop-blur-[24px] text-white z-40 flex flex-col" style={{WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)'}}>
+                <div className="absolute left-0 top-full mt-2 min-w-[180px] rounded shadow-lg bg-[#313131e6] backdrop-blur-[24px] text-white z-50 flex flex-col" style={{WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)'}}>
                   <Link href="/sermon" className="px-6 py-3 hover:bg-[#444444cc] transition-colors whitespace-nowrap" onClick={() => setDropdownOpen(false)}>Sermon</Link>
                   <Link href="/devotional" className="px-6 py-3 hover:bg-[#444444cc] transition-colors whitespace-nowrap" onClick={() => setDropdownOpen(false)}>Daily Devotional</Link>
                 </div>
@@ -104,6 +125,31 @@ export default function Navbar() {
           Visit Us
         </a>
       </div>
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 top-0 z-[60] flex flex-col items-center justify-start pt-20 md:hidden animate-fade-in">
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-800 transition-colors z-[70]"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Close menu"
+            type="button"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div className="w-full max-w-xs bg-white rounded-xl shadow-2xl flex flex-col items-center py-8 px-4 mt-8">
+            <Link href="/about" className={`w-full text-center text-lg font-semibold py-4 border-b border-gray-200 transition ${pathname === '/about' ? 'text-[#FF602E]' : 'text-[#232B33]'} hover:text-[#FF602E]`} onClick={() => setMobileMenuOpen(false)}>About</Link>
+            <Link href="/message" className={`w-full text-center text-lg font-semibold py-4 border-b border-gray-200 transition ${pathname === '/message' ? 'text-[#FF602E]' : 'text-[#232B33]'} hover:text-[#FF602E]`} onClick={() => setMobileMenuOpen(false)}>Message</Link>
+            <Link href="/sermon" className={`w-full text-center text-lg font-semibold py-4 border-b border-gray-200 transition ${pathname === '/sermon' ? 'text-[#FF602E]' : 'text-[#232B33]'} hover:text-[#FF602E]`} onClick={() => setMobileMenuOpen(false)}>Sermon</Link>
+            <Link href="/devotional" className={`w-full text-center text-lg font-semibold py-4 border-b border-gray-200 transition ${pathname === '/devotional' ? 'text-[#FF602E]' : 'text-[#232B33]'} hover:text-[#FF602E]`} onClick={() => setMobileMenuOpen(false)}>Daily Devotional</Link>
+            <Link href="/connect" className={`w-full text-center text-lg font-semibold py-4 border-b border-gray-200 transition ${pathname === '/connect' ? 'text-[#FF602E]' : 'text-[#232B33]'} hover:text-[#FF602E]`} onClick={() => setMobileMenuOpen(false)}>Connect</Link>
+            <Link href="/donate" className={`w-full text-center text-lg font-semibold py-4 border-b border-gray-200 transition ${pathname === '/donate' ? 'text-[#FF602E]' : 'text-[#232B33]'} hover:text-[#FF602E]`} onClick={() => setMobileMenuOpen(false)}>Donate</Link>
+            <a href="/signin" className="w-full text-center mt-4 px-5 py-3 rounded bg-[#FF602E] text-white font-semibold text-lg shadow hover:opacity-90 transition" onClick={() => setMobileMenuOpen(false)}>Visit Us</a>
+          </div>
+        </div>
+      )}
     </nav>
   );
-} 
+}
