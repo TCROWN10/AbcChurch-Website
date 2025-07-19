@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Abcchurch",
-  description: "All Believers Christian Church - Join us in faith, community, and spiritual growth",
+  description: "All Believers Christian Church",
   icons: {
     icon: [
       {
