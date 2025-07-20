@@ -121,7 +121,7 @@ export default function WelcomePage() {
             J.E.S.U.S C.H.R.I.S.T
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-[#6B6B6B] mb-3 sm:mb-4 font-normal">
-            caring calling coming
+            CARING CALLING COMING
           </p>
           <p className="text-xs sm:text-sm md:text-base text-gray-500 leading-relaxed mb-6 sm:mb-8">
             Jesus Christ is the same yesterday,<br />

@@ -1,31 +1,45 @@
 "use client";
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import EventCard, { EventCardProps } from '../components/EventCard';
+import EventsSection from "../components/EventsSection";
 import StepsGrid from '../components/StepsGrid';
-import Footer from '../components/Footer';
 
-const events: EventCardProps[] = [
-  {
-    title: 'Last Sunday',
-    time: '6th July, 2025',
-    date: '',
-    thumbnail: '/Video-Image.png',
-    videoUrl: '#',
-    highlight: true,
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      staggerChildren: 0.3
+    }
+  }
+};
+
+const sectionVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 50,
+    scale: 0.95
   },
-  {
-    title: "",
-    time: '',
-    date: '',
-    thumbnail: '/Coming Event.jpeg',
-    videoUrl: '#',
-    highlight: false,
-  },
-];
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.8
+    }
+  }
+};
 
 export default function MessagePage() {
   return (
-    <div className="relative min-h-screen bg-[#232B33] flex flex-col">
+    <motion.div 
+      className="relative min-h-screen bg-[#232B33] flex flex-col"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
       {/* Hero Section */}
       <section className="relative w-full h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20">
         <Image
@@ -44,44 +58,13 @@ export default function MessagePage() {
         </div>
       </section>
 
-      {/* Upcoming Events Section */}
-      <section className="w-full py-8 md:py-16 px-4 md:px-6 flex flex-col items-center relative overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
-          <Image
-            src="/Mission-Background.png"
-            alt="Upcoming Events Background"
-            fill
-            className="object-cover w-full h-full opacity-70"
-            priority
-          />
-          <div className="absolute inset-0 bg-[#232B33] bg-opacity-40" />
-        </div>
-        <div className="max-w-6xl w-full flex flex-col lg:flex-row items-start gap-8 md:gap-12 z-10 relative">
-          {/* Event Cards */}
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-6 md:mb-0 w-full lg:w-auto">
-            {events.map((event, idx) => (
-              <div
-                key={event.title}
-                className={`relative z-10 ${idx === 0 ? 'mt-0' : 'mt-4 sm:mt-8'}`}
-              >
-                <EventCard {...event} />
-              </div>
-            ))}
-          </div>
-          {/* Description */}
-          <div className="flex-1 flex flex-col items-start justify-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4">Upcoming Events</h2>
-            <p className="text-[#B0B8C1] text-sm md:text-base lg:text-lg mb-6 md:mb-8 max-w-md">
-              Stay connected and spiritually refreshed by joining our upcoming gatherings, special services, and community outreach programs.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Upcoming Events Section - Using the same component as home page */}
+      <motion.div variants={sectionVariants}>
+        <EventsSection />
+      </motion.div>
 
       {/* Steps to Being Born Again Section */}
       <StepsGrid />
-      {/* <Footer /> */}
-    </div>
+    </motion.div>
   );
 } 
