@@ -41,7 +41,7 @@ export default function Footer() {
             <a href="https://web.facebook.com/abcchurch.davenport.ia" aria-label="Facebook" className="text-[#FF602E] hover:text-[#28505A]" target="_blank" rel="noopener noreferrer">
               <svg width="20" height="20" fill="none" viewBox="0 0 24 24" className="md:w-6 md:h-6"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 5 3.66 9.13 8.44 9.88v-6.99h-2.54v-2.89h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.89h-2.34v6.99C18.34 21.13 22 17 22 12z" fill="currentColor"/></svg>
             </a>
-            <a href="#" aria-label="Instagram" className="text-[#28505A] hover:text-[#FF602E]">
+            <a href="https://www.instagram.com/theab_cc/" aria-label="Instagram" className="text-[#28505A] hover:text-[#FF602E]" target="_blank" rel="noopener noreferrer">
               <svg width="20" height="20" fill="none" viewBox="0 0 24 24" className="md:w-6 md:h-6"><rect width="20" height="20" x="2" y="2" rx="5" fill="none" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" strokeWidth="2"/><circle cx="17" cy="7" r="1.5" fill="currentColor"/></svg>
             </a>
           </div>
