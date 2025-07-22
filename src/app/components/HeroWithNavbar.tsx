@@ -67,9 +67,9 @@ export default function HeroWithNavbar() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          <span className="text-[#45EFFF]">CARING</span>
-          <span className="text-[#45EFFF]">CALLING</span>
-          <span className="text-[#45EFFF]">COMING</span>
+          <span className="text-[#22C55E]">CARING</span>
+          <span className="text-[#22C55E]">CALLING</span>
+          <span className="text-[#22C55E]">COMING</span>
         </motion.div>
         
         {/* Bible Verse */}

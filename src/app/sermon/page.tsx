@@ -1,5 +1,17 @@
 "use client";
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+
+const sermonData = [
+  {
+    date: '2025-07-20',
+    title: 'Freedom At Last',
+    headline: 'Freedom At Last',
+    image: '/Sermon-image.png',
+    // You can add a summary or excerpt here if desired
+  },
+  // Add more sermon days here as needed
+];
 
 export default function SermonPage() {
   // Format the date as 'Sunday 20 July 2025'
@@ -7,6 +19,8 @@ export default function SermonPage() {
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const today = `${days[dateObj.getDay()]} ${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+  const router = useRouter();
+
   return (
     <div className="min-h-screen flex flex-col bg-[#0C232B]">
       {/* Hero Section */}
@@ -19,92 +33,33 @@ export default function SermonPage() {
           priority
         />
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4 md:px-6">
-          <h1 className="text-xl sm:text-2xl md:text-4xl font-bold text-white drop-shadow mb-2">Sermon</h1>
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#FF602E] drop-shadow mb-1">Freedom At Last</h2>
-          <div className="text-sm sm:text-base md:text-lg text-[#FFDECC] drop-shadow">{today}</div>
+          <h1 className="text-xl sm:text-2xl md:text-4xl font-bold text-white drop-shadow mb-2">SERMON</h1>
         </div>
       </div>
-      {/* Sermon Content */}
-      <div className="max-w-4xl w-full mx-auto text-white rounded-b-lg px-4 sm:px-6 md:px-12 py-6 md:py-8 mt-0 z-10 relative" style={{ backgroundColor: '#0C252E' }}>
-        <div className="mb-4">
-          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading :</span> Luke 13:10-13 | NKJV<br/>
-          <span className="text-xs md:text-sm">10 Now He was teaching in one of the synagogues on the Sabbath.<br/>
-          11 And behold, there was a woman who had a spirit of infirmity eighteen years, and was bent over and could in no way raise herself up.<br/>
-          12 But when Jesus saw her, He called her to Him and said to her, "Woman, you are loosed from your infirmity."<br/>
-          13 And He laid His hands on her, and immediately she was made straight, and glorified God.</span>
-        </div>
-        <div className="mb-6">
-          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">Introduction</h3>
-          <p className="mb-2 text-sm md:text-base">Freedom, in its broadest sense, signifies the power or right to act, speak, or think as one wants without undue restraint or hindrance.<br/>
-          It encompasses both individual liberty and collective rights, enabling people to pursue their own paths, express their beliefs, and shape their destinies. Freedom is the absence of restraint.</p>
-          
-          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">Type of Freedom</h3>
-          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base">
-            <li><span className="font-semibold">Individual / Communal Liberty:</span><br/>
-            Freedom often refers to the ability to act without external constraints, such as physical confinement or legal restrictions. (Boundary reflects bondage)</li>
-            <li><span className="font-semibold">Liberty Of Choice and Action:</span><br/>
-            It implies the power to make decisions and take actions without being forced or coerced. (If you have to drink, drug or smoke under pressure, then you're in bondage)</li>
-            <li><span className="font-semibold">Political Freedom:</span><br/>
-            This includes the right to participate in the political process, vote, and hold office.</li>
-            <li><span className="font-semibold">Economic Freedom:</span><br/>
-            This can refer to the ability to pursue economic opportunities, own property, and engage in free markets.</li>
-            <li><span className="font-semibold">Religious Freedom:</span><br/>
-            This involves the right to practice one's religion without interference or coercion. (There's a sharp difference between religious freedom and Spiritual freedom)</li>
-            <li><span className="font-semibold">Spiritual Freedom:</span><br/>
-            This is liberation from sin, Satan and flesh by faith in the Lord Jesus Christ.</li>
-            <li><span className="font-semibold">Freedom of Speech:</span><br/>
-            This fundamental right allows individuals to express their opinions and ideas without censorship or fear of reprisal.</li>
-          </ul>
-          
-          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">How To Activate Your Freedom</h3>
-          <p className="mb-2 text-sm md:text-base"><span className="font-semibold">(Philippians 2:12b NLT)</span><br/>
-          Work hard to show the results of your salvation, obeying God with deep reverence and fear</p>
-          
-          <p className="mb-2 text-sm md:text-base"><span className="font-semibold">Note:</span> Salvation is free by faith through our Lord Jesus Christ yet, there are accompanying works to be done in order to attain the perfection level, such as:</p>
-          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base">
-            <li>Work hard on Yourself</li>
-            <li>Work hard on Your Situation</li>
-            <li>Work hard on Your Strength</li>
-            <li>Work hard on Your Soul</li>
-            <li>Work hard on Your Skill</li>
-            <li>Work hard on your salvation</li>
-            <li>Work hand-In-hand with the Holy Spirit</li>
-          </ol>
-          
-          <h4 className="font-semibold mt-4 mb-1 text-sm md:text-base">1. Work hard on Yourself</h4>
-          <p className="mb-2 text-sm md:text-base">What, then, shall we say in response to these things? If God is for us, who can be against us? (Romans 8:31, 28-30).</p>
-          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base">
-            <li>No one or demon can be against you except yourself, therefore,</li>
-            <li>Work hard on (your) self discipline & determination</li>
-            <li>You can be your better self</li>
-            <li>Stop excusing your weaknesses</li>
-            <li>Do your best to be:</li>
-          </ul>
-          <ul className="list-disc list-inside ml-8 md:ml-10 mb-2 text-sm md:text-base">
-            <li>Physically fit and admirable</li>
-            <li>Mentally fit and serviceable</li>
-            <li>Medically fit and manageable</li>
-            <li>Maritally stable and dependable</li>
-            <li>Financially buoyant and Charitable</li>
-          </ul>
-          
-          <h4 className="font-semibold mt-4 mb-1 text-sm md:text-base">2. Work hard on Your Situation</h4>
-          <p className="mb-2 text-sm md:text-base">The situation of this city is pleasant, as my lord seeth: but the water is naught, and the ground barren. (2Kg 2:19 KJV)</p>
-          <p className="mb-2 text-sm md:text-base">This city's location is as good as you will ever find. But the water is bad, and the land cannot grow crops. (2 Kg 2:19b GWT)</p>
-          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base">
-            <li>Work hard to better your current situation</li>
-            <li>No two situations are the same.</li>
-            <li>Special problem requires special solutions</li>
-            <li>Special situations require special actions.</li>
-            <li><span className="font-semibold">Note:</span> if your problem is spiritual, it can only be solved spiritual means and not by medical, psychological or other means.</li>
-            <li>You need to take steps and You should take steps now!</li>
-            <li>Don't resign to fate</li>
-            <li>Your situation, isn't your definition, neither is it your destination.</li>
-            <li>Work hard to go places</li>
-          </ul>
-          
-          <p className="italic text-sm mb-4">(To be cont'd, next week Sunday)</p>
-        </div>
+      {/* Step-Grid Card Section */}
+      <div className="max-w-4xl w-full mx-auto px-2 sm:px-4 md:px-12 py-4 sm:py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+        {sermonData.map((sermon) => (
+          <div
+            key={sermon.date}
+            className="bg-[#18313B] rounded-lg shadow-md p-0 flex flex-col items-stretch cursor-pointer hover:bg-[#25506A] transition-colors border border-[#FF602E] overflow-hidden"
+            onClick={() => router.push(`/sermon/${sermon.date}`)}
+          >
+            <div className="relative w-full h-24 sm:h-32 md:h-40">
+              <Image
+                src={sermon.image}
+                alt={sermon.headline}
+                fill
+                className="object-cover w-full h-full"
+                priority={false}
+              />
+            </div>
+            <div className="p-3 sm:p-4 flex flex-col flex-1">
+              <div className="text-xs text-[#FFDECC] mb-1 sm:mb-2 font-medium">{sermon.date}</div>
+              <div className="text-base sm:text-lg font-bold text-[#FF602E] mb-1 sm:mb-2">{sermon.headline}</div>
+              {/* Optionally add a summary/excerpt here */}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

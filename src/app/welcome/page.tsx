@@ -43,12 +43,13 @@ export default function WelcomePage() {
       <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-3 sm:px-4 py-4 sm:py-8">
         {/* Page Title */}
         <motion.h1 
-          className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#12677F] mb-6 sm:mb-8 md:mb-12 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#12677F] mb-8 sm:mb-12 md:mb-16 text-center"
+          initial={{ rotateY: 0 }}
+          animate={{ rotateY: [0, 180, 0] }}
+          transition={{ duration: 2, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
+          style={{ transformStyle: 'preserve-3d' }}
         >
-          WELCOME PAGE
+          W.E.L.C.O.M.E TO A.B.C CHURCH
         </motion.h1>
 
         {/* Logo */}

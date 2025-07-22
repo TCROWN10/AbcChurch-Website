@@ -105,17 +105,17 @@ export default function Navbar() {
               )}
             </div>
           ) : (
-            <Link
-              key={link.label}
-              href={link.href}
+          <Link
+            key={link.label}
+            href={link.href}
               className={`text-base font-medium transition relative px-1
                 ${pathname === link.href ? 'text-[#FF602E] underline underline-offset-8 decoration-2' : 'text-white'}
                 hover:underline hover:underline-offset-8 hover:decoration-2`
               }
               style={{ textUnderlinePosition: 'under' }}
-            >
-              {link.label}
-            </Link>
+          >
+            {link.label}
+          </Link>
           )
         ))}
         <a
@@ -152,4 +152,4 @@ export default function Navbar() {
       )}
     </nav>
   );
-}
+} 
