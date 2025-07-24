@@ -12,6 +12,13 @@ const devotionalData = [
     image: '/Devotional-iHero.png',
     // You can add a summary or excerpt here if desired
   },
+  {
+    date: '2025-07-24',
+    title: 'Loving The Unlovables',
+    headline: 'Loving The Unlovables',
+    image: '/Devotional-iHero.png',
+    // You can add a summary or excerpt here if desired
+  },
   // Add more devotional days here as needed
 ];
 

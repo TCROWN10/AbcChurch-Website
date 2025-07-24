@@ -42,15 +42,20 @@ export default function WelcomePage() {
       {/* Main Content */}
       <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-3 sm:px-4 py-4 sm:py-8">
         {/* Page Title */}
-        <motion.h1 
-          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#12677F] mb-8 sm:mb-12 md:mb-16 text-center"
-          initial={{ rotateY: 0 }}
-          animate={{ rotateY: [0, 180, 0] }}
-          transition={{ duration: 2, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
-          style={{ transformStyle: 'preserve-3d' }}
-        >
-          W.E.L.C.O.M.E TO A.B.C CHURCH
-        </motion.h1>
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <motion.h1 
+            className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#12677F] mb-2"
+            initial={{ rotateY: 0 }}
+            animate={{ rotateY: [0, 180, 0] }}
+            transition={{ duration: 2, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
+            style={{ transformStyle: 'preserve-3d' }}
+          >
+            WELCOME TO
+          </motion.h1>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#12677F]">
+            A.B.C CHURCH
+          </h2>
+        </div>
 
         {/* Logo */}
         <motion.div
