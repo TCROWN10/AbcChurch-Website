@@ -10,6 +10,13 @@ const sermonData = [
     image: '/Sermon-image.png',
     // You can add a summary or excerpt here if desired
   },
+  {
+    date: '2025-07-27',
+    title: 'Free At Last I & II',
+    headline: 'Free At Last I & II',
+    image: '/Sermon-image.png',
+    // You can add a summary or excerpt here if desired
+  },
   // Add more sermon days here as needed
 ];
 

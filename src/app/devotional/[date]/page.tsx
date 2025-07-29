@@ -98,68 +98,128 @@ const devotionalData = [
         <div className="mb-6">
           <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">🌟 Message</h3>
           <h4 className="font-semibold text-sm md:text-base mb-2">Loving the "Unlovable": God's Call Beyond Comfort</h4>
-          <p className="mb-2 text-sm md:text-base">Some people are hard to hug—prickly personalities, hurtful histories, or bitter behaviors can make them feel unreachable. Yet, God's love calls us to love beyond limits, beyond logic, and beyond likes. Jesus didn't just die for the delightful; He died for the difficult too. Loving the unlovable isn't about them—it's about reflecting Jesus. Here are some ways to show Love to the "Unlovable":</p>
+          <p className="mb-2 text-sm md:text-base">Love isn't always comfortable—it's often costly. Jesus didn't just love the lovable; He loved the unlovable, the outcast, the sinner. His love wasn't conditional on behavior or reciprocation. It was a choice, a commitment, a covenant.</p>
+          <p className="mb-2 text-sm md:text-base">When we love only those who love us back, we're no different from the world. But when we love the unlovable, we become like Christ. We become His hands, His feet, His heart in a broken world.</p>
+          <p className="mb-2 text-sm md:text-base">Today, ask yourself: Who is the "unlovable" person in your life? Who needs your love, even if they don't deserve it? Remember, you were once unlovable too, but God loved you anyway.</p>
           
-          <div className="mb-4">
-            <h5 className="font-semibold text-sm md:text-base mb-1">1. Care, Even When They're Cold</h5>
-            <p className="mb-1 text-sm md:text-base"><span className="font-semibold">Cold hearts need consistent care.</span></p>
-            <p className="mb-2 text-sm md:text-base">Just like a frozen heart needs time to thaw, persistently caring even when you get no warmth back can melt through bitterness. Be kind to all not minding who they are - the rude co-worker or distant neighbor—your care may be the only Christ they will ever encounter. Proverbs 15:1a says, "A gentle answer turns away wrath…"</p>
-          </div>
-          
-          <div className="mb-4">
-            <h5 className="font-semibold text-sm md:text-base mb-1">2. Pray, Even If They Push You Away</h5>
-            <p className="mb-1 text-sm md:text-base"><span className="font-semibold">Persistent prayer pierces pride.</span></p>
-            <p className="mb-2 text-sm md:text-base">Intercession does what interaction sometimes can't. Praying softens both their heart and yours. Stop talking about others rather, talk to God for others. Remember, when Job prayed for his friends who misjudged him, God restored all he ever lost by double (Job 42:10)</p>
-          </div>
-          
-          <div className="mb-4">
-            <h5 className="font-semibold text-sm md:text-base mb-1">3. Forgive, Even If They Frown</h5>
-            <p className="mb-1 text-sm md:text-base"><span className="font-semibold">Forgiveness frees the forgiver.</span></p>
-            <p className="mb-2 text-sm md:text-base">Sometimes the unlovable are also unforgiving. But forgiveness isn't about feeling—it's about faithfulness to the Lord. A family member may never say sorry or be apologetic, however, your release of resentment gladens God's heart and invites His peace. Mercy is ministry. "Forgive one another… as God in Christ forgave you." (Ephesians 4:32)</p>
-          </div>
-          
-          <div className="mb-4">
-            <h5 className="font-semibold text-sm md:text-base mb-1">4. Help, Even When They Hurt You</h5>
-            <p className="mb-1 text-sm md:text-base"><span className="font-semibold">Healers help even when it hurts.</span></p>
-            <p className="mb-2 text-sm md:text-base">The unlovable might lash out because of past wounds. Loving them is planting seeds of love, remember, not all seeds grow overnight. Even Jesus washed Judas' feet, despite the fact that he knows he was still going to betray him. You're actually not helping because they deserve it—you're helping because God deserves obedience. We love not by natural reaction, but by supernatural direction.</p>
-          </div>
-          
-          <div className="mb-4">
-            <h5 className="font-semibold text-sm md:text-base mb-1">5. See Value, Even In Their Violence</h5>
-            <p className="mb-1 text-sm md:text-base"><span className="font-semibold">See soul before scars.</span></p>
-            <p className="mb-2 text-sm md:text-base">Beneath harshness lies a hurting human—still made in God's image. Loving them is choosing to look beyond their behavior. If Saul the persecutor became Paul the preacher, then no one is too bad for God to change, never underestimate God's grace plan. Grace gives what's undeserved to those who don't request it. "Man looks at the outward appearance, but the LORD looks at the heart." (1 Samuel 16:7)</p>
-          </div>
-          
-          <h4 className="font-semibold mt-4 mb-1 text-sm md:text-base">Things to do</h4>
-          <p className="mb-2 text-sm md:text-base">Write down the name of one "unlovable" person. Ask God daily to help you love them intentionally this week.</p>
-          
-          <h4 className="font-semibold mt-4 mb-1 text-sm md:text-base">Prayer</h4>
+          <h4 className="font-semibold mt-4 mb-1 text-sm md:text-base">Prayer Points</h4>
           <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base">
-            <li>Father, I give you praise and Glory for the blessing and the privilege of Witnessing another day in the land of the living, in Jesus Name.</li>
-            <li>Lord, please teach me to love like You—sacrificially, sincerely, and supernaturally. Help me to see what You see in them.</li>
+            <li>Father, thank you for loving me when I was unlovable, in Jesus name.</li>
+            <li>Lord, give me the grace to love those who are difficult to love, in Jesus name.</li>
+            <li>Father, help me to see others through your eyes of love, in Jesus name.</li>
+            <li>Lord, break down the walls of prejudice and judgment in my heart, in Jesus name.</li>
+            <li>Father, use me as an instrument of your love to the unlovable, in Jesus name.</li>
+            <li>Lord, give me the courage to reach out to those who are rejected by society, in Jesus name.</li>
+            <li>Father, help me to love without expecting anything in return, in Jesus name.</li>
+            <li>Lord, teach me to love like Jesus loved, in Jesus name.</li>
           </ol>
           
           <h4 className="font-semibold mt-4 mb-1 text-sm md:text-base">Quotes</h4>
           <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base">
-            <li>The true test of love is loving someone you struggle to like. <span className="italic">+ Unknown</span></li>
-            <li>He who cannot forgive breaks the bridge over which he must pass. <span className="italic">+ George Herbert</span></li>
-            <li>Love is the only force capable of transforming an enemy into a friend. <span className="italic">+ Martin Luther King Jr.</span></li>
+            <li>"Love is not about finding the perfect person, but about seeing an imperfect person perfectly." <span className="italic">+ Sam Keen</span></li>
+            <li>"The greatest act of love is to love someone who doesn't deserve it." <span className="italic">+ Unknown</span></li>
+            <li>"Love is the only force capable of transforming an enemy into a friend." <span className="italic">+ Martin Luther King Jr.</span></li>
           </ul>
           
           <div className="mt-4">
             <span className="font-semibold text-[#FF602E] text-sm md:text-base">BIBLE IN ONE YEAR</span><br/>
-            <span className="text-sm md:text-base">Micah 1- 7<br/>
-            Nahum 1 - 3</span>
+            <span className="text-sm md:text-base">Isaiah 1 - 10</span>
           </div>
           
           <div className="mt-6 text-center">
             <p className="text-lg md:text-xl font-semibold mb-2">🙏 Good Morning 🙏</p>
             <p className="text-base md:text-lg mb-4">& God Bless You Today</p>
             <p className="text-sm md:text-base font-semibold text-[#FF602E]">ConnectLife Daily Devotional</p>
-            <p className="text-xs md:text-sm">www.abcchurch.us</p>
             <p className="text-xs md:text-sm">abcchurchhq@gmail.com</p>
             <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
           </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    date: '2025-07-29',
+    title: 'The Kingdom Givers',
+    headline: 'The Kingdom Givers',
+    image: '/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse :</span> Matthew 6:38 | ERV<br/>
+          <span className="text-xs md:text-sm">Give to others, and you will receive. You will be given much. It will be poured into your hands—more than you can hold. You will be given so much that it will spill into your lap. The way you give to others is the way God will give to you.</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading :</span> 1 Timothy 6:17-19 | ESV<br/>
+          <span className="text-xs md:text-sm">
+            17 As for the rich in this present age, charge them not to be haughty, nor to set their hopes on the uncertainty of riches, but on God, who richly provides us with everything to enjoy.<br/>
+            18 They are to do good, to be rich in good works, to be generous and ready to share,<br/>
+            19 thus storing up treasure for themselves as a good foundation for the future, so that they may take hold of that which is truly life.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">Message</h3>
+          <p className="mb-2 text-sm md:text-base">Giving to Kingdom projects isn't just an act of charity — it's a choice of covenant commitment, a response to God's call to partner in His purpose. Whether it's organizing crusades, building Churches, sending missionaries, feeding the needy, or funding revival—giving is God's gateway to greater glory. In a world driven by possessions, Kingdom givers choose purpose over profit, and mission over money.</p>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">🪙 1. Sow to Grow – Not Just to Go</h3>
+          <p className="mb-2 text-sm md:text-base">Kingdom giving is spiritual sowing, not casual spending. You don't "lose" when you give; you launch your seed into soil that grows spiritual dividends and earthly returns. The Bible in 2 Corinthians 9:6 (NIV) says,</p>
+          <p className="mb-2 text-sm md:text-base italic">Whoever sows generously will also reap generously.</p>
+          <p className="mb-2 text-sm md:text-base">The world says, "save to gain," but the Word says, "sow to grow." God's economy responds to faithful flow, not fearful hoarding.</p>
+          <p className="mb-2 text-sm md:text-base">If you want more in store, be a Kingdom sower, not a selfish storer.</p>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">💎 2. Giving is Living – Not Leaving</h3>
+          <p className="mb-2 text-sm md:text-base">Giving is a life-giving grace that echoes into eternity. You may leave wealth, but giving lets you live well—even beyond your years, for "It is more blessed to give than to receive." (Acts 20:35 KJV)</p>
+          <p className="mb-2 text-sm md:text-base">Your gift is your gospel—it testifies of God's grace in you. Givers live loudly even in silence. For instance, Steve Jobs left billions—but givers like Mother Teresa left blessings. Learn to not just leave a will, live a witness—by what you give.</p>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">🕊 3. Mission Over Mansion</h3>
+          <p className="mb-2 text-sm md:text-base">Seek ye first the Kingdom of God and His righteousness. (Matthew 6:33 KJV)</p>
+          <p className="mb-2 text-sm md:text-base">Don't be mansion-minded, rather be mission-moved. Kingdom projects aren't about building empires but about empowering eternity.</p>
+          <p className="mb-2 text-sm md:text-base">What you give to earthly buildings may fade, but what you give to heavenly missions will stand forever.</p>
+          <p className="mb-2 text-sm md:text-base">Many invest in luxury, few in legacy. Be part of the few.</p>
+          <p className="mb-2 text-sm md:text-base italic">Note: Don't just build mansions on earth—fund miracles for Heaven.</p>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">🏗 4. Build the House – Be Blessed at Home</h3>
+          <p className="mb-2 text-sm md:text-base italic">Is it a time for you yourselves to be living in your paneled houses, while this house remains a ruin?" (Haggai 1:4 NIV)</p>
+          <p className="mb-2 text-sm md:text-base">When you prioritize God's house, God prioritizes your home. Giving is not subtraction—it's spiritual construction.</p>
+          <p className="mb-2 text-sm md:text-base">The surest and the fastest way to fix your finances is to fund God's work and family. The foundation of divine fortune is often buried in the funding of God's projects or house.</p>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">🎁 5. From Gift to Glory – Giving is Worship</h3>
+          <p className="mb-2 text-sm md:text-base">Honor the Lord with your wealth, with the firstfruits of all your crops. (Proverbs 3:9 NIV)</p>
+          <p className="mb-2 text-sm md:text-base">Giving isn't a transaction, it's a transformation. Every gift is a glorious graft into God's eternal purpose.</p>
+          <p className="mb-2 text-sm md:text-base">Giving is not a burden; it's a holy act of adoration for your gift, it isn't just a currency, it's a confession of trust in God.</p>
+          <p className="mb-2 text-sm md:text-base">Worship without giving is like a lamp without oil—you're present but not impactful.</p>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">Prayers</h3>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base">
+            <li>Father, I praise and worship your holy name for the blessing of another brand new day, in Jesus Name.</li>
+            <li>Ask the Lord to encourage you on the matter of kingdom giving.</li>
+          </ol>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">✨ Quotes</h3>
+          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base">
+            <li>"You can give without loving, but you cannot love without giving." <span className="italic">+ Amy Carmichael</span></li>
+            <li>What you keep you lose. What you give, God uses. <span className="italic">+ Jim Elliot</span></li>
+            <li>God prospers me not to raise my standard of living, but to raise my standard of giving. <span className="italic">+ Randy Alcorn</span></li>
+            <li>Missions Multiply When Money Meets Ministry. <span className="italic">+ Anonymous</span></li>
+          </ul>
+        </div>
+        <div className="mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">BIBLE IN ONE YEAR</span><br/>
+          <span className="text-sm md:text-base">Matthew 1 - 10</span>
+        </div>
+        <div className="mt-6 text-center">
+          <p className="text-lg md:text-xl font-semibold mb-2">🙏 Good Morning 🙏</p>
+          <p className="text-base md:text-lg mb-4">& God Bless You Today</p>
+          <p className="text-sm md:text-base font-semibold text-[#FF602E]">ConnectLife Daily Devotional</p>
+          <p className="text-xs md:text-sm">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
         </div>
       </div>
     ),
