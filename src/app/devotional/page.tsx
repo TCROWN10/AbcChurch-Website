@@ -19,6 +19,13 @@ const devotionalData = [
     image: '/Devotional-iHero.png',
     // You can add a summary or excerpt here if desired
   },
+  {
+    date: '2025-07-29',
+    title: 'The Kingdom Givers',
+    headline: 'The Kingdom Givers',
+    image: '/Devotional-iHero.png',
+    // You can add a summary or excerpt here if desired
+  },
   // Add more devotional days here as needed
 ];
 

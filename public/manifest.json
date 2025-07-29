@@ -1,0 +1,37 @@
+{
+  "name": "All Believers Christian Church",
+  "short_name": "ABC Church",
+  "description": "All Believers Christian Church - ConnectLife Daily Devotional and Church Services",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0C232B",
+  "theme_color": "#FF602E",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/All Believers Christian Church.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/All Believers Christian Church.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/BigLogo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/BigLogo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["religion", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr"
+} 
