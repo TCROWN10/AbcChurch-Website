@@ -17,7 +17,7 @@ export default function HeroSection() {
       />
       
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#12677F] opacity-70" />
+      <div className="absolute inset-0 bg-green-500 opacity-70" />
       
       {/* Content Container */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center text-white px-4 w-full max-w-7xl mx-auto">
@@ -47,9 +47,9 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          <span className="text-[#FF602E] text-xl sm:text-2xl md:text-3xl font-semibold">caring</span>
-          <span className="text-[#FF602E] text-xl sm:text-2xl md:text-3xl font-semibold">calling</span>
-          <span className="text-[#FF602E] text-xl sm:text-2xl md:text-3xl font-semibold">coming</span>
+          <span className="text-[#45EFFF] text-xl sm:text-2xl md:text-4xl font-semibold">Caring</span>
+          <span className="text-[#45EFFF] text-xl sm:text-2xl md:text-4xl font-semibold">Calling</span>
+          <span className="text-[#45EFFF] text-xl sm:text-2xl md:text-4xl font-semibold">Coming</span>
         </motion.div>
         
         {/* Bible Verse */}

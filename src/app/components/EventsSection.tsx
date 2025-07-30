@@ -12,9 +12,9 @@ const events = [
     highlight: true,
   },
   {
-    title: 'Upcoming Events',
-    time: 'Soon',
-    thumbnail: '/Connect-pic.png',
+            title: '',
+            time: '',
+            thumbnail: '/Coming Event.jpeg',
     videoUrl: '#',
     highlight: false,
   },
@@ -58,16 +58,14 @@ const contentVariants = {
 
 export default function EventsSection() {
   return (
-    <section className="w-full bg-[#222A31] py-16 px-4">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+    <section className="w-full bg-[#222A31] py-10 px-2 sm:px-4">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-12">
         {/* Left: Event Video Cards */}
-        <div className="flex flex-row gap-6 mb-8 md:mb-0">
+        <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-8 md:mb-0 w-full md:w-auto items-center justify-center">
           {events.map((event, idx) => (
             <motion.div
               key={event.title}
-              className={`relative w-[260px] h-[340px] rounded-xl overflow-hidden shadow-lg group bg-black ${
-                idx === 0 ? 'mt-0' : 'mt-8'
-              }`}
+              className={`relative w-full max-w-xs sm:w-[220px] sm:h-[300px] md:w-[260px] md:h-[340px] h-[220px] rounded-xl overflow-hidden shadow-lg group bg-black ${idx === 0 ? 'mt-0' : 'mt-8 sm:mt-12'}`}
               variants={cardVariants}
               whileHover="hover"
               initial="hidden"
@@ -80,7 +78,7 @@ export default function EventsSection() {
                 fill
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
               />
-              {/* Play Button Overlay */}
+              {/* Play Button Overlay - Only for Sundays card */}
               {event.highlight && (
                 <motion.div 
                   className="absolute inset-0 flex items-center justify-center"
@@ -89,32 +87,31 @@ export default function EventsSection() {
                   transition={{ delay: 0.3, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                      <circle cx="16" cy="16" r="16" fill="white" />
-                      <polygon points="13,11 23,16 13,21" fill="#FF602E" />
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <polygon points="8,5 19,12 8,19" fill="#FF602E" />
                     </svg>
                   </div>
                 </motion.div>
               )}
-              {/* Event Info */}
-              <div className="absolute left-0 bottom-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent">
+              {/* Event Info - Bottom left corner */}
+              <div className={`absolute left-4 ${event.title === 'Sundays' ? 'bottom-8' : 'bottom-2'}`}>
                 <div className="text-[#FF602E] font-semibold text-base mb-1">{event.title}</div>
-                <div className="text-white text-lg font-medium opacity-80">{event.time}</div>
+                <div className="text-white text-lg font-medium">{event.time}</div>
               </div>
             </motion.div>
           ))}
         </div>
         {/* Right: Description */}
         <motion.div 
-          className="flex-1 flex flex-col items-start justify-center"
+          className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left"
           variants={contentVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -123,7 +120,7 @@ export default function EventsSection() {
             Upcoming Events
           </motion.h2>
           <motion.p 
-            className="text-[#B0B8C1] text-base md:text-lg mb-8 max-w-md"
+            className="text-[#B0B8C1] text-sm sm:text-base md:text-lg mb-4 sm:mb-8 max-w-md"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}

@@ -36,7 +36,7 @@ export default function HeroWithNavbar() {
   }, [currentIndex, isTyping]);
 
   return (
-    <section className="relative w-full h-[80vh] flex items-center justify-center">
+    <section className="relative w-full h-[80vh] flex items-center justify-center pt-16 md:pt-20">
       {/* Background Image */}
       <Image
         src={HERO_BG}
@@ -67,9 +67,9 @@ export default function HeroWithNavbar() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          <span className="text-[#FF602E]">caring</span>
-          <span className="text-[#FF602E]">calling</span>
-          <span className="text-[#FF602E]">coming</span>
+          <span className="text-[#22C55E]">CARING</span>
+          <span className="text-[#22C55E]">CALLING</span>
+          <span className="text-[#22C55E]">COMING</span>
         </motion.div>
         
         {/* Bible Verse */}

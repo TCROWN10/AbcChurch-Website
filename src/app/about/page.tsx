@@ -86,12 +86,14 @@ export default function AboutPage() {
             About Us
           </motion.h1>
           <motion.p 
-            className="text-lg md:text-2xl font-semibold drop-shadow mb-2"
+            className="text-sm md:text-base font-semibold drop-shadow mb-2 max-w-4xl mx-auto leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-            We Are Inclusive, Spirit filled, Prayer focused, <span className='italic'>Sanctified.</span>
+            All Believers Christian Church is a full gospel church devoted to inter-denominational revival of Apostolic signs, demonstrations of Holy Ghost power and a delivery of the salvation message of our Lord Jesus Christ to all men irrespective of colour, race or nation.
+            <br />
+            We invite you to worship with us for a power packed service and an unforgettable experience of the love of God.
           </motion.p>
         </motion.div>
       </motion.section>
@@ -100,7 +102,7 @@ export default function AboutPage() {
           <VisionMissionSection />
         </motion.div>
         <motion.div variants={contentVariants}>
-          <AboutSection />
+        <AboutSection />
         </motion.div>
         <motion.div variants={contentVariants}>
           <CoreBeliefsSection />

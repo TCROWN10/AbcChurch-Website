@@ -89,7 +89,7 @@ export default function ConnectPage() {
     >
       {/* Hero Section */}
       <motion.section 
-        className="relative w-full h-[60vh] flex items-center justify-center overflow-hidden pt-20"
+        className="relative w-full h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20"
         variants={heroVariants}
       >
         <Image
@@ -100,11 +100,11 @@ export default function ConnectPage() {
           priority
         />
         <motion.div 
-          className="relative z-10 text-center text-white px-4 flex flex-col items-center w-full"
+          className="relative z-10 text-center text-white px-4 md:px-6 flex flex-col items-center w-full"
           variants={contentVariants}
         >
           <motion.h1 
-            className="text-5xl md:text-6xl font-bold mb-2 drop-shadow-lg"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 drop-shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -112,7 +112,7 @@ export default function ConnectPage() {
             Get Connected
           </motion.h1>
           <motion.p 
-            className="text-lg md:text-xl font-medium drop-shadow mb-6 max-w-2xl"
+            className="text-base sm:text-lg md:text-xl font-medium drop-shadow mb-4 md:mb-6 max-w-2xl px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -120,14 +120,14 @@ export default function ConnectPage() {
             Be part of something greater. Join a group, serve, or share your story. Your testimony could inspire someone and show them what God can do in a life filled with faith.
           </motion.p>
           <motion.div 
-            className="flex gap-4"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
             <motion.button 
               onClick={() => window.location.href = '/signin'}
-              className="bg-[#FF602E] text-white px-6 py-2 rounded font-semibold text-base shadow hover:opacity-90 transition"
+              className="bg-[#FF602E] text-white px-6 py-3 rounded font-semibold text-base shadow hover:opacity-90 transition w-full sm:w-auto"
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
@@ -136,7 +136,7 @@ export default function ConnectPage() {
             </motion.button>
             <motion.button 
               onClick={() => window.location.href = '/signin'}
-              className="bg-white text-[#313131] px-6 py-2 rounded font-semibold text-base shadow hover:opacity-90 transition border border-white"
+              className="bg-white text-[#313131] px-6 py-3 rounded font-semibold text-base shadow hover:opacity-90 transition border border-white w-full sm:w-auto"
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
@@ -148,20 +148,20 @@ export default function ConnectPage() {
       </motion.section>
       {/* Prayer Request Section */}
       <motion.section 
-        className="py-16 px-4 max-w-6xl mx-auto"
+        className="py-8 md:py-16 px-4 md:px-6 max-w-6xl mx-auto"
         variants={contentVariants}
       >
         <motion.h2 
-          className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#F98B68]"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 md:mb-10 text-[#F98B68]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
           Prayer request
         </motion.h2>
-        <div className="flex flex-col md:flex-row items-center gap-10">
+        <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-10">
           <motion.div 
-            className="w-full md:w-1/2 flex justify-center"
+            className="w-full lg:w-1/2 flex justify-center"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -171,35 +171,35 @@ export default function ConnectPage() {
               alt="Prayer Request"
               width={400}
               height={400}
-              className="rounded-lg object-cover"
+              className="rounded-lg object-cover w-full max-w-sm md:max-w-md"
             />
           </motion.div>
           <motion.form 
-            className="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-md flex flex-col gap-4"
+            className="w-full lg:w-1/2 bg-white p-4 md:p-6 rounded-lg shadow-md flex flex-col gap-3 md:gap-4"
             variants={formVariants}
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
             <div className="flex flex-col gap-1">
-              <label htmlFor="fullName" className="font-medium text-gray-700">Full Name</label>
-              <input id="fullName" type="text" placeholder="Enter your full name" className="border border-gray-300 rounded px-4 py-2" />
+              <label htmlFor="fullName" className="font-medium text-gray-700 text-sm md:text-base">Full Name</label>
+              <input id="fullName" type="text" placeholder="Enter your full name" className="border border-gray-300 rounded px-3 md:px-4 py-2 text-sm md:text-base focus:outline-none text-black" />
             </div>
             <div className="flex flex-col gap-1">
-              <label htmlFor="email" className="font-medium text-gray-700">Email</label>
-              <input id="email" type="email" placeholder="Enter your email address" className="border border-gray-300 rounded px-4 py-2" />
+              <label htmlFor="email" className="font-medium text-gray-700 text-sm md:text-base">Email</label>
+              <input id="email" type="email" placeholder="Enter your email address" className="border border-gray-300 rounded px-3 md:px-4 py-2 text-sm md:text-base focus:outline-none text-black" />
             </div>
             <div className="flex flex-col gap-1">
-              <label htmlFor="subject" className="font-medium text-gray-700">Subject</label>
-              <input id="subject" type="text" placeholder="Enter a subject" className="border border-gray-300 rounded px-4 py-2" />
+              <label htmlFor="subject" className="font-medium text-gray-700 text-sm md:text-base">Subject</label>
+              <input id="subject" type="text" placeholder="Enter a subject" className="border border-gray-300 rounded px-3 md:px-4 py-2 text-sm md:text-base focus:outline-none text-black" />
             </div>
             <div className="flex flex-col gap-1">
-              <label htmlFor="prayerRequest" className="font-medium text-gray-700">Prayer Request</label>
-              <textarea id="prayerRequest" placeholder="Type your prayer request here" className="border border-gray-300 rounded px-4 py-2 min-h-[100px]" />
+              <label htmlFor="prayerRequest" className="font-medium text-gray-700 text-sm md:text-base">Prayer Request</label>
+              <textarea id="prayerRequest" placeholder="Type your prayer request here" className="border border-gray-300 rounded px-3 md:px-4 py-2 min-h-[80px] md:min-h-[100px] text-sm md:text-base focus:outline-none text-black" />
             </div>
             <motion.button 
               type="button" 
               onClick={() => window.location.href = '/signin'}
-              className="bg-[#FF602E] text-white px-6 py-2 rounded font-semibold text-base shadow hover:opacity-90 transition self-end"
+              className="bg-[#FF602E] text-white px-6 py-3 rounded font-semibold text-base shadow hover:opacity-90 transition self-end mt-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
