@@ -1,58 +1,88 @@
-// Simple in-memory storage for demo purposes
-// In production, use a proper database like PostgreSQL, MongoDB, etc.
+// Database-backed user storage with enhanced features
+import { userDb, type User } from './database';
+import { generateUserId, generateEmailVerificationToken } from './auth-utils';
 
-import { User } from './auth-utils';
-
-interface StoredUser extends User {
-  hashedPassword?: string;
-}
-
-// In-memory user storage (replace with database in production)
-const users: Map<string, StoredUser> = new Map();
-
-export async function createUser(userData: {
+interface CreateUserData {
   email: string;
   firstName?: string;
   lastName?: string;
   hashedPassword?: string;
   isGuest: boolean;
-}): Promise<User> {
+  requireEmailVerification?: boolean;
+}
+
+export async function createUser(userData: CreateUserData): Promise<User> {
   const id = generateUserId();
-  const user: StoredUser = {
+  const emailVerificationToken = userData.requireEmailVerification && !userData.isGuest 
+    ? generateEmailVerificationToken() 
+    : undefined;
+  
+  const user = userDb.create({
     id,
     email: userData.email,
     firstName: userData.firstName,
     lastName: userData.lastName,
     hashedPassword: userData.hashedPassword,
     isGuest: userData.isGuest,
-    createdAt: new Date(),
-  };
+    emailVerificationToken,
+  });
   
-  users.set(id, user);
+  // TODO: Send email verification if token was generated
+  if (emailVerificationToken) {
+    await sendEmailVerification(userData.email, emailVerificationToken);
+  }
   
-  // Return user without password
-  const { hashedPassword, ...userWithoutPassword } = user;
-  return userWithoutPassword;
+  return user;
 }
 
-export async function findUserByEmail(email: string): Promise<StoredUser | null> {
-  for (const user of users.values()) {
-    if (user.email === email) {
-      return user;
-    }
-  }
-  return null;
+export async function findUserByEmail(email: string): Promise<User | null> {
+  return userDb.findByEmail(email);
 }
 
 export async function findUserById(id: string): Promise<User | null> {
-  const user = users.get(id);
-  if (!user) return null;
-  
-  // Return user without password
-  const { hashedPassword, ...userWithoutPassword } = user;
-  return userWithoutPassword;
+  return userDb.findById(id);
 }
 
-function generateUserId(): string {
-  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+export async function verifyEmail(token: string): Promise<boolean> {
+  const user = userDb.findByEmailVerificationToken(token);
+  if (!user) return false;
+  
+  userDb.updateEmailVerification(user.id);
+  return true;
+}
+
+export async function requestPasswordReset(email: string): Promise<string | null> {
+  const user = userDb.findByEmail(email);
+  if (!user || user.isGuest) return null;
+  
+  const resetToken = generateEmailVerificationToken();
+  const expires = Date.now() + (60 * 60 * 1000); // 1 hour
+  
+  userDb.updatePasswordResetToken(email, resetToken, expires);
+  
+  // TODO: Send password reset email
+  await sendPasswordResetEmail(email, resetToken);
+  
+  return resetToken;
+}
+
+export async function resetPassword(token: string, newHashedPassword: string): Promise<boolean> {
+  const user = userDb.findByPasswordResetToken(token);
+  if (!user) return false;
+  
+  userDb.updatePassword(user.id, newHashedPassword);
+  return true;
+}
+
+// Email service functions
+import { sendEmail, generateEmailVerificationEmail, generatePasswordResetEmail } from './email-service';
+
+async function sendEmailVerification(email: string, token: string): Promise<void> {
+  const emailOptions = generateEmailVerificationEmail(email, token);
+  await sendEmail(emailOptions);
+}
+
+async function sendPasswordResetEmail(email: string, token: string): Promise<void> {
+  const emailOptions = generatePasswordResetEmail(email, token);
+  await sendEmail(emailOptions);
 }

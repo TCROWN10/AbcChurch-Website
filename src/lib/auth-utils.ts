@@ -1,18 +1,10 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 import { cookies } from 'next/headers';
+import { randomBytes } from 'crypto';
+import { userDb, sessionDb, type User } from './database';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 const SALT_ROUNDS = 12;
-
-export interface User {
-  id: string;
-  email: string;
-  firstName?: string;
-  lastName?: string;
-  isGuest: boolean;
-  createdAt: Date;
-}
+const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
 
 // Hash password
 export async function hashPassword(password: string): Promise<string> {
@@ -24,68 +16,97 @@ export async function verifyPassword(password: string, hashedPassword: string): 
   return bcrypt.compare(password, hashedPassword);
 }
 
-// Generate JWT token
-export function generateToken(user: User): string {
-  return jwt.sign(
-    {
-      userId: user.id,
-      email: user.email,
-      isGuest: user.isGuest,
-    },
-    JWT_SECRET,
-    { expiresIn: '7d' }
-  );
+// Generate secure random token
+export function generateSecureToken(): string {
+  return randomBytes(32).toString('hex');
 }
 
-// Verify JWT token
-export function verifyToken(token: string): any {
-  try {
-    return jwt.verify(token, JWT_SECRET);
-  } catch (error) {
-    return null;
-  }
+// Generate user ID
+export function generateUserId(): string {
+  return randomBytes(16).toString('hex');
 }
 
-// Set auth cookie
+// Generate session ID
+export function generateSessionId(): string {
+  return randomBytes(32).toString('hex');
+}
+
+// Create session
+export async function createSession(userId: string): Promise<string> {
+  const sessionId = generateSessionId();
+  const expiresAt = new Date(Date.now() + SESSION_DURATION);
+  
+  sessionDb.create({
+    id: sessionId,
+    userId,
+    expiresAt,
+  });
+  
+  return sessionId;
+}
+
+// Set auth cookie with session
 export async function setAuthCookie(user: User) {
-  const token = generateToken(user);
+  const sessionId = await createSession(user.id);
   const cookieStore = await cookies();
   
-  cookieStore.set('auth-token', token, {
+  cookieStore.set('session-id', sessionId, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    maxAge: 60 * 60 * 24 * 7, // 7 days
+    maxAge: SESSION_DURATION / 1000, // Convert to seconds
     path: '/',
   });
 }
 
-// Remove auth cookie
+// Remove auth cookie and session
 export async function removeAuthCookie() {
   const cookieStore = await cookies();
-  cookieStore.delete('auth-token');
+  const sessionId = cookieStore.get('session-id')?.value;
+  
+  if (sessionId) {
+    sessionDb.delete(sessionId);
+  }
+  
+  cookieStore.delete('session-id');
 }
 
-// Get current user from cookie
+// Get current user from session
 export async function getCurrentUser(): Promise<User | null> {
   try {
     const cookieStore = await cookies();
-    const token = cookieStore.get('auth-token')?.value;
+    const sessionId = cookieStore.get('session-id')?.value;
     
-    if (!token) return null;
+    if (!sessionId) return null;
     
-    const payload = verifyToken(token);
-    if (!payload) return null;
+    const session = sessionDb.findById(sessionId);
+    if (!session) return null;
     
-    // In a real app, you'd fetch user data from database
-    // For now, return user data from token
-    return {
-      id: payload.userId,
-      email: payload.email,
-      isGuest: payload.isGuest,
-      createdAt: new Date(),
-    };
+    const user = userDb.findById(session.userId);
+    return user;
   } catch (error) {
     return null;
   }
+}
+
+// Verify session (for middleware)
+export function verifySession(sessionId: string): { userId: string } | null {
+  try {
+    const session = sessionDb.findById(sessionId);
+    if (!session) return null;
+    
+    return { userId: session.userId };
+  } catch (error) {
+    return null;
+  }
+}
+
+// Generate email verification token
+export function generateEmailVerificationToken(): string {
+  return generateSecureToken();
+}
+
+// Generate password reset token
+export function generatePasswordResetToken(): string {
+  return generateSecureToken();
 }

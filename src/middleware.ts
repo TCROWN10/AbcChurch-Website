@@ -1,17 +1,18 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { verifyToken } from '@/lib/auth-utils';
+import { verifySession } from '@/lib/auth-utils';
 
 // Define protected routes
 const protectedRoutes = ['/donate', '/profile', '/dashboard'];
-const authRoutes = ['/signin'];
+const authRoutes = ['/signin', '/signup', '/forgot-password', '/reset-password'];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const token = request.cookies.get('auth-token')?.value;
+  const sessionId = request.cookies.get('session-id')?.value;
 
   // Check if user is authenticated
-  const isAuthenticated = token && verifyToken(token);
+  const session = sessionId ? verifySession(sessionId) : null;
+  const isAuthenticated = !!session;
 
   // Redirect authenticated users away from auth pages
   if (isAuthenticated && authRoutes.includes(pathname)) {
@@ -20,7 +21,9 @@ export function middleware(request: NextRequest) {
 
   // Redirect unauthenticated users from protected routes to signin
   if (!isAuthenticated && protectedRoutes.includes(pathname)) {
-    return NextResponse.redirect(new URL('/signin', request.url));
+    const signInUrl = new URL('/signin', request.url);
+    signInUrl.searchParams.set('redirect', pathname);
+    return NextResponse.redirect(signInUrl);
   }
 
   return NextResponse.next();
@@ -35,7 +38,8 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      * - public folder
+     * - verify-email (email verification)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|public).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|public|verify-email).*)',
   ],
 };
