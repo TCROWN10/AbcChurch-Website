@@ -10,11 +10,16 @@
   },
   "dependencies": {
     "@stripe/stripe-js": "^7.4.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "bcryptjs": "^3.0.2",
     "framer-motion": "^12.23.5",
+    "jsonwebtoken": "^9.0.2",
     "next": "15.3.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "stripe": "^18.3.0"
+    "stripe": "^18.3.0",
+    "zod": "^4.0.14"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

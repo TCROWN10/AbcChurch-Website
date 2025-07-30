@@ -1,13 +1,17 @@
 "use client";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { signInAction, signUpAction, guestSignInAction, ActionResult } from "@/lib/auth-actions";
 
 export default function SignInPage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"signin" | "create">("signin");
+  const [isPending, startTransition] = useTransition();
+  const [result, setResult] = useState<ActionResult | null>(null);
+  
   // Form states
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -22,6 +26,38 @@ export default function SignInPage() {
     setLastName("");
     setEmail("");
     setPassword("");
+    setResult(null);
+  };
+
+  // Form submission handlers
+  const handleSignIn = async (formData: FormData) => {
+    startTransition(async () => {
+      const result = await signInAction(formData);
+      setResult(result);
+      if (result.success) {
+        router.push('/');
+      }
+    });
+  };
+
+  const handleSignUp = async (formData: FormData) => {
+    startTransition(async () => {
+      const result = await signUpAction(formData);
+      setResult(result);
+      if (result.success) {
+        router.push('/');
+      }
+    });
+  };
+
+  const handleGuestSignIn = async (formData: FormData) => {
+    startTransition(async () => {
+      const result = await guestSignInAction(formData);
+      setResult(result);
+      if (result.success) {
+        router.push('/');
+      }
+    });
   };
 
   // Google Sign-In handler
@@ -135,57 +171,87 @@ export default function SignInPage() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
           </div>
+          {/* Error/Success Messages */}
+          {result && (
+            <div className={`mx-8 mt-4 p-3 rounded text-sm ${
+              result.success 
+                ? 'bg-green-100 text-green-700 border border-green-200' 
+                : 'bg-red-100 text-red-700 border border-red-200'
+            }`}>
+              {result.message && <p>{result.message}</p>}
+              {result.errors && (
+                <ul className="list-disc list-inside space-y-1">
+                  {Object.entries(result.errors).map(([field, errors]) => (
+                    <li key={field}>
+                      <strong>{field}:</strong> {errors.join(', ')}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
+          
           {/* Form */}
-          <form className="w-full px-8 pt-8 flex flex-col gap-4">
+          <div className="w-full px-8 pt-8 flex flex-col gap-4">
             <AnimatePresence mode="wait">
               {activeTab === "create" && (
-                <motion.div
+                <motion.form
                   key="create"
                   initial={{ opacity: 0, x: 40 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -40 }}
                   transition={{ duration: 0.4 }}
                   className="flex flex-col gap-4"
+                  action={handleSignUp}
                 >
                   <input
                     type="text"
+                    name="firstName"
                     placeholder="First Name"
                     className="w-full px-4 py-3 rounded border border-gray-200 bg-[#FFFFFF] text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#FF602E]"
                     value={firstName}
                     onChange={e => setFirstName(e.target.value)}
                     required
+                    disabled={isPending}
                   />
                   <input
                     type="text"
+                    name="lastName"
                     placeholder="Last Name"
                     className="w-full px-4 py-3 rounded border border-gray-200 bg-[#FFFFFF] text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#FF602E]"
                     value={lastName}
                     onChange={e => setLastName(e.target.value)}
                     required
+                    disabled={isPending}
                   />
                   <input
                     type="email"
+                    name="email"
                     placeholder="Email"
                     className="w-full px-4 py-3 rounded border border-gray-200 bg-[#FFFFFF] text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#FF602E]"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
+                    disabled={isPending}
                   />
                   <input
                     type="password"
+                    name="password"
                     placeholder="Password"
                     className="w-full px-4 py-3 rounded border border-gray-200 bg-[#FFFFFF] text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#FF602E]"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     required
+                    disabled={isPending}
                   />
                   <motion.button
                     type="submit"
-                    className="w-full mt-4 bg-[#FF602E] text-white py-3 rounded font-semibold text-base transition hover:opacity-90 cursor-pointer"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    className="w-full mt-4 bg-[#FF602E] text-white py-3 rounded font-semibold text-base transition hover:opacity-90 cursor-pointer disabled:opacity-50"
+                    whileHover={{ scale: isPending ? 1 : 1.02 }}
+                    whileTap={{ scale: isPending ? 1 : 0.98 }}
+                    disabled={isPending}
                   >
-                    Continue
+                    {isPending ? 'Creating Account...' : 'Continue'}
                   </motion.button>
                   
                   {/* OR Separator */}
@@ -202,12 +268,13 @@ export default function SignInPage() {
                   <motion.button
                     type="button"
                     onClick={handleGoogleSignIn}
-                    className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 text-gray-700 py-3 px-4 rounded font-medium text-base transition hover:bg-gray-50 cursor-pointer"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 text-gray-700 py-3 px-4 rounded font-medium text-base transition hover:bg-gray-50 cursor-pointer disabled:opacity-50"
+                    whileHover={{ scale: isPending ? 1 : 1.02 }}
+                    whileTap={{ scale: isPending ? 1 : 0.98 }}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.25 }}
+                    disabled={isPending}
                   >
                     <svg className="w-5 h-5" viewBox="0 0 24 24">
                       <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -217,40 +284,46 @@ export default function SignInPage() {
                     </svg>
                     Continue with Google
                   </motion.button>
-                </motion.div>
+                </motion.form>
               )}
               {activeTab === "signin" && (
-                <motion.div
+                <motion.form
                   key="signin"
                   initial={{ opacity: 0, x: -40 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 40 }}
                   transition={{ duration: 0.4 }}
                   className="flex flex-col gap-4"
+                  action={handleSignIn}
                 >
                   <input
                     type="email"
+                    name="email"
                     placeholder="Email"
                     className="w-full px-4 py-3 rounded border border-gray-200 bg-[#FFFFFF] text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#FF602E]"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
+                    disabled={isPending}
                   />
                   <input
                     type="password"
+                    name="password"
                     placeholder="Password"
                     className="w-full px-4 py-3 rounded border border-gray-200 bg-[#FFFFFF] text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#FF602E]"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     required
+                    disabled={isPending}
                   />
                   <motion.button
                     type="submit"
-                    className="w-full mt-4 bg-[#FF602E] text-white py-3 rounded font-semibold text-base transition hover:opacity-90 cursor-pointer"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    className="w-full mt-4 bg-[#FF602E] text-white py-3 rounded font-semibold text-base transition hover:opacity-90 cursor-pointer disabled:opacity-50"
+                    whileHover={{ scale: isPending ? 1 : 1.02 }}
+                    whileTap={{ scale: isPending ? 1 : 0.98 }}
+                    disabled={isPending}
                   >
-                    Sign In
+                    {isPending ? 'Signing In...' : 'Sign In'}
                   </motion.button>
                   
                   {/* OR Separator */}
@@ -267,12 +340,13 @@ export default function SignInPage() {
                   <motion.button
                     type="button"
                     onClick={handleGoogleSignIn}
-                    className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 text-gray-700 py-3 px-4 rounded font-medium text-base transition hover:bg-gray-50 cursor-pointer"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 text-gray-700 py-3 px-4 rounded font-medium text-base transition hover:bg-gray-50 cursor-pointer disabled:opacity-50"
+                    whileHover={{ scale: isPending ? 1 : 1.02 }}
+                    whileTap={{ scale: isPending ? 1 : 0.98 }}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.25 }}
+                    disabled={isPending}
                   >
                     <svg className="w-5 h-5" viewBox="0 0 24 24">
                       <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -294,30 +368,37 @@ export default function SignInPage() {
                   </motion.div>
                   
                   {/* Guest Sign In */}
-                  <motion.input
-                    type="email"
-                    placeholder="Email"
-                    className="w-full px-4 py-3 rounded border border-gray-200 bg-[#FFFFFF] text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#FF602E]"
-                    value={guestEmail}
-                    onChange={e => setGuestEmail(e.target.value)}
-                    required
+                  <motion.form
+                    action={handleGuestSignIn}
+                    className="flex flex-col gap-2"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.35 }}
-                  />
-                  <motion.button
-                    type="button"
-                    className="w-full mt-2 bg-[#FF602E] text-white py-3 rounded font-semibold text-base transition hover:opacity-90 cursor-pointer"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    // onClick={handleGuestSignIn}
                   >
-                    Continue As A Guest
-                  </motion.button>
-                </motion.div>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      className="w-full px-4 py-3 rounded border border-gray-200 bg-[#FFFFFF] text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#FF602E]"
+                      value={guestEmail}
+                      onChange={e => setGuestEmail(e.target.value)}
+                      required
+                      disabled={isPending}
+                    />
+                    <motion.button
+                      type="submit"
+                      className="w-full mt-2 bg-[#FF602E] text-white py-3 rounded font-semibold text-base transition hover:opacity-90 cursor-pointer disabled:opacity-50"
+                      whileHover={{ scale: isPending ? 1 : 1.02 }}
+                      whileTap={{ scale: isPending ? 1 : 0.98 }}
+                      disabled={isPending}
+                    >
+                      {isPending ? 'Signing In...' : 'Continue As A Guest'}
+                    </motion.button>
+                  </motion.form>
+                </motion.form>
               )}
             </AnimatePresence>
-          </form>
+          </div>
         </motion.div>
       </div>
     </div>
