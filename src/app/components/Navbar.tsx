@@ -17,11 +17,8 @@ export default function Navbar() {
   const router = useRouter();
   const { user, loading, refreshUser } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-<<<<<<< HEAD
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-=======
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
->>>>>>> bc2766883c6844619f958599062f78c827c008ac
   const dropdownRef = useRef<HTMLDivElement>(null);
   const userDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +36,6 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-<<<<<<< HEAD
   const handleSignOut = async () => {
     try {
       const response = await fetch('/api/auth/signout', { method: 'POST' });
@@ -52,12 +48,10 @@ export default function Navbar() {
     }
     setUserDropdownOpen(false);
   };
-=======
   // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
->>>>>>> bc2766883c6844619f958599062f78c827c008ac
 
   return (
     <nav
