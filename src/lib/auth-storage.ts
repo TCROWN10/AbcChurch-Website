@@ -1,6 +1,6 @@
 // Database-backed user storage with enhanced features
-import { userDb, type User } from './database';
-import { generateUserId, generateEmailVerificationToken } from './auth-utils';
+import { generateUserId, generateEmailVerificationToken, type User } from './auth-utils';
+import { getUserDb } from './database-wrapper';
 
 interface CreateUserData {
   email: string;
@@ -12,6 +12,7 @@ interface CreateUserData {
 }
 
 export async function createUser(userData: CreateUserData): Promise<User> {
+  const userDb = getUserDb();
   const id = generateUserId();
   const emailVerificationToken = userData.requireEmailVerification && !userData.isGuest 
     ? generateEmailVerificationToken() 
@@ -27,7 +28,7 @@ export async function createUser(userData: CreateUserData): Promise<User> {
     emailVerificationToken,
   });
   
-  // TODO: Send email verification if token was generated
+  // Send email verification if token was generated
   if (emailVerificationToken) {
     await sendEmailVerification(userData.email, emailVerificationToken);
   }
@@ -36,14 +37,17 @@ export async function createUser(userData: CreateUserData): Promise<User> {
 }
 
 export async function findUserByEmail(email: string): Promise<User | null> {
+  const userDb = getUserDb();
   return userDb.findByEmail(email);
 }
 
 export async function findUserById(id: string): Promise<User | null> {
+  const userDb = getUserDb();
   return userDb.findById(id);
 }
 
 export async function verifyEmail(token: string): Promise<boolean> {
+  const userDb = getUserDb();
   const user = userDb.findByEmailVerificationToken(token);
   if (!user) return false;
   
@@ -52,6 +56,7 @@ export async function verifyEmail(token: string): Promise<boolean> {
 }
 
 export async function requestPasswordReset(email: string): Promise<string | null> {
+  const userDb = getUserDb();
   const user = userDb.findByEmail(email);
   if (!user || user.isGuest) return null;
   
@@ -60,13 +65,14 @@ export async function requestPasswordReset(email: string): Promise<string | null
   
   userDb.updatePasswordResetToken(email, resetToken, expires);
   
-  // TODO: Send password reset email
+  // Send password reset email
   await sendPasswordResetEmail(email, resetToken);
   
   return resetToken;
 }
 
 export async function resetPassword(token: string, newHashedPassword: string): Promise<boolean> {
+  const userDb = getUserDb();
   const user = userDb.findByPasswordResetToken(token);
   if (!user) return false;
   

@@ -40,14 +40,7 @@ export async function signInAction(formData: FormData): Promise<ActionResult> {
     }
 
     // Set auth cookie
-    await setAuthCookie({
-      id: user.id,
-      email: user.email,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      isGuest: user.isGuest,
-      createdAt: user.createdAt,
-    });
+    await setAuthCookie(user);
 
     return { success: true };
   } catch (error: any) {
@@ -140,14 +133,7 @@ export async function guestSignInAction(formData: FormData): Promise<ActionResul
     }
 
     // Set auth cookie
-    await setAuthCookie({
-      id: user.id,
-      email: user.email,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      isGuest: user.isGuest,
-      createdAt: user.createdAt,
-    });
+    await setAuthCookie(user);
 
     return { success: true };
   } catch (error: any) {
@@ -223,7 +209,7 @@ export async function resetPasswordAction(formData: FormData): Promise<ActionRes
     if (!passwordValidation.success) {
       return {
         success: false,
-        errors: { password: passwordValidation.error.errors.map(e => e.message) },
+        errors: { password: passwordValidation.error.issues.map((e: any) => e.message) },
       };
     }
     

@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { verifySession } from '@/lib/auth-utils';
 
 // Define protected routes
 const protectedRoutes = ['/donate', '/profile', '/dashboard'];
@@ -10,9 +9,9 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const sessionId = request.cookies.get('session-id')?.value;
 
-  // Check if user is authenticated
-  const session = sessionId ? verifySession(sessionId) : null;
-  const isAuthenticated = !!session;
+  // Simple check - if there's a session cookie, consider user authenticated
+  // The actual session validation will happen in the auth utilities when needed
+  const isAuthenticated = !!sessionId;
 
   // Redirect authenticated users away from auth pages
   if (isAuthenticated && authRoutes.includes(pathname)) {

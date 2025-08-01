@@ -1,10 +1,24 @@
 import bcrypt from 'bcryptjs';
 import { cookies } from 'next/headers';
 import { randomBytes } from 'crypto';
-import { userDb, sessionDb, type User } from './database';
 
 const SALT_ROUNDS = 12;
 const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+
+export interface User {
+  id: string;
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  hashedPassword?: string;
+  isGuest: boolean;
+  emailVerified: boolean;
+  emailVerificationToken?: string;
+  passwordResetToken?: string;
+  passwordResetExpires?: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 // Hash password
 export async function hashPassword(password: string): Promise<string> {
@@ -31,8 +45,11 @@ export function generateSessionId(): string {
   return randomBytes(32).toString('hex');
 }
 
-// Create session
+// Create session (only call from server actions/API routes)
 export async function createSession(userId: string): Promise<string> {
+  const { getSessionDb } = await import('./database-wrapper');
+  const sessionDb = getSessionDb();
+  
   const sessionId = generateSessionId();
   const expiresAt = new Date(Date.now() + SESSION_DURATION);
   
@@ -65,13 +82,19 @@ export async function removeAuthCookie() {
   const sessionId = cookieStore.get('session-id')?.value;
   
   if (sessionId) {
-    sessionDb.delete(sessionId);
+    try {
+      const { getSessionDb } = await import('./database-wrapper');
+      const sessionDb = getSessionDb();
+      sessionDb.delete(sessionId);
+    } catch (error) {
+      console.error('Error deleting session:', error);
+    }
   }
   
   cookieStore.delete('session-id');
 }
 
-// Get current user from session
+// Get current user from session (only call from server actions/API routes)
 export async function getCurrentUser(): Promise<User | null> {
   try {
     const cookieStore = await cookies();
@@ -79,23 +102,15 @@ export async function getCurrentUser(): Promise<User | null> {
     
     if (!sessionId) return null;
     
+    const { getSessionDb, getUserDb } = await import('./database-wrapper');
+    const sessionDb = getSessionDb();
+    const userDb = getUserDb();
+    
     const session = sessionDb.findById(sessionId);
     if (!session) return null;
     
     const user = userDb.findById(session.userId);
     return user;
-  } catch (error) {
-    return null;
-  }
-}
-
-// Verify session (for middleware)
-export function verifySession(sessionId: string): { userId: string } | null {
-  try {
-    const session = sessionDb.findById(sessionId);
-    if (!session) return null;
-    
-    return { userId: session.userId };
   } catch (error) {
     return null;
   }
