@@ -4,10 +4,11 @@
 let db: any = null;
 let userDb: any = null;
 let sessionDb: any = null;
+let prayerRequestDb: any = null;
 
 // Lazy initialization to avoid Edge Runtime issues
 function initializeDatabase() {
-  if (db) return { db, userDb, sessionDb };
+  if (db) return { db, userDb, sessionDb, prayerRequestDb };
 
   // Only import and initialize when actually needed
   const Database = require('better-sqlite3');
@@ -48,6 +49,21 @@ function initializeDatabase() {
 
     CREATE INDEX IF NOT EXISTS idx_sessions_user_id ON sessions(userId);
     CREATE INDEX IF NOT EXISTS idx_sessions_expires_at ON sessions(expiresAt);
+
+    CREATE TABLE IF NOT EXISTS prayer_requests (
+      id TEXT PRIMARY KEY,
+      fullName TEXT NOT NULL,
+      email TEXT NOT NULL,
+      subject TEXT NOT NULL,
+      prayerRequest TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'pending',
+      createdAt INTEGER NOT NULL,
+      updatedAt INTEGER NOT NULL
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_prayer_requests_email ON prayer_requests(email);
+    CREATE INDEX IF NOT EXISTS idx_prayer_requests_status ON prayer_requests(status);
+    CREATE INDEX IF NOT EXISTS idx_prayer_requests_created_at ON prayer_requests(createdAt);
   `);
 
   // User operations
@@ -232,12 +248,114 @@ function initializeDatabase() {
     },
   };
 
+  // Prayer request operations
+  prayerRequestDb = {
+    create: (requestData: {
+      id: string;
+      fullName: string;
+      email: string;
+      subject: string;
+      prayerRequest: string;
+    }) => {
+      const now = Date.now();
+      const stmt = db.prepare(`
+        INSERT INTO prayer_requests (
+          id, fullName, email, subject, prayerRequest, status, createdAt, updatedAt
+        ) VALUES (?, ?, ?, ?, ?, 'pending', ?, ?)
+      `);
+      
+      stmt.run(
+        requestData.id,
+        requestData.fullName,
+        requestData.email,
+        requestData.subject,
+        requestData.prayerRequest,
+        now,
+        now
+      );
+
+      return {
+        ...requestData,
+        status: 'pending' as const,
+        createdAt: new Date(now),
+        updatedAt: new Date(now),
+      };
+    },
+
+    findById: (id: string) => {
+      const stmt = db.prepare('SELECT * FROM prayer_requests WHERE id = ?');
+      const row = stmt.get(id);
+      
+      if (!row) return null;
+      
+      return {
+        ...row,
+        createdAt: new Date(row.createdAt),
+        updatedAt: new Date(row.updatedAt),
+      };
+    },
+
+    findAll: (options?: { limit?: number; offset?: number; status?: string }) => {
+      let query = 'SELECT * FROM prayer_requests';
+      const params: any[] = [];
+      
+      if (options?.status) {
+        query += ' WHERE status = ?';
+        params.push(options.status);
+      }
+      
+      query += ' ORDER BY createdAt DESC';
+      
+      if (options?.limit) {
+        query += ' LIMIT ?';
+        params.push(options.limit);
+        
+        if (options?.offset) {
+          query += ' OFFSET ?';
+          params.push(options.offset);
+        }
+      }
+      
+      const stmt = db.prepare(query);
+      const rows = stmt.all(...params);
+      
+      return rows.map((row: any) => ({
+        ...row,
+        createdAt: new Date(row.createdAt),
+        updatedAt: new Date(row.updatedAt),
+      }));
+    },
+
+    updateStatus: (id: string, status: 'pending' | 'reviewed' | 'completed') => {
+      const stmt = db.prepare(`
+        UPDATE prayer_requests 
+        SET status = ?, updatedAt = ?
+        WHERE id = ?
+      `);
+      stmt.run(status, Date.now(), id);
+    },
+
+    count: (status?: string) => {
+      let query = 'SELECT COUNT(*) as count FROM prayer_requests';
+      const params: any[] = [];
+      
+      if (status) {
+        query += ' WHERE status = ?';
+        params.push(status);
+      }
+      
+      const stmt = db.prepare(query);
+      const result = stmt.get(...params);
+      return result.count;
+    },
+  };
+
   // Cleanup expired sessions periodically
   setInterval(() => {
     sessionDb.cleanup();
   }, 1000 * 60 * 60); // Every hour
 
-  return { db, userDb, sessionDb };
+  return { db, userDb, sessionDb, prayerRequestDb };
 }
 
 // Export functions that initialize the database when called
@@ -254,4 +372,9 @@ export function getSessionDb() {
 export function getDatabase() {
   const { db } = initializeDatabase();
   return db;
+}
+
+export function getPrayerRequestDb() {
+  const { prayerRequestDb } = initializeDatabase();
+  return prayerRequestDb;
 }
