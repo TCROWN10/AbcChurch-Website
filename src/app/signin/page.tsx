@@ -1,5 +1,6 @@
 "use client";
 import { useState, useTransition } from "react";
+import { useAuth } from "@/lib/auth/auth-context";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,6 +9,7 @@ import { signInAction, signUpAction, guestSignInAction, ActionResult } from "@/l
 
 export default function SignInPage() {
   const router = useRouter();
+  const { refreshUser } = useAuth();
   const [activeTab, setActiveTab] = useState<"signin" | "create">("signin");
   const [isPending, startTransition] = useTransition();
   const [result, setResult] = useState<ActionResult | null>(null);
@@ -35,6 +37,7 @@ export default function SignInPage() {
       const result = await signInAction(formData);
       setResult(result);
       if (result.success) {
+        await refreshUser();
         router.push('/');
       }
     });
@@ -45,6 +48,7 @@ export default function SignInPage() {
       const result = await signUpAction(formData);
       setResult(result);
       if (result.success) {
+        await refreshUser();
         router.push('/');
       }
     });
@@ -55,6 +59,7 @@ export default function SignInPage() {
       const result = await guestSignInAction(formData);
       setResult(result);
       if (result.success) {
+        await refreshUser();
         router.push('/');
       }
     });
