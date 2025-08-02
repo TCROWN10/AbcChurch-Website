@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 
-const HERO_BG = '/HERO_BG.jpg';
+const HERO_BG = '/images/hero-bg.jpg';
 const FULL_TEXT = "J.E.S.U.S -C.H.R.I.S.T";
 
 interface HeroWithNavbarProps {

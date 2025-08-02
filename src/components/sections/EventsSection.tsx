@@ -7,14 +7,14 @@ const events = [
   {
     title: 'Sundays',
     time: '9am – 11am',
-    thumbnail: '/Video-Image.png',
+    thumbnail: '/images/video-image.png',
     videoUrl: '#',
     highlight: true,
   },
   {
             title: '',
             time: '',
-            thumbnail: '/Coming Event.jpeg',
+            thumbnail: '/images/coming-event.jpeg',
     videoUrl: '#',
     highlight: false,
   },

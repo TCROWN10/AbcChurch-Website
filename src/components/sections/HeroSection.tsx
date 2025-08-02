@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { motion } from "framer-motion";
 
-const HERO_BG = '/HERO_BG.jpg';
+const HERO_BG = '/images/hero-bg.jpg';
 
 export default function HeroSection() {
   return (
