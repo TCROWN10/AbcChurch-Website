@@ -65,7 +65,7 @@ export default function DonationSection() {
     <section className="relative w-full bg-[#F8F8F8] py-10 px-2 sm:px-4 overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/Donation-Background.png"
+        src="/images/backgrounds/Donation-Background.png"
         alt="Donation Section Background"
         fill
         className="object-cover w-full h-full z-0 pointer-events-none select-none"
@@ -158,7 +158,7 @@ export default function DonationSection() {
             onClick={handleDonateClick}
           >
             <Image
-              src="/Donation-pic.png"
+              src="/images/content/Donation-pic.png"
               alt="Donation Box"
               width={420}
               height={380}

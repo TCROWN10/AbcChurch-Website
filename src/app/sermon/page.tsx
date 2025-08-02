@@ -33,7 +33,7 @@ export default function SermonPage() {
       {/* Hero Section */}
       <div className="relative w-full h-[280px] sm:h-[320px] md:h-[400px] flex items-center justify-center">
         <Image
-          src="/Sermon-image.png"
+          src="/images/content/Sermon-image.png"
           alt="Sermon Hero"
           fill
           style={{ objectFit: 'cover' }}

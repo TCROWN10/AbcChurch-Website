@@ -81,7 +81,7 @@ export default function StepsGrid() {
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
         <Image
-          src="/StepGrid.png"
+          src="/images/content/StepGrid.png"
           alt="Steps Background"
           fill
           className="object-cover w-full h-full opacity-90"

@@ -60,7 +60,7 @@ export default function GetConnectedSection() {
     <section className="relative w-full h-[340px] xs:h-[380px] sm:h-[420px] md:h-[480px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/Get-Connected pic.jpg"
+        src="/images/content/Get-Connected pic.jpg"
         alt="Get Connected Background"
         fill
         className="object-cover w-full h-full z-0"

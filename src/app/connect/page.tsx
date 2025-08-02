@@ -204,7 +204,7 @@ export default function ConnectPage() {
         variants={heroVariants}
       >
         <Image
-          src="/Connect-page.png"
+          src="/images/content/Connect-page.png"
           alt="Get Connected Hero Background"
           fill
           className="object-cover w-full h-full z-0"
@@ -278,7 +278,7 @@ export default function ConnectPage() {
             transition={{ delay: 0.4, duration: 0.8 }}
           >
             <Image
-              src="/Prayer-image.png"
+              src="/images/content/Prayer-image.png"
               alt="Prayer Request"
               width={400}
               height={400}

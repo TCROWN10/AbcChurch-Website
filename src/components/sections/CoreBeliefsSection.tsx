@@ -106,7 +106,7 @@ export default function CoreBeliefsSection() {
     <section className="relative w-full py-10 px-2 sm:px-4 overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/Mission-Background.png"
+        src="/images/backgrounds/Mission-Background.png"
         alt="Core Beliefs Background"
         fill
         className="object-cover w-full h-full z-0"

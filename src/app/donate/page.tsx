@@ -196,7 +196,7 @@ export default function DonatePage() {
       variants={containerVariants}
     >
       <Image
-        src="/BG.png"
+        src="/images/backgrounds/BG.png"
         alt="Donation Hero Background"
         fill
         className="object-cover w-full h-full z-0"

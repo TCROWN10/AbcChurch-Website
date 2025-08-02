@@ -38,7 +38,7 @@ export default function DevotionalPage() {
       {/* Hero Section */}
       <div className="relative w-full h-[280px] sm:h-[320px] md:h-[400px] flex items-center justify-center">
         <Image
-          src="/Devotional-iHero.png"
+          src="/images/content/Devotional-iHero.png"
           alt="Daily Devotional Hero"
           fill
           style={{ objectFit: 'cover' }}

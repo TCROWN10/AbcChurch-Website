@@ -6,7 +6,7 @@ export default function VisionMissionSection() {
     <section className="relative w-full py-10 px-2 sm:px-4 bg-[#222A31] overflow-visible">
       {/* Background Image */}
       <Image
-        src="/Mission-Background.png"
+        src="/images/backgrounds/Mission-Background.png"
         alt="Mission Section Background"
         fill
         className="object-cover w-full h-full z-0 pointer-events-none select-none"
@@ -16,7 +16,7 @@ export default function VisionMissionSection() {
         {/* Left: Bible-curve Image (bigger, can overflow vertically) */}
         <div className="flex-shrink-0 relative flex items-center justify-center w-full md:w-[520px] h-[180px] xs:h-[240px] sm:h-[320px] md:h-[420px] max-w-full mt-0 mb-0 md:mt-[-40px] md:mb-[-40px]">
           <Image
-            src="/Bible-curve.png"
+            src="/images/content/Bible-curve.png"
             alt="Bible Curve"
             fill
             className="object-contain w-full h-full"

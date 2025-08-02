@@ -15,7 +15,7 @@ export default function WelcomePage() {
     <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/Welcome.png"
+        src="/images/content/Welcome.png"
         alt="Welcome Background"
         fill
         className="object-cover w-full h-full z-0"
@@ -106,7 +106,7 @@ export default function WelcomePage() {
             className="rounded-full p-1 sm:p-2"
           >
             <Image
-              src="/BigLogo.png"
+              src="/images/logos/BigLogo.png"
               alt="All Believers Christian Church Logo"
               width={300}
               height={300}

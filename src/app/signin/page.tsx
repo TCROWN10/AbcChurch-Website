@@ -73,7 +73,7 @@ export default function SignInPage() {
     <div className="min-h-screen bg-white flex flex-col relative overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/About All Believers Christian Church.png"
+        src="/images/logos/About All Believers Christian Church.png"
         alt="Sign In Background"
         fill
         className="object-cover w-full h-full z-0"
@@ -85,7 +85,7 @@ export default function SignInPage() {
       <header className="w-full bg-[#888888] h-16 md:h-20 flex items-center px-4 md:px-8 z-20 relative">
         <Link href="/" className="flex items-center gap-2 md:gap-3">
           <Image
-            src="/All Believers Christian Church.png"
+            src="/images/logos/All Believers Christian Church.png"
             alt="All Believers Christian Church Logo"
             width={40}
             height={40}
@@ -130,7 +130,7 @@ export default function SignInPage() {
       <div className="flex-1 flex items-center justify-center relative z-20 px-4 md:px-0">
         {/* Subtle Dove Image */}
         <div className="absolute right-6 md:right-24 top-1/2 -translate-y-1/2 opacity-10 pointer-events-none select-none hidden md:block">
-          <Image src="/Cloud-bird.png" alt="Dove" width={120} height={120} />
+          <Image src="/images/content/Cloud-bird.png" alt="Dove" width={120} height={120} />
         </div>
         {/* Card */}
         <motion.div

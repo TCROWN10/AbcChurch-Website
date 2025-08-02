@@ -43,7 +43,7 @@ export default function MessagePage() {
       {/* Hero Section */}
       <section className="relative w-full h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20">
         <Image
-          src="/Hero-page.png"
+          src="/images/content/Hero-page.png"
           alt="Join Live Service Hero Background"
           fill
           className="object-cover w-full h-full z-0"

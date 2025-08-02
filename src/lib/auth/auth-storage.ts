@@ -1,6 +1,6 @@
 // Database-backed user storage with enhanced features
 import { generateUserId, generateEmailVerificationToken, type User } from './auth-utils';
-import { getUserDb } from './database-wrapper';
+import { getUserDb } from '../database/database-wrapper';
 
 interface CreateUserData {
   email: string;
@@ -81,7 +81,7 @@ export async function resetPassword(token: string, newHashedPassword: string): P
 }
 
 // Email service functions
-import { sendEmail, generateEmailVerificationEmail, generatePasswordResetEmail } from './email-service';
+import { sendEmail, generateEmailVerificationEmail, generatePasswordResetEmail } from '../services/email-service';
 
 async function sendEmailVerification(email: string, token: string): Promise<void> {
   const emailOptions = generateEmailVerificationEmail(email, token);
