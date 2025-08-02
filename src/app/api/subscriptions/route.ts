@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getSubscriptionRecords, getSubscriptionRecord } from '@/lib/donation-reporting';
-import { handleStripeError, logDonationError } from '@/lib/stripe-errors';
+import { getSubscriptionRecords, getSubscriptionRecord } from '@/lib/services/donation-reporting';
+import { handleStripeError, logDonationError } from '@/lib/stripe/stripe-errors';
 
 /**
  * GET /api/subscriptions - Retrieve subscription records with optional filtering

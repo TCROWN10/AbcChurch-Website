@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDonationAnalytics } from '@/lib/donation-reporting';
-import { handleStripeError, logDonationError } from '@/lib/stripe-errors';
+import { getDonationAnalytics } from '@/lib/services/donation-reporting';
+import { handleStripeError, logDonationError } from '@/lib/stripe/stripe-errors';
 
 /**
  * GET /api/donations/analytics - Get donation analytics for a specific time period

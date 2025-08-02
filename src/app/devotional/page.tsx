@@ -1,8 +1,8 @@
 "use client";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import JoinUsSection from '../components/Message';
-import Footer from '../components/Footer';
+import JoinUsSection from '@/components/ui/Message';
+import Footer from '@/components/layout/Footer';
 
 const devotionalData = [
   {

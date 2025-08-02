@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDonationTransaction } from '@/lib/donation-reporting';
-import { handleStripeError, logDonationError } from '@/lib/stripe-errors';
+import { getDonationTransaction } from '@/lib/services/donation-reporting';
+import { handleStripeError, logDonationError } from '@/lib/stripe/stripe-errors';
 
 /**
  * GET /api/donations/[id] - Retrieve a specific donation transaction

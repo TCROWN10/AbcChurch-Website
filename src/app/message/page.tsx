@@ -1,8 +1,8 @@
 "use client";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import EventsSection from "../components/EventsSection";
-import StepsGrid from '../components/StepsGrid';
+import EventsSection from "@/components/sections/EventsSection";
+import StepsGrid from '@/components/ui/StepsGrid';
 
 // Animation variants
 const containerVariants = {

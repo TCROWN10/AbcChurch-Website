@@ -1,10 +1,10 @@
 "use client";
 import { motion } from 'framer-motion';
-import HeroWithNavbar from "../components/HeroWithNavbar";
-import JoinUsSection from "../components/Message";
-import EventsSection from "../components/EventsSection";
-import DonationSection from "../components/DonationSection";
-import GetConnectedSection from "../components/GetConnectedSection";
+import HeroWithNavbar from "@/components/layout/HeroWithNavbar";
+import JoinUsSection from "@/components/ui/Message";
+import EventsSection from "@/components/sections/EventsSection";
+import DonationSection from "@/components/sections/DonationSection";
+import GetConnectedSection from "@/components/sections/GetConnectedSection";
 
 // Animation variants
 const containerVariants = {

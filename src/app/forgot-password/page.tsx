@@ -3,7 +3,7 @@ import { useState, useTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { requestPasswordResetAction, ActionResult } from "@/lib/auth-actions";
+import { requestPasswordResetAction, ActionResult } from "@/lib/auth/auth-actions";
 
 export default function ForgotPasswordPage() {
   const [isPending, startTransition] = useTransition();

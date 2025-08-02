@@ -1,14 +1,14 @@
 import Stripe from 'stripe';
 import { DonationTransaction, SubscriptionRecord } from '@/types/stripe';
-import { centsToDollars } from '@/lib/stripe-helpers';
-import { logDonationError, handleStripeError } from '@/lib/stripe-errors';
+import { centsToDollars } from '@/lib/stripe/stripe-helpers';
+import { logDonationError, handleStripeError } from '@/lib/stripe/stripe-errors';
 import { 
   logDonationTransaction, 
   updateTransactionStatus, 
   logSubscriptionRecord, 
   updateSubscriptionRecord,
   logWebhookEventData 
-} from '@/lib/transaction-storage';
+} from '@/lib/database/transaction-storage';
 
 /**
  * Logs webhook events for debugging and monitoring

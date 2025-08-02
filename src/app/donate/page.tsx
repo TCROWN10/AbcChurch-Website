@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { DonationFormData, CheckoutRequest, CheckoutResponse, DonationError, DonationErrorType } from '@/types/stripe';
-import { validateDonationForm, formatCurrency } from '@/lib/stripe-helpers';
+import { validateDonationForm, formatCurrency } from '@/lib/stripe/stripe-helpers';
 
 const paymentMethods = [
   'Debit/Credit Card, Apple Pay, Google Pay',

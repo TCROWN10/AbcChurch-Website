@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# All Believers Church Website
+
+This is a [Next.js](https://nextjs.org) church website with authentication, donations, and content management features.
 
 ## Getting Started
 
@@ -16,9 +18,59 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── about/             # About page
+│   ├── api/               # API routes
+│   │   ├── auth/          # Authentication endpoints
+│   │   ├── donations/     # Donation management
+│   │   ├── stripe/        # Stripe integration
+│   │   └── subscriptions/ # Subscription management
+│   ├── connect/           # Connect page
+│   ├── devotional/        # Devotional content
+│   ├── donate/            # Donation pages
+│   ├── home/              # Home page
+│   ├── message/           # Message page
+│   ├── sermon/            # Sermon content
+│   └── signin/            # Authentication pages
+├── components/            # Reusable React components
+│   ├── layout/           # Layout components (Navbar, Footer, etc.)
+│   ├── sections/         # Page sections (Hero, About, etc.)
+│   └── ui/               # UI components (Cards, Grids, etc.)
+├── lib/                  # Utility functions and configurations
+│   ├── auth/            # Authentication logic
+│   ├── database/        # Database operations
+│   ├── services/        # Business logic services
+│   └── stripe/          # Stripe payment integration
+└── types/               # TypeScript type definitions
+
+public/
+├── images/              # Static images
+│   ├── backgrounds/     # Background images
+│   ├── content/         # Content images
+│   ├── icons/           # Icon files
+│   └── logos/           # Logo files
+└── manifest.json        # PWA manifest
+
+data/
+└── databases/           # SQLite database files
+
+tests/
+├── integration/         # Integration tests
+└── unit/               # Unit tests
+```
+
+## Features
+
+- **Authentication**: User registration, login, password reset
+- **Donations**: Stripe integration for one-time and recurring donations
+- **Content Management**: Sermons, devotionals, and church information
+- **Responsive Design**: Mobile-first design with Tailwind CSS
+- **Database**: SQLite for local development
+- **Testing**: Unit and integration tests
 
 ## Learn More
 

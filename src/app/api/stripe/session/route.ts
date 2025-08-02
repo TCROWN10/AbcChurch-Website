@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getStripeClient } from '@/lib/stripe-client';
-import { handleStripeError, logDonationError } from '@/lib/stripe-errors';
-import { centsToDollars, formatCurrency } from '@/lib/stripe-helpers';
+import { getStripeClient } from '@/lib/stripe/stripe-client';
+import { handleStripeError, logDonationError } from '@/lib/stripe/stripe-errors';
+import { centsToDollars, formatCurrency } from '@/lib/stripe/stripe-helpers';
 
 export async function GET(request: NextRequest) {
   try {

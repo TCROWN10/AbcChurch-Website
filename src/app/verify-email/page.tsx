@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { verifyEmailAction, ActionResult } from "@/lib/auth-actions";
+import { verifyEmailAction, ActionResult } from "@/lib/auth/auth-actions";
 
 function VerifyEmailForm() {
   const searchParams = useSearchParams();

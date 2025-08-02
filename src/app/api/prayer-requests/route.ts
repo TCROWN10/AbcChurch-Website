@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prayerRequestSchema } from '@/lib/prayer-schemas';
-import { getPrayerRequestDb } from '@/lib/database-wrapper';
-import { sendEmail, generatePrayerRequestNotificationEmail, generatePrayerRequestConfirmationEmail } from '@/lib/email-service';
+import { prayerRequestSchema } from '@/lib/auth/prayer-schemas';
+import { getPrayerRequestDb } from '@/lib/database/database-wrapper';
+import { sendEmail, generatePrayerRequestNotificationEmail, generatePrayerRequestConfirmationEmail } from '@/lib/services/email-service';
 
 // Generate unique ID for prayer requests
 function generatePrayerRequestId(): string {

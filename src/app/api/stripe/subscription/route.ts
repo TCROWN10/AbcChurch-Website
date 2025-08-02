@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getStripeClient } from '@/lib/stripe-client';
+import { getStripeClient } from '@/lib/stripe/stripe-client';
 import { 
   validateDonationForm, 
   dollarsToCents, 
   generateStripeMetadata,
   getStripeInterval 
-} from '@/lib/stripe-helpers';
-import { handleStripeError, createValidationError, logDonationError } from '@/lib/stripe-errors';
+} from '@/lib/stripe/stripe-helpers';
+import { handleStripeError, createValidationError, logDonationError } from '@/lib/stripe/stripe-errors';
 import { DonationFormData } from '@/types/stripe';
 
 // Subscription-specific request interface

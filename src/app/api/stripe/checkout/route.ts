@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getStripeClient } from '@/lib/stripe-client';
+import { getStripeClient } from '@/lib/stripe/stripe-client';
 import { 
   validateDonationForm, 
   dollarsToCents, 
   generateStripeMetadata,
   getStripeInterval 
-} from '@/lib/stripe-helpers';
-import { handleStripeError, createValidationError, logDonationError } from '@/lib/stripe-errors';
+} from '@/lib/stripe/stripe-helpers';
+import { handleStripeError, createValidationError, logDonationError } from '@/lib/stripe/stripe-errors';
 import { CheckoutRequest, CheckoutResponse, DonationFormData } from '@/types/stripe';
 
 export async function POST(request: NextRequest) {

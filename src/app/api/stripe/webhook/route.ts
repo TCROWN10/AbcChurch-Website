@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import Stripe from 'stripe';
-import { getStripeClient } from '@/lib/stripe-client';
-import { STRIPE_WEBHOOK_SECRET } from '@/lib/stripe-config';
-import { handleStripeError, logDonationError, createValidationError } from '@/lib/stripe-errors';
+import { getStripeClient } from '@/lib/stripe/stripe-client';
+import { STRIPE_WEBHOOK_SECRET } from '@/lib/stripe/stripe-config';
+import { handleStripeError, logDonationError, createValidationError } from '@/lib/stripe/stripe-errors';
 
 // Webhook event handlers
 import { 
@@ -15,7 +15,7 @@ import {
   handleInvoicePaymentSucceeded,
   handleInvoicePaymentFailed,
   logWebhookEvent
-} from '@/lib/webhook-handlers';
+} from '@/lib/services/webhook-handlers';
 
 export async function POST(request: NextRequest) {
   try {

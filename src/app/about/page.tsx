@@ -1,9 +1,9 @@
 "use client";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import AboutSection from '../components/AboutSection';
-import VisionMissionSection from '../components/VisionMissionSection';
-import CoreBeliefsSection from '../components/CoreBeliefsSection';
+import AboutSection from '@/components/sections/AboutSection';
+import VisionMissionSection from '@/components/sections/VisionMissionSection';
+import CoreBeliefsSection from '@/components/sections/CoreBeliefsSection';
 
 // Animation variants
 const containerVariants = {

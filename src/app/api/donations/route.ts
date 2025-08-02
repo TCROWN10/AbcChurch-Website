@@ -7,8 +7,8 @@ import {
   DonationFilters,
   DonationSortOptions,
   PaginationOptions 
-} from '@/lib/donation-reporting';
-import { handleStripeError, logDonationError } from '@/lib/stripe-errors';
+} from '@/lib/services/donation-reporting';
+import { handleStripeError, logDonationError } from '@/lib/stripe/stripe-errors';
 
 /**
  * GET /api/donations - Retrieve donation transactions with filtering, sorting, and pagination
