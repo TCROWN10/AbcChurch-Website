@@ -45,8 +45,12 @@ export async function POST(request: NextRequest) {
 
     // Send notification email to church staff (if configured)
     const notificationEmail = process.env.PRAYER_REQUEST_NOTIFICATION_EMAIL;
+    console.log('🔧 Notification email configured:', notificationEmail ? 'YES' : 'NO');
+    console.log('🔧 Notification email address:', notificationEmail);
+    
     if (notificationEmail) {
       try {
+        console.log('📧 Generating notification email...');
         const notificationEmailData = generatePrayerRequestNotificationEmail(
           {
             id: newPrayerRequest.id,
@@ -59,15 +63,20 @@ export async function POST(request: NextRequest) {
           notificationEmail
         );
         
-        await sendEmail(notificationEmailData);
+        console.log('📧 Sending notification email...');
+        const notificationResult = await sendEmail(notificationEmailData);
+        console.log('📧 Notification email result:', notificationResult ? 'SUCCESS' : 'FAILED');
       } catch (emailError) {
-        console.error('Failed to send notification email:', emailError);
+        console.error('❌ Failed to send notification email:', emailError);
         // Don't fail the request if email fails
       }
+    } else {
+      console.log('⚠️ No notification email configured - skipping notification');
     }
 
     // Send confirmation email to user
     try {
+      console.log('📧 Generating confirmation email for:', newPrayerRequest.email);
       const confirmationEmailData = generatePrayerRequestConfirmationEmail(
         {
           fullName: newPrayerRequest.fullName,
@@ -76,19 +85,15 @@ export async function POST(request: NextRequest) {
         newPrayerRequest.email
       );
       
-      await sendEmail(confirmationEmailData);
+      console.log('📧 Sending confirmation email...');
+      const confirmationResult = await sendEmail(confirmationEmailData);
+      console.log('📧 Confirmation email result:', confirmationResult ? 'SUCCESS' : 'FAILED');
     } catch (emailError) {
-      console.error('Failed to send confirmation email:', emailError);
+      console.error('❌ Failed to send confirmation email:', emailError);
       // Don't fail the request if email fails
     }
 
-    console.log('✅ New prayer request submitted:', {
-      id: newPrayerRequest.id,
-      fullName: newPrayerRequest.fullName,
-      email: newPrayerRequest.email,
-      subject: newPrayerRequest.subject,
-      createdAt: newPrayerRequest.createdAt,
-    });
+    // Prayer request submitted successfully - notification sent via email
 
     return NextResponse.json(
       { 

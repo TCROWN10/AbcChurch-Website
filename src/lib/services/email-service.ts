@@ -19,20 +19,34 @@ function createTransporter() {
     FROM_EMAIL: process.env.FROM_EMAIL,
   };
 
+  console.log('🔧 SMTP Configuration:');
+  console.log('  Host:', requiredEnvVars.SMTP_HOST);
+  console.log('  Port:', requiredEnvVars.SMTP_PORT);
+  console.log('  User:', requiredEnvVars.SMTP_USER);
+  console.log('  From:', requiredEnvVars.FROM_EMAIL);
+  console.log('  Pass:', requiredEnvVars.SMTP_PASS ? '***configured***' : 'NOT SET');
+
   // Check if all required variables are present
   const missingVars = Object.entries(requiredEnvVars)
     .filter(([_, value]) => !value)
     .map(([key]) => key);
 
   if (missingVars.length > 0) {
-    console.warn(`Missing SMTP environment variables: ${missingVars.join(', ')}`);
+    console.error(`❌ Missing SMTP environment variables: ${missingVars.join(', ')}`);
     return null;
   }
 
+  const port = parseInt(requiredEnvVars.SMTP_PORT || '587');
+  const isSecure = port === 465;
+
+  console.log('🔧 Creating transporter with:');
+  console.log('  Secure:', isSecure);
+  console.log('  Port:', port);
+
   const transporter = nodemailer.createTransport({
     host: requiredEnvVars.SMTP_HOST,
-    port: parseInt(requiredEnvVars.SMTP_PORT || '587'),
-    secure: parseInt(requiredEnvVars.SMTP_PORT || '587') === 465, // true for 465, false for other ports
+    port: port,
+    secure: isSecure, // true for 465, false for other ports
     auth: {
       user: requiredEnvVars.SMTP_USER,
       pass: requiredEnvVars.SMTP_PASS,
@@ -48,25 +62,22 @@ function createTransporter() {
 
 export async function sendEmail(options: EmailOptions): Promise<boolean> {
   try {
-    // In development, just log the email
-    if (process.env.NODE_ENV === 'development') {
-      console.log('📧 Email would be sent:');
-      console.log('To:', options.to);
-      console.log('Subject:', options.subject);
-      console.log('Content:', options.text || options.html.substring(0, 200) + '...');
-      return true;
-    }
+    console.log('🔄 Attempting to send email to:', options.to);
+    console.log('📧 Subject:', options.subject);
 
     // Create SMTP transporter
     const transporter = createTransporter();
-    
+
     if (!transporter) {
-      console.error('SMTP transporter could not be created - missing configuration');
+      console.error('❌ SMTP transporter could not be created - missing configuration');
       return false;
     }
 
+    console.log('✅ SMTP transporter created successfully');
+
     // Verify SMTP connection
     try {
+      console.log('🔄 Verifying SMTP connection...');
       await transporter.verify();
       console.log('✅ SMTP server connection verified');
     } catch (verifyError) {
@@ -75,6 +86,7 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
     }
 
     // Send email
+    console.log('🔄 Sending email...');
     const info = await transporter.sendMail({
       from: `"All Believers Christian Church" <${process.env.FROM_EMAIL}>`,
       to: options.to,
@@ -83,11 +95,9 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
       text: options.text,
     });
 
-    console.log('✅ Email sent successfully:', {
-      messageId: info.messageId,
-      to: options.to,
-      subject: options.subject
-    });
+    console.log('✅ Email sent successfully!');
+    console.log('📧 Message ID:', info.messageId);
+    console.log('📧 Response:', info.response);
 
     return true;
   } catch (error) {
@@ -98,7 +108,7 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
 
 export function generateEmailVerificationEmail(email: string, token: string): EmailOptions {
   const verificationUrl = `${process.env.NEXT_PUBLIC_APP_URL}/verify-email?token=${token}`;
-  
+
   return {
     to: email,
     subject: 'Verify Your Email - All Believers Christian Church',
@@ -147,7 +157,7 @@ export function generateEmailVerificationEmail(email: string, token: string): Em
 
 export function generatePasswordResetEmail(email: string, token: string): EmailOptions {
   const resetUrl = `${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`;
-  
+
   return {
     to: email,
     subject: 'Reset Your Password - All Believers Christian Church',
