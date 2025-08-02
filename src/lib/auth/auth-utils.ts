@@ -16,6 +16,10 @@ export interface User {
   emailVerificationToken?: string;
   passwordResetToken?: string;
   passwordResetExpires?: number;
+  // OAuth fields
+  oauthProvider?: 'google' | 'facebook' | 'apple';
+  oauthId?: string;
+  profilePicture?: string;
   createdAt: Date;
   updatedAt: Date;
 }

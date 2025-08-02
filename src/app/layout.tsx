@@ -20,19 +20,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/All Believers Christian Church.png",
+        url: "/images/church-logo.png",
         sizes: "32x32",
         type: "image/png",
       },
       {
-        url: "/All Believers Christian Church.png",
+        url: "/images/church-logo.png",
         sizes: "16x16",
         type: "image/png",
       },
     ],
     apple: [
       {
-        url: "/All Believers Christian Church.png",
+        url: "/images/church-logo.png",
         sizes: "180x180",
         type: "image/png",
       },

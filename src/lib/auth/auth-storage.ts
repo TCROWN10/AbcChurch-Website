@@ -9,12 +9,16 @@ interface CreateUserData {
   hashedPassword?: string;
   isGuest: boolean;
   requireEmailVerification?: boolean;
+  // OAuth fields
+  oauthProvider?: 'google' | 'facebook' | 'apple';
+  oauthId?: string;
+  profilePicture?: string;
 }
 
 export async function createUser(userData: CreateUserData): Promise<User> {
   const userDb = getUserDb();
   const id = generateUserId();
-  const emailVerificationToken = userData.requireEmailVerification && !userData.isGuest 
+  const emailVerificationToken = userData.requireEmailVerification && !userData.isGuest && !userData.oauthProvider
     ? generateEmailVerificationToken() 
     : undefined;
   
@@ -26,6 +30,11 @@ export async function createUser(userData: CreateUserData): Promise<User> {
     hashedPassword: userData.hashedPassword,
     isGuest: userData.isGuest,
     emailVerificationToken,
+    oauthProvider: userData.oauthProvider,
+    oauthId: userData.oauthId,
+    profilePicture: userData.profilePicture,
+    // OAuth users are automatically verified
+    emailVerified: userData.oauthProvider ? true : false,
   });
   
   // Send email verification if token was generated
@@ -91,4 +100,44 @@ async function sendEmailVerification(email: string, token: string): Promise<void
 async function sendPasswordResetEmail(email: string, token: string): Promise<void> {
   const emailOptions = generatePasswordResetEmail(email, token);
   await sendEmail(emailOptions);
+}
+
+// OAuth-specific functions
+export async function findUserByOAuth(provider: 'google' | 'facebook' | 'apple', oauthId: string): Promise<User | null> {
+  const userDb = getUserDb();
+  return userDb.findByOAuth ? userDb.findByOAuth(provider, oauthId) : null;
+}
+
+export async function createOAuthUser(userData: {
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  oauthProvider: 'google' | 'facebook' | 'apple';
+  oauthId: string;
+  profilePicture?: string;
+}): Promise<User> {
+  return createUser({
+    ...userData,
+    isGuest: false,
+    requireEmailVerification: false, // OAuth users are pre-verified
+  });
+}
+
+export async function linkOAuthToExistingUser(
+  userId: string, 
+  provider: 'google' | 'facebook' | 'apple', 
+  oauthId: string,
+  profilePicture?: string
+): Promise<boolean> {
+  try {
+    const userDb = getUserDb();
+    if (userDb.linkOAuth) {
+      userDb.linkOAuth(userId, provider, oauthId, profilePicture);
+      return true;
+    }
+    return false;
+  } catch (error) {
+    console.error('Error linking OAuth account:', error);
+    return false;
+  }
 }

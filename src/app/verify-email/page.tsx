@@ -28,7 +28,7 @@ function VerifyEmailForm() {
     <div className="min-h-screen bg-white flex flex-col relative overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/images/logos/About All Believers Christian Church.png"
+        src="/images/church-logo.png"
         alt="Email Verification Background"
         fill
         className="object-cover w-full h-full z-0"
@@ -41,7 +41,7 @@ function VerifyEmailForm() {
       <header className="w-full bg-[#888888] h-16 md:h-20 flex items-center px-4 md:px-8 z-20 relative">
         <Link href="/" className="flex items-center gap-2 md:gap-3">
           <Image
-            src="/images/logos/All Believers Christian Church.png"
+            src="/images/church-logo.png"
             alt="All Believers Christian Church Logo"
             width={40}
             height={40}

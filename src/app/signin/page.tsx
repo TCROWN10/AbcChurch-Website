@@ -1,18 +1,43 @@
 "use client";
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { useAuth } from "@/lib/auth/auth-context";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { signInAction, signUpAction, guestSignInAction, ActionResult } from "@/lib/auth/auth-actions";
 
 export default function SignInPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { refreshUser } = useAuth();
   const [activeTab, setActiveTab] = useState<"signin" | "create">("signin");
   const [isPending, startTransition] = useTransition();
   const [result, setResult] = useState<ActionResult | null>(null);
+
+  // Handle OAuth errors from URL params
+  useEffect(() => {
+    const error = searchParams.get('error');
+    if (error) {
+      const errorMessages = {
+        'oauth_setup_failed': 'OAuth setup failed. Please check your configuration.',
+        'oauth_cancelled': 'Google sign-in was cancelled.',
+        'invalid_oauth_response': 'Invalid OAuth response received.',
+        'invalid_oauth_state': 'Invalid OAuth state. Please try again.',
+        'oauth_failed': 'Google sign-in failed. Please try again.',
+      };
+      
+      setResult({
+        success: false,
+        message: errorMessages[error as keyof typeof errorMessages] || 'An error occurred during sign-in.',
+      });
+      
+      // Clean up URL by removing error param
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete('error');
+      window.history.replaceState({}, '', newUrl.toString());
+    }
+  }, [searchParams]);
 
   // Form states
   const [firstName, setFirstName] = useState("");
@@ -67,18 +92,20 @@ export default function SignInPage() {
 
   // Google Sign-In handler
   const handleGoogleSignIn = () => {
-    // TODO: Implement Google OAuth
-    console.log("Google Sign-In clicked");
-    // This would typically integrate with Google OAuth
-    // For now, we'll just show an alert
-    alert("Google Sign-In functionality will be implemented here");
+    // Get current redirect URL from query params
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectUrl = urlParams.get('redirect') || '/';
+    
+    // Redirect to Google OAuth initiation endpoint
+    const oauthUrl = `/api/auth/google${redirectUrl !== '/' ? `?redirect=${encodeURIComponent(redirectUrl)}` : ''}`;
+    window.location.href = oauthUrl;
   };
 
   return (
     <div className="min-h-screen bg-white flex flex-col relative overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/images/logos/About All Believers Christian Church.png"
+        src="/images/church-logo.png"
         alt="Sign In Background"
         fill
         className="object-cover w-full h-full z-0"
@@ -90,7 +117,7 @@ export default function SignInPage() {
       <header className="w-full bg-[#888888] h-16 md:h-20 flex items-center px-4 md:px-8 z-20 relative">
         <Link href="/" className="flex items-center gap-2 md:gap-3">
           <Image
-            src="/images/logos/All Believers Christian Church.png"
+            src="/images/church-logo.png"
             alt="All Believers Christian Church Logo"
             width={40}
             height={40}
