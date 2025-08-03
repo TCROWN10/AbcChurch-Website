@@ -1,5 +1,5 @@
 "use client";
-import { useState, useTransition, useEffect } from "react";
+import { useState, useTransition, useEffect, Suspense } from "react";
 import { useAuth } from "@/lib/auth/auth-context";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +7,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signInAction, signUpAction, guestSignInAction, ActionResult } from "@/lib/auth/auth-actions";
 
-export default function SignInPage() {
+export default function Page() {
+  return (
+    <Suspense fallback={null}>
+      <SignInPage />
+    </Suspense>
+  );
+}
+
+// Actual SignInPage component below
+function SignInPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { refreshUser } = useAuth();
