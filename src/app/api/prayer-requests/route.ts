@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prayerRequestSchema } from '@/lib/auth/prayer-schemas';
+import { prayerRequestSchema } from '@/lib/prayer/prayer-schemas';
 import { getPrayerRequestDb } from '@/lib/database/database-wrapper';
 import { sendEmail, generatePrayerRequestNotificationEmail, generatePrayerRequestConfirmationEmail } from '@/lib/services/email-service';
 

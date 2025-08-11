@@ -106,7 +106,7 @@ function SignInPage() {
     const redirectUrl = urlParams.get('redirect') || '/';
     
     // Redirect to Google OAuth initiation endpoint
-    const oauthUrl = `/api/auth/google${redirectUrl !== '/' ? `?redirect=${encodeURIComponent(redirectUrl)}` : ''}`;
+    const oauthUrl = `/api/auth/sign-in/google${redirectUrl !== '/' ? `?redirect=${encodeURIComponent(redirectUrl)}` : ''}`;
     window.location.href = oauthUrl;
   };
 
