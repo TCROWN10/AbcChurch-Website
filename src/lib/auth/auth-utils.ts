@@ -47,7 +47,7 @@ export function generateSessionId(): string {
 
 // Create session (only call from server actions/API routes)
 export async function createSession(userId: string): Promise<string> {
-  const { getSessionDb } = await import('./database-wrapper');
+  const { getSessionDb } = await import('../database/database-wrapper');
   const sessionDb = getSessionDb();
   
   const sessionId = generateSessionId();
@@ -83,7 +83,7 @@ export async function removeAuthCookie() {
   
   if (sessionId) {
     try {
-      const { getSessionDb } = await import('./database-wrapper');
+      const { getSessionDb } = await import('../database/database-wrapper');
       const sessionDb = getSessionDb();
       sessionDb.delete(sessionId);
     } catch (error) {
@@ -102,7 +102,7 @@ export async function getCurrentUser(): Promise<User | null> {
     
     if (!sessionId) return null;
     
-    const { getSessionDb, getUserDb } = await import('./database-wrapper');
+    const { getSessionDb, getUserDb } = await import('../database/database-wrapper');
     const sessionDb = getSessionDb();
     const userDb = getUserDb();
     

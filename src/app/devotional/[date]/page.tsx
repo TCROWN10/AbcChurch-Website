@@ -4,6 +4,98 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2025-08-05',
+    title: 'Signs Of A Backslidden Heart',
+    headline: 'Signs Of A Backslidden Heart',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        {/* Full content for August 5, 2025 */}
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse :</span> 2 Corinthians 13:5 | ESV<br/>
+          <span className="text-xs md:text-sm">Examine yourselves, to see whether you are in the faith. Test yourselves. Or do you not realize this about yourselves, that Jesus Christ is in you?—unless indeed you fail to meet the test!</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading :</span> Revelation 2:2 - 5 | KJV<br/>
+          <span className="text-xs md:text-sm">2 I know thy works, and thy labour, and thy patience, and how thou canst not bear them which are evil: and thou hast tried them which say they are apostles, and are not, and hast found them liars:<br/><br/>
+          3 And hast borne, and hast patience, and for my name's sake hast laboured, and hast not fainted.<br/><br/>
+          4 Nevertheless I have somewhat against thee, because thou hast left thy first love.<br/><br/>
+          5 Remember therefore from whence thou art fallen, and repent, and do the first works; or else I will come unto thee quickly, and will remove thy candlestick out of his place, except thou repent.</span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">Message</h3>
+          <p className="mb-4 text-sm md:text-base">Have you ever felt that you were not as close to God as you used to be? There are certain warning signs in our spiritual life that indicate we are slowly drifting away from God. When we are aware of the warning signs, we are able to remedy the unhealthy attitudes and behaviors that lead us away from the Lord. Here are some of the reasons:</p>
+          
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. A Decrease in Your Quiet Time</h4>
+            <p className="mb-2 text-sm md:text-base">Any healthy relationship requires quality time to thrive. Our relationship with God is no different. Spending time with God by reading His word and praying is a great privilege and tool to strengthen our faith and keep our hearts focused. If you notice the following, beware:</p>
+            <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base">
+              <li>You don't have quiet time with God.</li>
+              <li>You don't want to have quiet time with God.</li>
+              <li>You no longer see the value of having quiet time with God.</li>
+            </ul>
+            <p className="mb-2 text-sm md:text-base">Losing the desire to spend time with God is the first telltale sign that something is not right spiritually.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. A Loss of Conviction</h4>
+            <p className="mb-2 text-sm md:text-base">Don't let anyone look down on you because you are young, but set an example for the believers in speech, in conduct, in love, in faith and in purity. (1 Timothy 4:1-2).</p>
+            <p className="mb-2 text-sm md:text-base">Our conscience is one of the main channels through which God gets our attention. We must not succumb to attitudes that eventually harden the heart. Some common, unhealthy excuses for hardness of the heart may include:</p>
+            <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base">
+              <li>"I deserve this."</li>
+              <li>"I'm not as bad as others."</li>
+              <li>"Everyone struggles."</li>
+              <li>"I'm not as bad as I used to be."</li>
+              <li>"I'll ask for forgiveness tomorrow." etc</li>
+            </ul>
+            <p className="mb-2 text-sm md:text-base">A hardness of heart, or seared conscience, is a natural condition for human beings to fall into. It can often be a direct result of a lack of repentance. As pursuers of God, we ought to be sensitive to our conscience and sincere about correcting bad patterns of thought so as to honor God (Matthew 12:34b).</p>
+            <p className="mb-2 text-sm md:text-base">If you spend more time devising excuses than repenting for sinful thoughts and actions, you are actually saying God's standards is faulty and that His opinion does not matter.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. When You Lose Confidence in Prayer</h4>
+            <p className="mb-2 text-sm md:text-base">Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you: (Matthew 7:7 NIV)</p>
+            <p className="mb-2 text-sm md:text-base">When you doubt that God is interested in answering your prayers, you may begin to doubt that He is interested in you at all. But He is interested in you. The question is: are you interested in hearing what He has to say?</p>
+            <p className="mb-2 text-sm md:text-base">Praying for others is also a vital habit for Christians. Do you often fail to pray for people when you promise to pray for them, or do you typically follow through? If you find that prayer matters less and less to you, it is time to start taking counteractive steps to fix this issue.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. A Loss of Compassion for Those in Pain</h4>
+            <p className="mb-2 text-sm md:text-base">Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you. (Ephesians 4:32 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">God may bring people into your life who are suffering or going through hardships that you might serve them. When you refuse to sympathize and help those in need, it could be a pointer of an hardened and a backsliding heart. Not only will you be missing important opportunities to serve, you will also be missing the opportunities to demonstrate your faith practically. And if you are not willing to demonstrate your faith practically, its like saying your faith is no longer important to you. (Matthew 25:34-40).</p>
+          </div>
+          
+          <h4 className="font-semibold mt-4 mb-1 text-sm md:text-base text-[#FF602E]">Prayer Points</h4>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base">
+            <li>Father, I thanks and praise your holy name, for this blessed day, in Jesus Name.</li>
+            <li>Father, search my heart, revive me and help me to find my way back to you, in Jesus name.</li>
+          </ol>
+          
+          <h4 className="font-semibold mt-4 mb-1 text-sm md:text-base text-[#FF602E]">Quotes</h4>
+          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base">
+            <li>Backsliding, generally first begins with neglect of private prayer. <span className="italic">+ J. C. Ryle</span></li>
+            <li>Men fall in private long before they fall in public. <span className="italic">+ J. C. Ryle</span></li>
+            <li>The best way to avoid going downhill is to stay off the slope. <span className="italic">+ Woodrow Kroll</span></li>
+          </ul>
+          
+          <div className="mt-4">
+            <span className="font-semibold text-[#FF602E] text-sm md:text-base">BIBLE IN ONE YEAR</span><br/>
+            <span className="text-sm md:text-base">John 1 - 10</span>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-lg md:text-xl font-semibold mb-2">🙏 Good Morning 🙏</p>
+            <p className="text-base md:text-lg mb-4">& God Bless You Today</p>
+            <p className="text-sm md:text-base font-semibold text-[#FF602E]">ConnectLife Daily Devotional</p>
+            <p className="text-xs md:text-sm">www.abcchurch.us</p>
+            <p className="text-xs md:text-sm">abcchurchhq@gmail.com</p>
+            <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2025-07-21',
     title: 'Promotion Cometh',
     headline: 'Promotion Cometh',

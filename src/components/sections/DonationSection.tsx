@@ -64,13 +64,13 @@ export default function DonationSection() {
   return (
     <section className="relative w-full bg-[#F8F8F8] py-10 px-2 sm:px-4 overflow-hidden">
       {/* Background Image */}
-      <Image
-        src="/Donation-Background.png"
-        alt="Donation Section Background"
-        fill
-        className="object-cover w-full h-full z-0 pointer-events-none select-none"
-        priority
-      />
+              <Image
+          src="/images/backgrounds/Donation-Background.png"
+          alt="Donation Section Background"
+          fill
+          className="object-cover w-full h-full z-0 pointer-events-none select-none"
+          priority
+        />
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-12 relative z-10">
         {/* Left: Donation Info */}
         <motion.div 
@@ -157,13 +157,13 @@ export default function DonationSection() {
             transition={{ duration: 0.3 }}
             onClick={handleDonateClick}
           >
-            <Image
-              src="/Donation-pic.png"
-              alt="Donation Box"
-              width={420}
-              height={380}
-              className="object-cover w-full h-full"
-            />
+                          <Image
+                src="/images/content/Donation-pic.png"
+                alt="Donation Box"
+                width={420}
+                height={380}
+                className="object-cover w-full h-full"
+              />
           </motion.div>
         </motion.div>
       </div>

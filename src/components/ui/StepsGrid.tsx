@@ -80,13 +80,13 @@ export default function StepsGrid() {
     >
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
-        <Image
-          src="/StepGrid.png"
-          alt="Steps Background"
-          fill
-          className="object-cover w-full h-full opacity-90"
-          priority
-        />
+                  <Image
+            src="/images/content/StepGrid.png"
+            alt="Steps Background"
+            fill
+            className="object-cover w-full h-full opacity-90"
+            priority
+          />
         <div className="absolute inset-0 bg-[#232B33] bg-opacity-30" />
       </div>
       <motion.h2

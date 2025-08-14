@@ -5,13 +5,13 @@ export default function AboutSection() {
   return (
     <section className="relative w-full bg-white py-8 sm:py-12 overflow-hidden">
       {/* Background Image */}
-      <Image
-        src="/About-Background.png"
-        alt="About Section Background"
-        fill
-        className="object-cover w-full h-full z-0 pointer-events-none select-none"
-        priority
-      />
+              <Image
+          src="/images/backgrounds/About-Background.png"
+          alt="About Section Background"
+          fill
+          className="object-cover w-full h-full z-0 pointer-events-none select-none"
+          priority
+        />
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#6B6B6B] mb-8 sm:mb-20 relative z-10">
         About All Believers Christian Church
       </h2>
@@ -19,7 +19,7 @@ export default function AboutSection() {
         {/* Left: Image */}
         <div className="flex-shrink-0 rounded-xl overflow-hidden bg-[#F8F8F8] w-full max-w-xs mx-auto md:mx-0">
           <Image
-            src="/9dcbc46d470b991ca44e800ef524477e02f208b4.jpg"
+            src="/images/content/9dcbc46d470b991ca44e800ef524477e02f208b4.jpg"
             alt="Church Gathering"
             width={350}
             height={350}

@@ -61,7 +61,7 @@ export default function Navbar() {
       {/* Logo as back button */}
       <Link href="/" className="flex items-center gap-3 cursor-pointer">
         <Image
-          src="/All Believers Christian Church.png"
+                        src="/images/logos/All Believers Christian Church.png"
           alt="All Believers Christian Church Logo"
           width={48}
           height={48}

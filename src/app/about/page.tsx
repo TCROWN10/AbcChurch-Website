@@ -59,7 +59,7 @@ export default function AboutPage() {
         variants={heroVariants}
       >
         <Image
-          src="/Hero-page.png"
+          src="/images/content/Hero-page.png"
           alt="About Hero Background"
           fill
           className="object-cover w-full h-full z-0"

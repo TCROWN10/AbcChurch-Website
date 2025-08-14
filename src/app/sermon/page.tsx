@@ -7,14 +7,14 @@ const sermonData = [
     date: '2025-07-20',
     title: 'Freedom At Last',
     headline: 'Freedom At Last',
-    image: '/Sermon-image.png',
+    image: '/images/content/Sermon-image.png',
     // You can add a summary or excerpt here if desired
   },
   {
     date: '2025-07-27',
     title: 'Free At Last I & II',
     headline: 'Free At Last I & II',
-    image: '/Sermon-image.png',
+    image: '/images/content/Sermon-image.png',
     // You can add a summary or excerpt here if desired
   },
   // Add more sermon days here as needed
@@ -33,7 +33,7 @@ export default function SermonPage() {
       {/* Hero Section */}
       <div className="relative w-full h-[280px] sm:h-[320px] md:h-[400px] flex items-center justify-center">
         <Image
-          src="/Sermon-image.png"
+          src="/images/content/Sermon-image.png"
           alt="Sermon Hero"
           fill
           style={{ objectFit: 'cover' }}

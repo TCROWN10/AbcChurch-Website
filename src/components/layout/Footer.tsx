@@ -26,7 +26,7 @@ export default function Footer() {
         {/* Left: Logo, Description, Socials */}
         <div className="flex-1 min-w-[260px] flex flex-col gap-4 md:gap-6">
           <div className="flex items-center gap-2 md:gap-3">
-            <Image src="/All Believers Christian Church.png" alt="Logo" width={48} height={48} className="rounded-full md:w-14 md:h-14" />
+            <Image src="/images/logos/All Believers Christian Church.png" alt="Logo" width={48} height={48} className="rounded-full md:w-14 md:h-14" />
             <span className="text-[#28505A] font-bold text-base md:text-lg leading-tight">
               ALL BELIEVERS<br />CHRISTIAN CHURCH
             </span>
