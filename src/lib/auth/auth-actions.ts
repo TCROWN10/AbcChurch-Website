@@ -19,18 +19,24 @@ export async function signInAction(formData: FormData): Promise<ActionResult> {
   try {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
+    
+    const formDataToSend = new FormData();
+    formDataToSend.append('email', email);
+    formDataToSend.append('password', password);
+
     const res = await fetch('/api/auth/sign-in/email', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
+      body: formDataToSend,
       credentials: 'include',
     });
+
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));
       return { success: false, message: data?.message || 'Sign in failed' };
     }
     return { success: true, message: 'Signed in successfully' };
   } catch (e) {
+    console.error('Signin error:', e);
     return { success: false, message: 'Network error during sign in' };
   }
 }
@@ -42,18 +48,25 @@ export async function signUpAction(formData: FormData): Promise<ActionResult> {
       .join(' ');
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
+    
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', name);
+    formDataToSend.append('email', email);
+    formDataToSend.append('password', password);
+
     const res = await fetch('/api/auth/sign-up/email', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password }),
-      headers: { 'Content-Type': 'application/json' },
+      body: formDataToSend,
       credentials: 'include',
     });
+    
     const data = await res.json().catch(() => ({}));
     if (!res.ok) {
       return { success: false, message: data?.message || 'Sign up failed', errors: data?.errors };
     }
     return { success: true, message: 'Account created successfully' };
   } catch (e) {
+    console.error('Signup error:', e);
     return { success: false, message: 'Network error during sign up' };
   }
 }
