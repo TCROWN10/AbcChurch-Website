@@ -71,9 +71,67 @@ export async function signUpAction(formData: FormData): Promise<ActionResult> {
   }
 }
 
-export async function guestSignInAction(_formData: FormData): Promise<ActionResult> {
-  // Not supported yet with better-auth default setup
-  return { success: false, message: 'Guest sign-in is temporarily unavailable.' };
+export async function guestSignInAction(formData: FormData): Promise<ActionResult> {
+  try {
+    const email = formData.get('email') as string;
+    if (!email) return { success: false, message: 'Email is required for guest access.' };
+
+    // Generate a strong random password for the temporary account
+    const cryptoObj: Crypto | undefined = (globalThis as any)?.crypto;
+    let randomPassword: string;
+    if (cryptoObj && typeof cryptoObj.getRandomValues === 'function') {
+      randomPassword = cryptoObj.getRandomValues(new Uint8Array(24))
+        .reduce((s, b) => s + b.toString(16).padStart(2, '0'), '');
+    } else {
+      // Fallback (less strong, but avoids hard failure in edge environments)
+      randomPassword = Array.from({ length: 48 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
+    }
+
+    const name = `Guest ${email.split('@')[0] || ''}`.trim();
+
+    // Try to create the account
+    const signUpData = new FormData();
+    signUpData.append('name', name);
+    signUpData.append('email', email);
+    signUpData.append('password', randomPassword);
+
+    const signUpRes = await fetch('/api/auth/sign-up/email', {
+      method: 'POST',
+      body: signUpData,
+      credentials: 'include',
+    });
+
+    if (!signUpRes.ok) {
+      const data = await signUpRes.json().catch(() => ({}));
+      const msg = (data?.message || '').toLowerCase();
+      // If user exists, instruct to sign in normally
+      if (signUpRes.status === 409 || msg.includes('already') || msg.includes('exists')) {
+        return { success: false, message: 'An account already exists for this email. Please sign in instead.' };
+      }
+      return { success: false, message: data?.message || 'Guest account creation failed.' };
+    }
+
+    // Immediately sign in with the generated password
+    const signInData = new FormData();
+    signInData.append('email', email);
+    signInData.append('password', randomPassword);
+
+    const signInRes = await fetch('/api/auth/sign-in/email', {
+      method: 'POST',
+      body: signInData,
+      credentials: 'include',
+    });
+
+    if (!signInRes.ok) {
+      const data = await signInRes.json().catch(() => ({}));
+      return { success: false, message: data?.message || 'Guest sign-in failed after creation.' };
+    }
+
+    return { success: true, message: 'Signed in as guest.' };
+  } catch (e) {
+    console.error('Guest sign-in error:', e);
+    return { success: false, message: 'Network error during guest sign-in.' };
+  }
 }
 
 export async function requestPasswordResetAction(_formData: FormData): Promise<ActionResult> {
