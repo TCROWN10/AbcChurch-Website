@@ -30,14 +30,13 @@ export async function signInAction(formData: FormData): Promise<ActionResult> {
   try {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
-    
-    const formDataToSend = new FormData();
-    formDataToSend.append('email', email);
-    formDataToSend.append('password', password);
 
     const res = await fetch('/api/auth/sign-in/email', {
       method: 'POST',
-      body: formDataToSend,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
       credentials: 'include',
     });
 
@@ -59,15 +58,13 @@ export async function signUpAction(formData: FormData): Promise<ActionResult> {
       .join(' ');
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
-    
-    const formDataToSend = new FormData();
-    formDataToSend.append('name', name);
-    formDataToSend.append('email', email);
-    formDataToSend.append('password', password);
 
     const res = await fetch('/api/auth/sign-up/email', {
       method: 'POST',
-      body: formDataToSend,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, password }),
       credentials: 'include',
     });
     
@@ -101,14 +98,12 @@ export async function guestSignInAction(formData: FormData): Promise<ActionResul
     const name = `Guest ${email.split('@')[0] || ''}`.trim();
 
     // Try to create the account
-    const signUpData = new FormData();
-    signUpData.append('name', name);
-    signUpData.append('email', email);
-    signUpData.append('password', randomPassword);
-
     const signUpRes = await fetch('/api/auth/sign-up/email', {
       method: 'POST',
-      body: signUpData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, password: randomPassword }),
       credentials: 'include',
     });
 
@@ -123,13 +118,12 @@ export async function guestSignInAction(formData: FormData): Promise<ActionResul
     }
 
     // Immediately sign in with the generated password
-    const signInData = new FormData();
-    signInData.append('email', email);
-    signInData.append('password', randomPassword);
-
     const signInRes = await fetch('/api/auth/sign-in/email', {
       method: 'POST',
-      body: signInData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password: randomPassword }),
       credentials: 'include',
     });
 
