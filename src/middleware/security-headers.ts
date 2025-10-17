@@ -5,22 +5,25 @@ export function securityHeaders(request: NextRequest) {
   const isDev = process.env.NODE_ENV !== 'production';
   const csp = [
     "default-src 'self'",
-    // In development, allow eval and wasm-eval for Next.js HMR, React Refresh, and WASM libs
+    // Allow inline scripts for Next.js to work properly
+    // In development, also allow eval for HMR
     isDev
       ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob:"
-      : "script-src 'self'",
+      : "script-src 'self' 'unsafe-inline' blob:",
     // Allow inline styles from Tailwind/Next
     "style-src 'self' 'unsafe-inline'",
-    // Permit images
+    // Permit images from all HTTPS sources
     "img-src 'self' data: https: http:",
     // Fonts
     "font-src 'self' data:",
-    // Allow websocket and http(s) connections in dev for HMR and APIs
+    // Allow connections to Stripe and other APIs
     isDev
       ? "connect-src 'self' ws: wss: http: https:"
-      : "connect-src 'self'",
+      : "connect-src 'self' https://api.stripe.com https://js.stripe.com https://*.stripe.com",
+    // Allow Stripe iframes for checkout
+    "frame-src 'self' https://js.stripe.com https://hooks.stripe.com",
     "frame-ancestors 'none'",
-    "form-action 'self'",
+    "form-action 'self' https://checkout.stripe.com",
     "base-uri 'self'",
     "object-src 'none'",
   ].join('; ');
