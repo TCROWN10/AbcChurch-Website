@@ -43,21 +43,31 @@ function getAuthDb() {
     return global.__BETTER_AUTH_DB__;
   }
 
-  const dbPath =
-    process.env.BETTER_AUTH_DB_PATH ||
-    process.env.AUTH_DB_PATH ||
-    path.join(process.cwd(), "data", "auth.db");
+  // Use /tmp on Vercel/serverless, local path otherwise
+  const isVercel = process.env.VERCEL || process.env.VERCEL_ENV;
+  const dbPath = isVercel
+    ? "/tmp/auth.db"
+    : process.env.BETTER_AUTH_DB_PATH ||
+      process.env.AUTH_DB_PATH ||
+      path.join(process.cwd(), "data", "auth.db");
 
   // Ensure the directory exists
   const dir = path.dirname(dbPath);
   if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
+    try {
+      fs.mkdirSync(dir, { recursive: true });
+    } catch (err) {
+      console.warn("Could not create database directory:", err);
+      // Continue anyway, /tmp should exist on serverless
+    }
   }
 
   const db = new Database(dbPath);
   try {
-    // Improve concurrency on SQLite
-    db.pragma("journal_mode = WAL");
+    // Improve concurrency on SQLite (skip WAL mode on serverless)
+    if (!isVercel) {
+      db.pragma("journal_mode = WAL");
+    }
   } catch (_) {
     // no-op if pragma fails
   }
