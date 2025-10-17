@@ -268,6 +268,54 @@ export function generatePrayerRequestNotificationEmail(
   };
 }
 
+export function generateNewUserNotificationEmail(
+  userData: {
+    name: string;
+    email: string;
+    createdAt: string;
+  },
+  notificationEmail: string
+): EmailOptions {
+  return {
+    to: notificationEmail,
+    subject: `New User Registration - ${userData.name}`,
+    html: `
+      <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+        <div style="background-color: #FF602E; padding: 20px; text-align: center;">
+          <h1 style="color: white; margin: 0;">All Believers Christian Church</h1>
+          <h2 style="color: white; margin: 10px 0 0 0; font-size: 18px;">New User Registration</h2>
+        </div>
+        <div style="padding: 30px; background-color: #f9f9f9;">
+          <div style="background-color: white; padding: 20px; border-radius: 8px;">
+            <h3 style="color: #333; margin-top: 0;">New Member Details</h3>
+            <p style="margin: 10px 0;"><strong>Name:</strong> ${userData.name}</p>
+            <p style="margin: 10px 0;"><strong>Email:</strong> ${userData.email}</p>
+            <p style="margin: 10px 0;"><strong>Registered:</strong> ${new Date(userData.createdAt).toLocaleString()}</p>
+          </div>
+          <div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 20px;">
+            <p style="margin: 0; color: #2e7d32;"><strong>Action:</strong> You may want to reach out and welcome this new member to the church community!</p>
+          </div>
+        </div>
+        <div style="background-color: #333; color: white; padding: 20px; text-align: center; font-size: 12px;">
+          <p>© 2024 All Believers Christian Church. All rights reserved.</p>
+          <p style="margin: 5px 0 0 0;">This notification was sent from the church website.</p>
+        </div>
+      </div>
+    `,
+    text: `
+      New User Registration - All Believers Christian Church
+      
+      Name: ${userData.name}
+      Email: ${userData.email}
+      Registered: ${new Date(userData.createdAt).toLocaleString()}
+      
+      Action: You may want to reach out and welcome this new member to the church community!
+      
+      This notification was sent from the church website.
+    `
+  };
+}
+
 export function generatePrayerRequestConfirmationEmail(
   requestData: {
     fullName: string;

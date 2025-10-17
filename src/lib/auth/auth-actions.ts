@@ -72,6 +72,20 @@ export async function signUpAction(formData: FormData): Promise<ActionResult> {
     if (!res.ok) {
       return { success: false, message: data?.message || 'Sign up failed', errors: data?.errors };
     }
+
+    // Send notification to church email (fire and forget - don't block on this)
+    try {
+      fetch('/api/notifications/new-user', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email }),
+      }).catch(() => {
+        // Silently fail - don't block user registration
+      });
+    } catch {
+      // Ignore notification errors
+    }
+
     return { success: true, message: 'Account created successfully' };
   } catch (e) {
     console.error('Signup error:', e);
