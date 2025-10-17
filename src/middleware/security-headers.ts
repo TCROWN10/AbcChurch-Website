@@ -16,14 +16,14 @@ export function securityHeaders(request: NextRequest) {
     "img-src 'self' data: https: http:",
     // Fonts
     "font-src 'self' data:",
-    // Allow connections to Stripe and other APIs
+    // Allow connections to Stripe, Google OAuth, and other APIs
     isDev
       ? "connect-src 'self' ws: wss: http: https:"
-      : "connect-src 'self' https://api.stripe.com https://js.stripe.com https://*.stripe.com",
-    // Allow Stripe iframes for checkout
-    "frame-src 'self' https://js.stripe.com https://hooks.stripe.com",
+      : "connect-src 'self' https://api.stripe.com https://js.stripe.com https://*.stripe.com https://accounts.google.com https://*.googleapis.com",
+    // Allow Stripe and Google OAuth iframes/popups
+    "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://accounts.google.com https://www.google.com",
     "frame-ancestors 'none'",
-    "form-action 'self' https://checkout.stripe.com",
+    "form-action 'self' https://checkout.stripe.com https://accounts.google.com",
     "base-uri 'self'",
     "object-src 'none'",
   ].join('; ');
