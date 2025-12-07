@@ -19,10 +19,10 @@
     "better-sqlite3": "^12.2.0",
     "framer-motion": "^12.23.5",
     "jsonwebtoken": "^9.0.2",
-    "next": "15.3.5",
+    "next": "15.3.6",
     "nodemailer": "^7.0.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
     "stripe": "^18.3.0",
     "zod": "^4.0.14"
   },
