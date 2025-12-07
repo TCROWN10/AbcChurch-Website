@@ -27,6 +27,8 @@ export default function SermonPage() {
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const today = `${days[dateObj.getDay()]} ${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
   const router = useRouter();
+  const pdfPath = '/DEC 7TH BULLWTIN.pdf';
+  const screenshotPath = '/bulletin-screenshot.png';
 
   return (
     <div className="min-h-screen flex flex-col bg-[#0C232B]">
@@ -41,6 +43,42 @@ export default function SermonPage() {
         />
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4 md:px-6">
           <h1 className="text-xl sm:text-2xl md:text-4xl font-bold text-white drop-shadow mb-2">SERMON</h1>
+        </div>
+      </div>
+      {/* Bulletin PDF Section */}
+      <div className="max-w-4xl w-full mx-auto px-2 sm:px-4 md:px-12 py-4 sm:py-8">
+        <div className="bg-[#18313B] rounded-lg shadow-md p-4 sm:p-6 border border-[#FF602E]">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#FF602E] mb-4">Weekly Bulletin</h2>
+          <div className="w-full">
+            <div className="relative w-full rounded border border-[#FF602E]/30 overflow-hidden bg-white min-h-[400px]">
+              <Image
+                src={screenshotPath}
+                alt="December 7th Bulletin"
+                width={2222}
+                height={1556}
+                className="w-full h-auto object-contain"
+                priority
+                unoptimized
+              />
+            </div>
+            <div className="mt-4 flex flex-col sm:flex-row gap-3">
+              <a
+                href={pdfPath}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded bg-[#FF602E] text-white font-semibold shadow hover:bg-[#ff7f50] transition-colors text-sm sm:text-base text-center"
+              >
+                Open PDF in New Tab
+              </a>
+              <a
+                href={pdfPath}
+                download
+                className="px-4 py-2 rounded bg-[#18313B] border border-[#FF602E] text-[#FF602E] font-semibold shadow hover:bg-[#25506A] transition-colors text-sm sm:text-base text-center"
+              >
+                Download PDF
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       {/* Step-Grid Card Section */}
