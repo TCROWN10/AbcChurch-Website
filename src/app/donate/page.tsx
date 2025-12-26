@@ -3,8 +3,22 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { DonationFormData, CheckoutRequest, CheckoutResponse, DonationError, DonationErrorType } from '@/types/stripe';
-import { validateDonationForm, formatCurrency } from '@/lib/stripe/stripe-helpers';
+import { loadStripe } from '@stripe/stripe-js';
+
+// Types
+type DonationFormData = {
+  amount: number;
+  category: string;
+  type: 'oneoff' | 'recurring';
+  frequency?: 'weekly' | 'monthly' | 'yearly';
+  email?: string;
+};
+
+type CheckoutResponse = {
+  url?: string;
+  sessionId?: string;
+  error?: string;
+};
 
 const paymentMethods = [
   'Debit/Credit Card, Apple Pay, Google Pay',
@@ -122,6 +136,22 @@ export default function DonatePage() {
     }
   };
 
+  // Helper function to convert donation category to API format
+  const getCategoryType = (category: string): string => {
+    switch (category) {
+      case 'Tithes':
+        return 'TITHE';
+      case 'Offerings':
+        return 'OFFERING';
+      case 'Building Fund':
+        return 'BUILDING_FUND';
+      case 'Missions':
+        return 'MISSIONS';
+      default:
+        return 'OFFERING';
+    }
+  };
+
   // Form submission handler
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -130,60 +160,58 @@ export default function DonatePage() {
 
     try {
       // Prepare form data
-      const formData: DonationFormData = {
-        amount: parseFloat(amount) || 0,
-        category: category as 'Tithes' | 'Offerings' | 'Building Fund' | 'Missions',
-        type: tab === 'oneoff' ? 'oneoff' : 'recurring',
-        frequency: tab === 'regular' ? getFrequencyValue(frequency) as 'weekly' | 'monthly' | 'yearly' : undefined,
-        email: email.trim() || undefined,
+      const formData = {
+        amount: Math.round(parseFloat(amount) * 100) || 0, // Convert to cents
+        type: category.toUpperCase().replace(' ', '_'), // Convert to format like 'BUILDING_FUND'
+        currency: 'USD',
+        isRecurring: tab === 'regular',
+        ...(email.trim() && { email: email.trim() }), // Only include if not empty
       };
 
-      // Validate form data
-      const validation = validateDonationForm(formData);
-      if (!validation.isValid) {
-        setErrors(validation.errors);
+      // Basic validation
+      if (formData.amount <= 0) {
+        setErrors({ amount: 'Please enter a valid donation amount' });
         setIsLoading(false);
         return;
       }
 
-      // Prepare API request
-      const checkoutRequest: CheckoutRequest = {
-        amount: formData.amount,
-        category: formData.category,
-        type: formData.type === 'oneoff' ? 'payment' : 'subscription',
-        frequency: formData.frequency,
-        email: formData.email,
-      };
-
       // Make API call to create checkout session
-      const response = await fetch('/api/stripe/checkout', {
+      const response = await fetch('/api/donations/create-checkout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(checkoutRequest),
+        body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      const data: CheckoutResponse = await response.json();
 
       if (!response.ok) {
-        // Handle API errors
-        if (data.details && typeof data.details === 'object') {
-          setErrors(data.details);
-        } else {
-          setGeneralError(data.error || 'An error occurred while processing your donation');
-        }
-        setIsLoading(false);
-        return;
+        throw new Error(data.error || 'Failed to create checkout session');
       }
 
-      // Redirect to Stripe Checkout
-      const checkoutResponse: CheckoutResponse = data;
-      window.location.href = checkoutResponse.url;
+      // Handle the response - prefer URL redirect if available
+      if (data.url) {
+        window.location.href = data.url;
+      } else if (data.sessionId) {
+        const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
+        if (stripe) {
+          const { error } = await stripe.redirectToCheckout({
+            sessionId: data.sessionId,
+          });
+          if (error) throw error;
+        }
+      } else {
+        throw new Error('No valid response from server');
+      }
 
     } catch (error) {
       console.error('Donation submission error:', error);
-      setGeneralError('Network error. Please check your connection and try again.');
+      setGeneralError(
+        error instanceof Error 
+          ? error.message 
+          : 'An error occurred. Please try again.'
+      );
       setIsLoading(false);
     }
   };
