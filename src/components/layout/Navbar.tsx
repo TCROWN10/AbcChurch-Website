@@ -28,6 +28,11 @@ export default function Navbar() {
   const visitUsDropdownRef = useRef<HTMLDivElement>(null);
 
   const isAdmin = profile?.role === 'ADMIN' || profile?.role === 'SUPER_ADMIN';
+  
+  // Compute ARIA expanded values as strings
+  const dropdownExpanded = dropdownOpen ? "true" : "false";
+  const userDropdownExpanded = userDropdownOpen ? "true" : "false";
+  const visitUsDropdownExpanded = visitUsDropdownOpen ? "true" : "false";
 
   // Close dropdowns on outside click
   useEffect(() => {
@@ -84,10 +89,10 @@ export default function Navbar() {
       </Link>
       {/* Hamburger for mobile */}
       <button
+        type="button"
         className="md:hidden flex items-center justify-center w-10 h-10 ml-auto text-white focus:outline-none z-50 mr-8"
         onClick={() => setMobileMenuOpen((open) => !open)}
         aria-label="Open menu"
-        type="button"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
           {mobileMenuOpen ? (
@@ -109,7 +114,6 @@ export default function Navbar() {
 									${pathname === link.href ? 'text-[#FF602E] underline underline-offset-8 decoration-2' : 'text-white'}
 									hover:underline hover:underline-offset-8 hover:decoration-2`}
                 style={{ textUnderlinePosition: 'under' }}
-                tabIndex={0}
               >
                 {link.label}
               </Link>
@@ -118,9 +122,9 @@ export default function Navbar() {
                 type="button"
                 className="ml-1 flex items-center focus:outline-none"
                 aria-haspopup="true"
-                aria-expanded={dropdownOpen}
+                aria-expanded={dropdownExpanded}
+                aria-label="Toggle message menu"
                 onClick={() => setDropdownOpen((open) => !open)}
-                tabIndex={0}
               >
                 <svg className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -159,6 +163,9 @@ export default function Navbar() {
               <button
                 type="button"
                 className="flex items-center gap-2 px-5 py-2 rounded bg-[#FF602E] text-white font-semibold text-base shadow hover:opacity-90 transition"
+                aria-haspopup="true"
+                aria-expanded={visitUsDropdownExpanded}
+                aria-label="Visit Us menu"
                 onClick={() => setVisitUsDropdownOpen(!visitUsDropdownOpen)}
               >
                 <span>Visit Us</span>
@@ -190,6 +197,9 @@ export default function Navbar() {
               <button
                 type="button"
                 className="flex items-center gap-2 px-4 py-2 rounded bg-[#313131] text-white font-semibold text-base shadow hover:opacity-90 transition"
+                aria-haspopup="true"
+                aria-expanded={userDropdownExpanded}
+                aria-label="User menu"
                 onClick={() => setUserDropdownOpen(!userDropdownOpen)}
               >
                 <span>
@@ -216,6 +226,7 @@ export default function Navbar() {
                     </Link>
                   )}
                   <button
+                    type="button"
                     onClick={handleSignOut}
                     className="px-4 py-3 text-left hover:bg-[#444444cc] transition-colors"
                   >
@@ -239,10 +250,10 @@ export default function Navbar() {
         <div className="fixed inset-0 top-0 z-[60] flex flex-col items-center justify-start pt-20 md:hidden animate-fade-in">
           {/* Close button */}
           <button
+            type="button"
             className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-800 transition-colors z-[70]"
             onClick={() => setMobileMenuOpen(false)}
             aria-label="Close menu"
-            type="button"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
