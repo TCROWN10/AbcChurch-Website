@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
-import { signInAction, signUpAction, guestSignInAction, ActionResult } from "@/lib/auth/auth-actions";
+import { guestSignInAction, ActionResult } from "@/lib/auth/auth-actions";
 
 export default function Page() {
   return (
@@ -21,6 +21,8 @@ function SignInPage() {
   const { refreshUser } = useAuth();
   const [activeTab, setActiveTab] = useState<"signin" | "create">("signin");
   const [isPending, startTransition] = useTransition();
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [result, setResult] = useState<ActionResult | null>(null);
 
   // Form states
@@ -84,26 +86,216 @@ function SignInPage() {
   };
 
   // Form submission handlers
-  const handleSignIn = async (formData: FormData) => {
-    startTransition(async () => {
-      const result = await signInAction(formData);
-      setResult(result);
-      if (result.success) {
-        await refreshUser();
-        router.push('/');
-      }
+  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+
+    if (!email || !password) {
+      setResult({
+        success: false,
+        message: 'Please provide both email and password.',
+      });
+      return;
+    }
+
+    setIsLoggingIn(true);
+    setResult({
+      success: false,
+      message: 'Signing in...',
     });
+
+    try {
+      // Use Next.js API route to proxy the request (avoids CORS issues)
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'accept': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      console.log('Login response:', { 
+        httpStatus: response.status, 
+        responseStatus: data.statusCode,
+        success: data.success,
+        data: data 
+      });
+
+      // Check if the backend returned an error
+      // Check both HTTP status and response body status
+      const isError = !response.ok || !data.success || data.statusCode === 401 || response.status === 401;
+      
+      if (isError) {
+        // Handle API errors (401, etc.)
+        let errorMessage = 'Invalid email or password. Please try again.';
+        
+        // Extract message from nested response structure
+        if (data?.message) {
+          errorMessage = data.message;
+        } else if (data?.data?.message) {
+          errorMessage = data.data.message;
+        }
+
+        console.log('Login error detected:', errorMessage);
+
+        // Check if it's an email verification error
+        const isEmailVerificationError = 
+          (response.status === 401 || data.statusCode === 401) && 
+          (errorMessage.toLowerCase().includes('verify') || 
+           errorMessage.toLowerCase().includes('otp') ||
+           errorMessage.toLowerCase().includes('email verification'));
+
+        setResult({
+          success: false,
+          message: errorMessage,
+        });
+        setIsLoggingIn(false);
+        return;
+      }
+
+      // Login successful - check for access token
+      if (data.success && data.data?.accessToken) {
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('accessToken', data.data.accessToken);
+        }
+
+        setResult({
+          success: true,
+          message: data.message || 'Login successful!',
+        });
+        
+        // Refresh user session and redirect to landing page
+        await refreshUser();
+        router.push('/home');
+      } else {
+        setResult({
+          success: false,
+          message: data.message || 'Login failed. Please try again.',
+        });
+        setIsLoggingIn(false);
+      }
+    } catch (error: any) {
+      // Network or other errors
+      console.error('Login error:', error);
+      setResult({
+        success: false,
+        message: 'Network error. Please check your connection and try again.',
+      });
+      setIsLoggingIn(false);
+    }
   };
 
-  const handleSignUp = async (formData: FormData) => {
-    startTransition(async () => {
-      const result = await signUpAction(formData);
-      setResult(result);
-      if (result.success) {
-        await refreshUser();
-        router.push('/');
-      }
+  const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('=== handleSignUp CALLED ===');
+    
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    const firstName = formData.get('firstName') as string;
+    const lastName = formData.get('lastName') as string;
+
+    console.log('Form values:', { email, password, firstName, lastName });
+
+    if (!email || !password || !firstName || !lastName) {
+      console.log('Validation failed - missing fields');
+      setResult({
+        success: false,
+        message: 'Please fill in all required fields.',
+      });
+      return;
+    }
+
+    setIsRegistering(true);
+    setResult({
+      success: false,
+      message: 'Creating account...',
     });
+
+    try {
+      console.log('Making API call to /api/auth/register...');
+      const requestBody = {
+        email,
+        password,
+        name: firstName,
+        lastName,
+      };
+      console.log('Request body:', requestBody);
+      
+      // Use Next.js API route to proxy the request (avoids CORS issues)
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'accept': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      console.log('Response received:', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok,
+      });
+
+      const data = await response.json();
+      console.log('Response data:', data);
+
+      if (!response.ok) {
+        // Handle API errors (400, 409, etc.)
+        let errorMessage = 'Registration failed. Please try again.';
+        
+        if (response.status === 409 || 
+            data?.message?.toLowerCase().includes('already exists') ||
+            data?.data?.message?.toLowerCase().includes('already exists')) {
+          errorMessage = 'An account with this email already exists. Please sign in instead.';
+        } else if (data?.message) {
+          errorMessage = data.message;
+        } else if (data?.data?.message) {
+          errorMessage = data.data.message;
+        }
+
+        setResult({
+          success: false,
+          message: errorMessage,
+        });
+        setIsRegistering(false);
+        return;
+      }
+
+      // Registration successful (201 status)
+      setResult({
+        success: true,
+        message: data?.message || 'Account created successfully!',
+      });
+
+      // Switch to sign-in tab after 2 seconds
+      setTimeout(() => {
+        setActiveTab('signin');
+        setResult({
+          success: true,
+          message: 'Account created! Please sign in with your credentials.',
+        });
+        // Clear form fields
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPassword('');
+        setIsRegistering(false);
+      }, 2000);
+    } catch (error: any) {
+      // Network or other errors
+      console.error('Registration error:', error);
+      setResult({
+        success: false,
+        message: 'Network error. Please check your connection and try again.',
+      });
+      setIsRegistering(false);
+    }
   };
 
   const handleGuestSignIn = async (formData: FormData) => {
@@ -242,6 +434,19 @@ function SignInPage() {
                   ))}
                 </ul>
               )}
+              {/* Show verify email link if it's an email verification error */}
+              {!result.success && result.message && 
+               (result.message.toLowerCase().includes('verify') || 
+                result.message.toLowerCase().includes('otp')) && (
+                <div className="mt-2 pt-2 border-t border-red-300">
+                  <Link 
+                    href={`/verify-otp${email ? `?email=${encodeURIComponent(email)}` : ''}`}
+                    className="text-[#FF602E] hover:underline text-xs font-semibold"
+                  >
+                    Enter OTP Code to Verify Email →
+                  </Link>
+                </div>
+              )}
             </div>
           )}
 
@@ -256,7 +461,12 @@ function SignInPage() {
                   exit={{ opacity: 0, x: -40 }}
                   transition={{ duration: 0.4 }}
                   className="flex flex-col gap-4"
-                  action={handleSignUp}
+                  onSubmit={async (e) => {
+                    console.log('=== FORM onSubmit EVENT FIRED ===');
+                    e.preventDefault();
+                    console.log('Calling handleSignUp...');
+                    await handleSignUp(e);
+                  }}
                 >
                   <input
                     type="text"
@@ -266,7 +476,7 @@ function SignInPage() {
                     value={firstName}
                     onChange={e => setFirstName(e.target.value)}
                     required
-                    disabled={isPending}
+                    disabled={isPending || isRegistering}
                   />
                   <input
                     type="text"
@@ -276,7 +486,7 @@ function SignInPage() {
                     value={lastName}
                     onChange={e => setLastName(e.target.value)}
                     required
-                    disabled={isPending}
+                    disabled={isPending || isRegistering}
                   />
                   <input
                     type="email"
@@ -286,7 +496,7 @@ function SignInPage() {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
-                    disabled={isPending}
+                    disabled={isPending || isRegistering}
                   />
                   <input
                     type="password"
@@ -296,16 +506,16 @@ function SignInPage() {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     required
-                    disabled={isPending}
+                    disabled={isPending || isRegistering}
                   />
                   <motion.button
                     type="submit"
                     className="w-full mt-2 bg-[#FF602E] text-white py-2 rounded font-semibold text-sm transition hover:opacity-90 cursor-pointer disabled:opacity-50"
-                    whileHover={{ scale: isPending ? 1 : 1.02 }}
-                    whileTap={{ scale: isPending ? 1 : 0.98 }}
-                    disabled={isPending}
+                    whileHover={{ scale: isPending || isRegistering ? 1 : 1.02 }}
+                    whileTap={{ scale: isPending || isRegistering ? 1 : 0.98 }}
+                    disabled={isPending || isRegistering}
                   >
-                    {isPending ? 'Creating Account...' : 'Continue'}
+                    {isPending || isRegistering ? 'Creating Account...' : 'Continue'}
                   </motion.button>
 
                   {providerChecked && googleEnabled && (
@@ -356,7 +566,7 @@ function SignInPage() {
                 >
                   <motion.form
                     className="flex flex-col gap-4"
-                    action={handleSignIn}
+                    onSubmit={handleSignIn}
                   >
                     <input
                       type="email"
@@ -366,7 +576,7 @@ function SignInPage() {
                       value={email}
                       onChange={e => setEmail(e.target.value)}
                       required
-                      disabled={isPending}
+                      disabled={isPending || isLoggingIn}
                     />
                     <input
                       type="password"
@@ -376,16 +586,16 @@ function SignInPage() {
                       value={password}
                       onChange={e => setPassword(e.target.value)}
                       required
-                      disabled={isPending}
+                      disabled={isPending || isLoggingIn}
                     />
                     <motion.button
                       type="submit"
                       className="w-full mt-2 bg-[#FF602E] text-white py-2 rounded font-semibold text-sm transition hover:opacity-90 cursor-pointer disabled:opacity-50"
-                      whileHover={{ scale: isPending ? 1 : 1.02 }}
-                      whileTap={{ scale: isPending ? 1 : 0.98 }}
-                      disabled={isPending}
+                      whileHover={{ scale: isPending || isLoggingIn ? 1 : 1.02 }}
+                      whileTap={{ scale: isPending || isLoggingIn ? 1 : 0.98 }}
+                      disabled={isPending || isLoggingIn}
                     >
-                      {isPending ? 'Signing In...' : 'Sign In'}
+                      {isPending || isLoggingIn ? 'Signing In...' : 'Sign In'}
                     </motion.button>
                   </motion.form>
 
@@ -416,12 +626,12 @@ function SignInPage() {
                         type="button"
                         onClick={handleGoogleSignIn}
                         className="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 py-2 px-3 rounded font-medium text-sm transition hover:bg-gray-50 cursor-pointer disabled:opacity-50"
-                        whileHover={{ scale: isPending ? 1 : 1.02 }}
-                        whileTap={{ scale: isPending ? 1 : 0.98 }}
+                        whileHover={{ scale: isPending || isLoggingIn ? 1 : 1.02 }}
+                        whileTap={{ scale: isPending || isLoggingIn ? 1 : 0.98 }}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.25 }}
-                        disabled={isPending || !providerChecked || !googleEnabled}
+                        disabled={isPending || isLoggingIn || !providerChecked || !googleEnabled}
                         title={!providerChecked ? 'Checking providers...' : (!googleEnabled ? 'Google sign-in is not available' : undefined)}
                       >
                         <svg className="w-4 h-4" viewBox="0 0 24 24">
@@ -461,14 +671,14 @@ function SignInPage() {
                       value={guestEmail}
                       onChange={e => setGuestEmail(e.target.value)}
                       required
-                      disabled={isPending}
+                      disabled={isPending || isLoggingIn}
                     />
                     <motion.button
                       type="submit"
                       className="w-full mt-1 bg-[#FF602E] text-white py-2 rounded font-semibold text-sm transition hover:opacity-90 cursor-pointer disabled:opacity-50"
-                      whileHover={{ scale: isPending ? 1 : 1.02 }}
-                      whileTap={{ scale: isPending ? 1 : 0.98 }}
-                      disabled={isPending}
+                      whileHover={{ scale: isPending || isLoggingIn ? 1 : 1.02 }}
+                      whileTap={{ scale: isPending || isLoggingIn ? 1 : 0.98 }}
+                      disabled={isPending || isLoggingIn}
                     >
                       {isPending ? 'Signing In...' : 'Continue As A Guest'}
                     </motion.button>

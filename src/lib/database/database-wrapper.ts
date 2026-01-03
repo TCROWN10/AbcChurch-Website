@@ -27,6 +27,7 @@ function initializeDatabase() {
       lastName TEXT,
       hashedPassword TEXT,
       isGuest BOOLEAN NOT NULL DEFAULT 0,
+      isAdmin BOOLEAN NOT NULL DEFAULT 0,
       emailVerified BOOLEAN NOT NULL DEFAULT 0,
       emailVerificationToken TEXT,
       passwordResetToken TEXT,
@@ -34,11 +35,15 @@ function initializeDatabase() {
       createdAt INTEGER NOT NULL,
       updatedAt INTEGER NOT NULL
     );
+  `);
 
+  db.exec(`
     CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
     CREATE INDEX IF NOT EXISTS idx_users_email_verification_token ON users(emailVerificationToken);
     CREATE INDEX IF NOT EXISTS idx_users_password_reset_token ON users(passwordResetToken);
+  `);
 
+  db.exec(`
     CREATE TABLE IF NOT EXISTS sessions (
       id TEXT PRIMARY KEY,
       userId TEXT NOT NULL,
@@ -46,10 +51,14 @@ function initializeDatabase() {
       createdAt INTEGER NOT NULL,
       FOREIGN KEY (userId) REFERENCES users (id) ON DELETE CASCADE
     );
+  `);
 
+  db.exec(`
     CREATE INDEX IF NOT EXISTS idx_sessions_user_id ON sessions(userId);
     CREATE INDEX IF NOT EXISTS idx_sessions_expires_at ON sessions(expiresAt);
+  `);
 
+  db.exec(`
     CREATE TABLE IF NOT EXISTS prayer_requests (
       id TEXT PRIMARY KEY,
       fullName TEXT NOT NULL,
@@ -60,11 +69,30 @@ function initializeDatabase() {
       createdAt INTEGER NOT NULL,
       updatedAt INTEGER NOT NULL
     );
+  `);
 
+  db.exec(`
     CREATE INDEX IF NOT EXISTS idx_prayer_requests_email ON prayer_requests(email);
     CREATE INDEX IF NOT EXISTS idx_prayer_requests_status ON prayer_requests(status);
     CREATE INDEX IF NOT EXISTS idx_prayer_requests_created_at ON prayer_requests(createdAt);
   `);
+
+  // Migration: Add isAdmin column if it doesn't exist (for existing databases)
+  try {
+    const hasIsAdminColumn = db.prepare(`
+      SELECT COUNT(*) as count 
+      FROM pragma_table_info('users') 
+      WHERE name = 'isAdmin'
+    `).get() as { count: number };
+    
+    if (hasIsAdminColumn.count === 0) {
+      db.exec(`ALTER TABLE users ADD COLUMN isAdmin BOOLEAN NOT NULL DEFAULT 0`);
+      console.log('✅ Added isAdmin column to users table');
+    }
+  } catch (error) {
+    // Column might already exist or table might not exist yet
+    // This is fine, the CREATE TABLE above will handle it
+  }
 
   // User operations
   userDb = {
@@ -114,6 +142,7 @@ function initializeDatabase() {
       return {
         ...row,
         isGuest: Boolean(row.isGuest),
+        isAdmin: Boolean(row.isAdmin),
         emailVerified: Boolean(row.emailVerified),
         createdAt: new Date(row.createdAt),
         updatedAt: new Date(row.updatedAt),
@@ -129,6 +158,7 @@ function initializeDatabase() {
       return {
         ...row,
         isGuest: Boolean(row.isGuest),
+        isAdmin: Boolean(row.isAdmin),
         emailVerified: Boolean(row.emailVerified),
         createdAt: new Date(row.createdAt),
         updatedAt: new Date(row.updatedAt),
@@ -144,6 +174,7 @@ function initializeDatabase() {
       return {
         ...row,
         isGuest: Boolean(row.isGuest),
+        isAdmin: Boolean(row.isAdmin),
         emailVerified: Boolean(row.emailVerified),
         createdAt: new Date(row.createdAt),
         updatedAt: new Date(row.updatedAt),
@@ -159,6 +190,7 @@ function initializeDatabase() {
       return {
         ...row,
         isGuest: Boolean(row.isGuest),
+        isAdmin: Boolean(row.isAdmin),
         emailVerified: Boolean(row.emailVerified),
         createdAt: new Date(row.createdAt),
         updatedAt: new Date(row.updatedAt),
@@ -190,6 +222,15 @@ function initializeDatabase() {
         WHERE id = ?
       `);
       stmt.run(hashedPassword, Date.now(), id);
+    },
+
+    updateAdminStatus: (id: string, isAdmin: boolean) => {
+      const stmt = db.prepare(`
+        UPDATE users 
+        SET isAdmin = ?, updatedAt = ?
+        WHERE id = ?
+      `);
+      stmt.run(isAdmin ? 1 : 0, Date.now(), id);
     },
   };
 

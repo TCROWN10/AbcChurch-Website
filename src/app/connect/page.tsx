@@ -1,7 +1,8 @@
 "use client";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // Animation variants
 const containerVariants = {
@@ -95,6 +96,16 @@ interface FormErrors {
   general?: string;
 }
 
+interface PrayerRequest {
+  id: string;
+  fullName: string;
+  email: string;
+  subject: string;
+  prayerRequest: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export default function ConnectPage() {
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
@@ -105,6 +116,30 @@ export default function ConnectPage() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Prayer requests fetching state
+  const [prayerRequests, setPrayerRequests] = useState<PrayerRequest[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [fetchError, setFetchError] = useState<string | null>(null);
+
+  // Fetch prayer requests on component mount
+  useEffect(() => {
+    const fetchPrayerRequests = async () => {
+      try {
+        setIsLoading(true);
+        setFetchError(null);
+        const response = await axios.get('https://abcchurch-backend-production.up.railway.app/api/prayer-requests/get%20all%20requests');
+        setPrayerRequests(response.data);
+      } catch (error) {
+        console.error('Error fetching prayer requests:', error);
+        setFetchError('Failed to load prayer requests. Please try again later.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPrayerRequests();
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -150,7 +185,7 @@ export default function ConnectPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -159,35 +194,60 @@ export default function ConnectPage() {
     setErrors({});
 
     try {
-      const response = await fetch('/api/prayer-requests', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        if (result.details) {
-          // Validation errors from server
-          setErrors(result.details);
-        } else {
-          setErrors({ general: result.error || 'Failed to submit prayer request' });
-        }
-        return;
-      }
+      const response = await axios.post(
+        'https://abcchurch-backend-production.up.railway.app/api/prayer-requests',
+        formData
+      );
 
       // Success
       setIsSubmitted(true);
       setFormData({ fullName: '', email: '', subject: '', prayerRequest: '' });
-      
-    } catch (error) {
+
+      // Refresh the prayer requests list to show the newly submitted request
+      const updatedRequests = await axios.get(
+        'https://abcchurch-backend-production.up.railway.app/api/prayer-requests/get%20all%20requests'
+      );
+      setPrayerRequests(updatedRequests.data);
+
+    } catch (error: any) {
       console.error('Error submitting prayer request:', error);
-      setErrors({ general: 'Network error. Please check your connection and try again.' });
+
+      if (error.response?.data) {
+        // Server returned an error response
+        const serverError = error.response.data;
+        if (serverError.details) {
+          // Validation errors from server
+          setErrors(serverError.details);
+        } else {
+          setErrors({ general: serverError.error || 'Failed to submit prayer request' });
+        }
+      } else {
+        setErrors({ general: 'Network error. Please check your connection and try again.' });
+      }
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleDelete = async (requestId: string) => {
+    if (!confirm('Are you sure you want to delete this prayer request?')) {
+      return;
+    }
+
+    try {
+      await axios.delete(
+        'https://abcchurch-backend-production.up.railway.app/api/prayer-requests/Delete%20prayer%20request',
+        {
+          data: { id: requestId }
+        }
+      );
+
+      // Remove the deleted request from the list
+      setPrayerRequests(prev => prev.filter(request => request.id !== requestId));
+
+    } catch (error: any) {
+      console.error('Error deleting prayer request:', error);
+      alert('Failed to delete prayer request. Please try again.');
     }
   };
 
@@ -356,6 +416,79 @@ export default function ConnectPage() {
             </motion.button>
           </motion.form>
         </div>
+      </motion.section>
+
+      {/* Display Prayer Requests Section */}
+      <motion.section
+        className="py-8 md:py-16 px-4 md:px-6 max-w-6xl mx-auto"
+        variants={contentVariants}
+      >
+        <motion.h2
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 md:mb-10 text-[#F98B68]"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          Recent Prayer Requests
+        </motion.h2>
+
+        {isLoading && (
+          <div className="text-center py-8">
+            <p className="text-gray-600 text-lg">Loading prayer requests...</p>
+          </div>
+        )}
+
+        {fetchError && (
+          <div className="text-center py-8">
+            <p className="text-red-500 text-lg">{fetchError}</p>
+          </div>
+        )}
+
+        {!isLoading && !fetchError && prayerRequests.length === 0 && (
+          <div className="text-center py-8">
+            <p className="text-gray-600 text-lg">No prayer requests yet.</p>
+          </div>
+        )}
+
+        {!isLoading && !fetchError && prayerRequests.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {prayerRequests.map((request, index) => (
+              <motion.div
+                key={request.id}
+                className="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow relative"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <button
+                  type="button"
+                  onClick={() => handleDelete(request.id)}
+                  className="absolute top-4 right-4 text-red-500 hover:text-red-700 transition-colors"
+                  aria-label="Delete prayer request"
+                  title="Delete prayer request"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                </button>
+                <h3 className="text-xl font-semibold text-[#FF602E] mb-2 pr-8">{request.subject}</h3>
+                <p className="text-gray-700 mb-3 line-clamp-4">{request.prayerRequest}</p>
+                <div className="border-t border-gray-200 pt-3 mt-3">
+                  <p className="text-sm text-gray-600">
+                    <span className="font-medium">From:</span> {request.fullName}
+                  </p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    {new Date(request.createdAt).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </motion.section>
     </motion.div>
   );
