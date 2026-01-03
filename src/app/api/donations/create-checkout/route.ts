@@ -1,11 +1,10 @@
 import { NextResponse } from 'next/server';
-import Stripe from 'stripe';
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+import { getStripeClient } from '@/lib/stripe/stripe-client';
 
 export async function POST(request: Request) {
   try {
     const { amount, type, currency = 'USD', isRecurring = false, email } = await request.json();
+    const stripe = getStripeClient();
 
     // Create a new Checkout Session
     const session = await stripe.checkout.sessions.create({
