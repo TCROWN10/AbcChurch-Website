@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSubscriptionRecords, getSubscriptionRecord } from '@/lib/services/donation-reporting';
-import { handleStripeError, logDonationError } from '@/lib/stripe/stripe-errors';
 
 /**
  * GET /api/subscriptions - Retrieve subscription records with optional filtering
@@ -56,14 +55,11 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error) {
-    const donationError = handleStripeError(error);
-    logDonationError(donationError, { 
-      url: request.url,
-      method: request.method,
-    });
+    console.error('Error retrieving subscriptions:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
     return NextResponse.json(
-      { error: 'Failed to retrieve subscriptions', details: donationError.message },
+      { error: 'Failed to retrieve subscriptions', details: errorMessage },
       { status: 500 }
     );
   }
