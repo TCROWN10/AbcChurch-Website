@@ -18,11 +18,19 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, webpack }) => {
     if (isServer) {
       // Externalize better-sqlite3 to avoid bundling native modules
       config.externals = config.externals || [];
-      config.externals.push('better-sqlite3');
+      config.externals.push({
+        'better-sqlite3': 'commonjs better-sqlite3',
+      });
+      
+      // Ignore better-sqlite3 during build analysis
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        'better-sqlite3': false,
+      };
     }
     return config;
   },

@@ -10,8 +10,19 @@ let prayerRequestDb: any = null;
 function initializeDatabase() {
   if (db) return { db, userDb, sessionDb, prayerRequestDb };
 
-  // Only import and initialize when actually needed
-  const Database = require('better-sqlite3');
+  // Skip during build time (Next.js build process)
+  if (process.env.NEXT_PHASE === 'phase-production-build' || process.env.NEXT_PHASE === 'phase-development-build') {
+    throw new Error('Database initialization skipped during build');
+  }
+
+  // Only import and initialize when actually needed (runtime only)
+  let Database;
+  try {
+    Database = require('better-sqlite3');
+  } catch (error) {
+    // If better-sqlite3 is not available, throw a helpful error
+    throw new Error('better-sqlite3 is not available. This may be a serverless environment issue.');
+  }
   const { join } = require('path');
 
   // Initialize database
@@ -401,18 +412,51 @@ function initializeDatabase() {
 
 // Export functions that initialize the database when called
 export function getUserDb() {
-  const { userDb } = initializeDatabase();
-  return userDb;
+  try {
+    const { userDb } = initializeDatabase();
+    return userDb;
+  } catch (error) {
+    // During build or if database is unavailable, return a mock object
+    if (process.env.NEXT_PHASE?.includes('build')) {
+      return {
+        findById: () => null,
+        findByEmail: () => null,
+        updateAdminStatus: () => {},
+      };
+    }
+    throw error;
+  }
 }
 
 export function getSessionDb() {
-  const { sessionDb } = initializeDatabase();
-  return sessionDb;
+  try {
+    const { sessionDb } = initializeDatabase();
+    return sessionDb;
+  } catch (error) {
+    if (process.env.NEXT_PHASE?.includes('build')) {
+      return {
+        create: () => null,
+        findById: () => null,
+        deleteById: () => {},
+      };
+    }
+    throw error;
+  }
 }
 
 export function getDatabase() {
-  const { db } = initializeDatabase();
-  return db;
+  try {
+    const { db } = initializeDatabase();
+    return db;
+  } catch (error) {
+    if (process.env.NEXT_PHASE?.includes('build')) {
+      return {
+        exec: () => {},
+        prepare: () => ({ get: () => null, all: () => [] }),
+      };
+    }
+    throw error;
+  }
 }
 
 export function getPrayerRequestDb() {
