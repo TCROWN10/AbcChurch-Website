@@ -14,6 +14,7 @@ export default function PrayerRequestsManagement() {
   const [filterStatus, setFilterStatus] = useState<PrayerRequestStatus | ''>('');
   const [selectedRequest, setSelectedRequest] = useState<any>(null);
   const [showNotesModal, setShowNotesModal] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [notes, setNotes] = useState('');
 
   const { data: requests, isLoading, refetch } = useGetPrayerRequestsQuery({
@@ -129,8 +130,16 @@ export default function PrayerRequestsManagement() {
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <p className="text-sm font-medium text-gray-900">{request.title}</p>
-                        <p className="text-sm text-gray-500 line-clamp-2">{request.content}</p>
+                        <button
+                          onClick={() => {
+                            setSelectedRequest(request);
+                            setShowDetailsModal(true);
+                          }}
+                          className="text-left hover:underline"
+                        >
+                          <p className="text-sm font-medium text-gray-900">{request.title}</p>
+                          <p className="text-sm text-gray-500 line-clamp-2">{request.content}</p>
+                        </button>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
@@ -206,6 +215,89 @@ export default function PrayerRequestsManagement() {
         )}
       </div>
 
+      {/* Details Modal */}
+      {showDetailsModal && selectedRequest && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-xl font-semibold text-gray-900">Prayer Request Details</h3>
+              <button
+                onClick={() => {
+                  setShowDetailsModal(false);
+                  setSelectedRequest(null);
+                }}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Requester</label>
+                <p className="text-sm text-gray-900">{selectedRequest.requesterName}</p>
+                <p className="text-sm text-gray-500">{selectedRequest.requesterEmail}</p>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                <p className="text-sm text-gray-900">{selectedRequest.title}</p>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Content</label>
+                <p className="text-sm text-gray-900 whitespace-pre-wrap">{selectedRequest.content}</p>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                  <span className={`inline-block px-2 py-1 text-xs font-semibold rounded-full ${
+                    selectedRequest.status === 'READ' ? 'bg-blue-100 text-blue-800' :
+                    selectedRequest.status === 'ARCHIVED' ? 'bg-gray-100 text-gray-800' :
+                    'bg-yellow-100 text-yellow-800'
+                  }`}>
+                    {selectedRequest.status}
+                  </span>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Public</label>
+                  <p className="text-sm text-gray-900">{selectedRequest.isPublic ? 'Yes' : 'No'}</p>
+                </div>
+              </div>
+              {selectedRequest.notes && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Admin Notes</label>
+                  <p className="text-sm text-gray-900 whitespace-pre-wrap bg-gray-50 p-3 rounded">{selectedRequest.notes}</p>
+                </div>
+              )}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Date Submitted</label>
+                <p className="text-sm text-gray-900">
+                  {new Date(selectedRequest.createdAt).toLocaleString()}
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 flex justify-end gap-4">
+              <button
+                onClick={() => {
+                  setShowDetailsModal(false);
+                  setShowNotesModal(true);
+                }}
+                className="px-4 py-2 bg-[#FF602E] text-white rounded-md hover:opacity-90 transition"
+              >
+                {selectedRequest.notes ? 'Edit Notes' : 'Add Notes'}
+              </button>
+              <button
+                onClick={() => {
+                  setShowDetailsModal(false);
+                  setSelectedRequest(null);
+                }}
+                className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Notes Modal */}
       {showNotesModal && selectedRequest && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -223,14 +315,21 @@ export default function PrayerRequestsManagement() {
                 onClick={() => {
                   setShowNotesModal(false);
                   setNotes('');
-                  setSelectedRequest(null);
+                  if (!showDetailsModal) {
+                    setSelectedRequest(null);
+                  }
                 }}
                 className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition"
               >
                 Cancel
               </button>
               <button
-                onClick={handleAddNotes}
+                onClick={async () => {
+                  await handleAddNotes();
+                  if (showDetailsModal) {
+                    setShowDetailsModal(false);
+                  }
+                }}
                 className="px-4 py-2 bg-[#FF602E] text-white rounded-md hover:opacity-90 transition"
               >
                 Save Notes

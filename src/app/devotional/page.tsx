@@ -6,39 +6,17 @@ import Footer from '@/components/layout/Footer';
 
 const devotionalData = [
   {
-    date: '2025-08-05',
-    title: 'Signs Of A Backslidden Heart',
-    headline: 'Signs Of A Backslidden Heart',
+    date: '2026-01-19',
+    title: 'Arise!, Help Me, O Lord!',
+    headline: 'Arise!, Help Me, O Lord!',
     image: '/images/content/Devotional-iHero.png',
     // You can add a summary or excerpt here if desired
   },
-  {
-    date: '2025-07-21',
-    title: 'Promotion Cometh',
-    headline: 'Promotion Cometh',
-    image: '/images/content/Devotional-iHero.png',
-    // You can add a summary or excerpt here if desired
-  },
-  {
-    date: '2025-07-24',
-    title: 'Loving The Unlovables',
-    headline: 'Loving The Unlovables',
-    image: '/images/content/Devotional-iHero.png',
-    // You can add a summary or excerpt here if desired
-  },
-  {
-    date: '2025-07-29',
-    title: 'The Kingdom Givers',
-    headline: 'The Kingdom Givers',
-    image: '/images/content/Devotional-iHero.png',
-    // You can add a summary or excerpt here if desired
-  },
-  // Add more devotional days here as needed
 ];
 
 export default function DevotionalPage() {
-  // Set specific date: Tuesday, August 5th 2025
-  const today = "Tuesday, August 5th 2025";
+  // Set specific date: Monday, January 19th 2026
+  const today = "Monday, January 19th 2026";
   const router = useRouter();
   return (
     <div className="min-h-screen flex flex-col bg-[#0C232B]">

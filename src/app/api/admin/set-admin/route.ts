@@ -2,9 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getUserDb } from '@/lib/database/database-wrapper';
 import { requireAdmin } from '@/lib/auth/admin-utils';
 
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
-
 /**
  * API endpoint to set a user as admin
  * Only accessible by existing admins

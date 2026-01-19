@@ -97,7 +97,7 @@ export default function Message() {
             className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#284747] mb-2 sm:mb-4"
             variants={itemVariants}
           >
-            9am – 11am
+            10am -11:30am
           </motion.div>
           <motion.div 
             className="flex items-center gap-2 mb-4 sm:mb-6"

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import {
   useGetAllUsersQuery,
+  useGetUserByIdQuery,
   useUpdateUserMutation,
   useDeleteUserMutation,
   useUpdateUserDetailsMutation,
@@ -191,21 +192,23 @@ export default function UsersManagement() {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button
-                          onClick={() => {
-                            setSelectedUser(user);
-                            setShowEditModal(true);
-                          }}
-                          className="text-[#FF602E] hover:text-[#FF602E]/80 mr-4"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => handleDeleteUser(user.id)}
-                          className="text-red-600 hover:text-red-800"
-                        >
-                          Delete
-                        </button>
+                        <div className="flex flex-col gap-1">
+                          <button
+                            onClick={() => {
+                              setSelectedUser(user);
+                              setShowEditModal(true);
+                            }}
+                            className="text-[#FF602E] hover:text-[#FF602E]/80 text-left"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => handleDeleteUser(user.id)}
+                            className="text-red-600 hover:text-red-800 text-left"
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))
@@ -257,17 +260,32 @@ function EditUserModal({
 }) {
   const [role, setRole] = useState(user.role || 'USER');
   const [isEmailVerified, setIsEmailVerified] = useState(user.isEmailVerified || false);
+  const [email, setEmail] = useState(user.email || '');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(user.id, { role: role as any, isEmailVerified });
+    const updateData: UpdateUserRequest = { role: role as any, isEmailVerified };
+    if (email !== user.email) {
+      updateData.email = email;
+    }
+    onSave(user.id, updateData);
   };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+      <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6 max-h-[90vh] overflow-y-auto">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Edit User</h3>
         <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF602E]"
+              required
+            />
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Role</label>
             <select

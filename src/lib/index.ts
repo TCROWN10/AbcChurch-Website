@@ -1,3 +1,7 @@
+// Stripe
+export * from './stripe/stripe-errors';
+export * from './stripe/stripe-helpers';
+
 // Database
 export * from './database/database-wrapper';
 export * from './database/transaction-storage';

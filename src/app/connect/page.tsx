@@ -1,8 +1,13 @@
 "use client";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
+import {
+  useCreatePrayerRequestMutation,
+  useGetPrayerRequestsQuery,
+  useDeletePrayerRequestMutation,
+} from '@/store/prayerRequestsApi';
+import type { PrayerRequest } from '@/types/api';
 
 // Animation variants
 const containerVariants = {
@@ -82,64 +87,40 @@ const formVariants = {
 };
 
 interface FormData {
-  fullName: string;
-  email: string;
-  subject: string;
-  prayerRequest: string;
+  requesterName: string;
+  requesterEmail: string;
+  title: string;
+  content: string;
+  isPublic: boolean;
 }
 
 interface FormErrors {
-  fullName?: string;
-  email?: string;
-  subject?: string;
-  prayerRequest?: string;
+  requesterName?: string;
+  requesterEmail?: string;
+  title?: string;
+  content?: string;
   general?: string;
-}
-
-interface PrayerRequest {
-  id: string;
-  fullName: string;
-  email: string;
-  subject: string;
-  prayerRequest: string;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export default function ConnectPage() {
   const [formData, setFormData] = useState<FormData>({
-    fullName: '',
-    email: '',
-    subject: '',
-    prayerRequest: '',
+    requesterName: '',
+    requesterEmail: '',
+    title: '',
+    content: '',
+    isPublic: false,
   });
   const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Prayer requests fetching state
-  const [prayerRequests, setPrayerRequests] = useState<PrayerRequest[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [fetchError, setFetchError] = useState<string | null>(null);
-
-  // Fetch prayer requests on component mount
-  useEffect(() => {
-    const fetchPrayerRequests = async () => {
-      try {
-        setIsLoading(true);
-        setFetchError(null);
-        const response = await axios.get('https://abcchurch-backend-production.up.railway.app/api/prayer-requests/get%20all%20requests');
-        setPrayerRequests(response.data);
-      } catch (error) {
-        console.error('Error fetching prayer requests:', error);
-        setFetchError('Failed to load prayer requests. Please try again later.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchPrayerRequests();
-  }, []);
+  // RTK Query hooks
+  const { data: prayerRequests = [], isLoading, error: fetchError, refetch } = useGetPrayerRequestsQuery({
+    public: 'true', // Only show public prayer requests
+    limit: 20,
+  });
+  
+  const [createPrayerRequest, { isLoading: isSubmitting }] = useCreatePrayerRequestMutation();
+  const [deletePrayerRequest] = useDeletePrayerRequestMutation();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -153,30 +134,30 @@ export default function ConnectPage() {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full name is required';
-    } else if (formData.fullName.trim().length > 100) {
-      newErrors.fullName = 'Full name must be less than 100 characters';
+    if (!formData.requesterName.trim()) {
+      newErrors.requesterName = 'Full name is required';
+    } else if (formData.requesterName.trim().length > 100) {
+      newErrors.requesterName = 'Full name must be less than 100 characters';
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+    if (!formData.requesterEmail.trim()) {
+      newErrors.requesterEmail = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.requesterEmail)) {
+      newErrors.requesterEmail = 'Please enter a valid email address';
     }
 
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required';
-    } else if (formData.subject.trim().length > 200) {
-      newErrors.subject = 'Subject must be less than 200 characters';
+    if (!formData.title.trim()) {
+      newErrors.title = 'Title is required';
+    } else if (formData.title.trim().length > 200) {
+      newErrors.title = 'Title must be less than 200 characters';
     }
 
-    if (!formData.prayerRequest.trim()) {
-      newErrors.prayerRequest = 'Prayer request is required';
-    } else if (formData.prayerRequest.trim().length < 10) {
-      newErrors.prayerRequest = 'Prayer request must be at least 10 characters';
-    } else if (formData.prayerRequest.trim().length > 2000) {
-      newErrors.prayerRequest = 'Prayer request must be less than 2000 characters';
+    if (!formData.content.trim()) {
+      newErrors.content = 'Prayer request content is required';
+    } else if (formData.content.trim().length < 10) {
+      newErrors.content = 'Prayer request must be at least 10 characters';
+    } else if (formData.content.trim().length > 2000) {
+      newErrors.content = 'Prayer request must be less than 2000 characters';
     }
 
     setErrors(newErrors);
@@ -190,42 +171,87 @@ export default function ConnectPage() {
       return;
     }
 
-    setIsSubmitting(true);
     setErrors({});
 
     try {
-      const response = await axios.post(
-        'https://abcchurch-backend-production.up.railway.app/api/prayer-requests',
-        formData
-      );
+      await createPrayerRequest(formData).unwrap();
 
       // Success
       setIsSubmitted(true);
-      setFormData({ fullName: '', email: '', subject: '', prayerRequest: '' });
+      setFormData({ 
+        requesterName: '', 
+        requesterEmail: '', 
+        title: '', 
+        content: '',
+        isPublic: false,
+      });
 
-      // Refresh the prayer requests list to show the newly submitted request
-      const updatedRequests = await axios.get(
-        'https://abcchurch-backend-production.up.railway.app/api/prayer-requests/get%20all%20requests'
-      );
-      setPrayerRequests(updatedRequests.data);
-
-    } catch (error: any) {
-      console.error('Error submitting prayer request:', error);
-
-      if (error.response?.data) {
-        // Server returned an error response
-        const serverError = error.response.data;
-        if (serverError.details) {
-          // Validation errors from server
-          setErrors(serverError.details);
-        } else {
-          setErrors({ general: serverError.error || 'Failed to submit prayer request' });
-        }
-      } else {
-        setErrors({ general: 'Network error. Please check your connection and try again.' });
+      // Refetch prayer requests to show the newly submitted request (if public)
+      if (formData.isPublic) {
+        refetch();
       }
-    } finally {
-      setIsSubmitting(false);
+    } catch (error: any) {
+      // Log full error details for debugging
+      console.error('Error submitting prayer request:', {
+        error,
+        errorString: JSON.stringify(error, Object.getOwnPropertyNames(error)),
+        errorKeys: error ? Object.keys(error) : [],
+        errorType: typeof error,
+        errorStatus: error?.status,
+        errorData: error?.data,
+        errorMessage: error?.message,
+        errorOriginalStatus: error?.originalStatus,
+      });
+
+      // RTK Query error structure can have different formats
+      // Handle different error structures
+      let errorMessage = 'Failed to submit prayer request. Please try again.';
+      let hasValidationErrors = false;
+
+      // Check for validation errors in data.details
+      if (error?.data?.details) {
+        // Validation errors from server
+        setErrors(error.data.details);
+        hasValidationErrors = true;
+      } else if (error?.data) {
+        // Server returned an error response
+        const serverError = error.data;
+        if (typeof serverError === 'string') {
+          errorMessage = serverError;
+        } else if (serverError?.message) {
+          errorMessage = serverError.message;
+        } else if (serverError?.error) {
+          errorMessage = serverError.error;
+        }
+      }
+
+      // Handle HTTP error status codes
+      const statusCode = error?.status || error?.originalStatus;
+      if (statusCode) {
+        if (statusCode === 401 || statusCode === 'FETCH_ERROR') {
+          errorMessage = 'You must be logged in to submit a prayer request. Please sign in first.';
+        } else if (statusCode === 403) {
+          errorMessage = 'You do not have permission to perform this action.';
+        } else if (statusCode === 400) {
+          errorMessage = error?.data?.message || 'Invalid request. Please check your input.';
+        } else if (statusCode === 500 || statusCode === 502 || statusCode === 503) {
+          errorMessage = 'Server error. Please try again later.';
+        } else if (!hasValidationErrors) {
+          errorMessage = `Error ${statusCode}: ${error?.data?.message || errorMessage}`;
+        }
+      }
+
+      // Handle network errors
+      if (error?.status === 'FETCH_ERROR' || error?.name === 'TypeError') {
+        errorMessage = 'Network error. Please check your connection and try again.';
+      }
+
+      // Set error message if no validation errors were set
+      if (!hasValidationErrors) {
+        setErrors({ 
+          general: error?.message || errorMessage
+        });
+      }
     }
   };
 
@@ -235,16 +261,9 @@ export default function ConnectPage() {
     }
 
     try {
-      await axios.delete(
-        'https://abcchurch-backend-production.up.railway.app/api/prayer-requests/Delete%20prayer%20request',
-        {
-          data: { id: requestId }
-        }
-      );
-
-      // Remove the deleted request from the list
-      setPrayerRequests(prev => prev.filter(request => request.id !== requestId));
-
+      await deletePrayerRequest(requestId).unwrap();
+      // RTK Query will automatically refetch and update the list
+      refetch();
     } catch (error: any) {
       console.error('Error deleting prayer request:', error);
       alert('Failed to delete prayer request. Please try again.');
@@ -353,55 +372,68 @@ export default function ConnectPage() {
             onSubmit={handleSubmit}
           >
             <div className="flex flex-col gap-1">
-              <label htmlFor="fullName" className="font-medium text-gray-700 text-sm md:text-base">Full Name</label>
+              <label htmlFor="requesterName" className="font-medium text-gray-700 text-sm md:text-base">Full Name</label>
               <input 
-                id="fullName"
-                name="fullName"
+                id="requesterName"
+                name="requesterName"
                 type="text"
                 placeholder="Enter your full name"
                 className="border border-gray-300 rounded px-3 md:px-4 py-2 text-sm md:text-base focus:outline-none text-black"
-                value={formData.fullName}
+                value={formData.requesterName}
                 onChange={handleInputChange}
               />
-              {errors.fullName && <span className="text-red-500 text-xs">{errors.fullName}</span>}
+              {errors.requesterName && <span className="text-red-500 text-xs">{errors.requesterName}</span>}
             </div>
             <div className="flex flex-col gap-1">
-              <label htmlFor="email" className="font-medium text-gray-700 text-sm md:text-base">Email</label>
+              <label htmlFor="requesterEmail" className="font-medium text-gray-700 text-sm md:text-base">Email</label>
               <input 
-                id="email"
-                name="email"
+                id="requesterEmail"
+                name="requesterEmail"
                 type="email"
                 placeholder="Enter your email address"
                 className="border border-gray-300 rounded px-3 md:px-4 py-2 text-sm md:text-base focus:outline-none text-black"
-                value={formData.email}
+                value={formData.requesterEmail}
                 onChange={handleInputChange}
               />
-              {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
+              {errors.requesterEmail && <span className="text-red-500 text-xs">{errors.requesterEmail}</span>}
             </div>
             <div className="flex flex-col gap-1">
-              <label htmlFor="subject" className="font-medium text-gray-700 text-sm md:text-base">Subject</label>
+              <label htmlFor="title" className="font-medium text-gray-700 text-sm md:text-base">Title</label>
               <input 
-                id="subject"
-                name="subject"
+                id="title"
+                name="title"
                 type="text"
-                placeholder="Enter a subject"
+                placeholder="Enter a title for your prayer request"
                 className="border border-gray-300 rounded px-3 md:px-4 py-2 text-sm md:text-base focus:outline-none text-black"
-                value={formData.subject}
+                value={formData.title}
                 onChange={handleInputChange}
               />
-              {errors.subject && <span className="text-red-500 text-xs">{errors.subject}</span>}
+              {errors.title && <span className="text-red-500 text-xs">{errors.title}</span>}
             </div>
             <div className="flex flex-col gap-1">
-              <label htmlFor="prayerRequest" className="font-medium text-gray-700 text-sm md:text-base">Prayer Request</label>
+              <label htmlFor="content" className="font-medium text-gray-700 text-sm md:text-base">Prayer Request</label>
               <textarea 
-                id="prayerRequest"
-                name="prayerRequest"
+                id="content"
+                name="content"
                 placeholder="Type your prayer request here"
                 className="border border-gray-300 rounded px-3 md:px-4 py-2 min-h-[80px] md:min-h-[100px] text-sm md:text-base focus:outline-none text-black"
-                value={formData.prayerRequest}
+                value={formData.content}
                 onChange={handleInputChange}
               />
-              {errors.prayerRequest && <span className="text-red-500 text-xs">{errors.prayerRequest}</span>}
+              {errors.content && <span className="text-red-500 text-xs">{errors.content}</span>}
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                id="isPublic"
+                name="isPublic"
+                type="checkbox"
+                className="w-4 h-4 text-[#FF602E] border-gray-300 rounded focus:ring-[#FF602E]"
+                checked={formData.isPublic}
+                onChange={(e) => setFormData(prev => ({ ...prev, isPublic: e.target.checked }))}
+              />
+              <label htmlFor="isPublic" className="text-sm text-gray-700">
+                Make this prayer request public (visible to others)
+              </label>
             </div>
             {errors.general && <p className="text-red-500 text-center text-xs">{errors.general}</p>}
             {isSubmitted && <p className="text-green-500 text-center text-sm">Thank you! Your prayer request has been submitted.</p>}
@@ -440,7 +472,11 @@ export default function ConnectPage() {
 
         {fetchError && (
           <div className="text-center py-8">
-            <p className="text-red-500 text-lg">{fetchError}</p>
+            <p className="text-red-500 text-lg">
+              {'status' in fetchError 
+                ? `Failed to load prayer requests. ${fetchError.status === 401 ? 'Please sign in to view prayer requests.' : `Error: ${fetchError.status}`}`
+                : 'Failed to load prayer requests. Please try again later.'}
+            </p>
           </div>
         )}
 
@@ -471,11 +507,11 @@ export default function ConnectPage() {
                     <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
                 </button>
-                <h3 className="text-xl font-semibold text-[#FF602E] mb-2 pr-8">{request.subject}</h3>
-                <p className="text-gray-700 mb-3 line-clamp-4">{request.prayerRequest}</p>
+                <h3 className="text-xl font-semibold text-[#FF602E] mb-2 pr-8">{request.title}</h3>
+                <p className="text-gray-700 mb-3 line-clamp-4">{request.content}</p>
                 <div className="border-t border-gray-200 pt-3 mt-3">
                   <p className="text-sm text-gray-600">
-                    <span className="font-medium">From:</span> {request.fullName}
+                    <span className="font-medium">From:</span> {request.requesterName}
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
                     {new Date(request.createdAt).toLocaleDateString('en-US', {
@@ -484,6 +520,15 @@ export default function ConnectPage() {
                       day: 'numeric'
                     })}
                   </p>
+                  {request.status && (
+                    <span className={`inline-block mt-2 px-2 py-1 text-xs rounded ${
+                      request.status === 'READ' ? 'bg-green-100 text-green-800' :
+                      request.status === 'ARCHIVED' ? 'bg-gray-100 text-gray-800' :
+                      'bg-yellow-100 text-yellow-800'
+                    }`}>
+                      {request.status}
+                    </span>
+                  )}
                 </div>
               </motion.div>
             ))}

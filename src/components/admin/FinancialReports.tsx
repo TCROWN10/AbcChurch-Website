@@ -28,25 +28,40 @@ export default function FinancialReports() {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `financial-report-${new Date().toISOString()}.xlsx`;
+        const dateStr = new Date().toISOString().split('T')[0];
+        a.download = `financial-report-${dateStr}.xlsx`;
+        document.body.appendChild(a);
         a.click();
+        document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
       } else {
         const blob = await exportPDF(params).unwrap();
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `financial-report-${new Date().toISOString()}.pdf`;
+        const dateStr = new Date().toISOString().split('T')[0];
+        a.download = `financial-report-${dateStr}.pdf`;
+        document.body.appendChild(a);
         a.click();
+        document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to export:', error);
+      alert(`Failed to export ${type.toUpperCase()}: ${error?.message || 'Unknown error'}`);
     }
   };
 
   const handleEmailExport = async () => {
     if (!email || !exportType) return;
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
     try {
       if (exportType === 'excel') {
         await exportExcelToEmail({ ...params, recipientEmail: email }).unwrap();
@@ -56,9 +71,11 @@ export default function FinancialReports() {
       setShowEmailModal(false);
       setEmail('');
       setExportType(null);
-      alert('Report sent to email successfully!');
-    } catch (error) {
+      alert(`Report will be sent to ${email} shortly. Please check the email in a few moments.`);
+    } catch (error: any) {
       console.error('Failed to email export:', error);
+      const errorMessage = error?.data?.message || error?.message || 'Failed to send email report';
+      alert(`Error: ${errorMessage}`);
     }
   };
 
@@ -67,7 +84,7 @@ export default function FinancialReports() {
       {/* Filters */}
       <div className="bg-white rounded-lg shadow p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Filter Options</h3>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Type</label>
             <select
@@ -99,6 +116,19 @@ export default function FinancialReports() {
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF602E]"
             />
           </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
+            <select
+              value={params.status || ''}
+              onChange={(e) => setParams({ ...params, status: e.target.value || undefined })}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF602E]"
+            >
+              <option value="">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
+              <option value="failed">Failed</option>
+            </select>
+          </div>
           <div className="flex items-end">
             <label className="flex items-center">
               <input
@@ -109,6 +139,14 @@ export default function FinancialReports() {
               />
               <span className="text-sm font-medium text-gray-700">Today Only</span>
             </label>
+          </div>
+          <div className="flex items-end">
+            <button
+              onClick={() => setParams({})}
+              className="w-full px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition text-sm"
+            >
+              Clear Filters
+            </button>
           </div>
         </div>
       </div>

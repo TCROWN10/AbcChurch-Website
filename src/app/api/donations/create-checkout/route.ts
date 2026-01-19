@@ -1,16 +1,52 @@
 import { NextResponse } from 'next/server';
+import Stripe from 'stripe';
+
+// Lazy initialization to avoid issues during build
+function getStripe(): Stripe {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  if (!secretKey) {
+    throw new Error('STRIPE_SECRET_KEY environment variable is not set');
+  }
+  return new Stripe(secretKey);
+}
 
 export async function POST(request: Request) {
   try {
-    // Stripe is handled by backend - this route can be used as a proxy or return an error
-    return NextResponse.json(
-      { error: 'Stripe checkout is handled by backend' },
-      { status: 501 }
-    );
+    const stripe = getStripe();
+    const { amount, type, currency = 'USD', isRecurring = false, email } = await request.json();
+
+    // Create a new Checkout Session
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [{
+        price_data: {
+          currency: currency.toLowerCase(),
+          product_data: {
+            name: `Donation - ${type}`,
+          },
+          unit_amount: amount, // Amount in cents
+          ...(isRecurring && {
+            recurring: {
+              interval: 'month', // Default to monthly, can be customized based on your needs
+            },
+          }),
+        },
+        quantity: 1,
+      }],
+      mode: isRecurring ? 'subscription' : 'payment',
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/donate/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/donate/cancel`,
+      ...(email && { customer_email: email }),
+      metadata: {
+        type,
+      },
+    });
+
+    return NextResponse.json({ url: session.url });
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error creating checkout session:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Error creating checkout session' },
       { status: 500 }
     );
   }
