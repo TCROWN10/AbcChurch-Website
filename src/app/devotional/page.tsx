@@ -6,6 +6,13 @@ import Footer from '@/components/layout/Footer';
 
 const devotionalData = [
   {
+    date: '2026-01-20',
+    title: 'Beware Of This Enemies',
+    headline: 'Beware Of This Enemies',
+    image: '/images/content/Devotional-iHero.png',
+    // You can add a summary or excerpt here if desired
+  },
+  {
     date: '2026-01-19',
     title: 'Arise!, Help Me, O Lord!',
     headline: 'Arise!, Help Me, O Lord!',
