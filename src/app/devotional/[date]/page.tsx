@@ -4,6 +4,124 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2026-01-21',
+    title: 'Pursuing Specific Purpose',
+    headline: 'Pursuing Specific Purpose',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">🏃‍♂️▫️◻️◽⬜🔳⬜🔲◽◻️🏃‍♂️</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Wednesday, January 21st, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Pursuing Specific Purpose*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Proverbs 16:4a | ESV</span><br/>
+          <span className="text-xs md:text-sm">The Lord has made everything for its purpose</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Ephesians 1:4-5 | KJV</span><br/>
+          <span className="text-xs md:text-sm">
+            4 just as He chose us in Him before the foundation of the world, that we should be holy and without blame before Him in love,<br/><br/>
+            5 having predestined us to adoption as sons by Jesus Christ to Himself, according to the good pleasure of His will,
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">Whether you are working to find, prepare for or fulfill your purpose, be intentional to take action toward your Christian goals both inside and out. Below are some principles to follow in the goal-setting and action planning process:</p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *Trust God And Believe In Yourself*</h4>
+            <p className="mb-2 text-sm md:text-base">Therefore do not throw away your confidence, which has a great reward. For you have need of endurance, so that when you have done the will of God you may receive what is promised.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Hebrews 10:35-36 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">Your confidence is based in knowing that He has designed you and called you to your purpose and He will help you in fulfilling it. Replace any limiting beliefs or negative thoughts with the truth of God's word.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Seek To Transform*</h4>
+            <p className="mb-2 text-sm md:text-base">All things are lawful for me," but not all things are helpful. "All things are lawful for me," but I will not be dominated by anything.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(1 Corinthians 6:12 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">There are areas within yourself and your life where God is leading you to grow. The more you develop the heart of God and mind of Christ, the more you will sense and respond to the Spirit's leading.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *Keep Focus Of Your Vision*</h4>
+            <p className="mb-2 text-sm md:text-base">Let your eyes look directly forward, and your gaze be straight before you.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Proverbs 4:25 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">Instead of outside influences always remember that you are moving toward God's plan for your life rather than following the external influences.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *Make Choices That Fits*</h4>
+            <p className="mb-2 text-sm md:text-base">The heart of man plans his way, but the Lord establishes his steps.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Proverbs 16:9 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">Be authentic and realistic in making decisions about what you do, timing and strategies to avoid unnecessary stress.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">5. *Plan Simple And Clear Action Steps*</h4>
+            <p className="mb-2 text-sm md:text-base">Commit your work to the Lord, and your plans will be established.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Proverbs 16:3 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">Setting goals that stretch you is beneficial, but make sure your actions are attainable and have a workable schedule so you can build confidence while progressing.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">6. *Make A Plan To Manage Existing or Potential Obstacles.*</h4>
+            <p className="mb-2 text-sm md:text-base">External obstacles (eg. overcrowded schedule) or internal obstacles (eg. unhealthy mindsets) must be addressed both before and throughout your action steps.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">7. *Set Up Accountability*</h4>
+            <p className="mb-2 text-sm md:text-base">So then each of us will give an account of himself to God.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Romans 14:12 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">Set up accountability or support with a friend, group or system when needed. Letting others know what your goals are to help keep you on track can help you more effectively focus and move past doubts and procrastination. Also getting expert support to work on aspects of your path you are struggling with is wise to avoid pitfalls.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">8. *Be Flexible*</h4>
+            <p className="mb-2 text-sm md:text-base">The way of a fool is right in his own eyes, but a wise man listens to advice.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Proverbs 12:15 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">Be flexible to reverse or change course if something isn't feeling right. If your feelings are based on self-doubts or fears, it may not be a true sign to rework your plan. But if something seems to be taking you farther away from your natural design, passions, vision or purpose foundations, then pray for God to give you guidance on making the right decision.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">*Conclusion*</h4>
+            <p className="mb-2 text-sm md:text-base">It may take days, weeks, months or longer to be completely certain of every aspect of your God-given purpose. And though you may start walking in your purpose in one way, it may shift over time to more closely match what God continues to reveal to you. However, these steps will lay the foundation, and as you keep intentionally and prayerfully exploring and experiencing, more details will be revealed in time. Be patient to move within God's pace and timing</p>
+          </div>
+          
+          <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+            <li>Father, please help me to fulfill your desired purpose for my life, in Jesus mighty Name.</li>
+          </ol>
+          
+          <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+            <li>Don't try to use God to achieve your purpose. Rather, aim to achieve His. <span className="italic">+ Sunday Adelaja</span></li>
+            <li>The intersection of God's sovereignty and human responsibility is where divine purpose unfolds <span className="italic">+ Dr. Lucas D. Shallua</span></li>
+            <li>Purpose spurs passion which fans the sparks that light the fires that fuel change. <span className="italic">+ Sir Richard Branson</span></li>
+          </ul>
+          
+          <div className="mt-6 text-center mb-4">
+            <p className="text-base md:text-lg font-semibold mb-1">*Good Morning, God Bless You &*</p>
+            <p className="text-base md:text-lg font-semibold mb-4">*Bless Your Day*</p>
+          </div>
+          
+          <div className="mt-4 mb-6">
+            <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+            <span className="text-sm md:text-base">Deuteronomy 31 - 40</span>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm md:text-base font-semibold mb-2">*Connectlife Daily Devotional*</p>
+            <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-01-19',
     title: 'Arise!, Help Me, O Lord!',
     headline: 'Arise!, Help Me, O Lord!',
