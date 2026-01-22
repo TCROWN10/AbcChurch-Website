@@ -6,6 +6,13 @@ import Footer from '@/components/layout/Footer';
 
 const devotionalData = [
   {
+    date: '2026-01-22',
+    title: 'Surely There Is A Future',
+    headline: 'Surely There Is A Future',
+    image: '/images/content/Devotional-iHero.png',
+    // You can add a summary or excerpt here if desired
+  },
+  {
     date: '2026-01-21',
     title: 'Pursuing Specific Purpose',
     headline: 'Pursuing Specific Purpose',

@@ -4,6 +4,108 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2026-01-22',
+    title: 'Surely There Is A Future',
+    headline: 'Surely There Is A Future',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">🌾🌿🌱🍏🌾🌿🌱🍏🌾🌿🌱</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Thursday, January 22nd, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Surely There Is A Future*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Proverbs 23:18 | ESV</span><br/>
+          <span className="text-xs md:text-sm">Surely there is a future, and your hope will not be cut off.</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : 2 Corinthians 4:16-18 | NKJV</span><br/>
+          <span className="text-xs md:text-sm">
+            16 Therefore we do not lose heart. Even though our outward man is perishing, yet the inward man is being renewed day by day.<br/><br/>
+            17 For our light affliction, which is but for a moment, is working for us a far more exceeding and eternal weight of glory,<br/><br/>
+            18 while we do not look at the things which are seen, but at the things which are not seen. For the things which are seen are temporary, but the things which are not seen are eternal.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">The challenge before us all is to keep hope alive in spite of… This means "hoping when things are hopeless. As long as matters are really hopeful, hope is mere flattery or platitude; it is only when everything is hopeless that hope begins to be a strength." Paul says it this way in Romans 8:24-25</p>
+          <p className="mb-2 text-sm md:text-base">For in this hope we were saved. But hope that is seen is no hope at all. Who hopes for what he already has? But if we hope for what we do not yet have, we wait for it patiently.</p>
+          <p className="mb-2 text-sm md:text-base">We have to learn to keep hope alive when the enemy comes against us. We can not live life without hope. We can not walk around with a bleak outlook on our condition. For as long as God is alive we have a reason to keep hope alive. That is why Lamentation 3:26 says; "[It is] good that [a man] should both hope and quietly wait for the salvation of the LORD."</p>
+          <p className="mb-2 text-sm md:text-base">The absence of hope is despair and depression. Indeed, hopelessness leads to a sense of meaninglessness which can be fatal. We have to fight ourselves if we must, in order not to lose hope. For it is a lot harder to regain hope after it is lost, than it is to keep hope alive.</p>
+          <p className="mb-4 text-sm md:text-base">There are three things you can do to keep hope alive:</p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *Practice Spiritual Optimism*</h4>
+            <p className="mb-2 text-sm md:text-base">Spiritual optimism has to do with looking at your situation with a hopeful outlook no matter how bad things may look like. It is seeing the providential hands of God working for your good even when things are not looking good. It is living with spiritual 20/20 vision. It is trusting that God will make a way out of nowhere.</p>
+            <p className="mb-2 text-sm md:text-base">Plug yourself into the word of God for upliftment.</p>
+            <p className="mb-2 text-sm md:text-base">Phillipians 4:13 says, "I can do all things..."</p>
+            <p className="mb-2 text-sm md:text-base">They that wait upon the Lord shall renew their strength (Isa. 40:31).</p>
+            <p className="mb-2 text-sm md:text-base">Being confident of this very thing, that he which hath begun a good work in you will perform [it] until the day of Jesus Christ: (Phillipians 1:6)</p>
+            <p className="mb-2 text-sm md:text-base">Always believe that weeping may endure but for one night but joy will come in the morning (Psalm 30:5). See every situation as a learning opportunity. And when keeping hope alive becomes harder and harder, try and position yourself around hopeful people.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Position Yourself Around Hopeful People*</h4>
+            <p className="mb-2 text-sm md:text-base">One of the worst things that can happen to a believer when passing through hard times is to be surrounded with nay sayers and pessimistic people. You see, the last thing you need to hear when things seems upside down is negative words. The last thing you want to do is to sit around with a group of negative people who are always up for a pity party.</p>
+            <p className="mb-2 text-sm md:text-base">Beloved in Christ, when you are trying to keep your hope alive you need to stay away from depressed folks. Stay away from people who do not think that life is worth living. Stay away from people who are battling low self esteem. Stay away from those who don ot think they deserve the best that life has to offer.</p>
+            <p className="mb-2 text-sm md:text-base">You have to be careful who you hang out with. Do not hang out with someone with no vision and no sense of purpose. Do not hang around someone who always sees the glass half empty. Avoid people with negative spirits, because negativity is contagious. Instead go with someone with the mindset that all things are possible.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *Pray With An Expectant Spirit*</h4>
+            <p className="mb-2 text-sm md:text-base">You should always expect an answer to your prayer when you pray. You should always expect a breakthrough in times of trouble.</p>
+            <p className="mb-2 text-sm md:text-base">To pray without hope is to waste time. Effectual prayer comes from the reservoir of hope and trust in God. Praying with an expectant spirit is to acknowledge the miracle working power of God and its unlimited potential. Indeed, one of the best ways to keep your hope alive is to pray with an expectant spirit. That is faith at its best-substance of things hoped for and the evidence of things not seen.</p>
+            <p className="mb-2 text-sm md:text-base">The very act of praying is meaningless if the person who prays does not expect something to happen as a result of the prayer. No matter the nature of your need and the difficulty of your situation, you must pray with an expectant spirit thereby keeping hope alive.</p>
+            <p className="mb-2 text-sm md:text-base">Truly, the fervent and effectual prayers of the righteous availeth much. That is, prayer where the person who prays hope for a change in their situation because of that act of talking to God.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">*Conclusion*</h4>
+            <p className="mb-2 text-sm md:text-base">The Psalmist says The LORD taketh pleasure in them that fear him, in those that hope in his mercy (Ps. 147:11).</p>
+            <p className="mb-2 text-sm md:text-base">Are you struggling to keep hope alive? Are you battling despair and depression? I want to encourage you to keep hope alive. Remember, life is worth the living because Jesus lives.</p>
+            <p className="mb-2 text-sm md:text-base">Keep hope alive when things look dark and dreary</p>
+            <p className="mb-2 text-sm md:text-base">Keep hope alive when your weakness is greater than your strength.</p>
+            <p className="mb-2 text-sm md:text-base">Keep hope alive when your enemies are more numerous than your friends</p>
+            <p className="mb-2 text-sm md:text-base">Keep hope alive when your sorrow is more potent than your joy</p>
+            <p className="mb-2 text-sm md:text-base">Keep hope alive when your blessings are delayed.</p>
+          </div>
+          
+          <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+            <li>Father, I thank and praise you for your love, grace and faithfulness to me and my loved ones thus far, in Jesus Name.</li>
+            <li>Father, let me see the end of every problem that wants to see my end today, in Jesus mighty name.</li>
+          </ol>
+          
+          <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+            <li>Hope is being able to see that there is light despite all of the darkness. <span className="italic">+ Desmond Tutu</span></li>
+            <li>God grant me the courage not to give up what I think is right even though I think it is hopeless. <span className="italic">+ Chester W. Nimitz</span></li>
+          </ul>
+          
+          <div className="mt-6 text-center mb-4">
+            <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+            <p className="text-base md:text-lg font-semibold mb-4">& *God Bless You Today*</p>
+          </div>
+          
+          <div className="mt-4 mb-6">
+            <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+            <span className="text-sm md:text-base">Joshua 1 - 10</span>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+            <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+            <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+            <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-01-21',
     title: 'Pursuing Specific Purpose',
     headline: 'Pursuing Specific Purpose',
