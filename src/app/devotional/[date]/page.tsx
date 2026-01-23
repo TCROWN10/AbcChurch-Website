@@ -4,6 +4,87 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2026-01-23',
+    title: 'Greater Tomorrow',
+    headline: 'Greater Tomorrow',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">😍😂😍▫🤩😀🤩▫😍😂😍</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Friday, January 23rd, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Greater Tomorrow*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Jeremiah 29:11 | ESV</span><br/>
+          <span className="text-xs md:text-sm">For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope.</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Phillipians 4:6-8 | NKJV</span><br/>
+          <span className="text-xs md:text-sm">
+            6 Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.<br/><br/>
+            7 And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">Despite scientific advancements, greater education, fewer diseases, longer life expectancy and more money and resources than ever before in history, this age is known not for its peace, but for its persistent anxiety.</p>
+          <p className="mb-2 text-sm md:text-base">This generation is plagued with fear, and has become so familiar with it that anxiety has almost become fashionable, something to embrace and refer to as "mine".</p>
+          <p className="mb-2 text-sm md:text-base">Terror and panic are things we know very well and experience daily as the uncertainties of life increase. But we can take heart in knowing that in Christ Jesus we do not need to fear the future. Here are three reasons why:</p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1 *God's Is In Charge of All Circumstances*</h4>
+            <p className="mb-2 text-sm md:text-base">Your present circumstances are known, understood and allowed by the Lord. He is seated on His throne, above the sphere of the Earth and has a plan not just for your life, but for the entire universe! He has not lost control. His wisdom and sovereignty are perfect, even in a seemingly chaotic world, and He is never surprised.</p>
+            <p className="mb-2 text-sm md:text-base">Be encouraged Beloved, heaven is never in a hurry so you do not need to worry. Feel free to rest in the peace of God- that is, the confidence that God is in control and that as you love Him and walk in His calling for your life, you can relax in His loving leadership, even when you do not understand everything.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2 *God Is In Charge Of Your Life*</h4>
+            <p className="mb-2 text-sm md:text-base">He not only holds your world in His hands, He also holds you. Do not forget, you are worth more than many sparrows.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3 *Jesus Is Already in Your Future*</h4>
+            <p className="mb-2 text-sm md:text-base">Fortunately, we serve the eternally present God "I AM", the Alpha, Omega and everything in between. He stands outside of time, and dwells in eternity present. All of our times, past present and future are laid out like a beautiful tapestry before Him. Heaven is never in a hurry, and the Lord is never caught by surprise. He already knows, He already sees, and He has already made provision.</p>
+            <p className="mb-2 text-sm md:text-base">Consider the provision made for our sin before we even fell - Look at the Lamb of God, slain before the foundation of the earth. His foreknowledge is perfect, and comforting. You can rejoice in His sovereignty, and rest in His perfection and thoroughness.</p>
+            <p className="mb-2 text-sm md:text-base">"Therefore do not be anxious about tomorrow, for tomorrow will be anxious for itself. Sufficient for the day is its own trouble.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Matthew 6:34 ESV)</p>
+          </div>
+          
+          <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer points*</h4>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+            <li>Father, thank you for your faithfulness thus far and thank you for a better and greater tomorrow, in Jesus mighty name.</li>
+          </ol>
+          
+          <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+            <li>Never be afraid to trust an unknown future to a known God. <span className="italic">+ Corrie ten Boom</span></li>
+            <li>If you want to be happy, do not dwell in the past, do not worry about the future, focus on living fully in the present. <span className="italic">+ Roy T. Bennett</span></li>
+          </ul>
+          
+          <div className="mt-6 text-center mb-4">
+            <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+            <p className="text-base md:text-lg font-semibold mb-4">& *God Bless You Today*</p>
+          </div>
+          
+          <div className="mt-4 mb-6">
+            <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+            <span className="text-sm md:text-base">Joshua 11 - 20</span>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+            <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+            <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+            <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-01-22',
     title: 'Surely There Is A Future',
     headline: 'Surely There Is A Future',
