@@ -4,6 +4,124 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2026-01-24',
+    title: 'The \'Thou Shall\' In Marriage',
+    headline: 'The \'Thou Shall\' In Marriage',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">💃💍🏃‍♂️▪▪▫▪▪💃💍🏃‍♂️</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Saturday, January 24th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*The 'Thou Shall' In Marriage*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Ecclesiastes 4:9-10a | ESV</span><br/>
+          <span className="text-xs md:text-sm">9 Two are better than one, because they have a good reward for their toil. 10 For if they fall, one will lift up his fellow.</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : 1 Corinthians 13:4-7 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            4 Love is patient and kind; love does not envy or boast; it is not arrogant<br/><br/>
+            5 or rude. It does not insist on its own way; it is not irritable or resentful;<br/><br/>
+            6 it does not rejoice at wrongdoing, but rejoices with the truth.<br/><br/>
+            7 Love bears all things, believes all things, hopes all things, endures all things.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">There are some necessary ingredients for a healthy marriage every child of God should desire and for this to happen, we need to consider these 7 Commandments of Marriage:</p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *Thou Shalt Serve One Another.*</h4>
+            <p className="mb-2 text-sm md:text-base">A good marriage practices mutual submission. Ephesians 5:21 commands us to submit to one another out of reverence to Christ. Marriage is not a 50/50 deal. It's a 100/100 deal—each willing to surrender all to the other person.</p>
+            <p className="mb-2 text-sm md:text-base">How are you at serving your spouse? Would they say you strive to serve them more everyday? Are you more the giver or the taker in the relationship? Be honest.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Thou Shalt Love Unconditionally.*</h4>
+            <p className="mb-2 text-sm md:text-base">Unconditionally means without conditions. "I'll love you if…" is not the command. It's "I'll love you even if not."</p>
+            <p className="mb-2 text-sm md:text-base">God commands us to love even our known enemies, how much more should this commitment be strong within a marriage?</p>
+            <p className="mb-2 text-sm md:text-base">Are you loving your spouse even with the flaws that you can see better than anyone else? Here's a quick test:</p>
+            <p className="mb-2 text-sm md:text-base">Does the way you communicate with your spouse indicate you have the highest regard for them—always?</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *Thou Shalt Respect One Another.*</h4>
+            <p className="mb-2 text-sm md:text-base">The Golden Rule covers this one. Everyone wants to be respected—so in any good marriage respect is granted to and by both parties. And, by the way, respect too is to be unconditional.</p>
+            <p className="mb-2 text-sm md:text-base">Sometimes, it is easier for one spouse to give than the other, especially the one who works hardest in the marriage. Respect is mostly given because of actions and it is indeed important for both spouses. Most people grant respect only when all conditions are met to be respected. That makes sense, but it doesn't provide motivation to improve when the other party needs it most. All of us need someone who believes in us even when we don't believe in ourselves. That's the grace of respect. When most of us feel respected we will work harder to keep that respect.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *Thou Shalt Put No Other Earthly Relationships Above Your Marriage*</h4>
+            <p className="mb-2 text-sm md:text-base">"Let not man put asunder" is not just a good King James Version wedding line. It's God's desire for a healthy marriage. Great couples strive to allow no one—even children—even in-laws—to get in the way of building a healthy marriage.</p>
+            <p className="mb-2 text-sm md:text-base">We've seen many marriages been ruined because the children came first or the in-laws interfered. We've seen marriages ruined by friends—sometimes co-workers—who had little regard for the integrity of the marriage, and so they built a wedge between the couple. As hard as it is sometimes, great couples work to protect the marriage from every outside interruption.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">5. *Thou Shalt Commit Beyond Feelings.*</h4>
+            <p className="mb-2 text-sm md:text-base">The Bible talks a great deal about the renewal of our mind (Romans 12:2, for example). The mind is more reliable than emotions. You may not always feel as in love as you did the day you got married. There will be tough seasons in any marriage.</p>
+            <p className="mb-2 text-sm md:text-base">Strong marriages last because they have a commitment beyond their emotional response to each other. And when that's true for both parties, feelings almost always reciprocate and grow over time.</p>
+            <p className="mb-2 text-sm md:text-base">As true and necessary as this is, great marriage partners continue to pursue each other—they date one another—fostering the romantic feelings that everyone craves in a relationship. Sobering question: When's the last time you pursued your spouse?</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">6. *Thou Shalt Consider The Other Person's Interest Ahead Of Thine Own.*</h4>
+            <p className="mb-2 text-sm md:text-base">Again, we are commanded to consider other's interest in our relationships. How much more should we in marriage?</p>
+            <p className="mb-2 text-sm md:text-base">Over the years, as couples get comfortable with one another, some become very selfish with their individual time. Sometimes, for example, one spouse pursues a hobby that excludes the other one, and more and more time is committed to that hobby. The other spouse begins to feel neglected. It may be allocation of time, in actions or the words used to communicate, but sometimes a spouse can make the other spouse feel they are no longer valuable to them.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">7. *Thou Shalt Complete One Another.*</h4>
+            <p className="mb-2 text-sm md:text-base">The Biblical command is one flesh (Ephesians 5). Do you think that's anymore possible than the command that our individual flesh be molded into the image of Christ.</p>
+            <p className="mb-2 text-sm md:text-base">It's a command we obey in process. We are saints still under construction. We still sin. And that process isn't completed here on earth in my opinion. So it is in a marriage. We never completely "get there," but we set such a high standard for our marriage that we continue to press towards the goal.</p>
+            <p className="mb-2 text-sm md:text-base">There is no better place where "iron sharpens iron" than in a marriage.</p>
+            <p className="mb-2 text-sm md:text-base">There are qualities in one spouse needed by the other to become one flesh but that's a process that takes time, humility, and intentionality.</p>
+            <p className="mb-2 text-sm md:text-base">One question couples should always ask themselves is: Are we becoming closer as a couple—or are we drifting further apart?</p>
+            <p className="mb-2 text-sm md:text-base">That's a great question to ask frequently throughout the marriage.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">*Conclusion*</h4>
+            <p className="mb-2 text-sm md:text-base">These are obviously not the "10 Commandments." They aren't even necessarily God's commandments—although they are based on the commands of God.</p>
+            <p className="mb-2 text-sm md:text-base">The point is to take Biblical principles and apply them to our marriage.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Adapted for "The 7 Commandments of Christian Marriage" by Pastor Ron Edmondson of Immanuel Baptist Church)</p>
+          </div>
+          
+          <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+            <li>Father, intervene in every Christian home today and let there be peace and understanding, in Jesus mighty name.</li>
+          </ol>
+          
+          <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+            <li>Marriage is like a graph—it has its ups and downs and as long as things bounce back up again, you've got a good marriage. If it heads straight down, then you've got some problems! <span className="italic">+ Julie Andrews</span></li>
+            <li>Happy is the man who finds a true friend, and far happier is he who finds that true friend in his wife. <span className="italic">+ Franz Schubert</span></li>
+          </ul>
+          
+          <div className="mt-6 text-center mb-4">
+            <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+            <p className="text-base md:text-lg font-semibold mb-4">& *God Bless You Today*</p>
+          </div>
+          
+          <div className="mt-4 mb-6">
+            <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+            <span className="text-sm md:text-base">Joshua 21 - 30</span>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+            <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+            <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+            <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-01-23',
     title: 'Greater Tomorrow',
     headline: 'Greater Tomorrow',
