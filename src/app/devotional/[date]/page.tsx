@@ -4,6 +4,117 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2026-01-25',
+    title: 'Reasons To Praise The Lord',
+    headline: 'Reasons To Praise The Lord',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">✋😆🤚🙏✋😆🤚🙏✋😆🤚</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Sunday, January 25th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Reasons To Praise The Lord*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse: Hebrews 13:15 | ESV</span><br/>
+          <span className="text-xs md:text-sm">Through him then let us continually offer up a sacrifice of praise to God, that is, the fruit of lips that acknowledge his name.</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading: Psalm 65:1-13 | KJV</span><br/>
+          <span className="text-xs md:text-sm">
+            1 Praise waiteth for thee, O God, in Sion: and unto thee shall the vow be performed.<br/><br/>
+            2 O thou that hearest prayer, unto thee shall all flesh come.<br/><br/>
+            3 Iniquities prevail against me: as for our transgressions, thou shalt purge them away.<br/><br/>
+            4 Blessed is the man whom thou choosest, and causest to approach unto thee, that he may dwell in thy courts: we shall be satisfied with the goodness of thy house, even of thy holy temple.<br/><br/>
+            5 By terrible things in righteousness wilt thou answer us, O God of our salvation; who art the confidence of all the ends of the earth, and of them that are afar off upon the sea:<br/><br/>
+            6 Which by his strength setteth fast the mountains; being girded with power:<br/><br/>
+            7 Which stilleth the noise of the seas, the noise of their waves, and the tumult of the people.<br/><br/>
+            8 They also that dwell in the uttermost parts are afraid at thy tokens: thou makest the outgoings of the morning and evening to rejoice.<br/><br/>
+            9 Thou visitest the earth, and waterest it: thou greatly enrichest it with the river of God, which is full of water: thou preparest them corn, when thou hast so provided for it.<br/><br/>
+            10 Thou waterest the ridges thereof abundantly: thou settlest the furrows thereof: thou makest it soft with showers: thou blessest the springing thereof.<br/><br/>
+            11 Thou crownest the year with thy goodness; and thy paths drop fatness.<br/><br/>
+            12 They drop upon the pastures of the wilderness: and the little hills rejoice on every side.<br/><br/>
+            13 The pastures are clothed with flocks; the valleys also are covered over with corn; they shout for joy, they also sing.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">During an awards ceremony, when a person wins a prize or an award, they are praised for their accomplishments and achievements. The person who introduces the winner will spend time telling you why the person who receives the award or prize is deserving of it.</p>
+          <p className="mb-2 text-sm md:text-base">In Psalm 65, we see David introducing God as the nominee for the Praise award. David gives a speech in the form of a psalm. David literally writes a song that tells the reader why God deserves praise. David says that "praise is rightfully" God's alone (Psalm 65:1).</p>
+          <p className="mb-2 text-sm md:text-base">God deserves my praise. He deserves your praise. David shares seven reasons why God deserves our praises.</p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *He Hears And Answers Our Prayers. (Psalm 65:2)*</h4>
+            <p className="mb-2 text-sm md:text-base">People come to God and pray to Him. The reason we do that is because we know that God listens and answers prayer.</p>
+            <p className="mb-2 text-sm md:text-base">Knowing that God answers our prayers should give us the reason to shout to Him in praises.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *We Are Reminded That God Has Paid For Our Sin. (Psalm 65:3)*</h4>
+            <p className="mb-2 text-sm md:text-base">Sometimes, you can feel overwhelmed when you realize how much sin and wrong you have done in life. Think of the time when you rejected what God wanted you to do. When you rebelled against His authority. It's in times like these that you have to remind yourself that "where sin multiplied, grace multiplied even more" (Romans 5:20). Only God has been able to make payment for our sins. Only God has been able to eliminate the need for us to pay for our own sins. Only God has been able to put us in a right relationship with Him. God did this through the death of His Son Jesus Christ on the cross.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *God Wants To Spend Time With Us. (Psalm 65:4)*</h4>
+            <p className="mb-2 text-sm md:text-base">God wants to hear our prayers. God has paid for our sins. Why does He do all this? The reason is because God wants to spend time with us.</p>
+            <p className="mb-2 text-sm md:text-base">God has chosen us to spend time with us. He has decided to share His goodness with us. He wants to take out of His eternally busy schedule and be with us.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *God Has Proven To Be Our Hope. (Psalm 65:5)*</h4>
+            <p className="mb-2 text-sm md:text-base">God deserves our praise because He hears our prayers, paid for our sins, wants to spend time with us, and He is our Hope.</p>
+            <p className="mb-2 text-sm md:text-base">God has already shown how He has provided for His people. He sent the plagues to Egypt to deliver His people out of slavery. He parted the Red Sea to provide a way to safety. These are just two of the numerous ways in which God has shown how He has controlled circumstances to provide for His people.</p>
+            <p className="mb-2 text-sm md:text-base">But God is the Hope for everyone – "the hope of all the ends of the earth." There are ways in which God has showed each person who trusts in Him a way out of difficulty. He has provided paths of safety for people who have encountered dangers and toils. He does works of might and miracle to provide a way for His people.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">5. *God Controls The Power Of The Earth. (Psalm 65:6-7)*</h4>
+            <p className="mb-2 text-sm md:text-base">God deserves our praise, not just because He takes care of us. God deserves our praise because He takes care of the places around us.</p>
+            <p className="mb-2 text-sm md:text-base">God created the Earth. He created a place for us to live on Earth. People may fear hurricanes, tornadoes, dustbowls, and floods. Yet, all of these potential environmental catastrophes do not go unnoticed. God controls the Earth He has made. He can calm the roaring sea. He can move mountains. Nature is under God's sovereign control. If God has the Earth under control, then He can certainly take care of us.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">6. *God Makes The Earth Provide For Us. (Psalm 65:9-13)*</h4>
+            <p className="mb-2 text-sm md:text-base">There are ways in which we can make the Earth provide for us. We can grow crops, and raise animals. Ultimately, our work depends on God's provision.</p>
+            <p className="mb-2 text-sm md:text-base">In Psalm 65, David is reminded that without God, the Earth cannot provide for David's needs. God visits the Earth and waters it. God prepares the Earth so that the Earth can provide for our needs.</p>
+            <p className="mb-2 text-sm md:text-base">Nature does not deserve our praise for providing for our needs, God does. Man's ingenuity does not need our praise for providing for our needs. God alone deserves our praise for providing the means of our provision.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">7. *God is Our Source Of Joy. (Psalm 65:8)*</h4>
+            <p className="mb-2 text-sm md:text-base">Ultimately, God deserves our praise because He is our Source. He provides for our spiritual needs (Psalm 65:1-5). He also provides for our physical needs (Psalm 65:6-13). He has provided in the past, present, and will continue to do so in the future. He is our Reason for being. He will be our Reason for eternity. Ultimately, we owe our lives to Him. Yet, we should not praise Him with hesitation. Between our spiritual needs (Psalm 65:1-4), and our physical needs (Psalm 65:9-13), God provides for our emotional needs (Psalm 65:8). God is the source of our joy. And because God is the source of our joy, He ultimately will receive our praise, and deservedly so.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Adapted from "7 Reasons God Deserves My Praises" by Jim Erwin)</p>
+          </div>
+          
+          <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer points*</h4>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+            <li>Father, thank you, for your faithfulness thus far, in Jesus mighty name.</li>
+            <li>Father you alone deserves my praises, please accept my thanks and praises today, in Jesus mighty name.</li>
+          </ol>
+          
+          <div className="mt-6 text-center mb-4">
+            <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+            <p className="text-base md:text-lg font-semibold mb-4">& *God Bless You Today*</p>
+          </div>
+          
+          <div className="mt-4 mb-6">
+            <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+            <span className="text-sm md:text-base">Judges 1 - 10</span>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+            <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+            <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+            <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-01-24',
     title: 'The \'Thou Shall\' In Marriage',
     headline: 'The \'Thou Shall\' In Marriage',
