@@ -4,6 +4,79 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2026-01-26',
+    title: 'The Promise Keeping God',
+    headline: 'The Promise Keeping God',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">🍏🍎🍐🍊🍋🤩🍋🍊🍐🍎🍏</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Monday, January 26th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*The Promise Keeping God*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Deuteronomy 7:9 | ESV</span><br/>
+          <span className="text-xs md:text-sm">Know therefore that the Lord your God is God, the faithful God who keeps covenant and steadfast love with those who love him and keep his commandments, to a thousand generations,</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Lamentations 3:22-23 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            22 The steadfast love of the Lord never ceases; his mercies never come to an end;<br/><br/>
+            23 they are new every morning; great is your faithfulness.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">The faithfulness of God is true and has been proven many times. In the Holy Scriptures, we can see that God is faithful and His Word is true. He cannot lie, nor will He break his unconditional promise that He says He will fulfill. Every covenant He made is kept. Every promise will come true.</p>
+          
+          <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+            <li>Father, Thank you for the blessing of a new day, in Jesus mighty name.</li>
+            <li>Father, fulfill all your promises in my life n this season, in Jesus mighty name.</li>
+            <li>Father, speed up the fulfilment of your promises to me now! In Jesus mighty name.</li>
+            <li>Father, you promised me to be the head and above all. Please fulfill your promises to me today, in Jesus mighty name.</li>
+            <li>Father, you promised me prosperity and abundance, please fulfill your promise to me today, in Jesus mighty name.</li>
+            <li>Father, you promised to help me. Please fulfill your promises to me today, in Jesus mighty name.</li>
+            <li>Father, you promised me favour from you and from men, please fulfill your promises to me today, in Jesus mighty name.</li>
+            <li>Father, you promised me breakthrough at all side, please fulfill your promise to me today, in Jesus mighty name.</li>
+            <li>Father, you promised me healing and sound health, please heal me completely today, in Jesus mighty name</li>
+            <li>Father, you promised me divine provision, protection and presence, please fulfill your promises to me today, in Jesus mighty name.</li>
+            <li>Father, you are the promise keeping God, please fulfill all your beautiful promises to my life today, in Jesus mighty name.</li>
+            <li>Father, please remember and fulfill all your beautiful promises to my life today, in Jesus mighty name.</li>
+            <li>Father, you promised to fight my battles for me, Arise and fight for me today, in Jesus mighty name</li>
+            <li>Father, thank you for all the answers, in Jesus mighty name.</li>
+          </ol>
+          
+          <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+            <li>God never made a promise that was too good to be true. <span className="italic">+ D. L. Moody</span></li>
+            <li>Great is Thy faithfulness!" Morning by morning new mercies I see; All I have needed Thy hand hath provided. <span className="italic">+ Hymn</span></li>
+          </ul>
+          
+          <div className="mt-6 text-center mb-4">
+            <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+            <p className="text-base md:text-lg font-semibold mb-4">& *God Bless You Today*</p>
+          </div>
+          
+          <div className="mt-4 mb-6">
+            <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+            <span className="text-sm md:text-base">Judges 11 - 20</span>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+            <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+            <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+            <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-01-25',
     title: 'Reasons To Praise The Lord',
     headline: 'Reasons To Praise The Lord',
