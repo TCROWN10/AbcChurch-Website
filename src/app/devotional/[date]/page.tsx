@@ -4,6 +4,106 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2026-01-27',
+    title: 'The Test, The Travail & The Testimony',
+    headline: 'The Test, The Travail & The Testimony',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">❓➖🤷‍♀️➖❓🤷‍♀️❓➖🤷‍♀️➖❓</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Tuesday, January 27th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*The Test, The Travail & The Testimony*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Psalm 34:19</span><br/>
+          <span className="text-xs md:text-sm">Many are the afflictions of the righteous: but the LORD delivereth him out of them all.</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Text : Isaiah 41:10-13</span><br/>
+          <span className="text-xs md:text-sm">
+            10. Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.<br/><br/>
+            11. Behold, all they that were incensed against thee shall be ashamed and confounded: they shall be as nothing; and they that strive with thee shall perish.<br/><br/>
+            12. Thou shalt seek them, and shalt not find them, even them that contended with thee: they that war against thee shall be as nothing, and as a thing of nought.<br/><br/>
+            13. For I the LORD thy God will hold thy right hand, saying unto thee, Fear not; I will help thee.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">A group of frogs were traveling through the woods, and two of them fell into a deep pit.</p>
+          <p className="mb-2 text-sm md:text-base">All the other frogs gathered around the pit. When they saw how deep the pit was, they told the two frogs that they were as good as dead.</p>
+          <p className="mb-2 text-sm md:text-base">The two frogs ignored the comments and tried to jump out of the pit with all of their might.</p>
+          <p className="mb-2 text-sm md:text-base">The other frogs kept telling them to stop, that they were as good as dead.</p>
+          <p className="mb-2 text-sm md:text-base">Finally, one of the frogs took heed to what the other frogs were saying and gave up. He fell down and died.</p>
+          <p className="mb-2 text-sm md:text-base">The other frog continued to jump as hard as he could. Once again, the crowd of frogs yelled at him to stop the pain and just die.</p>
+          <p className="mb-2 text-sm md:text-base">He jumped even harder and finally made it out. When he got out, the other frogs said, "Did you not hear us?"</p>
+          <p className="mb-2 text-sm md:text-base">The frog explained to them that he was deaf. He thought they were encouraging him the entire time</p>
+          <p className="mb-4 text-sm md:text-base">Being a Christian does not necessarily means that you will not face some discouraging challenges in life. In fact, Psalm 34:19 says,</p>
+          <p className="mb-2 text-sm md:text-base italic">'Many are the afflictions of the righteous. . .'</p>
+          <p className="mb-2 text-sm md:text-base">There are a lot of Christian out there, under heavy loads of financial, emotional or marital pressure, to mention but just a few, who may presently be asking questions like, Lord! what do I do ?, Lord, where do I go from here ?</p>
+          <p className="mb-2 text-sm md:text-base">Take note, things may seem difficult for now, but God has not forsaken you and He will see you through in Jesus name.</p>
+          <p className="mb-2 text-sm md:text-base">Hebrews 13:5 and Isaiah 43:2 says respectively.</p>
+          <p className="mb-2 text-sm md:text-base italic">'. . .I will never leave thee, nor forsake thee.'</p>
+          <p className="mb-4 text-sm md:text-base italic">'When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee: when thou walkest through the fire, thou shalt not be burned; neither shall the flame kindle upon thee'</p>
+          <p className="mb-2 text-sm md:text-base">But why do God allows His Children to pass through difficult times?</p>
+          <p className="mb-2 text-sm md:text-base">We have here three reasons :</p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">(1) *Test Of Faith*</h4>
+            <p className="mb-2 text-sm md:text-base">These [trials] have come so that your faith of greater worth than gold, which perishes even though refined by fire may be proved genuine and may result in praise, glory and honor when Jesus Christ is revealed" (1 Peter 1:7).</p>
+            <p className="mb-2 text-sm md:text-base">For gold to come out shining, it must go through fire, likewise, God allows hard times or difficulties to prepare His own for the best.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">(2) *Test Of Purpose*</h4>
+            <p className="mb-2 text-sm md:text-base">Blessed is the man who perseveres under trial, because when he has stood the test, he will receive the crown of life that God has promised to those who love him. (James 1:2).</p>
+            <p className="mb-2 text-sm md:text-base">Apostle Paul says, "What shall separate us from the love of Christ ?..." God tries the heart to know if truly you can natch your actions with your words.</p>
+            <p className="mb-2 text-sm md:text-base">It is a test of purpose, the Lord will try every heart. Therefore, do not give up</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">(3) *Test Of Reliance / Dependency on God*</h4>
+            <p className="mb-2 text-sm md:text-base">We were under great pressure, far beyond our ability to endure, so that we despaired even of life. Indeed, in our hearts we felt the sentence of death. *But this happened that we might not rely on ourselves but on God,*... On him we have set our hope" (2 Corinthians 1:8-11).</p>
+            <p className="mb-2 text-sm md:text-base">No matter what you are passing through, just know that your faith will be tried and if you fail not you will come out of it shining, you will come out victorious.</p>
+            <p className="mb-2 text-sm md:text-base">Remember, *'the greater the test the greater the testimony'*</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">*Conclusion*</h4>
+            <p className="mb-2 text-sm md:text-base">Do not give up or been discourage. Remember, "tough time never last..."</p>
+            <p className="mb-2 text-sm md:text-base">Your time of joy and breakthrough shall come soon, in Jesus name.</p>
+          </div>
+          
+          <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+            <li>Father, I refused to be discouraged, please encourage me today by answering all my prayers In the name of Jesus.</li>
+            <li>Father, you are the burden bearer, please lift all my burdens today, in Jesus name.</li>
+            <li>Father, you are the greatest physician, please heal me, body, soul and spirit today, in Jesus name.</li>
+          </ol>
+          
+          <div className="mt-6 text-center mb-4">
+            <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+            <p className="text-base md:text-lg font-semibold mb-4">& *God Bless You Today*</p>
+          </div>
+          
+          <div className="mt-4 mb-6">
+            <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+            <span className="text-sm md:text-base">Judges 21<br/>Ruth 1 - 4</span>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+            <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+            <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+            <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-01-26',
     title: 'The Promise Keeping God',
     headline: 'The Promise Keeping God',
