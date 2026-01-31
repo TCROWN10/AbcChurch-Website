@@ -4,6 +4,104 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2026-01-30',
+    title: 'He is Coming Back Again!',
+    headline: 'He is Coming Back Again!',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">🌴✝️🌴▪️🌴✝️🌴▪️🌴✝️🌴</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Friday, January 30th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*He is Coming Back Again!*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Hebrews 9:28 | ESV</span><br/>
+          <span className="text-xs md:text-sm">So Christ, having been offered once to bear the sins of many, will appear a second time, not to deal with sin but to save those who are eagerly waiting for him.</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Matthew 24:30-31 | KJV</span><br/>
+          <span className="text-xs md:text-sm">
+            30 And then shall appear the sign of the Son of man in heaven: and then shall all the tribes of the earth mourn, and they shall see the Son of man coming in the clouds of heaven with power and great glory.<br/><br/>
+            31 And he shall send his angels with a great sound of a trumpet, and they shall gather together his elect from the four winds, from one end of heaven to the other.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">Before Jesus Christ, the son of God was born, His birth was prophesied, before He was crucified on the cross, it was prophesied, His death and resurrection were all prophesied. Similarly, the Bible warned that very soon, He will be coming back again but this time, for the rapture.</p>
+          <p className="mb-2 text-sm md:text-base">Below are things we are told about the second coming of our Lord Christ :-</p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *The Certainty Of His First Coming*</h4>
+            <p className="mb-2 text-sm md:text-base">1 John 5:20 says,</p>
+            <p className="mb-2 text-sm md:text-base italic">&quot;We know also that the Son of God has come&quot;.</p>
+            <p className="mb-2 text-sm md:text-base">Two thousand years ago He really came. The fact of His coming is absolutely certain because there are all the prophecies in the Bible which pointed forward to His coming.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *The Character Of His First Coming*</h4>
+            <p className="mb-2 text-sm md:text-base">Brother John and brother Paul tells us in John 1:14 and Galatians 4:4 respectively how He came in a theological but an explicit language. These words of scripture refer to that great act of God when Christ Jesus, the eternal Son of God, stepped down from the throne of His glory and became man and lived among us.</p>
+            <p className="mb-2 text-sm md:text-base">This is the character of His coming (Luke 2:1-14).</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *The Cost Of His First Coming*</h4>
+            <p className="mb-2 text-sm md:text-base">It did cost Him every thing, His glory, His throne, His comfort etc.</p>
+            <p className="mb-2 text-sm md:text-base">Think of the cost of the reception He received (John 1:11), the cost of His trial and of Calvary.</p>
+            <p className="mb-2 text-sm md:text-base">Yet, He paid all the price to come into the world to save the souls of men.</p>
+            <p className="mb-2 text-sm md:text-base">2 Corinthians 8:9.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *The Constraint Of His First Coming*</h4>
+            <p className="mb-2 text-sm md:text-base">Why did He come? What made Him come? What was His purpose in coming from Heaven to earth? The answer is –- &quot;to save sinners&quot;.</p>
+            <p className="mb-2 text-sm md:text-base">Jesus came and died upon the Cross of Calvary and He rose again in order to save us from sin, death and Hell, and to take us ultimately to Heaven and to present us faultless……(Jude 24).</p>
+            <p className="mb-2 text-sm md:text-base">He came to save us, because the one thing above all else that sinners need is to be saved. He came to save all kinds of sinners (Matthew 9:13); sinners like Paul, sinners like you and me, for none are too bad to come to Him. How glorious are the words (Luke 15:1-2).</p>
+            <p className="mb-2 text-sm md:text-base">He still receives sinners!</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">5. *The Challenge Of His First Coming*</h4>
+            <p className="mb-2 text-sm md:text-base">Jesus came to save sinners. Have you accepted Him as your personal Saviour? If not, will you do so, and will you rejoice in this glorious truth? 1 Timothy 1:15 says,</p>
+            <p className="mb-2 text-sm md:text-base italic">&quot;True is the saying, and deserving of universal acceptance, that Christ Jesus came into the world to save sinners; among whom I am foremost.&quot;</p>
+            <p className="mb-2 text-sm md:text-base">Answer this question before it is too late, are you really sure you are saved?</p>
+          </div>
+          
+          <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+            <li>Blessings, honour, glory and praise to your name o! Lord. Thank you for the gift of another wonderful day, in Jesus Mighty Name.</li>
+            <li>Father, help me to be watchful and never to miss the rapture, in Jesus mighty name.</li>
+          </ol>
+          
+          <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+            <li>The first time [Christ] came to slay sin in men. The second time He will come to slay men in sin. <span className="italic">+ Arthur W. Pink</span></li>
+            <li>Bible teaching about the Second Coming of Christ was thought of as &quot;doomsday&quot; preaching. But not anymore. It is the only ray of hope that shines as an ever brightening beam in a darkening world. <span className="italic">+ Billy Graham</span></li>
+          </ul>
+          
+          <div className="mt-6 text-center mb-4">
+            <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+            <p className="text-base md:text-lg font-semibold mb-4">& *God Bless You Today*</p>
+          </div>
+          
+          <div className="mt-4 mb-6">
+            <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+            <span className="text-sm md:text-base">1 Samuel 11 - 31</span>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+            <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+            <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+            <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-01-29',
     title: 'Know Your Enemies II',
     headline: 'Know Your Enemies II',
