@@ -4,6 +4,97 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2026-01-31',
+    title: 'He That Wins Souls',
+    headline: 'He That Wins Souls',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">💙💛💚❤💙➕💙❤💚💛💙</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Saturday, January 31st, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*He That Wins Souls*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Proverbs 11:30 | KJV</span><br/>
+          <span className="text-xs md:text-sm">The fruit of the righteous [is] a tree of life; and he that winneth souls [is] wise</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : 1 Corinthians 9:19-23 | NIV</span><br/>
+          <span className="text-xs md:text-sm">
+            19 Though I am free and belong to no one, I have made myself a slave to everyone, to win as many as possible.<br/><br/>
+            20 To the Jews I became like a Jew, to win the Jews. To those under the law I became like one under the law (though I myself am not under the law), so as to win those under the law.<br/><br/>
+            21 To those not having the law I became like one not having the law (though I am not free from God&apos;s law but am under Christ&apos;s law), so as to win those not having the law.<br/><br/>
+            22 To the weak I became weak, to win the weak. I have become all things to all people so that by all possible means I might save some.<br/><br/>
+            23 I do all this for the sake of the gospel, that I may share in its blessings.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">One of the greatest joys that we can have as Christians is the joy of leading someone to Christ. Think of it! You and I can be God&apos;s instruments in the salvation of others.</p>
+          <p className="mb-2 text-sm md:text-base">This is not the work of just a few selected people rather, every Christian is called upon to witness for Christ, and every Christian can be a soul-winner. The Lord Jesus in Matthew 4:19 says,</p>
+          <p className="mb-2 text-sm md:text-base italic">&quot;Follow Me, and I will make you fishers of men.&quot;</p>
+          <p className="mb-2 text-sm md:text-base">It so important to learn how to win others to Christ because of the eternal value of a human soul. God values the souls of men so highly that He sent His Son to die on the cross that men might be saved. When we see how precious all men are to God, we will do all we can to win them to Christ. In this lesson we are going to learn how to lead others to Christ.</p>
+          <p className="mb-2 text-sm md:text-base">The Bible says,</p>
+          <p className="mb-4 text-sm md:text-base italic">&quot;He who believes on the Son has everlasting life: and he who does not believe the Son shall not see life; but the wrath of God abides on him.&quot; John 3:36</p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *We Must Use GOD&apos;S WORD*</h4>
+            <p className="mb-2 text-sm md:text-base">To win souls, we must know how to use the Word of God. Just as a doctor does not give the same prescription to every patient, so the same verse will not meet the need of every person. You must have a good working knowledge of the Bible.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *We Must Have GOD&apos;S POWER*</h4>
+            <p className="mb-2 text-sm md:text-base">If we are to be soul-winners, we need something else: we need the power of God. The soul-winner&apos;s power comes from the Holy Spirit.</p>
+            <p className="mb-2 text-sm md:text-base">When the Lord Jesus commanded His disciples to preach the gospel to every creature, He also promised them the power of the Holy Spirit. He said,</p>
+            <p className="mb-2 text-sm md:text-base italic">&quot;You shall receive power when the Holy Spirit has come upon you; and you shall be witnesses to Me…&quot; Acts 1:8</p>
+            <p className="mb-2 text-sm md:text-base">On the day of Pentecost, the disciples were filled with the Holy Spirit. Peter stood up and preached in the power of the Holy Spirit and approximately 3,000 souls were saved.</p>
+            <p className="mb-2 text-sm md:text-base">It is the Holy Spirit who convicts people of sin; it is the Holy Spirit who shows people their need of a Saviour; and it is the Holy Spirit who reveals Christ to them. Ask God to fill you with the Holy Spirit so that you can be an effective soul-winner. It is the Holy Spirit that converts and not the program of men.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *We Must Give People the GOSPEL*</h4>
+            <p className="mb-2 text-sm md:text-base">The soul-winner&apos;s message is the gospel. The word &quot;gospel&quot; means &quot;good news&quot; and the good news is that Christ died for our sins and rose again to be our living Saviour. The Apostle Paul wrote,</p>
+            <p className="mb-2 text-sm md:text-base italic">&quot;Moreover, brethren, I declare to you the gospel…that Christ died for our sins according to the Scriptures, and that He was buried, and that He rose again the third day according to the Scriptures.&quot; (1 Corinthians 15:1, 3-4)</p>
+            <p className="mb-2 text-sm md:text-base">It is the word of God that gives life, not the philosophy of men.</p>
+          </div>
+          
+          <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+            <li>Father, thank you for the blessing of another day, I thank you for the miracle of sleeping and waking, in Jesus mighty name.</li>
+            <li>Father, I give you all the praise, I give you all glory, Be glorified in my life today, in Jesus mighty name.</li>
+            <li>Father, please save many souls through me and through ministry, in Jesus mighty name.</li>
+          </ol>
+          
+          <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+            <li>To touch the heart of heaven, win a soul for heaven! <span className="italic">+ Ernest Agyemang Yeboah</span></li>
+            <li>If you want your prayers answered consistently make Evangelism a way of life. <span className="italic">+ Pastor E. A. Adeboye</span></li>
+          </ul>
+          
+          <div className="mt-6 text-center mb-4">
+            <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+            <p className="text-base md:text-lg font-semibold mb-4">& *God Bless You Today*</p>
+          </div>
+          
+          <div className="mt-4 mb-6">
+            <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+            <span className="text-sm md:text-base">II Samuel 1 - 10</span>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+            <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+            <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+            <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-01-30',
     title: 'He is Coming Back Again!',
     headline: 'He is Coming Back Again!',
