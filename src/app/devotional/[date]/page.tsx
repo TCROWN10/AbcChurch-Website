@@ -4,6 +4,102 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2026-02-01',
+    title: 'Fear Not',
+    headline: 'Fear Not',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">▪▪▪👤▪💩▪👤▪▪▪</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Sunday, February 1st, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Fear Not*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : 1 John 4:18 | KJV</span><br/>
+          <span className="text-xs md:text-sm">There is no fear in love; but perfect love casteth out fear: because fear hath torment. He that feareth is not made perfect in love.</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Isaiah 43:1-5a | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            1 But now thus says the Lord, he who created you, O Jacob, he who formed you, O Israel: &quot;Fear not, for I have redeemed you; I have called you by name, you are mine.<br/><br/>
+            2 When you pass through the waters, I will be with you; and through the rivers, they shall not overwhelm you; when you walk through fire you shall not be burned, and the flame shall not consume you.<br/><br/>
+            3 For I am the Lord your God, the Holy One of Israel, your Savior. I give Egypt as your ransom, Cush and Seba in exchange for you.<br/><br/>
+            4 Because you are precious in my eyes, and honored, and I love you, I give men in return for you, peoples in exchange for your life.<br/><br/>
+            5 Fear not, for I am with you;
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">Someone once says, that fear is &quot;a distressing emotion aroused by impending danger, evil, pain, etc., whether the threat is real or imagined&quot;. In other words, fear is a state whereby you feel frightened or afraid, regardless of whether you should be afraid or not. Note the key word here is *regardless.* Which means it is possible to feel fear even when you rightfully should not.</p>
+          <p className="mb-2 text-sm md:text-base">Living therefore under constant fear or threat has serious health consequences such as :</p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *Fear Affects Your Physical Health.*</h4>
+            <p className="mb-2 text-sm md:text-base italic">Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Isaiah 41:10 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">Fear weakens the immune system and can cause cardiovascular damage, gastrointestinal problems such as ulcers and irritable bowel syndrome, and decreased fertility. It can lead to accelerated ageing and even premature death.</p>
+            <p className="mb-2 text-sm md:text-base italic">For I, the Lord your God, hold your right hand; it is I who say to you, &quot;Fear not, I am the one who helps you.&quot;</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Isaiah 41:13 ESV)</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Fear Affects Your Memory.*</h4>
+            <p className="mb-2 text-sm md:text-base italic">There is no fear in love, but perfect love casts out fear. For fear has to do with punishment, and whoever fears has not been perfected in love.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(1 John 4:18 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">Fear can impair formation of long-term memories and cause damage to certain parts of the brain, such as the hippocampus. This can make it even more difficult to regulate fear and can leave a person anxious most of the time. To someone in chronic fear, the world looks scary and their memories confirm that.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *Fear Affects Your Brain Processing And Reactivity.*</h4>
+            <p className="mb-2 text-sm md:text-base italic">The Lord is my light and my salvation; whom shall I fear? The Lord is the stronghold of my life; of whom shall I be afraid?</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Psalm 27:1 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">Fear can interrupt processes in the brains. Such processes includes, regulation of emotions, reading of non-verbal cues and other information&apos;s, reflecting before acting, and acting ethically. This impacts the thinking and decision-making in negative ways, leaving its subjects susceptible to intense emotions and impulsive reactions. All of these effects can make one unable to act appropriately.</p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *Fear Affects Your Mental Health.*</h4>
+            <p className="mb-2 text-sm md:text-base italic">For God gave us a spirit not of fear but of power and love and self-control.</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(2 Timothy 1:7 ESV)</p>
+            <p className="mb-2 text-sm md:text-base">Other consequences of long-term fear include fatigue, clinical depression etc.</p>
+            <p className="mb-2 text-sm md:text-base italic">So we can confidently say, &quot;The Lord is my helper; I will not fear; what can man do to me?&quot;</p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">(Hebrews 13:6 ESV)</p>
+          </div>
+          
+          <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+          <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+            <li>Father, thank you for the privilege and the grace to witness another beautiful day in the land of the living, in Jesus mighty name.</li>
+          </ol>
+          
+          <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+          <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+            <li>Nothing in life is to be feared, it is only to be understood. Now is the time to understand more so that we may fear less. <span className="italic">+ Marie Curie</span></li>
+            <li>What the mind doesn&apos;t understand, it worships or fears. <span className="italic">+ Alice Walker</span></li>
+          </ul>
+          
+          <div className="mt-6 text-center mb-4">
+            <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+            <p className="text-base md:text-lg font-semibold mb-4">& *God Bless You Today*</p>
+          </div>
+          
+          <div className="mt-4 mb-6">
+            <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+            <span className="text-sm md:text-base">II Samuel 11 - 20</span>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+            <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+            <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+            <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-01-31',
     title: 'He That Wins Souls',
     headline: 'He That Wins Souls',
