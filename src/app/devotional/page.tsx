@@ -6,6 +6,20 @@ import Footer from '@/components/layout/Footer';
 
 const devotionalData = [
   {
+    date: '2026-02-03',
+    title: "It's Time To Start Praying I",
+    headline: "It's Time To Start Praying I",
+    image: '/images/content/Devotional-iHero.png',
+    // You can add a summary or excerpt here if desired
+  },
+  {
+    date: '2026-02-02',
+    title: 'Fresh Oil',
+    headline: 'Fresh Oil',
+    image: '/images/content/Devotional-iHero.png',
+    // You can add a summary or excerpt here if desired
+  },
+  {
     date: '2026-01-25',
     title: 'Reasons To Praise The Lord',
     headline: 'Reasons To Praise The Lord',

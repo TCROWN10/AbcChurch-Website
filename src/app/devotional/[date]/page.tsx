@@ -4,6 +4,215 @@ import Link from 'next/link';
 
 const devotionalData = [
   {
+    date: '2026-02-03',
+    title: "It's Time To Start Praying I",
+    headline: "It's Time To Start Praying I",
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">✋🏻🤚✋🏻🤚✋🏻🙏🤚✋🏻🤚✋🏻🤚</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Tuesday, February 3rd, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*It's Time To Start Praying I*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : 1 John 5:14 | NIV</span><br/>
+          <span className="text-xs md:text-sm">
+            This is the confidence we have in approaching God: that if we ask anything according to his will, he hears us.
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Philippians 4:6-7 | NKJV</span><br/>
+          <span className="text-xs md:text-sm">
+            6 Be anxious for nothing, but in everything by prayer and supplication, with thanksgiving, let your requests be made known to God;<br/><br/>
+            7 and the peace of God, which surpasses all understanding, will guard your hearts and minds through Christ Jesus.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            At the heart of the Reformation, Martin Luther spent the best two hours of each day alone with God. On one occasion, facing particularly difficult labors on the coming day, he told his friends:
+            “I have so much scheduled for tomorrow that I must arise an hour earlier to have an extra hour alone with God.”
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            John Welsh, the God-fearing son-in-law of John Knox, kept his robe close to his bed because a night seldom went by in which he did not rise to pray to his God. Often his wife would find him praying and weeping after midnight. She would ask the cause and receive the answer:
+            “Oh my dear wife, I have three thousand souls to answer for, and I know not how it is with many of them!”
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            Considering these forefathers and other saints of God, truly we do not know how to pray as we ought.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            Prayer is necessary for the believer for at least three reasons.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            🍏 <span className="font-semibold">God demands it,</span> and this is certainly sufficient in itself (Matt. 7:7–8; Luke 18:1; 1 Thess. 5:17).
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            🍏 <span className="font-semibold">Our own nature demands it</span> as we are needy and dependent by nature, even after receiving grace to believe.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            🍏 Every person needs <span className="font-semibold">a prayer-giving, prayer-hearing, and prayer-answering God for both natural and spiritual blessings,</span> for in God alone do we live, move, and have our being (Acts 17:28). And the route to fulfillment of right desires demands prayer. As a rule, it is upon prayer (not because of prayer) that God gives His grace and Spirit to those who ask Him.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            One of the best definitions of prayer is that of John Bunyan:
+          </p>
+          <p className="mb-2 text-sm md:text-base italic">
+            “Prayer is a sincere, sensible, affectionate pouring out of the heart or soul to God, through Christ, in the strength and assistance of the Holy Spirit, for such things as God has promised, or according to his Word, for the good of the church, with submission in faith to the will of God.”
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            This definition highlights for us a number of things that are part of true prayer.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            1. <span className="font-semibold">Prayer Is Borne Out Of A Sincere Heart To God.</span> Prayer must be sincere because, as Bunyan says, “sincerity carries the soul in all simplicity to open many heart to God, and to tell him the case plainly, without equivocation; to condemn itself plainly, without dissembling; to cry to God heartily, without complimenting.”
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            2. <span className="font-semibold">Prayer Must Be Affectionate.</span> We must disclose our thoughts and feelings before God and pour out our hearts in sighs and groans. We must say with David: “All my desire is before thee, and my groaning is not hid from thee” (Ps. 38:9).
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            3. <span className="font-semibold">Prayer Is Faith In Christ.</span> Christ is the way through whom we have access to God; without Christ it is impossible that any petition would even reach the ears of the Lord of Sabaoth. He says, “And I will do whatever you ask in my name, so that the Father may be glorified in the Son” (John 14:13). So we first must believe in Christ and know Him, then come to God in prayer through Him, trusting in Christ’s meritorious righteousness.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            This is why we pray for the sake of or in the name of Jesus Christ. Our prayers and life contain no merits or foundational grounds with God in themselves; only Christ can meritoriously and foundationally claim the ear of God (Matt. 3:17; John 11:40–41). He is the great High Priest and Intercessor of His church before the Father (Rom. 8:34; Heb. 4:14).
+          </p>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, please baptize me afresh with Your Holy Spirit of prayer, in Jesus mighty name.</li>
+          <li>Father, help me to pray and pray through, in Jesus name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            Prayer is where the action is.
+            <span className="italic"> + John Wesley</span>
+          </li>
+          <li>
+            Prayer does not change God, but it changes him who prays.
+            <span className="italic"> + Soren Kierkegaard</span>
+          </li>
+          <li>
+            To be a Christian without prayer is no more possible than to be alive without breathing.
+            <span className="italic"> + Martin Luther</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">I Kings 1 - 11</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    date: '2026-02-02',
+    title: 'Fresh Oil',
+    headline: 'Fresh Oil',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">💧🔥💧📖💧🔥💧📖💧🔥💧</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Monday, February 2nd, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Fresh Oil*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Psalm 92:10 | KJV</span><br/>
+          <span className="text-xs md:text-sm">But my horn shalt thou exalt like the horn of an unicorn: I shall be anointed with fresh oil.</span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Exodus 16:4,16-21 | KJV</span><br/>
+          <span className="text-xs md:text-sm">
+            4 Then said the Lord unto Moses, Behold, I will rain bread from heaven for you; and the people shall go out and gather a certain rate every day, that I may prove them, whether they will walk in my law, or no.<br/><br/>
+            16 This is the thing which the Lord hath commanded, Gather of it every man according to his eating, an omer for every man, according to the number of your persons; take ye every man for them which are in his tents.<br/><br/>
+            17 And the children of Israel did so, and gathered, some more, some less.<br/><br/>
+            18 And when they did mete it with an omer, he that gathered much had nothing over, and he that gathered little had no lack; they gathered every man according to his eating.<br/><br/>
+            19 And Moses said, Let no man leave of it till the morning.<br/><br/>
+            20 Notwithstanding they hearkened not unto Moses; but some of them left of it until the morning, and it bred worms, and stank: and Moses was wroth with them.<br/><br/>
+            21 And they gathered it every morning, every man according to his eating: and when the sun waxed hot, it melted.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            According to our Bible reading for today, it is clearly stated that the anointing of yesterday or yesteryears could never be sufficient or appropriate in the handlings of today&apos;s challenges, hence, the need for a fresh or new one.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            It is noteworthy to know therefore, that the anointing of the Holy Spirit could be symbolically manifested in various ways as by fire, by water, by oil, by wind or breath and by the dove to mention but a few.
+          </p>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, thank you for another day in the land of the living, in Jesus mighty name.</li>
+          <li>Father, you are the Alfa and the Omega, please go ahead of me and order my steps today, in Jesus mighty name.</li>
+          <li>Dear Holy Spirit, renew and refresh your oil upon my life today, in Jesus mighty name.</li>
+          <li>Dear Holy Spirit, pour upon me your refresh oil and take away every form of dryness from my life today, be it physical or spiritual or financial, in Jesus mighty name.</li>
+          <li>Dear Holy Spirit, release your fresh fire upon my life today and burn into ashes every form of evil hiding in my life, in my home and in my business, in Jesus mighty name.</li>
+          <li>Dear Holy Spirit, breath into me and upon me afresh today, in Jesus mighty name.</li>
+          <li>Dear Holy Spirit, through the manifestation of your wind, please blow all form of weakness, weariness or wretchedness away from my life today, in Jesus mighty name.</li>
+          <li>Dear Holy Spirit, through the manifestation of the dove, please speak peace to every area of my life today, in Jesus mighty name.</li>
+          <li>Dear Holy Spirit, pour your water upon my life today and wash me clean from every form of sicknesses, diseases or curses, in Jesus mighty name.</li>
+          <li>Father, fill me afresh, in Jesus mighty name.</li>
+          <li>Father, renew your hand upon me and upon my family, in Jesus mighty name.</li>
+          <li>Father, renew your hand afresh upon your Church and let there be a revival like never before, in Jesus mighty name.</li>
+          <li>Father, release your fire upon the nations of the world and burn into ashes every form of evil, in Jesus mighty name.</li>
+          <li>Father, thank you for answers to all our prayers, in Jesus mighty name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            Never try to live on the old manna, nor seek to find help in Egypt. All must come from Jesus or thou art undone forever.
+            <span className="italic"> + Charles Spurgeon</span>
+          </li>
+          <li>
+            Old anointings will not suffice to impart unction to thy spirit; thine head must have fresh oil poured upon it from the golden horn of the sanctuary, or it will cease from its glory.
+            <span className="italic"> + Charles Spurgeon</span>
+          </li>
+          <li>
+            When you come in contact with the anointing of God, it not only affects your moment, it affects your tomorrow.
+            <span className="italic"> + Creflo A. Dollar</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">II Samuel 21 - 24</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-02-01',
     title: 'Fear Not',
     headline: 'Fear Not',
