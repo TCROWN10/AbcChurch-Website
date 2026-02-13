@@ -120,6 +120,1349 @@ const devotionalData = [
     ),
   },
   {
+    date: '2026-02-04',
+    title: "It's Time To Start Praying II",
+    headline: "It's Time To Start Praying II",
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">✋🏻🤚✋🏻🤚✋🏻🙏🤚✋🏻🤚✋🏻🤚</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Wednesday, February 4th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*It's Time To Start Praying II*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : 1 John 5:14 | NIV</span><br/>
+          <span className="text-xs md:text-sm">
+            This is the confidence we have in approaching God: that if we ask anything according to his will, he hears us.
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Philippians 4:6-7 | NKJV</span><br/>
+          <span className="text-xs md:text-sm">
+            6 Be anxious for nothing, but in everything by prayer and supplication, with thanksgiving, let your requests be made known to God;<br/><br/>
+            7 and the peace of God, which surpasses all understanding, will guard your hearts and minds through Christ Jesus.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            At the heart of the Reformation, Martin Luther spent the best two hours of each day alone with God. On one occasion, facing particularly difficult labors on the coming day, he told his friends:
+            &quot;I have so much scheduled for tomorrow that I must arise an hour earlier to have an extra hour alone with God.&quot;
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            John Welsh, the God-fearing son-in-law of John Knox, kept his robe close to his bed because a night seldom went by in which he did not rise to pray to his God. Often his wife would find him praying and weeping after midnight. She would ask the cause and receive the answer:
+            &quot;Oh my dear wife, I have three thousand souls to answer for, and I know not how it is with many of them!&quot;
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            Considering these forefathers and other saints of God, truly we do not know how to pray as we ought.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            Prayer is necessary for the believer for at least three reasons.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            🍏 <span className="font-semibold">God demands it,</span> and this is certainly sufficient in itself (Matt. 7:7–8; Luke 18:1; 1 Thess. 5:17).
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            🍏 <span className="font-semibold">Our own nature demands it</span> as we are needy and dependent by nature, even after receiving grace to believe.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            🍏 Every person needs <span className="font-semibold">a prayer-giving, prayer-hearing, and prayer-answering God for both natural and spiritual blessings,</span> for in God alone do we live, move, and have our being (Acts 17:28). And the route to fulfillment of right desires demands prayer. As a rule, it is upon prayer (not because of prayer) that God gives His grace and Spirit to those who ask Him.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            One of the best definitions of prayer is that of John Bunyan:
+          </p>
+          <p className="mb-2 text-sm md:text-base italic">
+            &quot;Prayer is a sincere, sensible, affectionate pouring out of the heart or soul to God, through Christ, in the strength and assistance of the Holy Spirit, for such things as God has promised, or according to his Word, for the good of the church, with submission in faith to the will of God.&quot;
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            This definition highlights for us a number of things that are part of true prayer.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            ( Cont&apos;d from yesterday&apos;s teaching)
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            1. Prayer Is Borne Out Of A Sincere Heart To God.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            2. Prayer Must Be Affectionate.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            3. Prayer Is Faith In Christ.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            4. <span className="font-semibold">Prayer Is The Holy Spirit Anchored</span> The Spirit of God also touches the wellspring of our affections, provoking and stirring up prayer within us. He touches the strings of the believer&apos;s heart and creates a sort of music within the heart. The consequence is that we cannot but pour out our desires to God in a manner consistent with Scripture.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            Romans 8:26 teaches us that in true prayer the Holy Spirit groans within us groanings which cannot be uttered—they are beyond expression. Without the Spirit, our prayers are mere empty words; but with Him, prayer becomes the effectual unbosoming of our hearts to God.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            5. <span className="font-semibold">Prayer Is Respect For The Boundaries Of Scripture.</span> Bunyan says, &quot;Prayer is only true when it is within the compass of God&apos;s Word; it is blasphemy, or at best vain babbling, when the petition is unrelated to the Book.&quot; You know that your prayer is not true when you can&apos;t affirm that it is scriptural. Using Scripture as our guide keeps us from much false prayer.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            6. <span className="font-semibold">Prayer Is Submission To The Will of God.</span> True prayer is submissive, from the heart, to God. It says, &quot;Thy will be done.&quot; In true prayer, Bunyan says, &quot;the people of the Lord in all humility lay themselves and their prayers, and all that they have, at the foot of their God, to be disposed of by him as he in his heavenly wisdom sees best.&quot;
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            This is what we see pictured for us in the biblical postures that are used in prayer: kneeling, showing reverence (2 Chron. 6:13); standing with a bowed head, showing humility (Luke 18:13); prostration, showing surrender (Luke 5:8, 12); and bowing, showing submission (Gen. 24:26). The attitude of reverence overlaps into a reverential posture.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            May each of us seek the Lord daily, asking: &quot;Lord, teach us to pray.&quot;
+          </p>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, please baptize me afresh with Your Holy Spirit of prayer, in Jesus mighty name.</li>
+          <li>Father, help me to pray and pray through, in Jesus name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            Prayer is where the action is.
+            <span className="italic"> + John Wesley</span>
+          </li>
+          <li>
+            Prayer does not change God, but it changes him who prays.
+            <span className="italic"> + Soren Kierkegaard</span>
+          </li>
+          <li>
+            To be a Christian without prayer is no more possible than to be alive without breathing.
+            <span className="italic"> + Martin Luther</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">I Kings 12 - 22</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    date: '2026-02-05',
+    title: 'Forgive, Forget & Forgo',
+    headline: 'Forgive, Forget & Forgo',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">🌿🌿🌳🌿🌿🌴🌿🌿🌳🌿🌿</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Thursday, February 5th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Forgive, Forget &amp; Forgo*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Mark 11:25 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            And whenever you stand praying, forgive, if you have anything against anyone, so that your Father also who is in heaven may forgive you your trespasses.&quot;
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Luke 17:3-4 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            3 Pay attention to yourselves! If your brother sins, rebuke him, and if he repents, forgive him,<br/><br/>
+            4 and if he sins against you seven times in the day, and turns to you seven times, saying, &apos;I repent,&apos; you must forgive him.&quot;
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            Forgiving someone is not easy. Believe me, I know from personal experience! But I also know it is possible. With promises found in scriptures like Philippians 4:13 and Romans 12:21, we can do whatever we need to do with God&apos;s power.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            Many of you know that my father sexually abused me from the time I was about three years old until I was 18. I left home as soon as I could and carried bitterness and unforgiveness in my heart for years.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            But over time, as I studied God&apos;s Word, He began to reveal some key truths about forgiveness.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            🍎 For example, many people think that forgiveness only benefits the other person—the person who hurt you—when, actually, the main beneficiary is you. You see, as you release your bitterness and anger, you are able to live with real peace and joy.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            🍎 Another reason people choose not to forgive is because they think it&apos;s too hard. Well, that&apos;s a lie too! Here are four steps you can take to genuinely forgive:
+          </p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *Make a Quality Decision*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Forgiveness is about more than saying a prayer, like, &quot;Lord, I forgive so-and-so.&quot; It is a serious decision that you make over and over again. It will probably be uncomfortable or even painful, but going through this process will always be worth it in the end.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Depend on God*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Fortunately, God gives us the strength to forgive. We can live with a prayerful mindset and attitude: &quot;Lord, help me not to be offended today. Keep me from unnecessary anger. If I get angry at someone, show me who it is. Give me the grace to forgive them.&quot; Ephesians 4:32 says,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              If you&apos;re easily offended or there&apos;s a person in your life who just annoys you, not only do you have to decide to forgive and live in peace, but you are going to have to depend on God for the grace to do it and make it a matter of prayer.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *Understand Your Emotions*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              One definition of emotion is to &quot;move out.&quot; Emotions provoke psychological changes that give us a desire to do something.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              For example, when somebody hurts you and you feel pain, the first thing you may want to do is tell them off. You may want to get back at them or just get away from them. But you don&apos;t have to make that choice.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Remember, your will gives you the ability to live beyond your feelings! Given time, your emotions will catch up with your decision to forgive.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *Pray for Your Enemies*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              In Matthew 5:44, Jesus commands us... Love your enemies and pray for those who persecute you.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              This may be the hardest teaching to follow, but we can be assured that it&apos;s ultimately for our benefit.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Years ago, I learned that someone who did business with our ministry was saying unkind things about me. I wanted to tell the guy off, but then God told me to buy him a gift and thank him for all his years of service!
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Believe me, it was not an easy decision to make. But once I got into agreement with God and put some action behind it, I became filled with so much joy I actually laughed out loud.
+            </p>
+          </div>
+
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">*Conclusion*</h4>
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">The Choice Is Yours</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Today, you have the choice to overcome evil with good. You can arrive at a new level of joy as you take meaningful actions to forgive.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              I want to encourage you to do yourself a favor and make the right choice. Forgive.
+            </p>
+          </div>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, I thank you for the gift and the blessing of a new day. Accept my thanks and praises, in Jesus name.</li>
+          <li>Father! Help me to forgive all that have wronged me, in Jesus name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            I believe forgiveness is the best form of love in any relationship. It takes a strong person to say they&apos;re sorry and an even stronger person to forgive.
+            <span className="italic"> + Yolanda Hadid</span>
+          </li>
+          <li>
+            To forgive is to set a prisoner free and discover that the prisoner was you.
+            <span className="italic"> + Lewis B. Smedes</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">II Kings 1 - 10</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    date: '2026-02-06',
+    title: 'Through It All',
+    headline: 'Through It All',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">😍😂😍▫🤩😀🤩▫😍😂😍</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Friday, February 6th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Through It All*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : 1 Peter 5:10 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            And after you have suffered a little while, the God of all grace, who has called you to his eternal glory in Christ, will himself restore, confirm, strengthen, and establish you.
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : James 1:2-4 | NIV</span><br/>
+          <span className="text-xs md:text-sm">
+            2 Consider it pure joy, my brothers and sisters, whenever you face trials of many kinds,<br/><br/>
+            3 because you know that the testing of your faith produces perseverance.<br/><br/>
+            4 Let perseverance finish its work so that you may be mature and complete, not lacking anything.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            Trials can be momentary or life-altering, but they are all unpleasant. They are the potholes of life that shake our faith and reveal what we are made of, especially where we are lacking. For believers, the hardest part of a trial is seeing the weakness in your faith and wondering why you find it so hard to trust God. We like to think we have it all together, but we do not, and we resent the events that bring us face to face with our limitations.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            The following reasons will encourage you, in whatever you are passing through.
+          </p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *The Intentions Of The Tester Are Good.*</h4>
+            <p className="mb-2 text-sm md:text-base italic">
+              For you know that the testing of your faith produces steadfastness. And let steadfastness have its full effect, that you may be perfect and complete, lacking in nothing. (James 1:3-4 ESV)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              You may feel like this trial is too heavy for you, that you can not stand up under its weight, and your faith is going to collapse in response. But the good news behind the test is the character of the Tester, our sovereign God who has declared his intentions in showing you the weaknesses in your faith. He intends good, to produce in you the strength you need to stand, and you can trust his steady and capable hand. He never fails, and He will not fail you.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Testing Reveals The State Of The Heart.*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              We try hard to believe that deep down, we are basically good people. The ugliness that surfaces in response to trials is therefore unusual and many times out of character. For Christians who hold fast to the sovereignty of God in all things, there may be thoughts that descend into blaming God for the faithless reactions of the trials he allows to test our faith.
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              Let no one say when he is tempted, &quot;I am being tempted by God,&quot; for God cannot be tempted with evil, and he himself tempts no one. But each person is tempted when he is lured and enticed by his own desire. (James 1:13-14 ESV)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Suppose you think of your situation as A + B = C.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              A is yourself,<br/>
+              B is God-ordained trial and<br/>
+              C is your sinful response. If you truly believe you are basically righteous, the temptation to sin must come with B (the God-ordained trial).
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              But James tells us something different. He tells us that the evil comes from A, (the desires of the heart that have been corrupted by indwelling sin). The God-ordained trial (B), is designed to bring the sin in A to the surface and give us the opportunity to let the Spirit change our heart.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Just because financial strain produces doubt of God&apos;s provision, or just because a life changing diagnosis makes one angry with God, but these trials does not have to.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              It&apos;s good news when we embrace these opportunities to look at what&apos;s in our hearts and take what we find before the Lord. Since God is not the source of the temptation, and the trial itself is not deterministic, we can take a step back and look at the situation as a diagnostic tool. No longer a vehicle of doom, trials become useful helpers to show us who we are, and provide opportunity for change.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              This is the miracle of the new creation:<br/>
+              A + B does not have to equal C!
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              In fact, our trials can produce good fruit and change us for the better where they used to leave us defeated.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *God Gives Without Reproach.*</h4>
+            <p className="mb-2 text-sm md:text-base italic">
+              If any of you lacks wisdom, let him ask God who gives generously to all without reproach, and it will be given him. (James 1:5 ESV)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              You see your lack of faith and feel worthy of condemnation, but God does not see you that way. Our Lord is gracious to sinners! Because of Jesus&apos; saving work, you can receive the wisdom from heaven you desperately need, simply by asking.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              The reproach we deserve for faithlessness in the face of Almighty God was borne by Jesus on the cross and forever removed from our blood-bought souls. Meditation on our reproach-free standing before God is a great reason for gladness, but that is not all that is offered to us! Just as our Lord is generous with his heavenly pardon the moment we received salvation, his generosity continues in the daily wisdom and grace he offers us to build our faith to completion, even and especially when trials come.
+            </p>
+          </div>
+
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">*Conclusion*</h4>
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">Embrace Trials with Joy</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Take heart weary struggler: God is generous and near! And he has good and perfect gifts that he will generously pour out on you when you ask in faith (as weak as this faith may be). With this mindset, you can embrace trials with joy because you know they are not without purpose; they will helpfully reveal hidden sin so it can be dealt with; and God will give you what you need to endure them faithfully.
+            </p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">
+              (Coined from the &apos;Three Reasons to Be Glad When Trials Come&apos; by Rachel Lehner)
+            </p>
+          </div>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, please order my steps, prosper and perfect that that concerns me today, in Jesus name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            The thankful heart sees the best part of every situation. It sees problems and weaknesses as opportunities, struggles as refining tools, and sinners as saints in progress.
+            <span className="italic"> + Francis Frangipane</span>
+          </li>
+          <li>
+            Do not fear the conflict, and do not flee from it; where there is no struggle, there is no virtue.
+            <span className="italic"> + John of Kronstad</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">II Kings 11 - 20</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    date: '2026-02-07',
+    title: 'Proof Of Love',
+    headline: 'Proof Of Love',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">❤️🩵❤️💍❤️🩵❤️💍❤️🩵❤️</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Saturday, February 7th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Proof Of Love*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : 1 Peter 4:8 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            Above all, keep loving one another earnestly, since love covers a multitude of sins.
+          </span>
+          <br/><br/>
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">1 John 4:8 ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            Anyone who does not love does not know God, because God is love.
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : 1 Corinthians 13:1-7 | NKJV</span><br/>
+          <span className="text-xs md:text-sm">
+            1 Though I speak with the tongues of men and of angels...though I have the gift of prophecy, and understand all mysteries and all knowledge, and though I have all faith...And though I bestow all my goods to feed the poor, and though I give my body to be burned, but have not love, it profits me nothing.<br/><br/>
+            4 Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up;<br/><br/>
+            5 does not behave rudely, does not seek its own, is not provoked, [c]thinks no evil;<br/><br/>
+            6 does not rejoice in iniquity, but rejoices in the truth;<br/><br/>
+            7 bears all things, believes all things, hopes all things, endures all things.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            The books of the Bible are many and varied, but the one single thread that runs through them all is love. God not only has love - God is love (1 John 4:8). Love is what prompted Christ&apos;s saving efforts on the cross (John 3:16). All the commandments found in the Hebrew laws, or given by Old Testament prophets, hang on the idea of loving God and loving one another. God&apos;s love, according to Isaiah, is greater and stronger than even the devotion of a nursing mother (Isaiah 49:15).
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            But how can we live out this love in our own lives?
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            Here are five beautiful ways the Bible shows us on how to live with love, they are through :
+          </p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *Thoughtfulness*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              By lifting up the broken, enlarging the small, and favoring the weak.
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              But Jesus said, &quot;Let the children alone, and do not hinder them from coming to me; for the kingdom of heaven belongs to such as these&quot;(Matthew 19:14).
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              In a society that, in many ways, treated children as little more than property, Jesus refused to let them be brushed aside. Rather, he spent time with them, blessed them, and make a special point to teach His followers that His Kingdom was made for &quot;such as these.&quot;
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Throughout His ministry, Jesus also blessed and worked alongside women - another people group relegated to the status of property and lesser citizens in most ancient cultures. He teaches them (John 4, Luke 10:39) heals them (Mark 5:24-34), and even chooses to reveal himself as risen Lord first to a woman, and commissioned her to be the first bearer of the Resurrection Gospel (John 20).
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              We can emulate the love and care Christ showed to the poor, the marginalized, and the sick. Learning from His example, you should always remember to be kind to all classes of people, even to those who are socially disadvantaged or less privileged.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Truthfulness*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              This is all about being faithful to keep your promises.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Living a life of truth is, perhaps, one of the most concrete way to show God&apos;s love to those around you. But that requires more than just honesty: it means keeping your words. Psalm 89:4 is a resolution every godly man and woman should strive to keep:
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              I will not violate my covenant or alter the word that went forth from my lips.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Keeping promises is so important for Christians because we serve a God of truth and love. Your consistency in this matter not only shows your respect for truth, but it serves those around you by building trust in relationships. It takes a true act of love to consider your words and actions so deeply before choosing to speak out.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *Tolerance*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              This is having patience with one another.
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              Put on then, as God&apos;s chosen ones, holy and beloved, compassionate hearts, kindness, humility, meekness, and patience, bearing with one another and, if one has a complaint against another, forgiving each other. (Colossians 3:12-13).
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Patience is not something that comes naturally to most of us. But we can increase patience in our hearts by turning to God&apos;s word, and remembering to walk in His supreme patience. 2 Peter 3:9 says,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              The Lord is not slow to fulfill his promise as some count slowness, but is patient toward you, not wishing that any should perish, but that all should reach repentance.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              According to Peter, God longs for each of us to have life and right relationship with him. If an eternal and holy God can display such grace towards you in the face of your stubbornness, why can&apos;t you show a portion of the same grace to one another? Patience in the midst of frustration and trial is one of the most shining examples of biblical love.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *Timely Forgiveness*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              That is, not withholding forgiveness as at the time due.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              When one is hurt, it can be very tempting for one to reserve a secret place in the heart where bitterness and anger are nurtured, even long after apologies have been exchanged. Colossians 3:13 says,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              Bear with each other and forgive whatever grievances you may have against one another. Forgive as the Lord forgave you.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              According to Mark 11:25, forgiving others is an act of emulating God. God forgives our sins freely. Christ offered his friendship to Zaccheus before he even repented for his sin. He promised eternal life to the thief on the cross, who no longer had a chance to try and live a righteous life. Forgiveness, we see in Scripture, is the path to wholeness.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">5. *Tightfisted-lessness*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              This is being generous.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              There are two aspects of generosity. First, and the one that comes to mind for many of us when we hear the command &quot;to give,&quot; is the material sense. For, as James exhorts,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              If one of you says to them, &quot;Go in peace; keep warm and well fed,&quot; but does nothing about their physical needs, what good is it?
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              The Bible has verse after verse reminding us that living with love means giving with love.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              But generosity is not just about giving money. If you follow the example of Christ and other biblical heroes, you will learn that being generous means living with an other-focused, self-sacrificing spirit. This means living with kindness, encouraging others, and offering your good works to one another. 1 Thessalonians 5:11 says,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              Therefore encourage one another and build one another up.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              And Galatians 6:2 also says,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              Bear one another&apos;s burdens, and so fulfill the law of Christ.
+            </p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">
+              (Coined from &quot;5 Ways the Bible Shows Us How to Live with Love&quot; by Debbie Holloway)
+            </p>
+          </div>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, make me an instrument of your peace and love, in Jesus mighty name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.
+            <span className="italic"> + Martin Luther King Jr.</span>
+          </li>
+          <li>
+            It is not a lack of love, but a lack of friendship that makes unhappy marriages.
+            <span className="italic"> + Friedrich Nietzsche</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">II Kings 21 - 25</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    date: '2026-02-08',
+    title: 'Understanding The Bible',
+    headline: 'Understanding The Bible',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">🖊️📓🖊️📜🙏📜🖊️📓🖊️</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Sunday, February 8th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Understanding The Bible*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : 2 Peter 1:20 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            Knowing this first of all, that no prophecy of Scripture comes from someone&apos;s own interpretation.
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : 2 Peter 3:16 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            16 He writes the same way in all his letters, speaking in them of these matters. His letters contain some things that are hard to understand, which ignorant and unstable people distort, as they do the other Scriptures, to their own destruction.<br/><br/>
+            17 Therefore, dear friends, since you have been forewarned, be on your guard so that you may not be carried away by the error of the lawless and fall from your secure position.<br/><br/>
+            18 But grow in the grace and knowledge of our Lord and Savior Jesus Christ. To him be glory both now and forever! Amen.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            One of the noblest pursuits a child of God can embark upon is to get to know and understand God better. The best way to accomplish this is to look carefully at the book He has written - the Bible, which communicates who He is and His plan for mankind.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            Interpreting the bible can then be said to be the discovering of the meaning to a passage, which is, the author&apos;s main thought or idea.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            There are a number of ways to study and understand the Bible, which includes :
+          </p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *Context*</h4>
+            <p className="mb-2 text-sm md:text-base italic">
+              Study this Book of Instruction continually. Meditate on it day and night so you will be sure to obey everything written in it. Only then will you prosper and succeed in all you do. Joshua 1:8 (NLT)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              You can answer 75 percent of your questions about a passage when you read the text. Reading the text involves looking at the near context (the verse immediately before and after) as well as the far context (the paragraph or the chapter that precedes and/or follows the passage you are studying).
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Cross-references*</h4>
+            <p className="mb-2 text-sm md:text-base italic">
+              A single witness shall not suffice...Only on the evidence of two witnesses or of three witnesses shall a charge be established. Deuteronomy 19:15 (ESV)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Let the Scripture interprets the Scripture. That is, let other passages in the Bible shed light on the passage you are looking at. You need the witnesses of other verses to ascertain the real meaning of the bible but at the same time, you should be careful not to assume that the same word or phrase in two different passages means the same thing.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *Culture*</h4>
+            <p className="mb-2 text-sm md:text-base italic">
+              Be imitators of me, as I am of Christ. Now I commend you because you remember me in everything and maintain the traditions even as I delivered them to you. 1 Corinthians 11:1-2 (ESV)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              The Bible was written long ago, so when we interpret it, we need to understand it from the writers&apos; cultural context. 2 Thessalonians 2:15 says,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              So then, brothers, stand firm and hold to the traditions that you were taught by us, either by our spoken word or by our letter (ESV).
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *Conclusion*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Having answered your questions for understanding by means of context, cross-reference, and culture, you can make a preliminary statement of the passage&apos;s meaning. Remember that if your passage consists of more than one paragraph, the author may be presenting more than one thought or idea.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">5. *Consultation*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Reading books known as commentaries and other spiritual literatures, which are written by Bible scholars, can also help you to interpret and understand the Scripture.
+            </p>
+          </div>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, open Your Word unto me today, in Jesus mighty name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            The weird thing about the bible is that almost everything in it is a metaphor.
+            <span className="italic"> + Elizabeth Acevedo</span>
+          </li>
+          <li>
+            The Word that will change a man must first show the man who he really is.
+            <span className="italic"> + Christian Michael</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">I Chronicles 1 - 10</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    date: '2026-02-09',
+    title: "Great Is God's Faithfulness",
+    headline: "Great Is God's Faithfulness",
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">🍏🍎🍐🍊🍋🤩🍋🍊🍐🍎🍏</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Monday, February 9th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Great Is God&apos;s Faithfulness*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Deuteronomy 7:9 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            Know therefore that the Lord your God is God, the faithful God who keeps covenant and steadfast love with those who love him and keep his commandments, to a thousand generations,
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Lamentations 3:22-23 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            22 The steadfast love of the Lord never ceases; his mercies never come to an end;<br/><br/>
+            23 they are new every morning; great is your faithfulness.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            The faithfulness of God is true and has been proven many times. In the Holy Scriptures, we can see that God is faithful and His Word is true. He cannot lie, nor will He break his unconditional promise that He says He will fulfill. Every covenant He made is kept. Every promise will come true.
+          </p>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, Thank you for the blessing of a new day, in Jesus mighty name.</li>
+          <li>Father, please fulfill all your beautiful promises in my life at this season, in Jesus mighty name.</li>
+          <li>Father, please speed up the fulfilment of your promises to me now! In Jesus mighty name.</li>
+          <li>Father, you promised me to be the head and above all. Please fulfill your promises to me today, in Jesus mighty name.</li>
+          <li>Father, you promised me prosperity and abundance, please fulfill your promise to me today, in Jesus mighty name.</li>
+          <li>Father, you promised to help me. Please fulfill your promises to me today, in Jesus mighty name.</li>
+          <li>Father, you promised me favour from you and from men, please fulfill your promises to me today, in Jesus mighty name.</li>
+          <li>Father, you promised me breakthrough at all side, please fulfill your promise to me today, in Jesus mighty name.</li>
+          <li>Father, you promised me healing and sound health, please heal me completely today, in Jesus mighty name</li>
+          <li>Father, you promised me divine provision, protection and presence, please fulfill your promises to me today, in Jesus mighty name.</li>
+          <li>Father, you are the promise keeping God, please fulfill all your beautiful promises to my life today, in Jesus mighty name.</li>
+          <li>Father, please remember and fulfill all your beautiful promises to my life today, in Jesus mighty name.</li>
+          <li>Father, you promised to fight my battles for me, Arise and fight for me today, in Jesus mighty name</li>
+          <li>Father, you&apos;re the promise keeping God, please fulfill all your beautiful promises to this nation, in Jesus Name.</li>
+          <li>Father, thank you for all the answers, in Jesus mighty name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            God never made a promise that was too good to be true.
+            <span className="italic"> + D. L. Moody</span>
+          </li>
+          <li>
+            Great is Thy faithfulness!&quot; Morning by morning new mercies I see; All I have needed Thy hand hath provided.
+            <span className="italic"> + Hymn</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">I Chronicles 11 - 20</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    date: '2026-02-10',
+    title: 'Actions Speaks Louder',
+    headline: 'Actions Speaks Louder',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">✊🫸😄🫷👈🙏👉🫸😄🫷✊</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Tuesday, February 10th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Actions Speaks Louder*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Matthew 7:20 | KJV</span><br/>
+          <span className="text-xs md:text-sm">
+            Wherefore by their fruits ye shall know them.
+          </span>
+          <br/><br/>
+          <span className="text-xs md:text-sm italic">
+            (Yes, just as you can identify a tree by its fruit, so you can identify people by their actions. NLT)
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : James 2:14-18,26 | GNT</span><br/>
+          <span className="text-xs md:text-sm">
+            14 My friends, what good is it for one of you to say that you have faith if your actions do not prove it? Can that faith save you?<br/><br/>
+            15 Suppose there are brothers or sisters who need clothes and don&apos;t have enough to eat.<br/><br/>
+            16 What good is there in your saying to them, &quot;God bless you! Keep warm and eat well!&quot;—if you don&apos;t give them the necessities of life?<br/><br/>
+            17 So it is with faith: if it is alone and includes no actions, then it is dead.<br/><br/>
+            18 But someone will say, &quot;One person has faith, another has actions.&quot; My answer is, &quot;Show me how anyone can have faith without actions. I will show you my faith by my actions.&quot;<br/><br/>
+            26 So then, as the body without the spirit is dead, also faith without actions is dead.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            Just like an apple tree can not produce oranges, our lives should produce the fruit of the Spirit instead of the fruits of the flesh. You have heard the saying that actions speak louder than words. Are your actions confessing Jesus louder than your words? Our faith should be seen through our actions. Somebody once said, &quot;Preach at all times. Use words when necessary.&quot; This is to reminds us that our actions matter because that is what other people sees. Our goal should be that the fruit of our actions points people to Jesus. Here are some reasons why actions speak louder than words.
+          </p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *Action Depict Faith.*</h4>
+            <p className="mb-2 text-sm md:text-base italic">
+              So also faith by itself, if it does not have works, is dead.(James 2:17 ESV)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              What are actions? A deed that is done. In other words, something that you say you will do and then go on and do it. What happens is simple. When you are commited to a deed and fulfill it, people are literally able to see that you are a person of your word. You will be able to relate to the fact that in this world full of discrepancy, deception and hypocrisy, it is not easy for anyone to accept everything that comes out of your mouth. But y acting upon what you say, you create a world of trust where people will know that you do what you say as a true Christian. James 3:13 says,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              Who is wise and understanding among you? By his good conduct let him show his works in the meekness of wisdom.(ESV)
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Reliance On Capability*</h4>
+            <p className="mb-2 text-sm md:text-base italic">
+              But someone will say, &quot;You have faith and I have works.&quot; Show me your faith apart from your works, and I will show you my faith by my works.(James 2:18 ESV)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              The best thing about keeping your word is that people are not only able to see that you do what you promised, but at the same time see that you are very capable. Your potential is unveiled and your work will shine through, assuring everyone that you know what you are doing. In terms of working relationships, this is perhaps the most important aspect of why actions speak louder and clearer than words.Titus 1:16 says,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              They profess to know God, but they deny him by their works. They are detestable, disobedient, unfit for any good work.(ESV)
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *Building Trust Through Delivery*</h4>
+            <p className="mb-2 text-sm md:text-base italic">
+              When words are many, transgression is not lacking, but whoever restrains his lips is prudent.(Proverbs 10:19 ESV)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              A world without trust is a world incomplete. And trust does not come within a day or even a week. It is developed through time, constant effort and persistent results. This is only possible when you ascertain that you deliver whatever it is that you have promised.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *Reputation Development*</h4>
+            <p className="mb-2 text-sm md:text-base italic">
+              In the same way, let your light shine before others, so that they may see your good works and give glory to your Father who is in heaven. (Matthew 5:16 ESV)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              You are known by the work that you do. Your reputation, be it among your friends or at your work place will be set based on what you do. This is why you must at all times, make sure that you only say things that you have intentions of doing, because your reputation will be marked buy your actions. Matthew 5:37 says,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              Let what you say be simply &apos;Yes&apos; or &apos;No&apos;; anything more than this comes from evil.(ESV)
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">5. *Words Become Actions*</h4>
+            <p className="mb-2 text-sm md:text-base italic">
+              So also faith by itself, if it does not have works, is dead.(James 2:17 ESV)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              There comes a time that your actions become your words. Why? Because people come to rely on the fact that what you are saying is not simply the movement of your mouth or the sound of your voice, but rather a plan of action that you plan to embark upon! Your words become a guarantee.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Therefore, no matter what the claim, you need to make sure that it is fulfilled the way you say it and when you say it.
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              But be doers of the word, and not hearers only, deceiving yourselves.(James 1:22 ESV)
+            </p>
+          </div>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, thank you for your faithfulness from January till this very period, in Jesus mighty name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            Walk the talk…talk ain&apos;t necessary.
+            <span className="italic"> + George Akomas Jr</span>
+          </li>
+          <li>
+            Thoughts do more. Words too much. Actions do much more.
+            <span className="italic"> + Israelmore Ayivor</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">I Chronicles 21 - 29</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    date: '2026-02-11',
+    title: 'The Full Armour Of God I',
+    headline: 'The Full Armour Of God I',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">👕👖👕🧦👕👖👕🧦👕👖👕</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Wednesday, February 11th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*The Full Armour Of God I*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse: Isaiah 59:17 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            He put on righteousness as a breastplate, and a helmet of salvation on his head; he put on garments of vengeance for clothing, and wrapped himself in zeal as a cloak.
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Ephesians 6:11-18 | CEV</span><br/>
+          <span className="text-xs md:text-sm">
+            11 Put on all the armor that God gives, so you can defend yourself against the devil&apos;s tricks.<br/><br/>
+            12 We are not fighting against humans. We are fighting against forces and authorities and against rulers of darkness and powers in the spiritual world.<br/><br/>
+            13 So put on all the armor that God gives. Then when that evil day comes, you will be able to defend yourself. And when the battle is over, you will still be standing firm.<br/><br/>
+            14 Be ready! Let the truth be like a belt around your waist, and let God&apos;s justice protect you like armor.<br/><br/>
+            15 Your desire to tell the good news about peace should be like shoes on your feet.<br/><br/>
+            16 Let your faith be like a shield, and you will be able to stop all the flaming arrows of the evil one.<br/><br/>
+            17 Let God&apos;s saving power be like a helmet, and for a sword use God&apos;s message that comes from the Spirit.<br/><br/>
+            18 Never stop praying, especially for others. Always pray by the power of the Spirit. Stay alert and keep praying for God&apos;s people.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            As Christians God has given us His Word and Spirit, powerful and true, so we will have the wisdom and protection to stand against the enemy. We are instructed to &apos;put on&apos; or simply put, &apos;wear&apos; like as a dress or regalia our God given protective coverings, which are :
+          </p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *The Belt Of Truth* (The Believer&apos;s Integrity)</h4>
+            <p className="mb-2 text-sm md:text-base">
+              A soldier in Paul&apos;s day had a leather girdle or belt that he tightened about his waist to protect his loins and carry his weapons of warfare, such as a dagger or sword. The belt also held his tunic together so it would not be snagged. In Christian armor, it is integrity that holds everything else together. If you do not have integrity in the big and small things of your life, you are going to lose the battle. Can people testify that you are a woman or man of integrity?
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *The Breastplate Of Righteousness* (The Believer&apos;s Purity)</h4>
+            <p className="mb-2 text-sm md:text-base">
+              The breastplate of a soldier was sometimes made of woven chain and used to cover the soldier&apos;s vital organs, (it is just like the modern bullet proof). For the Christian, the breastplate is righteousness.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              The enemy wants to attack you not only with lies, but also with impurity. He wants you to read filthy magazines, watch immoral movies, and engage in all temptations of the flesh. The bottom line is that Satan wants to get into your heart and mind. He is looking for a crack in your armor. And do not be fooled. Satan knows where that crack is, if there is. Is your heart pure before God?
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *The Shoes Of Peace* (The Believer&apos;s Tranquility)</h4>
+            <p className="mb-2 text-sm md:text-base">
+              A Roman soldier&apos;s would have hobnails on the sole, very much like the soccer boot because when they were fighting they needed solid footing from which to move.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Unless you have a solid footing of peace, you can never make war. When Satan comes against your tranquility, he throws out stones and briars of doubts and discouragement to cause you to stumble but for a user of this devotional, the devil shall not succeed on your life, in Jesus name.
+            </p>
+          </div>
+
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">*Note*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              We are to put on His whole, full and complete armor, staying alert, and praying, that God will equip all believers everywhere to &quot;stand strong.&quot;
+            </p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">
+              (To be continued)
+            </p>
+          </div>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, I commit my ways into your hands today, please, order my steps and direct my paths and actions, in Jesus name.</li>
+          <li>Father, you are the Lord of hosts, please, fight my battles for me, in Jesus name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            The more trust we place in the Lord and His promises, the greater will be our victory over the attacks of Satan, while the less we know and trust his promises, the more vulnerable we will be.
+            <span className="italic"> + Steven A. Cramer</span>
+          </li>
+          <li>
+            After defending the value of prepared prayers, the author cautions against over-reliance on them. Just as David could not fight in the armor of King Saul, we are called to fight in the way God has equipped us uniquely.
+            <span className="italic"> + N.T. Wright</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">II Chronicles 1 - 10</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    date: '2026-02-12',
+    title: 'The Full Armour Of God II',
+    headline: 'The Full Armour Of God II',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">👕👖👕🧦👕👖👕🧦👕👖👕</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Thursday, February 12th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*The Full Armour Of God II*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse: 2 Timothy 3:17 | ESV</span><br/>
+          <span className="text-xs md:text-sm">
+            That the man of God may be competent, equipped for every good work.
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Ephesians 6:11-18 | CEV</span><br/>
+          <span className="text-xs md:text-sm">
+            11 Put on all the armor that God gives, so you can defend yourself against the devil&apos;s tricks.<br/><br/>
+            12 We are not fighting against humans. We are fighting against forces and authorities and against rulers of darkness and powers in the spiritual world.<br/><br/>
+            13 So put on all the armor that God gives. Then when that evil day comes, you will be able to defend yourself. And when the battle is over, you will still be standing firm.<br/><br/>
+            14 Be ready! Let the truth be like a belt around your waist, and let God&apos;s justice protect you like armor.<br/><br/>
+            15 Your desire to tell the good news about peace should be like shoes on your feet.<br/><br/>
+            16 Let your faith be like a shield, and you will be able to stop all the flaming arrows of the evil one.<br/><br/>
+            17 Let God&apos;s saving power be like a helmet, and for a sword use God&apos;s message that comes from the Spirit.<br/><br/>
+            18 Never stop praying, especially for others. Always pray by the power of the Spirit. Stay alert and keep praying for God&apos;s people.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            In our earlier study on this subject, we discovered that there is a sharp difference between the armour of God and the FULL armour of God. The Lord had instructed the Church to be dressed up, in the full and complete regalia of God as good soldiers. This armour or military uniform as spelt out in our bible reading will help the Christian soldiers to carry the spiritual weapons effectively. The full armour of God are :
+            (1)The Belly of Truth (2) The Breastplate of Righteousness (3) The Shoes of Peace (4) The Shield of Faith (5) The Helmet of Salvation (6) The Sword of the Spirit.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            We shall continue from where we stopped :
+          </p>
+          <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">
+            ( cont&apos;d from yesterday&apos;s teachings)
+          </p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *The Shield Of Faith* (The Believer&apos;s Certainty)</h4>
+            <p className="mb-2 text-sm md:text-base">
+              The Roman soldier&apos;s shield was made of wood covered with leather. In that day, soldiers dipped arrows in oil, then lit them and shot them at the enemy. These shields were vital to protect the solider from getting burned.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Satan is going to fire flaming arrows of doubt at you. He wants to place subtle doubts in your mind about God and His Truth. He knows a spark can ignite a big fire in your heart, your mind or even in your body. You will need to feed your faith with God&apos;s word to starve your doubts.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">5. *The Helmet Of Salvation* (The Believer&apos;s Sanity)</h4>
+            <p className="mb-2 text-sm md:text-base">
+              A soldier used an helmet to protect his head because if his head was wounded, he would not be able to think. Every believer needs to have the mind of Christ under the control of the Almighty God.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              When a person is saved, for the first time he has his right mind. A person without the Spirit of the Lord Jesus Christ has a form of insanity. They do not operate with the mind that God made them to have. The most important thing for you to have at all times is an assurance of your salvation. Are you sure of your salvation,are you born again, have you accepted the Lord Jesus Christ as your lord and saviour? Please, do so today and you will be sure, the Lord will fight your battles in Jesus name.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">6. *Sword Of The Spirit* (The Word of God)</h4>
+            <p className="mb-2 text-sm md:text-base">
+              When we are tempted, the most effective weapon that God has given to us as believers is the sword of the Spirit, which is the Word of God. Jesus modeled this so beautifully during His temptation in the wilderness. When the devil tried temptation after temptation against Him, Jesus used the sword of the Spirit. Jesus spoke the Word of God to Satan. In Luke 4:1-13, Jesus responded,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              &quot;It is written, &apos;You shall worship the Lord God only. Him only you shall serve.&quot;
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              This again brought the Scripture back into context,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              &quot;It has been said, &apos;You shall not tempt the Lord your God.&apos;&quot;
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              The sword of the Spirit does works. Memorize the Scripture and use the Word of God to defeat Satan&apos;s lies and attacks.
+            </p>
+          </div>
+
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">*Conclusion*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Put on the whole, full and complete armor of God.
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              *The potency and the effectiveness of the weapons of our spiritual warfare depends on the armour of God we are dressed in.*
+            </p>
+          </div>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, I commit my ways into your hands today, please, order my steps and direct my paths and actions, in Jesus name.</li>
+          <li>Father, I need your help like never before, please show up for me earlier, in Jesus mighty Name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            The more trust we place in the Lord and His promises, the greater will be our victory over the attacks of Satan, while the less we know and trust his promises, the more vulnerable we will be.
+            <span className="italic"> + Steven A. Cramer</span>
+          </li>
+          <li>
+            After defending the value of prepared prayers, the author cautions against over-reliance on them. Just as David could not fight in the armor of King Saul, we are called to fight in the way God has equipped us uniquely.
+            <span className="italic"> + N.T. Wright</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">II Chronicles 11 - 20</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    date: '2026-02-13',
+    title: 'Dealing With Secret Sins',
+    headline: 'Dealing With Secret Sins',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">⬛◾🔳◼▪▪▪◼◾🔳⬛</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Friday, February 13th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Dealing With Secret Sins*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Proverbs 28:13 | GNT</span><br/>
+          <span className="text-xs md:text-sm">
+            If you hide your sins, you will not succeed. If you confess and reject them, you will receive mercy.
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Psalm 51:1-19 | KJV</span><br/>
+          <span className="text-xs md:text-sm">
+            1 Have mercy upon me, O God, according to thy lovingkindness: according unto the multitude of thy tender mercies blot out my transgressions.<br/><br/>
+            2 Wash me throughly from mine iniquity, and cleanse me from my sin.<br/><br/>
+            3 For I acknowledge my transgressions: and my sin is ever before me.<br/><br/>
+            4 Against thee, thee only, have I sinned, and done this evil in thy sight: that thou mightest be justified when thou speakest, and be clear when thou judgest.<br/><br/>
+            5 Behold, I was shapen in iniquity; and in sin did my mother conceive me.<br/><br/>
+            6 Behold, thou desirest truth in the inward parts: and in the hidden part thou shalt make me to know wisdom.<br/><br/>
+            7 Purge me with hyssop, and I shall be clean: wash me, and I shall be whiter than snow.<br/><br/>
+            8 Make me to hear joy and gladness; that the bones which thou hast broken may rejoice.<br/><br/>
+            9 Hide thy face from my sins, and blot out all mine iniquities.<br/><br/>
+            10 Create in me a clean heart, O God; and renew a right spirit within me.<br/><br/>
+            11 Cast me not away from thy presence; and take not thy holy spirit from me.<br/><br/>
+            12 Restore unto me the joy of thy salvation; and uphold me with thy free spirit.<br/><br/>
+            13 Then will I teach transgressors thy ways; and sinners shall be converted unto thee.<br/><br/>
+            14 Deliver me from bloodguiltiness, O God, thou God of my salvation: and my tongue shall sing aloud of thy righteousness.<br/><br/>
+            15 O Lord, open thou my lips; and my mouth shall shew forth thy praise.<br/><br/>
+            16 For thou desirest not sacrifice; else would I give it: thou delightest not in burnt offering.<br/><br/>
+            17 The sacrifices of God are a broken spirit: a broken and a contrite heart, O God, thou wilt not despise.<br/><br/>
+            18 Do good in thy good pleasure unto Zion: build thou the walls of Jerusalem.<br/><br/>
+            19 Then shalt thou be pleased with the sacrifices of righteousness, with burnt offering and whole burnt offering: then shall they offer bullocks upon thine altar.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            Our Lord taught repeatedly that sin bottled up on the inside, concealed from everyone else&apos;s view, carries the very same guilt as sin that manifests itself in the worst forms of ungodly behavior. Those who hate others are as guilty as those who act out their hatred; and those who indulge in private lusts are as culpable as wanton adulterers (Matthew 5:21-30).
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            So Christians are not to think of secret sins as somehow less serious and more respectable than the sins everyone sees. Here are three reasons secret sin is especially abhorrent:
+          </p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *Because God Sees The Heart.*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              The Bible declares that God will one day judge the secrets of every heart (Romans 2:16). He &quot;will bring every act to judgment, everything which is hidden, whether it is good or evil&quot; (Ecclesiastes 12:14).
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Not only that, secret sins will not remain secret. &quot;The Lord [will] bring to light the things hidden in the darkness&quot; (1 Corinthians 4:5). Jesus said, &quot;There is nothing covered up that will not be revealed, and hidden that will not be known. Accordingly, whatever you have said in the dark shall be heard in the light, and what you have whispered in the inner rooms shall be proclaimed upon the housetops&quot; (Luke 12:2-3). Those who think they can evade shame by sinning in secret will discover one day that open disclosure of their secrets before the very throne of God is the worst shame of all.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              It is foolishness to think you can mitigate your sin by keeping it secret. It is double foolishness however, to tell yourself that you are better than others because your sins are hidden to men in private rather than in public. And the very height of foolishness is to convince yourself that you can get away with sin by covering it up. Proverbs 28:13 says,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              &quot;He that covers his sins shall not prosper: but whoever confesses and forsakes them shall have mercy.&quot; (AKJV)
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              All sin is an assault against our holy God, whether it is done in public or in secret. And God, who beholds even the innermost secrets of the heart, sees our sin clearly, no matter how well we think we have covered it.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Because Sin In The Mind Is A Fruit Of The Same Moral Defect That Produces Deeds Of Sin.*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Jesus said hatred carries the same kind of guilt as murder, and lust is the very essence of adultery, All sins are of equal enormity.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              In His Sermon on the Mount Jesus was pointing out that anger arises from the same moral defect as murder; and the one who lusts suffers from the same character flaw as the adulterer. Furthermore, those who engage in thought-sins are guilty of violating the same moral precepts as those who commit acts of murder and adultery.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              In other words, secret sins of the heart are morally tantamount to the worst kind of evil deeds. The lustful person has no right to feel morally superior to a wanton fornicator. whoever indulges in lust is proof that such a one is capable of immoral acts as well, Whoever hate his brother shows that he has murder lurking in his heart.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Christ taught us to view our own secret sins with the same moral revulsion we feel for wanton acts of public sin.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *Because Hidden Sin Involves The Compounding Sin Of Hypocrisy.*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Hypocrisy is a grave sin in its own right. It also produces an especially debilitating kind of guilt, because by definition hypocrisy entails the concealing of sin. And the only remedy for any kind of sin involves uncovering your guilt through sincere confession.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Hypocrisy therefore permeates the soul with a predisposition against genuine repentance. That is why Jesus referred to hypocrisy as &quot;the leaven of the Pharisees&quot; (Luke 12:1).
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Hypocrisy also works directly against the conscience. There is no way to be hypocritical without searing the conscience. So hypocrisy inevitably makes way for the most vile, soul-coloring, character-damaging secret sins. Thus hypocrisy compounds itself, just like leaven.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Therefore, repent today of type of sins, before it is too late and the Lord shall save your soul in Jesus name.
+            </p>
+          </div>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, please forgive all of my sins and wash me clean by the blood of Jesus, in Jesus name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            The recognition of sin is the beginning of salvation.
+            <span className="italic"> + Martin Luther</span>
+          </li>
+          <li>
+            Secret sins commonly lie nearest the heart.
+            <span className="italic"> + Thomas Brooks</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">II Chronicles 21 - 30</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-02-02',
     title: 'Fresh Oil',
     headline: 'Fresh Oil',
