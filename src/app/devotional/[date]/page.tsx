@@ -1463,6 +1463,136 @@ const devotionalData = [
     ),
   },
   {
+    date: '2026-02-14',
+    title: 'Marital Maturity & Marital Stability',
+    headline: 'Marital Maturity & Marital Stability',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">💃💍🕺💙💃💍🕺💙💃💍🕺</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Saturday, February 14th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Marital Maturity &amp; Marital Stability*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Genesis 2:24 | CEV</span><br/>
+          <span className="text-xs md:text-sm">
+            That&apos;s why a man will leave his own father and mother. He marries a woman, and the two of them become like one person.
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading: Mark 10:6-9 | NKJV</span><br/>
+          <span className="text-xs md:text-sm">
+            6 But from the beginning of the creation, God &apos;made them male and female.&apos;<br/><br/>
+            7 &apos;For this reason a man shall leave his father and mother and be joined to his wife,<br/><br/>
+            8 and the two shall become one flesh&apos;; so then they are no longer two, but one flesh.<br/><br/>
+            9 Therefore what God has joined together, let not man separate.&quot;
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            Marriage is not meant for children, but for men and women who are matured not only in chronological age but also spiritually, emotionally, socially, and financially.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            Therefore, stable and successful marriages depends largely on these areas of maturity :
+          </p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *Physical Maturity*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              This does not just come with the chronological age but also with the acceptance of responsibility. The person to marry must attain about 90% of his or her physical maturation. It is said that an individual may continue to mature physically until the age of 30years. The implication of this is that marriage in the third decade of life appears to be most appropriate (HPF, online).
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              According to the National Center for Health Statistics USA. In almost half of all marriages involving a bride who is 18years old or younger at the time of marriage, separation or divorce occurs within 10years (Young, online).
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Financial Maturity*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Financial maturity entails having a regular source of income, financial intelligence and investment mentality. There are many needs in marriage which love cannot meet. Expenses like mortgage, children&apos;s school fees, feeding expense, tax and clothing, it takes only money to do that. Some refer to this as vocational maturity and that the person without work experience is hardly prepared for the role of marriage (HPF, online).
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *Mental Maturity*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              This relates to the developed ability to use the mind and intelligence; the ability to recover quickly from disintegration or emotional disturbance.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              A mentally mature person does not constantly run back to daddy and mummy after marriage.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *Spiritual Maturity*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              This is necessary because of the attack of the enemy on the institution of marriage from the spiritual realm as it was in the Garden of Eden (Genesis 3:1-24).
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Spiritual maturity begins with salvation from sin and the eradication from the mind if all forms of myth and evil philosophy (Romans 12:2). Spiritual maturity gives a person the ability to operate by faith amidst the storms of life (Romans 4:17-21).
+            </p>
+          </div>
+
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">*Conclusion*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Maturity in essence implies the following:
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              You must be matured enough to have established a sense of personal identity, to have discovered yourself and to have developed a direction for your life that offers promise for the future.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Be matured enough to be ready to settle down with one person exclusively, with responsibility.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              You are grown up enough to have outgrown childish dependence upon your parents.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              You are matured enough to marry when you are ready to love and to be loved deeply and fully as a whole person.
+            </p>
+            <p className="mb-2 text-sm md:text-base italic text-xs md:text-sm">
+              (Adapted from &quot;Journey Into Marriage And Family Life - IBTC Module)
+            </p>
+          </div>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer Points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, let there be peace in every Christian homes today, in Jesus mighty name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>Your heart is precious to God so guard it, and wait for the man who will treasure it.</li>
+          <li>Broken things can become blessed things, if you let God do the mending.</li>
+          <li>A God centered relationship is worth the wait.</li>
+          <li>A real man opens more than your doors. He opens his Bible.</li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">II Chronicles 31 - 36</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-02-02',
     title: 'Fresh Oil',
     headline: 'Fresh Oil',

@@ -7,6 +7,13 @@ import Footer from '@/components/layout/Footer';
 
 const devotionalData = [
   {
+    date: '2026-02-14',
+    title: 'Marital Maturity & Marital Stability',
+    headline: 'Marital Maturity & Marital Stability',
+    image: '/images/content/Devotional-iHero.png',
+    // You can add a summary or excerpt here if desired
+  },
+  {
     date: '2026-02-13',
     title: 'Dealing With Secret Sins',
     headline: 'Dealing With Secret Sins',
