@@ -1593,6 +1593,161 @@ const devotionalData = [
     ),
   },
   {
+    date: '2026-02-15',
+    title: 'Sing For Joy',
+    headline: 'Sing For Joy',
+    image: '/images/content/Devotional-iHero.png',
+    content: (
+      <div className="text-white">
+        <div className="mb-4 text-center">
+          <p className="text-lg md:text-xl mb-2">🎼🎻🎹🎷🎼🎺🎼🥁🎹🎸🎼</p>
+          <p className="font-bold text-base md:text-lg mb-1">*All Believers Christian Church*</p>
+          <p className="font-bold text-base md:text-lg mb-4">*CONNECTLife Daily Devotional*</p>
+          <p className="text-sm md:text-base mb-4">Saturday, February 15th, 2026</p>
+          <p className="font-bold text-lg md:text-xl mb-6">*Sing For Joy*</p>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Memory Verse : Psalm 147:1</span><br/>
+          <span className="text-xs md:text-sm">
+            Praise the LORD! For it is good to sing praises to our God; For it is pleasant and praise is becoming.
+          </span>
+        </div>
+        <div className="mb-4">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">Bible Reading : Ephesians 5:18-20</span><br/>
+          <span className="text-xs md:text-sm">
+            18 And be not drunk with wine, wherein is excess; but be filled with the Spirit;<br/><br/>
+            19 Speaking to yourselves in psalms and hymns and spiritual songs, singing and making melody in your heart to the Lord;<br/><br/>
+            20 Giving thanks always for all things unto God and the Father in the name of our Lord Jesus Christ.
+          </span>
+        </div>
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-2 text-[#FF602E]">*Message*</h3>
+          <p className="mb-2 text-sm md:text-base">
+            It is good to remember the Bible does not say, &quot;Sing with a beautiful voice&quot; or even &quot;Sing on key.&quot; In fact, the Word of God tells us to &quot;make a joyful noise&quot; to the Lord (Psalm 98:4). God just wants us to open our mouth and sing to Him not as a form or ritual, but with our hearts. Not minding how you sound, when you sing to Him, God is happy, and you will be filled with joy.
+          </p>
+          <p className="mb-2 text-sm md:text-base">
+            As true worshippers, you do not have to wait till you get to church or wait for certain settings to sing to Him. In fact, singing to the Lord on your own in the private moments of your everyday lives can yield some marvelous benefits, some of which are :
+          </p>
+          
+          <div className="mb-4 mt-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">1. *Singing Helps Contact God And Enjoy His Presence*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              From the moment we wake up in the morning until we go to sleep at night, our lives are filled with things to do, responsibilities to fulfill, and matters that occupy our minds. We may want to spend some time with Jesus in the mornings, but thoughts and anxieties can flood our mind before we even get started. We can counteract this problem in perhaps an unexpected way: by opening our mouth to sing to the Lord.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Singing to the Lord helps cut through the haze of sleep or the crowd of cares in our mind, and ushers us into our spirit, where we contact Christ.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              As we sing our hearts can be warmed, our thoughts quieted, and our hearts directed to Christ to enjoy His presence at the start of our day.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">2. *Singing Let The Word Of Christ Dwells In You Richly*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              In Colossians 3:16 brother Paul says,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              &quot;Let the word of Christ dwell in you richly in all wisdom, teaching and admonishing one another with psalms and hymns and spiritual songs, singing with grace in your hearts to God.&quot;
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              This verse tells us that singing with grace in our hearts to God is one way we can let the Word dwell in us richly.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Throughout the centuries, inspired believers have written thousands of psalms, hymns, and spiritual songs. Their hymns, rich with spiritual experiences and full of biblical truths, can help us let the word of Christ dwell in us.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              We can also sing the Scriptures themselves, just as they are, using a familiar tune to sing a verse to the Lord.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              We can even create a tune of our own. It doesn&apos;t have to be elaborate or musically correct. It&apos;s just a simple means to help us sing the Word of God, something between us and the Lord that lets His Word abide in us.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              A verse we enjoy in the morning can remain in us all day long as we sing our verses songs to the Lord throughout the day. This may take some practice, but singing the Scriptures is an enjoyable way to let the Word fill us.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">3. *Singing Helps To Spontaneously Praise And Worship The Lord Anywhere, Anytime*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              At times an unspeakable thankfulness or inexpressible praise can well up within our being, and we find our words alone aren&apos;t enough to convey the depth of our feeling to the Lord. At such times, singing can provide the perfect outlet for our worship to Him. And we don&apos;t have to wait for a certain time or place; we can sing to the Lord right then and there!
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Let&apos;s say we&apos;re taking a walk, reflecting on what the Lord has done for us, and we&apos;re filled with a sense of thankfulness. We can express our thanks to Him right away with a song that puts words to our feeling.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              We might sing the lines of Charles Wesley&apos;s well-known hymn, &quot;O for a thousand tongues to sing, my great Redeemer&apos;s praise, the glories of my God and King, the triumphs of His grace.&quot;
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              If we can learn and memorize a good number of hymns, we&apos;ll be better able to sing them anytime throughout our day. Even just learning a few short choruses and singing them to the Lord can enrich our walk with Him. Websites like hymnal.net have thousands of songs, with both their music and words, posted for us to learn and enjoy. And, again, we can always compose our own!
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">4. *Singing Helps Enrich And Deepen Our Personal Walk With Christ*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              Christ wants to have a personal, affectionate, and intimate relationship with each of us, and singing helps us open our heart to Him in a way that&apos;s sometimes difficult using just words. By singing we can tell the Lord all that&apos;s in us, whether it be our sadness, needs, or fears, or our appreciation, love, and consecration to Him. Singing helps us contact the Lord in a deeper way with our whole heart. For instance, a hymn like &quot;I Surrender All&quot; can really touch our heart and help us open to Him.
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              As Christians, we have a wonderful treasury of hymns written by believers who have experienced the Lord in a deep way, and singing their hymns can help us grow in our relationship with Him. Their songs can inspire us, show us more of Christ and what He is to us, become our own prayers to Him, and enrich our experience and enjoyment of Him.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-semibold text-sm md:text-base mb-2 text-[#FF602E]">5. *Singing Helps To Be Filled With The Spirit*</h4>
+            <p className="mb-2 text-sm md:text-base">
+              In Ephesians 5:18-19, Paul instructs the believers,
+            </p>
+            <p className="mb-2 text-sm md:text-base italic">
+              &quot;Do not be drunk with wine, in which is dissoluteness, but be filled in spirit, speaking to one another in psalms and hymns and spiritual songs, singing and psalming with your heart to the Lord.&quot;
+            </p>
+            <p className="mb-2 text-sm md:text-base">
+              Paul tells us to be filled in our regenerated spirit instead of being drunk with wine in our physical body. When we sing with our heart to the Lord, we can be filled in spirit with our rich and wonderful Christ. We may find even ourselves filled to overflowing, effortlessly sharing God&apos;s Word to the people around us.
+            </p>
+          </div>
+        </div>
+
+        <h4 className="font-semibold mt-4 mb-2 text-sm md:text-base text-[#FF602E]">*Prayer points*</h4>
+        <ol className="list-decimal list-inside ml-2 md:ml-4 mb-2 text-sm md:text-base space-y-1">
+          <li>Father, Let something great be born of me, in Jesus mighty name.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-6 mb-2 text-sm md:text-base text-[#FF602E]">*Quotes*</h4>
+        <ul className="list-disc list-inside ml-4 md:ml-6 mb-2 text-sm md:text-base space-y-2">
+          <li>
+            He who sings frightens away his ills.
+            <span className="italic"> + Miguel de Cervantes</span>
+          </li>
+          <li>
+            Some days there won&apos;t be a song in your heart. Sing anyway.
+            <span className="italic"> + Emory Austin</span>
+          </li>
+          <li>
+            Those who wish to sing always find a song.
+            <span className="italic"> + Swedish Proverb</span>
+          </li>
+        </ul>
+
+        <div className="mt-4 mb-6">
+          <span className="font-semibold text-[#FF602E] text-sm md:text-base">*BIBLE IN ONE YEAR*</span><br/>
+          <span className="text-sm md:text-base">Ezra 1 - 10</span>
+        </div>
+
+        <div className="mt-6 text-center mb-4">
+          <p className="text-base md:text-lg font-semibold mb-1">🙏 *Good Morning* 🙏</p>
+          <p className="text-base md:text-lg font-semibold mb-4">&amp; *God Bless You Today*</p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm md:text-base font-semibold mb-2">*Conneclife Daily Devotional*</p>
+          <p className="text-xs md:text-sm mb-1">www.abcchurch.us</p>
+          <p className="text-xs md:text-sm mb-2">abcchurchhq@gmail.com</p>
+          <p className="text-xs md:text-sm">GodlyConnection | GodlyCollection</p>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2026-02-02',
     title: 'Fresh Oil',
     headline: 'Fresh Oil',
