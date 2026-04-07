@@ -90,16 +90,27 @@ export interface UpdateUserDetailsRequest {
 // Donation Types
 export type DonationType = 'TITHE' | 'OFFERING' | 'DONATION';
 
+export type DonationRecurringPeriod = 'monthly' | 'weekly' | 'yearly';
+
 export interface CreateCheckoutRequest {
   amount: number;
   type: DonationType;
   currency?: string;
   isRecurring?: boolean;
+  recurringPeriod?: DonationRecurringPeriod;
+  designation?: string;
+  displayCategory?: string;
+}
+
+export interface CreateGuestCheckoutRequest extends CreateCheckoutRequest {
+  email: string;
+  guestName?: string;
 }
 
 export interface CreateCheckoutResponse {
-  url: string;
+  url: string | null;
   sessionId: string;
+  donationId: string;
 }
 
 export interface Donation {
@@ -127,10 +138,9 @@ export interface GetAllDonationsParams {
 }
 
 export interface DonationStats {
-  total: number;
-  count: number;
-  byType: Record<DonationType, number>;
-  byStatus: Record<string, number>;
+  totalAmount: number;
+  totalCount: number;
+  byType: Array<{ type: DonationType; amount: number; count: number }>;
 }
 
 // Message Types

@@ -10,14 +10,14 @@ export default function DashboardOverview() {
   const stats = [
     {
       name: 'Total Donations',
-      value: donationStats ? `$${donationStats.total.toLocaleString()}` : '$0',
+      value: donationStats ? `$${Number(donationStats.totalAmount).toLocaleString()}` : '$0',
       change: '+12%',
       icon: '💰',
       color: 'bg-green-500',
     },
     {
       name: 'Donation Count',
-      value: donationStats?.count || 0,
+      value: donationStats?.totalCount || 0,
       change: '+8%',
       icon: '📊',
       color: 'bg-blue-500',
@@ -118,10 +118,10 @@ export default function DashboardOverview() {
               <div className="text-center py-4">Loading...</div>
             ) : donationStats ? (
               <div className="space-y-4">
-                {Object.entries(donationStats.byType).map(([type, amount]) => (
-                  <div key={type} className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-900">{type}</span>
-                    <span className="text-sm text-gray-600">${Number(amount).toLocaleString()}</span>
+                {donationStats.byType.map((row) => (
+                  <div key={row.type} className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-gray-900">{row.type}</span>
+                    <span className="text-sm text-gray-600">${Number(row.amount).toLocaleString()}</span>
                   </div>
                 ))}
               </div>

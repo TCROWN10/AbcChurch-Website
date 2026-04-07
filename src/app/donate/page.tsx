@@ -1,23 +1,19 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
-import { loadStripe } from '@stripe/stripe-js';
+import { useCreateCheckoutMutation, useCreateGuestCheckoutMutation } from '@/store';
+import type { DonationType } from '@/types/api';
 
-// Types
-type DonationFormData = {
-  amount: number;
-  category: string;
-  type: 'oneoff' | 'recurring';
-  frequency?: 'weekly' | 'monthly' | 'yearly';
-  email?: string;
-};
-
-type CheckoutResponse = {
-  url?: string;
-  sessionId?: string;
-  error?: string;
+const GIVING_CATEGORY_TO_API: Record<
+  string,
+  { type: DonationType; displayCategory: string }
+> = {
+  Tithes: { type: 'TITHE', displayCategory: 'Tithes' },
+  Offerings: { type: 'OFFERING', displayCategory: 'Offerings' },
+  'Building Fund': { type: 'DONATION', displayCategory: 'Building Fund' },
+  Missions: { type: 'DONATION', displayCategory: 'Missions' },
 };
 
 const paymentMethods = [
@@ -94,7 +90,10 @@ const formVariants = {
 };
 
 export default function DonatePage() {
-  const router = useRouter();
+  const [createCheckout, { isLoading: checkoutLoading }] = useCreateCheckoutMutation();
+  const [createGuestCheckout, { isLoading: guestCheckoutLoading }] = useCreateGuestCheckoutMutation();
+  const [hasAuthToken, setHasAuthToken] = useState(false);
+  const [donorMode, setDonorMode] = useState<'account' | 'guest'>('guest');
   const [tab, setTab] = useState<'oneoff' | 'regular'>('oneoff');
   const [amount, setAmount] = useState('0.00');
   const [editingAmount, setEditingAmount] = useState(false);
@@ -102,7 +101,9 @@ export default function DonatePage() {
   const [category, setCategory] = useState(givingCategories[0]);
   const [frequency, setFrequency] = useState(frequencies[1]);
   const [email, setEmail] = useState('');
+  const [guestName, setGuestName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const isSubmitting = isLoading || checkoutLoading || guestCheckoutLoading;
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [generalError, setGeneralError] = useState<string>('');
   const amountInputRef = useRef<HTMLInputElement>(null);
@@ -120,7 +121,15 @@ export default function DonatePage() {
       setErrors({});
       setGeneralError('');
     }
-  }, [amount, category, tab, frequency, email]);
+  }, [amount, category, tab, frequency, email, guestName, donorMode]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const token = localStorage.getItem('accessToken') || sessionStorage.getItem('accessToken');
+    const isAuthed = Boolean(token);
+    setHasAuthToken(isAuthed);
+    setDonorMode(isAuthed ? 'account' : 'guest');
+  }, []);
 
   // Helper function to convert frequency display to API format
   const getFrequencyValue = (displayFreq: string): string => {
@@ -136,82 +145,80 @@ export default function DonatePage() {
     }
   };
 
-  // Helper function to convert donation category to API format
-  const getCategoryType = (category: string): string => {
-    switch (category) {
-      case 'Tithes':
-        return 'TITHE';
-      case 'Offerings':
-        return 'OFFERING';
-      case 'Building Fund':
-        return 'BUILDING_FUND';
-      case 'Missions':
-        return 'MISSIONS';
-      default:
-        return 'OFFERING';
-    }
-  };
-
-  // Form submission handler
+  // Form submission handler — checkout is created on the Nest API (via /api/proxy)
   const handleSubmit = async () => {
     setIsLoading(true);
     setErrors({});
     setGeneralError('');
 
     try {
-      // Prepare form data
-      const formData = {
-        amount: Math.round(parseFloat(amount) * 100) || 0, // Convert to cents
-        type: category.toUpperCase().replace(' ', '_'), // Convert to format like 'BUILDING_FUND'
-        currency: 'USD',
-        isRecurring: tab === 'regular',
-        ...(email.trim() && { email: email.trim() }), // Only include if not empty
-      };
+      const token =
+        typeof window !== 'undefined'
+          ? localStorage.getItem('accessToken') || sessionStorage.getItem('accessToken')
+          : null;
 
-      // Basic validation
-      if (formData.amount <= 0) {
+      const amountDollars = parseFloat(amount);
+      if (!Number.isFinite(amountDollars) || amountDollars <= 0) {
         setErrors({ amount: 'Please enter a valid donation amount' });
         setIsLoading(false);
         return;
       }
 
-      // Make API call to create checkout session
-      const response = await fetch('/api/donations/create-checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data: CheckoutResponse = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to create checkout session');
+      const categoryMap = GIVING_CATEGORY_TO_API[category];
+      if (!categoryMap) {
+        setErrors({ category: 'Please choose a giving category' });
+        setIsLoading(false);
+        return;
+      }
+      if (donorMode === 'guest' && !email.trim()) {
+        setErrors({ email: 'Please enter your email address' });
+        setIsLoading(false);
+        return;
       }
 
-      // Handle the response - prefer URL redirect if available
+      const payload = {
+        amount: amountDollars,
+        type: categoryMap.type,
+        currency: 'USD' as const,
+        isRecurring: tab === 'regular',
+        recurringPeriod:
+          tab === 'regular'
+            ? (getFrequencyValue(frequency) as 'weekly' | 'monthly' | 'yearly')
+            : undefined,
+        displayCategory: categoryMap.displayCategory,
+      };
+
+      const useAccountMode = donorMode === 'account' && Boolean(token);
+
+      const data = useAccountMode
+        ? await createCheckout(payload).unwrap()
+        : await createGuestCheckout({
+            ...payload,
+            email: email.trim(),
+            guestName: guestName.trim() || undefined,
+          }).unwrap();
+
       if (data.url) {
         window.location.href = data.url;
-      } else if (data.sessionId) {
-        const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
-        if (stripe) {
-          const { error } = await stripe.redirectToCheckout({
-            sessionId: data.sessionId,
-          });
-          if (error) throw error;
-        }
-      } else {
-        throw new Error('No valid response from server');
+        return;
       }
 
-    } catch (error) {
+      throw new Error('Checkout URL was not returned. Please try again.');
+    } catch (error: unknown) {
       console.error('Donation submission error:', error);
-      setGeneralError(
-        error instanceof Error 
-          ? error.message 
-          : 'An error occurred. Please try again.'
-      );
+      let msg = 'An error occurred. Please try again.';
+      if (error && typeof error === 'object' && 'data' in error) {
+        const d = error.data as { message?: string; data?: { error?: string; message?: string } };
+        msg =
+          d?.data?.error ||
+          d?.data?.message ||
+          d?.message ||
+          (typeof d === 'string' ? d : msg);
+      } else if (error instanceof Error) {
+        msg = error.message;
+      }
+      setGeneralError(msg);
+    } finally {
       setIsLoading(false);
     }
   };
@@ -239,6 +246,16 @@ export default function DonatePage() {
       </motion.div>
       {/* Overlay Content */}
       <div className="relative z-20 w-full flex flex-col md:flex-row items-center justify-center gap-8 pt-32 md:pt-32">
+        <div className="absolute top-28 left-1/2 -translate-x-1/2 z-30 w-full max-w-lg px-4">
+          <div className="rounded-lg bg-black/50 text-white text-sm px-4 py-3 backdrop-blur-sm border border-white/10">
+            <span className="font-semibold">Guest checkout available.</span>{' '}
+            You can give as a guest with your email or{' '}
+            <Link href="/signin" className="text-[#FF602E] underline font-medium">
+              Sign in
+            </Link>{' '}
+            to link donations to your account.
+          </div>
+        </div>
         {/* Amount Overlay (top on mobile, left on desktop) */}
         <motion.div 
           className="w-full md:w-1/2 flex flex-col justify-center items-start max-w-[400px] mx-auto md:mx-0 md:pl-8"
@@ -300,8 +317,8 @@ export default function DonatePage() {
           className="w-full md:w-1/2 flex flex-col justify-center items-end max-w-[600px] mx-auto md:mx-0 md:pr-8"
           variants={formVariants}
         >
-          <motion.div 
-            className="w-full max-w-lg min-w-[200px] bg-[#313131b3] rounded-lg shadow-2xl p-3 sm:p-6 backdrop-blur-xl border border-white/10 flex flex-col gap-2 sm:gap-3 transition-all duration-300 mt-6 md:mt-12"
+            <motion.div 
+              className="w-full max-w-lg min-w-[200px] bg-[#313131b3] rounded-lg shadow-2xl p-3 sm:p-6 backdrop-blur-xl border border-white/10 flex flex-col gap-2 sm:gap-3 transition-all duration-300 mt-24 md:mt-28"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
@@ -310,6 +327,29 @@ export default function DonatePage() {
               className="flex mb-4"
               variants={itemVariants}
             >
+              {hasAuthToken && (
+                <div className="w-full mb-3 rounded border border-white/20 p-2">
+                  <p className="text-white/80 text-xs mb-2">Donor Mode</p>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setDonorMode('account')}
+                      className={`flex-1 py-1.5 rounded text-xs font-semibold ${donorMode === 'account' ? 'bg-[#FF602E] text-white' : 'bg-white/10 text-white/80'}`}
+                    >
+                      Signed-in account
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setDonorMode('guest')}
+                      className={`flex-1 py-1.5 rounded text-xs font-semibold ${donorMode === 'guest' ? 'bg-[#FF602E] text-white' : 'bg-white/10 text-white/80'}`}
+                    >
+                      Guest checkout
+                    </button>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+            <motion.div className="flex mb-4" variants={itemVariants}>
               <motion.button
                 className={`flex-1 py-1.5 font-semibold rounded-tl-lg rounded-tr-none rounded-bl-lg rounded-br-none transition text-sm ${tab === 'oneoff' ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80 border-b-2 border-white/30'}`}
                 onClick={() => setTab('oneoff')}
@@ -327,6 +367,21 @@ export default function DonatePage() {
                 Regular Donation
               </motion.button>
             </motion.div>
+            {donorMode === 'guest' && (
+              <motion.div className="mb-3" variants={itemVariants}>
+                <label htmlFor="guestName" className="block text-white/80 font-medium mb-1 text-sm">
+                  Full Name (optional)
+                </label>
+                <input
+                  id="guestName"
+                  type="text"
+                  value={guestName}
+                  onChange={e => setGuestName(e.target.value)}
+                  placeholder="Guest Donor"
+                  className="w-full px-3 py-1.5 rounded bg-white/80 text-gray-800 border-none focus:ring-2 focus:ring-[#FF602E] outline-none text-sm"
+                />
+              </motion.div>
+            )}
             {/* Payment Method */}
             <motion.div 
               className="mb-3 relative"
@@ -422,8 +477,12 @@ export default function DonatePage() {
               variants={itemVariants}
             >
               <label htmlFor="email" className="block text-white/80 font-medium mb-1 text-sm">
-                Email Address {tab === 'regular' && <span className="text-red-400">*</span>}
-                <span className="text-xs text-white/60 block">For donation receipts and confirmations</span>
+                Email Address {donorMode === 'guest' && <span className="text-red-400">*</span>}
+                <span className="text-xs text-white/60 block">
+                  {donorMode === 'guest'
+                    ? 'Required for guest checkout and Stripe receipts.'
+                    : 'Used only if you switch to guest checkout.'}
+                </span>
               </label>
               <input
                 id="email"
@@ -473,20 +532,20 @@ export default function DonatePage() {
             <motion.button
               type="button"
               onClick={handleSubmit}
-              disabled={isLoading}
+              disabled={isSubmitting}
               className={`w-full mt-3 px-4 py-2 rounded font-semibold text-sm shadow transition relative ${
-                isLoading 
+                isSubmitting 
                   ? 'bg-gray-500 cursor-not-allowed' 
                   : 'bg-[#FF602E] hover:opacity-90'
               } text-white`}
               variants={itemVariants}
-              whileHover={!isLoading ? { 
+              whileHover={!isSubmitting ? { 
                 scale: 1.05,
                 boxShadow: "0 10px 25px rgba(255, 96, 46, 0.3)"
               } : {}}
-              whileTap={!isLoading ? { scale: 0.95 } : {}}
+              whileTap={!isSubmitting ? { scale: 0.95 } : {}}
             >
-              {isLoading ? (
+              {isSubmitting ? (
                 <div className="flex items-center justify-center">
                   <motion.div
                     className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
@@ -496,7 +555,7 @@ export default function DonatePage() {
                   Processing...
                 </div>
               ) : (
-                `Submit ${tab === 'oneoff' ? 'Donation' : 'Subscription'}`
+                `Continue to secure checkout (${tab === 'oneoff' ? 'one-time' : 'recurring'})`
               )}
             </motion.button>
           </motion.div>

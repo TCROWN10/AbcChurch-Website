@@ -61,18 +61,27 @@ export default function SuccessContent() {
     try {
       setLoading(true);
       setError(null);
-      
-      const response = await fetch(`/api/stripe/session?session_id=${sessionId}`);
-      
+
+      const response = await fetch(
+        `/api/proxy/api/donations/success?session_id=${encodeURIComponent(sessionId!)}`,
+      );
+      const json = await response.json();
+
       if (!response.ok) {
-        if (response.status === 404) {
-          throw new Error('Session not found or has expired');
-        }
-        throw new Error('Failed to retrieve donation information');
+        const errMsg =
+          json?.data?.error ||
+          json?.message ||
+          (response.status === 404 ? 'Session not found or has expired' : null) ||
+          'Failed to verify donation';
+        throw new Error(typeof errMsg === 'string' ? errMsg : 'Failed to verify donation');
       }
-      
-      const data = await response.json();
-      setSessionData(data);
+
+      const payload = json?.data;
+      if (!payload?.session) {
+        throw new Error('Invalid response from server');
+      }
+
+      setSessionData(payload.session as SessionData);
     } catch (err) {
       console.error('Error fetching session data:', err);
       setError({

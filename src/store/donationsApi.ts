@@ -1,6 +1,7 @@
 import { baseApi } from './baseApi';
 import type {
   CreateCheckoutRequest,
+  CreateGuestCheckoutRequest,
   CreateCheckoutResponse,
   Donation,
   GetMyDonationsParams,
@@ -18,6 +19,25 @@ export const donationsApi = baseApi.injectEndpoints({
         method: 'POST',
         body,
       }),
+      transformResponse: (response: unknown): CreateCheckoutResponse => {
+        const wrapped = response as ApiResponse<CreateCheckoutResponse>;
+        const data = wrapped?.data ?? response;
+        return data as CreateCheckoutResponse;
+      },
+      invalidatesTags: ['Donations'],
+    }),
+
+    createGuestCheckout: builder.mutation<CreateCheckoutResponse, CreateGuestCheckoutRequest>({
+      query: (body) => ({
+        url: '/api/donations/create-checkout-guest',
+        method: 'POST',
+        body,
+      }),
+      transformResponse: (response: unknown): CreateCheckoutResponse => {
+        const wrapped = response as ApiResponse<CreateCheckoutResponse>;
+        const data = wrapped?.data ?? response;
+        return data as CreateCheckoutResponse;
+      },
     }),
 
     // Get my donations
@@ -81,12 +101,22 @@ export const donationsApi = baseApi.injectEndpoints({
         return `/api/donations/stats${queryString ? `?${queryString}` : ''}`;
       },
       transformResponse: (response: unknown): DonationStats => {
-        // Handle both wrapped and unwrapped responses
-        if (response && typeof response === 'object' && 'total' in response && 'count' in response) {
+        if (
+          response &&
+          typeof response === 'object' &&
+          'totalAmount' in response &&
+          'totalCount' in response
+        ) {
           return response as DonationStats;
         }
         const wrapped = response as ApiResponse<DonationStats>;
-        return (wrapped?.data || { total: 0, count: 0, byType: {}, byStatus: {} }) as DonationStats;
+        return (
+          wrapped?.data || {
+            totalAmount: 0,
+            totalCount: 0,
+            byType: [],
+          }
+        ) as DonationStats;
       },
       providesTags: ['Donations'],
     }),
@@ -111,6 +141,7 @@ export const donationsApi = baseApi.injectEndpoints({
 
 export const {
   useCreateCheckoutMutation,
+  useCreateGuestCheckoutMutation,
   useGetMyDonationsQuery,
   useGetAllDonationsQuery,
   useGetDonationStatsQuery,

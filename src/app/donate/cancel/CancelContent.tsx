@@ -40,11 +40,15 @@ export default function CancelContent() {
       setLoading(true);
       setError(null);
       
-      const response = await fetch(`/api/stripe/session?session_id=${sessionId}`);
-      
+      const response = await fetch(
+        `/api/proxy/api/donations/checkout-session?session_id=${encodeURIComponent(sessionId)}`,
+      );
+
       if (response.ok) {
-        const data = await response.json();
-        setSessionData(data);
+        const json = await response.json();
+        if (json?.data) {
+          setSessionData(json.data as SessionData);
+        }
       }
       // If session fetch fails, we'll just show generic cancel message
     } catch (err) {

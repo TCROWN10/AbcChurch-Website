@@ -28,31 +28,23 @@ export default function DonationsManagement() {
     <div className="space-y-6">
       {/* Stats Cards */}
       {stats && (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white rounded-lg shadow p-6">
-            <p className="text-sm font-medium text-gray-600">Total Amount</p>
-            <p className="mt-2 text-2xl font-bold text-gray-900">${stats.total.toLocaleString()}</p>
+            <p className="text-sm font-medium text-gray-600">Total Amount (completed)</p>
+            <p className="mt-2 text-2xl font-bold text-gray-900">
+              ${Number(stats.totalAmount).toLocaleString()}
+            </p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
-            <p className="text-sm font-medium text-gray-600">Total Count</p>
-            <p className="mt-2 text-2xl font-bold text-gray-900">{stats.count}</p>
+            <p className="text-sm font-medium text-gray-600">Total Count (completed)</p>
+            <p className="mt-2 text-2xl font-bold text-gray-900">{stats.totalCount}</p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
             <p className="text-sm font-medium text-gray-600">By Type</p>
             <div className="mt-2 space-y-1">
-              {Object.entries(stats.byType).map(([type, amount]) => (
-                <p key={type} className="text-sm text-gray-600">
-                  {type}: ${Number(amount).toLocaleString()}
-                </p>
-              ))}
-            </div>
-          </div>
-          <div className="bg-white rounded-lg shadow p-6">
-            <p className="text-sm font-medium text-gray-600">By Status</p>
-            <div className="mt-2 space-y-1">
-              {Object.entries(stats.byStatus).map(([status, count]) => (
-                <p key={status} className="text-sm text-gray-600">
-                  {status}: {Number(count)}
+              {stats.byType.map((row) => (
+                <p key={row.type} className="text-sm text-gray-600">
+                  {row.type}: ${Number(row.amount).toLocaleString()} ({row.count})
                 </p>
               ))}
             </div>
@@ -135,7 +127,7 @@ export default function DonationsManagement() {
                   donations.map((donation) => (
                     <tr key={donation.id}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        ${donation.amount.toLocaleString()}
+                        ${Number(donation.amount).toLocaleString()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{donation.type}</td>
                       <td className="px-6 py-4 whitespace-nowrap">

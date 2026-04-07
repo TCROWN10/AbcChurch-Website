@@ -37,7 +37,6 @@ const NEXTJS_API_ROUTES = [
   '/api/auth/google',
   '/api/auth/google/admin',
   '/api/auth/google/super-admin',
-  '/api/donations/create-checkout',
   '/api/subscriptions',
   '/api/test-email',
   '/api/notifications',
