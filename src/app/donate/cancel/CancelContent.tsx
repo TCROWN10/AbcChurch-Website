@@ -23,25 +23,19 @@ interface ErrorState {
 
 export default function CancelContent() {
   const searchParams = useSearchParams();
-  const sessionId = searchParams.get('session_id');
+  const sessionId = searchParams?.get('session_id') ?? null;
   
   const [sessionData, setSessionData] = useState<SessionData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<ErrorState | null>(null);
 
-  useEffect(() => {
-    if (sessionId) {
-      fetchSessionData();
-    }
-  }, [sessionId]);
-
-  const fetchSessionData = async () => {
+  const fetchSessionData = async (id: string) => {
     try {
       setLoading(true);
       setError(null);
       
       const response = await fetch(
-        `/api/proxy/api/donations/checkout-session?session_id=${encodeURIComponent(sessionId)}`,
+        `/api/proxy/api/donations/checkout-session?session_id=${encodeURIComponent(id)}`,
       );
 
       if (response.ok) {
@@ -58,6 +52,12 @@ export default function CancelContent() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (sessionId) {
+      void fetchSessionData(sessionId);
+    }
+  }, [sessionId]);
 
   const getFrequencyText = (frequency?: string) => {
     switch (frequency) {

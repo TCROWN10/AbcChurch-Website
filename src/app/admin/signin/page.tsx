@@ -25,7 +25,7 @@ function AdminSignInPageContent() {
 
   // Handle OAuth errors from URL params
   useEffect(() => {
-    const error = searchParams.get('error');
+    const error = searchParams?.get('error');
     if (error) {
       const errorMessages: Record<string, string> = {
         'oauth_setup_failed': 'OAuth setup failed. Please check your configuration.',

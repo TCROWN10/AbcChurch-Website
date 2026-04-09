@@ -75,20 +75,9 @@ const baseQueryWithReauth: BaseQueryFn<
   // Log the result for debugging (only in development)
   if (process.env.NODE_ENV === 'development') {
     if (result.error) {
-      const errorInfo: {
-        status?: number | string;
-        data?: unknown;
-      } = {};
-      
-      if ('status' in result.error) {
-        errorInfo.status = result.error.status;
-      }
-      if ('data' in result.error) {
-        errorInfo.data = result.error.data;
-      }
-      
-      console.error('RTK Query Error:', errorInfo);
-    } else if (result.data) {
+      // result.error is FetchBaseQueryError — log as-is (no manual reshape; avoids TS/ESLint issues)
+      console.error('RTK Query Error:', result.error);
+    } else if (result.data !== undefined) {
       console.log('RTK Query Success');
     }
   }

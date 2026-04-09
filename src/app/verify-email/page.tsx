@@ -12,7 +12,7 @@ function VerifyEmailForm() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const token = searchParams.get('token');
+    const token = searchParams?.get('token');
     if (token) {
       verifyEmailAction(token).then(setResult).finally(() => setIsLoading(false));
     } else {

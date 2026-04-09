@@ -21,7 +21,7 @@ function VerifyOtpForm() {
   const [result, setResult] = useState<ActionResult | null>(null);
   
   // Get email from URL params if available (from signin redirect)
-  const emailFromUrl = searchParams.get('email');
+  const emailFromUrl = searchParams?.get('email');
   const [email, setEmail] = useState(emailFromUrl || "");
   const [otp, setOtp] = useState("");
   const [otpDigits, setOtpDigits] = useState(["", "", "", "", "", ""]);

@@ -38,32 +38,19 @@ interface ErrorState {
 
 export default function SuccessContent() {
   const searchParams = useSearchParams();
-  const sessionId = searchParams.get('session_id');
+  const sessionId = searchParams?.get('session_id') ?? null;
   
   const [sessionData, setSessionData] = useState<SessionData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<ErrorState | null>(null);
 
-  useEffect(() => {
-    if (!sessionId) {
-      setError({
-        message: 'No session information found. Please check your email for confirmation.',
-        canRetry: false
-      });
-      setLoading(false);
-      return;
-    }
-
-    fetchSessionData();
-  }, [sessionId]);
-
-  const fetchSessionData = async () => {
+  const fetchSessionData = async (id: string) => {
     try {
       setLoading(true);
       setError(null);
 
       const response = await fetch(
-        `/api/proxy/api/donations/success?session_id=${encodeURIComponent(sessionId!)}`,
+        `/api/proxy/api/donations/success?session_id=${encodeURIComponent(id)}`,
       );
       const json = await response.json();
 
@@ -92,6 +79,19 @@ export default function SuccessContent() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!sessionId) {
+      setError({
+        message: 'No session information found. Please check your email for confirmation.',
+        canRetry: false
+      });
+      setLoading(false);
+      return;
+    }
+
+    void fetchSessionData(sessionId);
+  }, [sessionId]);
 
   const formatDate = (timestamp: number) => {
     return new Date(timestamp * 1000).toLocaleDateString('en-US', {
@@ -154,7 +154,10 @@ export default function SuccessContent() {
           <div className="space-y-2">
             {error.canRetry && (
               <button
-                onClick={fetchSessionData}
+                type="button"
+                onClick={() => {
+                  if (sessionId) void fetchSessionData(sessionId);
+                }}
                 className="block w-full bg-[#FF602E] text-white py-2 px-4 rounded-lg hover:opacity-90 transition-colors text-sm"
               >
                 Try Again
