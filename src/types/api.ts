@@ -100,6 +100,8 @@ export interface CreateCheckoutRequest {
   recurringPeriod?: DonationRecurringPeriod;
   designation?: string;
   displayCategory?: string;
+  /** Sent as `window.location.origin` so Stripe success/cancel URLs match the site you’re on */
+  clientOrigin?: string;
 }
 
 export interface CreateGuestCheckoutRequest extends CreateCheckoutRequest {

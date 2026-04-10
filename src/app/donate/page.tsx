@@ -242,6 +242,9 @@ export default function DonatePage() {
             ? (getFrequencyValue(frequency) as 'weekly' | 'monthly' | 'yearly')
             : undefined,
         displayCategory: categoryMap.displayCategory,
+        ...(typeof window !== 'undefined' && window.location?.origin
+          ? { clientOrigin: window.location.origin }
+          : {}),
       };
 
       const useAccountMode = donorMode === 'account' && Boolean(token);
