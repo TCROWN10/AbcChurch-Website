@@ -2,9 +2,34 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useCreateCheckoutMutation, useCreateGuestCheckoutMutation } from '@/store';
 import type { DonationType } from '@/types/api';
+
+function donationCheckoutErrorMessage(error: unknown): string {
+  if (error && typeof error === 'object' && 'data' in error) {
+    const raw = (error as { data: unknown }).data;
+    if (typeof raw === 'string' && raw.trim()) {
+      return raw;
+    }
+    if (raw && typeof raw === 'object') {
+      const o = raw as Record<string, unknown>;
+      if (typeof o.message === 'string' && o.message.trim()) {
+        return o.message;
+      }
+      const inner = o.data;
+      if (inner && typeof inner === 'object' && typeof (inner as { message?: string }).message === 'string') {
+        const im = (inner as { message: string }).message;
+        if (im.trim()) return im;
+      }
+    }
+  }
+  if (error instanceof Error && error.message) {
+    return error.message;
+  }
+  return 'An error occurred. Please try again.';
+}
 
 const GIVING_CATEGORY_TO_API: Record<
   string,
@@ -89,7 +114,14 @@ const formVariants = {
   }
 };
 
+const API_FREQ_TO_DISPLAY: Record<string, string> = {
+  weekly: 'Every Week',
+  monthly: 'Every Month',
+  yearly: 'Every Year',
+};
+
 export default function DonatePage() {
+  const searchParams = useSearchParams();
   const [createCheckout, { isLoading: checkoutLoading }] = useCreateCheckoutMutation();
   const [createGuestCheckout, { isLoading: guestCheckoutLoading }] = useCreateGuestCheckoutMutation();
   const [hasAuthToken, setHasAuthToken] = useState(false);
@@ -130,6 +162,30 @@ export default function DonatePage() {
     setHasAuthToken(isAuthed);
     setDonorMode(isAuthed ? 'account' : 'guest');
   }, []);
+
+  // Pre-fill after Stripe cancel (see donate/cancel query params)
+  useEffect(() => {
+    const cat = searchParams.get('category');
+    if (cat && givingCategories.includes(cat)) {
+      setCategory(cat);
+    }
+    const amt = searchParams.get('amount');
+    if (amt) {
+      const n = parseFloat(amt);
+      if (Number.isFinite(n) && n > 0) {
+        setAmount(n.toFixed(2));
+      }
+    }
+    const em = searchParams.get('email');
+    if (em?.trim()) {
+      setEmail(em.trim());
+    }
+    const freqParam = searchParams.get('frequency');
+    if (freqParam && API_FREQ_TO_DISPLAY[freqParam]) {
+      setFrequency(API_FREQ_TO_DISPLAY[freqParam]);
+      setTab('regular');
+    }
+  }, [searchParams]);
 
   // Helper function to convert frequency display to API format
   const getFrequencyValue = (displayFreq: string): string => {
@@ -206,18 +262,7 @@ export default function DonatePage() {
       throw new Error('Checkout URL was not returned. Please try again.');
     } catch (error: unknown) {
       console.error('Donation submission error:', error);
-      let msg = 'An error occurred. Please try again.';
-      if (error && typeof error === 'object' && 'data' in error) {
-        const d = error.data as { message?: string; data?: { error?: string; message?: string } };
-        msg =
-          d?.data?.error ||
-          d?.data?.message ||
-          d?.message ||
-          (typeof d === 'string' ? d : msg);
-      } else if (error instanceof Error) {
-        msg = error.message;
-      }
-      setGeneralError(msg);
+      setGeneralError(donationCheckoutErrorMessage(error));
     } finally {
       setIsLoading(false);
     }

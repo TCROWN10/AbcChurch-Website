@@ -107,8 +107,8 @@ const baseQueryWithReauth: BaseQueryFn<
         if (data.data?.accessToken && typeof window !== 'undefined') {
           localStorage.setItem('accessToken', data.data.accessToken);
         }
-        // Retry the original query
-        result = await baseQuery(args, api, extraOptions);
+        // Retry the original query (same URL as first attempt, including /api/proxy prefix)
+        result = await baseQuery(queryArgs, api, extraOptions);
       } else {
         // Refresh failed, clear tokens
         if (typeof window !== 'undefined') {

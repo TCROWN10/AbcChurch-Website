@@ -169,7 +169,8 @@ export async function getDonationTransaction(identifier: {
 }
 
 /**
- * Get all subscription records with optional filtering
+ * @deprecated Recurring subscriptions are stored in the Nest backend (`Donation` + Stripe).
+ * Use `GET /api/donations/subscriptions` (or Next `/api/subscriptions` proxy) instead.
  */
 export async function getSubscriptionRecords(
   filters?: {
@@ -199,7 +200,7 @@ export async function getSubscriptionRecords(
 }
 
 /**
- * Get subscription record by Stripe subscription ID
+ * @deprecated Use backend `GET /api/donations/subscriptions?subscriptionId=sub_...`.
  */
 export async function getSubscriptionRecord(stripeSubscriptionId: string): Promise<SubscriptionRecord | null> {
   try {

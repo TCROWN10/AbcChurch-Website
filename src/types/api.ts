@@ -143,6 +143,28 @@ export interface DonationStats {
   byType: Array<{ type: DonationType; amount: number; count: number }>;
 }
 
+/** Recurring donation subscription row from `GET /api/donations/subscriptions` (Nest). */
+export interface DonationSubscriptionRow {
+  id: string;
+  stripeSubscriptionId: string;
+  stripeCustomerId: string;
+  amount: number;
+  currency: string;
+  category: string;
+  frequency: string;
+  status: string;
+  customerEmail: string;
+  createdAt: string;
+  updatedAt: string;
+  nextPaymentDate: string | null;
+}
+
+export interface GetDonationSubscriptionsParams {
+  status?: string;
+  category?: string;
+  customerEmail?: string;
+}
+
 // Message Types
 export type MessageType = 'SUNDAY' | 'WEEKDAY';
 

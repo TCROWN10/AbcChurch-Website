@@ -103,26 +103,7 @@ async function proxyRequest(
       body,
     });
 
-    // Get response data
-    const contentType = response.headers.get('content-type');
-    let data;
-    
-    try {
-      if (contentType?.includes('application/json')) {
-        data = await response.json();
-      } else {
-        const text = await response.text();
-        // Try to parse as JSON if text looks like JSON
-        try {
-          data = JSON.parse(text);
-        } catch {
-          data = text;
-        }
-      }
-    } catch (parseError) {
-      console.error('Error parsing response:', parseError);
-      data = { error: 'Failed to parse response' };
-    }
+    const contentType = response.headers.get('content-type') || '';
 
     // Log error responses for debugging
     if (!response.ok) {
@@ -130,19 +111,47 @@ async function proxyRequest(
         status: response.status,
         statusText: response.statusText,
         url: url.toString(),
-        data,
+        contentType,
       });
     }
 
-    // Return response with same status code (including error statuses)
-    return NextResponse.json(data, {
+    const corsHeaders: Record<string, string> = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    };
+
+    // JSON API responses
+    if (contentType.includes('application/json')) {
+      let data: unknown;
+      try {
+        data = await response.json();
+      } catch (parseError) {
+        console.error('Error parsing JSON response:', parseError);
+        data = { error: 'Failed to parse response' };
+      }
+      return NextResponse.json(data, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: corsHeaders,
+      });
+    }
+
+    // Binary exports (Excel/PDF) and other non-JSON bodies — preserve bytes for RTK blob downloads
+    const body = await response.arrayBuffer();
+    const outHeaders = new Headers(corsHeaders);
+    if (contentType) {
+      outHeaders.set('Content-Type', contentType);
+    }
+    const disposition = response.headers.get('content-disposition');
+    if (disposition) {
+      outHeaders.set('Content-Disposition', disposition);
+    }
+
+    return new NextResponse(body, {
       status: response.status,
       statusText: response.statusText,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      },
+      headers: outHeaders,
     });
   } catch (error: any) {
     console.error('Proxy error:', {

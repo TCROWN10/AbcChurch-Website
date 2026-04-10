@@ -7,6 +7,8 @@ import type {
   GetMyDonationsParams,
   GetAllDonationsParams,
   DonationStats,
+  DonationSubscriptionRow,
+  GetDonationSubscriptionsParams,
   ApiResponse,
 } from '@/types/api';
 
@@ -121,6 +123,32 @@ export const donationsApi = baseApi.injectEndpoints({
       providesTags: ['Donations'],
     }),
 
+    // Recurring Stripe subscriptions (Super Admin) — source of truth: Nest + Prisma
+    getDonationSubscriptions: builder.query<
+      { data: DonationSubscriptionRow[]; total: number },
+      GetDonationSubscriptionsParams | void
+    >({
+      query: (params) => {
+        const searchParams = new URLSearchParams();
+        if (params) {
+          if (params.status) searchParams.append('status', params.status);
+          if (params.category) searchParams.append('category', params.category);
+          if (params.customerEmail) searchParams.append('customerEmail', params.customerEmail);
+        }
+        const queryString = searchParams.toString();
+        return `/api/donations/subscriptions${queryString ? `?${queryString}` : ''}`;
+      },
+      transformResponse: (response: unknown): { data: DonationSubscriptionRow[]; total: number } => {
+        const wrapped = response as ApiResponse<{ data: DonationSubscriptionRow[]; total: number }>;
+        const inner = wrapped?.data ?? response;
+        if (inner && typeof inner === 'object' && 'data' in inner && 'total' in inner) {
+          return inner as { data: DonationSubscriptionRow[]; total: number };
+        }
+        return { data: [], total: 0 };
+      },
+      providesTags: ['Donations'],
+    }),
+
     // Donation success callback (Public)
     handleDonationSuccess: builder.query<ApiResponse<any>, { session_id: string }>({
       query: ({ session_id }) => ({
@@ -145,6 +173,7 @@ export const {
   useGetMyDonationsQuery,
   useGetAllDonationsQuery,
   useGetDonationStatsQuery,
+  useGetDonationSubscriptionsQuery,
   useLazyHandleDonationSuccessQuery,
   useLazyHandleDonationCancelQuery,
 } = donationsApi;
