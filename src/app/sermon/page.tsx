@@ -4,6 +4,12 @@ import { useRouter } from 'next/navigation';
 
 const sermonData = [
   {
+    date: '2026-05-03',
+    title: 'Obedience: The gateway to Glory, Guidance and Greatness',
+    headline: 'Obedience: The gateway to Glory, Guidance and Greatness',
+    image: '/images/content/Sermon-image.png',
+  },
+  {
     date: '2025-07-20',
     title: 'Freedom At Last',
     headline: 'Freedom At Last',

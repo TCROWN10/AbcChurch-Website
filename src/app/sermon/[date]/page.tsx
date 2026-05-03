@@ -4,6 +4,279 @@ import Link from 'next/link';
 
 const sermonData = [
   {
+    date: '2026-05-03',
+    title: 'Obedience: The gateway to Glory, Guidance and Greatness',
+    headline: 'Obedience: The gateway to Glory, Guidance and Greatness',
+    content: (
+      <div className="text-white">
+        <div className="mb-6 text-center md:text-left">
+          <p className="font-semibold text-[#FF602E] text-sm md:text-base mb-1">Sunday Service Sermon</p>
+          <p className="text-[#FFDECC] text-sm mb-2">May 3rd, 2026 · By Pastor Emmanuel Bolaji</p>
+          <p className="text-sm md:text-base italic text-[#FFDECC]/90 mb-2">Obedience is Better · 1 Samuel 15:22</p>
+          <p className="text-base md:text-lg font-semibold text-white">
+            OBEDIENCE: The Gateway to Glory, Guidance, and Greatness.
+          </p>
+          <p className="text-xs md:text-sm text-[#FFDECC]/80 mt-1">1 Samuel 15:22</p>
+        </div>
+
+        <div className="mb-6">
+          <p className="mb-3 text-sm md:text-base leading-relaxed">
+            Obedience is the master key of God&apos;s Kingdom. It is the bridge between instruction and manifestation,
+            between promise and performance, between hearing God and experiencing God. The Bible in 1 Samuel 15:22
+            exhorts, saying, &quot;To obey is better than sacrifice...&quot; It&apos;s observed that truly, many pray
+            but only few obey, and while many believe, it&apos;s just a few that follow through. Yet, God responds more
+            to obedience than to emotion.
+          </p>
+        </div>
+
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-3 text-[#FF602E]">Bible Verses</h3>
+          <ul className="list-disc pl-6 space-y-2 text-sm md:text-base">
+            <li>
+              <strong>1 Samuel 15:22:</strong> &quot;Has the Lord as great delight in burnt offerings and sacrifices, as in
+              obeying the voice of the Lord? Behold, to obey is better than sacrifice...&quot;
+            </li>
+            <li>
+              <strong>Ecclesiastes 12:13:</strong> &quot;Fear God and keep his commandments, for this is the whole duty
+              of man&quot;.
+            </li>
+            <li>
+              <strong>Deuteronomy 28:1-2:</strong> &quot;If you fully obey the Lord your God... All these blessings will come
+              on you...&quot;
+            </li>
+            <li>
+              <strong>Isaiah 1:19:</strong> &quot;If you are willing and obedient, you shall eat the good of the land.&quot;
+            </li>
+          </ul>
+        </div>
+
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-3 text-[#FF602E]">Reasons To Choose Obedience (1 Samuel 15:22)</h3>
+          <ul className="list-disc pl-6 space-y-2 text-sm md:text-base">
+            <li>
+              <strong>Obedience is better than Sacrifice:</strong> self denial / inconvenience to satisfy a condition (1 Cor
+              13:1-3).
+            </li>
+            <li>
+              <strong>Obedience is better than Services:</strong> self-designed activity (ies) to impress (Lk 10:42).
+            </li>
+            <li>
+              <strong>Obedience is better than Sanity:</strong> state of the mind or mood relating to a subject (John 2:7).
+            </li>
+            <li>
+              <strong>Obedience is better than Sanctity:</strong> state of being holy or inviolability (Hebrews 12:14).
+            </li>
+            <li>
+              <strong>Obedience is better than Sensibility:</strong> it may not make sense or be generally accepted
+              (Isaiah 53:1, Lk 5:4).
+            </li>
+          </ul>
+        </div>
+
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-4 text-[#FF602E]">Vertical Representation: O‑B‑E‑D‑I‑E‑N‑C‑E</h3>
+
+          <div className="mb-6 pb-6 border-b border-[#FF602E]/20">
+            <p className="font-semibold text-[#FFDECC] mb-2">🔥 O – OBEDIENCE OPENS OPPORTUNITIES</p>
+            <p className="text-xs md:text-sm text-[#FF602E] mb-2">📖 Isaiah 1:19</p>
+            <p className="italic text-sm md:text-base mb-2">
+              &quot;If ye be willing and obedient, ye shall eat the good of the land.&quot;
+            </p>
+            <p className="text-sm md:text-base mb-2">Obedience is the key that unlocks divine doors.</p>
+            <p className="text-sm md:text-base mb-2">
+              Abraham obeyed and stepped into covenant blessings (Genesis 12). Closed doors are often not spiritual attacks
+              but missed instructions.
+            </p>
+          </div>
+
+          <div className="mb-6 pb-6 border-b border-[#FF602E]/20">
+            <p className="font-semibold text-[#FFDECC] mb-2">🔥 B – OBEDIENCE BRINGS BLESSINGS</p>
+            <p className="text-xs md:text-sm text-[#FF602E] mb-2">📖 Deuteronomy 28:2</p>
+            <p className="italic text-sm md:text-base mb-2">
+              &quot;All these blessings will come on you and accompany you if you obey...&quot;
+            </p>
+            <p className="text-sm md:text-base mb-2">Blessings don&apos;t just come—they follow obedience.</p>
+            <p className="text-sm md:text-base">
+              Isaac obeyed in famine, stayed, sowed and prospered the same year (Genesis 26:12).{' '}
+              <strong>Obedience attracts blessings even in dry seasons.</strong>
+            </p>
+          </div>
+
+          <div className="mb-6 pb-6 border-b border-[#FF602E]/20">
+            <p className="font-semibold text-[#FFDECC] mb-2">🔥 E – OBEDIENCE ESTABLISHES EXCELLENCE</p>
+            <p className="text-xs md:text-sm text-[#FF602E] mb-2">📖 Joshua 1:8</p>
+            <p className="italic text-sm md:text-base mb-2">
+              &quot;Be careful to do everything written... then you will be prosperous and successful.&quot;
+            </p>
+            <p className="text-sm md:text-base mb-2">
+              Excellence is not talent; it is consistent obedience to divine principles. Joshua followed instructions
+              precisely and he became successful (Josh 1:8). Obedience turns ordinary effort into extraordinary results.
+              Esther obediently followed the advice of Hegai, the king&apos;s eunuch, in her beauty regimen and attire,
+              which helped her win favor (Esther 2:15).
+            </p>
+          </div>
+
+          <div className="mb-6 pb-6 border-b border-[#FF602E]/20">
+            <p className="font-semibold text-[#FFDECC] mb-2">🔥 D – OBEDIENCE DEMANDS DISCIPLINE</p>
+            <p className="text-xs md:text-sm text-[#FF602E] mb-2">📖 Hebrews 5:8</p>
+            <p className="italic text-sm md:text-base mb-2">&quot;Though he were a Son, yet learned he obedience...&quot;</p>
+            <p className="text-sm md:text-base">
+              Obedience is not automatic; it is trained and practiced. Even Jesus Christ learned obedience through
+              suffering—for obedience isn&apos;t easy, and if it were, everyone would be great.
+            </p>
+          </div>
+
+          <div className="mb-6 pb-6 border-b border-[#FF602E]/20">
+            <p className="font-semibold text-[#FFDECC] mb-2">🔥 I – OBEDIENCE IGNITES INCREASE</p>
+            <p className="text-xs md:text-sm text-[#FF602E] mb-2">📖 Luke 5:5-6</p>
+            <p className="italic text-sm md:text-base mb-2">
+              &quot;Because you say so, I will let down the nets...&quot;
+            </p>
+            <p className="text-sm md:text-base mb-2">
+              Increase is triggered when instruction is obeyed. Peter&apos;s obedience got him a net-breaking miracle. One
+              act of obedience can rewrite your entire story and repay all your wasted years or efforts.
+            </p>
+            <p className="text-sm md:text-base font-medium text-[#FFDECC]">
+              For someone out there I prophesy: all your wasted or lost years, efforts or opportunities shall be restored to
+              you double from today, in Jesus Name.
+            </p>
+          </div>
+
+          <div className="mb-6 pb-6 border-b border-[#FF602E]/20">
+            <p className="font-semibold text-[#FFDECC] mb-2">🔥 E – OBEDIENCE ENGAGES ENCOUNTERS</p>
+            <p className="text-xs md:text-sm text-[#FF602E] mb-2">📖 Exodus 3:4</p>
+            <p className="italic text-sm md:text-base mb-2">
+              &quot;When the Lord saw that he (Moses) turned aside... God called unto him...&quot;
+            </p>
+            <p className="text-sm md:text-base mb-2">
+              The Lord will turn to you today if you turn to Him in obedience to His Word.{' '}
+              <strong>Note:</strong> God only reveals Himself to those who respond to Him in obedience. Moses obeyed the
+              divine prompting in the burning bush encounter and his life never remained the same.
+            </p>
+            <p className="text-sm md:text-base font-medium text-[#FFDECC] mb-2">
+              From today, your life will not remain the same, in Jesus Name.
+            </p>
+            <p className="text-sm md:text-base">
+              Remember: divine encounters are hidden in simple acts of obedience, and if you follow His voice, you will see
+              His hand.
+            </p>
+          </div>
+
+          <div className="mb-6 pb-6 border-b border-[#FF602E]/20">
+            <p className="font-semibold text-[#FFDECC] mb-2">🔥 N – OBEDIENCE NAVIGATES DESTINY</p>
+            <p className="text-xs md:text-sm text-[#FF602E] mb-2">📖 Proverbs 3:6</p>
+            <p className="italic text-sm md:text-base mb-2">
+              &quot;In all your ways submit to him, and he will make your paths straight.&quot;
+            </p>
+            <p className="text-sm md:text-base mb-2">
+              Obedience is heaven&apos;s navigation system. Joseph followed divine direction; though the road was rough and
+              long, at the end he ended up in the palace. Always trust the Instructor (God) even when the instructions sound
+              foolish.
+            </p>
+            <p className="text-sm md:text-base">
+              <strong>Note:</strong> Disobedience delays destiny; obedience delivers it.
+            </p>
+          </div>
+
+          <div className="mb-6 pb-6 border-b border-[#FF602E]/20">
+            <p className="font-semibold text-[#FFDECC] mb-2">🔥 C – OBEDIENCE CONQUERS CHALLENGES</p>
+            <p className="text-xs md:text-sm text-[#FF602E] mb-2">📖 Joshua 6:20</p>
+            <p className="italic text-sm md:text-base mb-2">&quot;The wall collapsed...&quot;</p>
+            <p className="text-sm md:text-base mb-2">
+              Victory often hides behind unusual instructions. Jericho&apos;s wall fell through obedient marching, not
+              through military strategy. Military strategy would have been good, but heavenly strategy was best—for what
+              looks foolish to man may be powerful before God.
+            </p>
+          </div>
+
+          <div className="mb-2">
+            <p className="font-semibold text-[#FFDECC] mb-2">🔥 E – OBEDIENCE ENDS IN ELEVATION</p>
+            <p className="text-xs md:text-sm text-[#FF602E] mb-2">📖 Philippians 2:9</p>
+            <p className="italic text-sm md:text-base mb-2">&quot;Therefore God exalted him...&quot;</p>
+            <p className="text-xs md:text-sm mb-3">&quot;Righteousness exalts a nation...&quot; (Prov 14:34)</p>
+            <p className="text-sm md:text-base mb-2">
+              <strong>Every true obedience produces elevation.</strong> Even Jesus Christ was never exalted until He was
+              complete in obedience. Likewise, your promotion is tied to your obedience, and your obedience today is your
+              promotion tomorrow.
+            </p>
+            <p className="text-sm md:text-base font-semibold text-[#FF602E]">
+              Your next level is hidden in your next obedience.
+            </p>
+          </div>
+        </div>
+
+        <div className="mb-6">
+          <h3 className="font-bold text-base md:text-lg mb-3 text-[#FF602E]">Conclusion</h3>
+          <ul className="list-disc pl-6 space-y-2 text-sm md:text-base">
+            <li>Obedience to forgive may hurt but it heals deeper than the hurt.</li>
+            <li>Obedience may feel painful but it produces powerful outcomes.</li>
+            <li>Obedience is the proof of love for God (John 14:15).</li>
+            <li>Obedience converts prophecy into reality.</li>
+            <li>Obedience is the difference between potential and performance.</li>
+            <li>Obedience is better than explanation.</li>
+            <li>Delayed obedience is silent disobedience.</li>
+            <li>God&apos;s instructions are not suggestions.</li>
+            <li>Obedience is not always easy but it&apos;s always rewarding.</li>
+          </ul>
+        </div>
+
+        <div className="mb-4 rounded-lg border border-[#FF602E]/40 bg-[#18313B]/50 p-4 text-sm md:text-base">
+          <h3 className="font-bold text-base md:text-lg mb-3 text-[#FF602E]">Further information</h3>
+          <ol className="list-decimal pl-6 space-y-3 mb-0">
+            <li>
+              <span className="font-semibold text-[#FFDECC]">Visit our:</span>
+              <ul className="list-disc pl-5 mt-2 space-y-1">
+                <li>
+                  Website:{' '}
+                  <a
+                    href="https://www.abcchurch.us"
+                    className="text-[#FF602E] underline hover:text-[#ff7f50]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    www.abcchurch.us
+                  </a>
+                </li>
+                <li>Download the Church app</li>
+              </ul>
+            </li>
+            <li>
+              <span className="font-semibold text-[#FFDECC]">Contact us:</span>
+              <ul className="list-disc pl-5 mt-2 space-y-1">
+                <li>
+                  <strong>Phone / Text:</strong>{' '}
+                  <a href="tel:+15638891930" className="text-[#FF602E] underline hover:text-[#ff7f50]">
+                    +1 563 889 1930
+                  </a>
+                </li>
+                <li>
+                  <strong>Email:</strong>{' '}
+                  <a
+                    href="mailto:abcchurchhq@gmail.com"
+                    className="text-[#FF602E] underline hover:text-[#ff7f50]"
+                  >
+                    abcchurchhq@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <strong>Facebook:</strong>{' '}
+                  <a
+                    href="https://www.facebook.com/abcchurchDavenportIA"
+                    className="text-[#FF602E] underline hover:text-[#ff7f50]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    www.facebook.com/abcchurchDavenportIA
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+    ),
+  },
+  {
     date: '2025-07-20',
     title: 'Freedom At Last',
     headline: 'Freedom At Last',
