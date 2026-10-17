@@ -43,10 +43,12 @@ interface LocalDb {
   settings: Record<string, unknown>;
 }
 
-const DATA_FILE = path.join(
-  process.env.DATA_DIR || process.env.RAILWAY_VOLUME_MOUNT_PATH || path.join(process.cwd(), 'data'),
-  'cms.json'
-);
+/** On Vercel the deploy filesystem is read-only; keep the CMS JSON under /tmp so seeding works. */
+const dataRoot =
+  process.env.DATA_DIR ||
+  process.env.RAILWAY_VOLUME_MOUNT_PATH ||
+  (process.env.VERCEL ? '/tmp/data' : path.join(process.cwd(), 'data'));
+const DATA_FILE = path.join(dataRoot, 'cms.json');
 
 const globalForStore = globalThis as unknown as { __cmsWriteChain?: Promise<unknown> };
 

@@ -21,7 +21,12 @@ export const databaseKind: DatabaseKind = isPostgresEnabled ? 'postgres' : isSup
 /** Railway sets RAILWAY_VOLUME_MOUNT_PATH automatically when a volume is attached. */
 const volumePath = process.env.RAILWAY_VOLUME_MOUNT_PATH ?? '';
 export const uploadDir =
-  process.env.UPLOAD_DIR || (volumePath ? `${volumePath}/uploads` : `${process.cwd()}/data/uploads`);
+  process.env.UPLOAD_DIR ||
+  (volumePath
+    ? `${volumePath}/uploads`
+    : process.env.VERCEL
+      ? '/tmp/uploads'
+      : `${process.cwd()}/data/uploads`);
 export const hasPersistentUploads = isSupabaseEnabled || Boolean(process.env.UPLOAD_DIR || volumePath);
 
 if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE !== 'phase-production-build') {
