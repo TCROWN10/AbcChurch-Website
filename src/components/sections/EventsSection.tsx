@@ -2,14 +2,14 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import type { ChurchEvent } from '@/lib/content-types';
 
-const SUNDAY_FLIER_IMAGES = ['/Sunday-Flier.jpeg', '/Sunday-Flier-2.jpeg'] as const;
 const ROTATE_MS = 5000;
 
-const sundayEvent = {
-  title: 'Sundays',
-  time: '10am – 11:30am',
-};
+const FALLBACK_EVENTS: Pick<ChurchEvent, 'id' | 'title' | 'time' | 'flierImage' | 'location' | 'date' | 'description'>[] = [
+  { id: 'sunday-1', title: 'Sundays', time: '10am – 11:30am', flierImage: '/Sunday-Flier.jpeg' },
+  { id: 'sunday-2', title: 'Sundays', time: '10am – 11:30am', flierImage: '/Sunday-Flier-2.jpeg' },
+];
 
 const cardVariants = {
   hidden: { 
@@ -47,15 +47,18 @@ const contentVariants = {
   }
 };
 
-export default function EventsSection() {
+export default function EventsSection({ events }: { events?: ChurchEvent[] }) {
+  const slides = (events?.filter(e => e.flierImage).length ? events.filter(e => e.flierImage) : FALLBACK_EVENTS);
   const [flierIndex, setFlierIndex] = useState(0);
+  const current = slides[flierIndex % slides.length];
 
   useEffect(() => {
+    if (slides.length < 2) return;
     const id = window.setInterval(() => {
-      setFlierIndex((i) => (i + 1) % SUNDAY_FLIER_IMAGES.length);
+      setFlierIndex((i) => (i + 1) % slides.length);
     }, ROTATE_MS);
     return () => window.clearInterval(id);
-  }, []);
+  }, [slides.length]);
 
   return (
     <section className="w-full bg-[#222A31] py-10 px-2 sm:px-4">
@@ -70,27 +73,33 @@ export default function EventsSection() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            {SUNDAY_FLIER_IMAGES.map((src, i) => (
+            {slides.map((event, i) => (
               <div
-                key={src}
+                key={event.id}
                 className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                  i === flierIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                  i === flierIndex % slides.length ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                 }`}
               >
                 <Image
-                  src={src}
-                  alt={`Sunday service — flier ${i + 1}`}
+                  src={event.flierImage!}
+                  alt={`${event.title} flier`}
                   fill
                   sizes="(max-width: 640px) 100vw, 260px"
                   className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                   priority={i === 0}
+                  unoptimized={event.flierImage!.startsWith('http')}
                 />
               </div>
             ))}
             {/* Event Info - Bottom left corner */}
-            <div className="absolute left-4 bottom-8 z-30">
-              <div className="text-[#FF602E] font-semibold text-base mb-1">{sundayEvent.title}</div>
-              <div className="text-[#FF602E] text-lg font-medium">{sundayEvent.time}</div>
+            <div className="absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-black/80 to-transparent px-4 pb-5 pt-10">
+              <div className="text-[#FF602E] font-semibold text-base mb-0.5">{current.title}</div>
+              {(current.date || current.time) && (
+                <div className="text-white text-sm font-medium">
+                  {[current.date, current.time].filter(Boolean).join(' · ')}
+                </div>
+              )}
+              {current.location && <div className="text-white/70 text-xs mt-0.5">{current.location}</div>}
             </div>
           </motion.div>
         </div>

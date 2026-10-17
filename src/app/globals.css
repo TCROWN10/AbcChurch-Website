@@ -19,8 +19,122 @@
   }
 }
 
+/* Slide-in animations start off-screen; never let them cause sideways scrolling on phones */
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* No default browser focus ring / tap highlight on mouse or touch interaction */
+*:focus {
+  outline: none;
+}
+
+a,
+button,
+select,
+input,
+textarea,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Keyboard users still get a subtle on-brand indicator */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #ff602e;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+input[type="number"].no-spinners::-webkit-inner-spin-button,
+input[type="number"].no-spinners::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"].no-spinners {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Admin-authored devotional / sermon HTML */
+.rich-content {
+  color: rgb(255 255 255 / 0.85);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.rich-content > * + *,
+.rich-content div > * + * {
+  margin-top: 1em;
+}
+.rich-content h1,
+.rich-content h2,
+.rich-content h3,
+.rich-content h4 {
+  color: #ff602e;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.6em;
+}
+.rich-content h1 { font-size: 1.75rem; }
+.rich-content h2 { font-size: 1.5rem; }
+.rich-content h3 { font-size: 1.25rem; }
+.rich-content h4 { font-size: 1.1rem; }
+.rich-content strong,
+.rich-content b {
+  color: #fff;
+  font-weight: 700;
+}
+.rich-content a {
+  color: #ff602e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rich-content ul,
+.rich-content ol {
+  padding-left: 1.5em;
+}
+.rich-content ul { list-style: disc; }
+.rich-content ol { list-style: decimal; }
+.rich-content li + li { margin-top: 0.35em; }
+.rich-content blockquote {
+  border-left: 3px solid #ff602e;
+  padding: 0.25em 0 0.25em 1em;
+  color: #ffdecc;
+  font-style: italic;
+}
+.rich-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+.rich-content hr {
+  border: 0;
+  border-top: 1px solid rgb(255 255 255 / 0.15);
+  margin: 2em 0;
+}
+
+/* Light variant used inside the admin editor */
+.rich-content.rich-content--light {
+  color: #1f2937;
+}
+.rich-content.rich-content--light strong,
+.rich-content.rich-content--light b {
+  color: #111827;
+}
+.rich-content.rich-content--light blockquote {
+  color: #4b5563;
+}
+.rich-content--light:empty::before {
+  content: attr(data-placeholder);
+  color: #9ca3af;
 }

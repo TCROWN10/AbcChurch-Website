@@ -41,6 +41,9 @@ const NEXTJS_API_ROUTES = [
   '/api/test-email',
   '/api/notifications',
   '/api/admin',
+  '/api/prayer-requests',
+  '/api/newsletter',
+  '/api/donations',
 ];
 
 // Base query with re-authentication logic

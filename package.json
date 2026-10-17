@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
+    "@supabase/supabase-js": "^2.117.3",
     "@types/bcryptjs": "^2.4.6",
     "@types/better-sqlite3": "^7.6.13",
     "@types/jsonwebtoken": "^9.0.10",
@@ -24,19 +25,28 @@
     "jsonwebtoken": "^9.0.2",
     "next": "^15.5.15",
     "nodemailer": "^7.0.5",
+    "pg": "^8.23.1",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "react-redux": "^9.1.2",
+    "sanitize-html": "^2.18.0",
+    "server-only": "^0.0.1",
     "stripe": "^18.3.0",
     "zod": "^4.0.14"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/sanitize-html": "^2.16.2",
     "@types/stripe": "^8.0.416",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=20.9.0"
   }
 }

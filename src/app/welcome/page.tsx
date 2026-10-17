@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { ArrowRightIcon } from '@/components/ui/Icons';
 
 export default function WelcomePage() {
   const router = useRouter();
@@ -135,14 +136,15 @@ export default function WelcomePage() {
           </p>
           <motion.button
             onClick={handleContinue}
-            className="bg-[#FF602E] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
+            className="group inline-flex items-center gap-3 bg-[#FF602E] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Continue →
+            Continue
+            <ArrowRightIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={3} />
           </motion.button>
         </motion.div>
       </div>

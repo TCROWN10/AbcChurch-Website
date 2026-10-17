@@ -1,6 +1,7 @@
 "use client";
 import { motion } from 'framer-motion';
 import React from 'react';
+import { CHURCH_MAPS_EMBED_URL, CHURCH_MAPS_URL } from '@/lib/church-info';
 
 const contentVariants = {
   hidden: { 
@@ -70,7 +71,7 @@ const buttonVariants = {
 
 export default function Message() {
   return (
-    <section className="w-full bg-[#F8F8F8] py-10 px-2 sm:px-4">
+    <section className="w-full overflow-hidden bg-[#F8F8F8] py-10 px-2 sm:px-4">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-12">
         {/* Left: Text */}
         <motion.div 
@@ -110,7 +111,7 @@ export default function Message() {
             </div>
           </motion.div>
           <motion.a
-            href="https://maps.google.com/?q=2204+Grant+St,+Bettendorf+IA,+52722"
+            href={CHURCH_MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 sm:mt-4 px-6 sm:px-8 py-2 sm:py-3 rounded bg-[#FF602E] text-white font-semibold text-base shadow hover:opacity-90 transition"
@@ -136,7 +137,7 @@ export default function Message() {
           >
             <iframe
               title="Bettendorf Community Center Map"
-              src="https://www.google.com/maps?q=2204+Grant+St,+Bettendorf+IA,+52722&output=embed"
+              src={CHURCH_MAPS_EMBED_URL}
               width="100%"
               height="100%"
               style={{ border: 0 }}

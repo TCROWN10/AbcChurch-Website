@@ -1,62 +1,14 @@
-"use client";
-import { motion } from 'framer-motion';
-import HeroWithNavbar from "@/components/layout/HeroWithNavbar";
-import JoinUsSection from "@/components/ui/Message";
-import EventsSection from "@/components/sections/EventsSection";
-import DonationSection from "@/components/sections/DonationSection";
-import GetConnectedSection from "@/components/sections/GetConnectedSection";
+import HomeContent from './HomeContent';
+import { getActiveEvents, getGalleryMedia } from '@/lib/server/content';
+import { store } from '@/lib/server/store';
 
-// Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      staggerChildren: 0.3
-    }
-  }
-};
+export const dynamic = 'force-dynamic';
 
-const sectionVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 50,
-    scale: 0.95
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.8
-    }
-  }
-};
-
-export default function HomePage() {
-  return (
-    <motion.div 
-      className="relative min-h-screen bg-white"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
-      <HeroWithNavbar />
-      <main>
-        <motion.div variants={sectionVariants}>
-          <JoinUsSection />
-        </motion.div>
-        <motion.div variants={sectionVariants}>
-          <EventsSection />
-        </motion.div>
-        <motion.div variants={sectionVariants}>
-          <DonationSection />
-        </motion.div>
-        <motion.div variants={sectionVariants}>
-          <GetConnectedSection />
-        </motion.div>
-      </main>
-    </motion.div>
-  );
-} 
+export default async function HomePage() {
+  const [hero, events, gallery] = await Promise.all([
+    store.getSetting('hero'),
+    getActiveEvents(),
+    getGalleryMedia(8),
+  ]);
+  return <HomeContent hero={hero} events={events} gallery={gallery} />;
+}

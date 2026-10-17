@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -40,8 +41,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# donation data storage
+# local content database and uploads (used when Supabase isn't configured)
 /data/
+/public/uploads/
 
 # code edior
 .kiro/

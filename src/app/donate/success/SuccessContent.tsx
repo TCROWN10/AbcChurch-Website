@@ -50,13 +50,12 @@ export default function SuccessContent() {
       setError(null);
 
       const response = await fetch(
-        `/api/proxy/api/donations/success?session_id=${encodeURIComponent(id)}`,
+        `/api/donations/session?session_id=${encodeURIComponent(id)}`,
       );
       const json = await response.json();
 
       if (!response.ok) {
         const errMsg =
-          json?.data?.error ||
           json?.message ||
           (response.status === 404 ? 'Session not found or has expired' : null) ||
           'Failed to verify donation';

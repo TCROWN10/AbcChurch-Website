@@ -138,7 +138,7 @@ async function proxyRequest(
     }
 
     // Binary exports (Excel/PDF) and other non-JSON bodies — preserve bytes for RTK blob downloads
-    const body = await response.arrayBuffer();
+    const responseBytes = await response.arrayBuffer();
     const outHeaders = new Headers(corsHeaders);
     if (contentType) {
       outHeaders.set('Content-Type', contentType);
@@ -148,7 +148,7 @@ async function proxyRequest(
       outHeaders.set('Content-Disposition', disposition);
     }
 
-    return new NextResponse(body, {
+    return new NextResponse(responseBytes, {
       status: response.status,
       statusText: response.statusText,
       headers: outHeaders,

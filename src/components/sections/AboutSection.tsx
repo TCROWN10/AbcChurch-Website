@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import { CHURCH_MAPS_URL } from '@/lib/church-info';
 
 export default function AboutSection() {
   return (
@@ -34,7 +35,9 @@ export default function AboutSection() {
           </p>
           <hr className="border-[#D0D7DA] mb-4 sm:mb-6" />
           <a
-            href="#visit"
+            href={CHURCH_MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-5 sm:px-6 py-2 sm:py-3 rounded bg-[#FF602E] text-white font-semibold text-base shadow hover:opacity-90 transition"
           >
             Visit Us Now

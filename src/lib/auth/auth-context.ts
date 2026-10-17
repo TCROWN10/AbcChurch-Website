@@ -1,36 +1,17 @@
 "use client";
-import { authClient } from "@/lib/auth-client";
+import { useContext } from "react";
+import { AuthContext, type AuthContextValue } from "@/providers/auth-provider";
+import type { PublicUser } from "@/lib/content-types";
 
-export type AuthUser = {
-  email: string;
-  name?: string | null;
-  image?: string | null;
-  isGuest?: boolean;
-};
+export type AuthUser = PublicUser;
 
-export function useAuth() {
-  const { data: session, isPending, refetch } = authClient.useSession();
+export function useAuth(): AuthContextValue & { isAdmin: boolean } {
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error("useAuth must be used inside <AuthProvider>.");
+  const isAdmin = ctx.user?.role === "ADMIN" || ctx.user?.role === "SUPER_ADMIN";
+  return { ...ctx, isAdmin };
+}
 
-  const user: AuthUser | null = session?.user
-    ? {
-        email: session.user.email ?? "",
-        name: session.user.name ?? null,
-        image: session.user.image ?? null,
-        isGuest: false,
-      }
-    : null;
-
-  const refreshUser = async () => {
-    try {
-      await refetch();
-    } catch (_) {
-      // no-op
-    }
-  };
-
-  return {
-    user,
-    loading: isPending,
-    refreshUser,
-  };
+export function displayName(user: PublicUser) {
+  return [user.firstName, user.lastName].filter(Boolean).join(" ") || user.email;
 }

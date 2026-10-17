@@ -1,625 +1,494 @@
 "use client";
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { motion } from 'framer-motion';
-import { useCreateCheckoutMutation, useCreateGuestCheckoutMutation } from '@/store';
-import type { DonationType } from '@/types/api';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useAuth, displayName } from '@/lib/auth/auth-context';
 
-function donationCheckoutErrorMessage(error: unknown): string {
-  if (error && typeof error === 'object' && 'data' in error) {
-    const raw = (error as { data: unknown }).data;
-    if (typeof raw === 'string' && raw.trim()) {
-      return raw;
-    }
-    if (raw && typeof raw === 'object') {
-      const o = raw as Record<string, unknown>;
-      if (typeof o.message === 'string' && o.message.trim()) {
-        return o.message;
-      }
-      const inner = o.data;
-      if (inner && typeof inner === 'object' && typeof (inner as { message?: string }).message === 'string') {
-        const im = (inner as { message: string }).message;
-        if (im.trim()) return im;
-      }
-    }
-  }
-  if (error instanceof Error && error.message) {
-    return error.message;
-  }
-  return 'An error occurred. Please try again.';
+type Frequency = 'weekly' | 'monthly' | 'yearly';
+
+const GIVING_CATEGORIES: Array<{ label: string; description: string }> = [
+  { label: 'Tithes', description: 'Honour God with the first tenth' },
+  { label: 'Offerings', description: 'Freewill gifts for ministry' },
+  { label: 'Building Fund', description: 'Help grow our church home' },
+  { label: 'Missions', description: 'Support outreach near and far' },
+];
+
+const FREQUENCIES: Array<{ value: Frequency; label: string; adverb: string }> = [
+  { value: 'weekly', label: 'Weekly', adverb: 'every week' },
+  { value: 'monthly', label: 'Monthly', adverb: 'every month' },
+  { value: 'yearly', label: 'Yearly', adverb: 'every year' },
+];
+
+const PRESET_AMOUNTS = [10, 25, 50, 100, 250, 500];
+const MIN_AMOUNT = 1;
+const MAX_AMOUNT = 100000;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+
+function sanitizeAmountInput(value: string): string {
+  const cleaned = value.replace(/[^\d.]/g, '');
+  const [whole, ...rest] = cleaned.split('.');
+  if (rest.length === 0) return whole.slice(0, 6);
+  return `${whole.slice(0, 6)}.${rest.join('').slice(0, 2)}`;
 }
 
-const GIVING_CATEGORY_TO_API: Record<
-  string,
-  { type: DonationType; displayCategory: string }
-> = {
-  Tithes: { type: 'TITHE', displayCategory: 'Tithes' },
-  Offerings: { type: 'OFFERING', displayCategory: 'Offerings' },
-  'Building Fund': { type: 'DONATION', displayCategory: 'Building Fund' },
-  Missions: { type: 'DONATION', displayCategory: 'Missions' },
-};
-
-const paymentMethods = [
-  'Debit/Credit Card, Apple Pay, Google Pay',
-];
-const givingCategories = [
-  'Tithes',
-  'Offerings',
-  'Building Fund',
-  'Missions',
-];
-const frequencies = [
-  'Every Week',
-  'Every Month',
-  'Every Year',
-];
-
-// Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 30,
-    scale: 0.95
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.6
-    }
-  }
-};
-
-const heroVariants = {
-  hidden: { 
-    opacity: 0,
-    y: 50
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1
-    }
-  }
-};
-
-const formVariants = {
-  hidden: { 
-    opacity: 0,
-    x: 50,
-    scale: 0.9
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: {
-      duration: 0.8
-    }
-  }
-};
-
-const API_FREQ_TO_DISPLAY: Record<string, string> = {
-  weekly: 'Every Week',
-  monthly: 'Every Month',
-  yearly: 'Every Year',
-};
+type FieldErrors = Partial<Record<'amount' | 'email', string>>;
 
 export default function DonatePage() {
-  const searchParams = useSearchParams();
-  const [createCheckout, { isLoading: checkoutLoading }] = useCreateCheckoutMutation();
-  const [createGuestCheckout, { isLoading: guestCheckoutLoading }] = useCreateGuestCheckoutMutation();
-  const [hasAuthToken, setHasAuthToken] = useState(false);
+  const { user } = useAuth();
+  const hasAuthToken = Boolean(user);
   const [donorMode, setDonorMode] = useState<'account' | 'guest'>('guest');
-  const [tab, setTab] = useState<'oneoff' | 'regular'>('oneoff');
-  const [amount, setAmount] = useState('0.00');
-  const [editingAmount, setEditingAmount] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState(paymentMethods[0]);
-  const [category, setCategory] = useState(givingCategories[0]);
-  const [frequency, setFrequency] = useState(frequencies[1]);
+  const [isRecurring, setIsRecurring] = useState(false);
+  const [frequency, setFrequency] = useState<Frequency>('monthly');
+  const [amount, setAmount] = useState('');
+  const [category, setCategory] = useState(GIVING_CATEGORIES[0].label);
   const [email, setEmail] = useState('');
   const [guestName, setGuestName] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const isSubmitting = isLoading || checkoutLoading || guestCheckoutLoading;
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [generalError, setGeneralError] = useState<string>('');
-  const amountInputRef = useRef<HTMLInputElement>(null);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [generalError, setGeneralError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Focus input when editingAmount becomes true
-  useEffect(() => {
-    if (editingAmount && amountInputRef.current) {
-      amountInputRef.current.focus();
-    }
-  }, [editingAmount]);
-
-  // Clear errors when form data changes
-  useEffect(() => {
-    if (Object.keys(errors).length > 0 || generalError) {
-      setErrors({});
-      setGeneralError('');
-    }
-  }, [amount, category, tab, frequency, email, guestName, donorMode]);
+  const amountValue = parseFloat(amount);
+  const hasValidAmount = Number.isFinite(amountValue) && amountValue >= MIN_AMOUNT;
+  const frequencyInfo = FREQUENCIES.find(f => f.value === frequency) ?? FREQUENCIES[1];
+  const amountLabel = hasValidAmount ? currency.format(amountValue) : '$0.00';
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const token = localStorage.getItem('accessToken') || sessionStorage.getItem('accessToken');
-    const isAuthed = Boolean(token);
-    setHasAuthToken(isAuthed);
-    setDonorMode(isAuthed ? 'account' : 'guest');
-  }, []);
+    setDonorMode(user ? 'account' : 'guest');
+  }, [user]);
 
   // Pre-fill after Stripe cancel (see donate/cancel query params)
   useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
     const cat = searchParams.get('category');
-    if (cat && givingCategories.includes(cat)) {
+    if (cat && GIVING_CATEGORIES.some(c => c.label === cat)) {
       setCategory(cat);
     }
-    const amt = searchParams.get('amount');
-    if (amt) {
-      const n = parseFloat(amt);
-      if (Number.isFinite(n) && n > 0) {
-        setAmount(n.toFixed(2));
-      }
+    const amt = parseFloat(searchParams.get('amount') ?? '');
+    if (Number.isFinite(amt) && amt > 0) {
+      setAmount(amt.toFixed(2));
     }
     const em = searchParams.get('email');
     if (em?.trim()) {
       setEmail(em.trim());
     }
-    const freqParam = searchParams.get('frequency');
-    if (freqParam && API_FREQ_TO_DISPLAY[freqParam]) {
-      setFrequency(API_FREQ_TO_DISPLAY[freqParam]);
-      setTab('regular');
+    const freq = searchParams.get('frequency');
+    if (freq && FREQUENCIES.some(f => f.value === freq)) {
+      setFrequency(freq as Frequency);
+      setIsRecurring(true);
     }
-  }, [searchParams]);
+  }, []);
 
-  // Helper function to convert frequency display to API format
-  const getFrequencyValue = (displayFreq: string): string => {
-    switch (displayFreq) {
-      case 'Every Week':
-        return 'weekly';
-      case 'Every Month':
-        return 'monthly';
-      case 'Every Year':
-        return 'yearly';
-      default:
-        return 'monthly';
-    }
+  const clearError = (field: keyof FieldErrors) => {
+    setGeneralError('');
+    setErrors(prev => (prev[field] ? { ...prev, [field]: undefined } : prev));
   };
 
-  // Form submission handler — checkout is created on the Nest API (via /api/proxy)
-  const handleSubmit = async () => {
-    setIsLoading(true);
-    setErrors({});
+  const updateAmount = (value: string) => {
+    setAmount(sanitizeAmountInput(value));
+    clearError('amount');
+  };
+
+  const validate = (): FieldErrors => {
+    const next: FieldErrors = {};
+    if (!Number.isFinite(amountValue) || amountValue <= 0) {
+      next.amount = 'Please enter an amount to give.';
+    } else if (amountValue < MIN_AMOUNT) {
+      next.amount = `The minimum gift is ${currency.format(MIN_AMOUNT)}.`;
+    } else if (amountValue > MAX_AMOUNT) {
+      next.amount = `For gifts over ${currency.format(MAX_AMOUNT)}, please contact the church office.`;
+    }
+    if (donorMode === 'guest') {
+      if (!email.trim()) {
+        next.email = 'Email is required so we can send your receipt.';
+      } else if (!EMAIL_PATTERN.test(email.trim())) {
+        next.email = 'Please enter a valid email address.';
+      }
+    }
+    return next;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setGeneralError('');
 
+    const fieldErrors = validate();
+    setErrors(fieldErrors);
+    if (Object.keys(fieldErrors).length > 0) return;
+
+    const asAccount = donorMode === 'account' && user;
+    setIsSubmitting(true);
     try {
-      const token =
-        typeof window !== 'undefined'
-          ? localStorage.getItem('accessToken') || sessionStorage.getItem('accessToken')
-          : null;
-
-      const amountDollars = parseFloat(amount);
-      if (!Number.isFinite(amountDollars) || amountDollars <= 0) {
-        setErrors({ amount: 'Please enter a valid donation amount' });
-        setIsLoading(false);
-        return;
+      const res = await fetch('/api/donations/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount: Math.round(amountValue * 100) / 100,
+          category,
+          isRecurring,
+          frequency: isRecurring ? frequency : undefined,
+          email: asAccount ? user.email : email.trim(),
+          name: asAccount ? displayName(user) : guestName.trim() || undefined,
+        }),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json?.data?.url) {
+        throw new Error(json?.message || 'Could not start checkout. Please try again.');
       }
-
-      const categoryMap = GIVING_CATEGORY_TO_API[category];
-      if (!categoryMap) {
-        setErrors({ category: 'Please choose a giving category' });
-        setIsLoading(false);
-        return;
-      }
-      if (donorMode === 'guest' && !email.trim()) {
-        setErrors({ email: 'Please enter your email address' });
-        setIsLoading(false);
-        return;
-      }
-
-      const payload = {
-        amount: amountDollars,
-        type: categoryMap.type,
-        currency: 'USD' as const,
-        isRecurring: tab === 'regular',
-        recurringPeriod:
-          tab === 'regular'
-            ? (getFrequencyValue(frequency) as 'weekly' | 'monthly' | 'yearly')
-            : undefined,
-        displayCategory: categoryMap.displayCategory,
-        ...(typeof window !== 'undefined' && window.location?.origin
-          ? { clientOrigin: window.location.origin }
-          : {}),
-      };
-
-      const useAccountMode = donorMode === 'account' && Boolean(token);
-
-      const data = useAccountMode
-        ? await createCheckout(payload).unwrap()
-        : await createGuestCheckout({
-            ...payload,
-            email: email.trim(),
-            guestName: guestName.trim() || undefined,
-          }).unwrap();
-
-      if (data.url) {
-        window.location.href = data.url;
-        return;
-      }
-
-      throw new Error('Checkout URL was not returned. Please try again.');
+      window.location.href = json.data.url;
     } catch (error: unknown) {
-      console.error('Donation submission error:', error);
-      setGeneralError(donationCheckoutErrorMessage(error));
-    } finally {
-      setIsLoading(false);
+      setGeneralError(error instanceof Error ? error.message : 'An error occurred. Please try again.');
+      setIsSubmitting(false);
     }
   };
 
+  const summary = useMemo(() => {
+    const cadence = isRecurring ? frequencyInfo.adverb : 'one-time';
+    return isRecurring
+      ? `${amountLabel} ${cadence} to ${category}`
+      : `${amountLabel} ${cadence} gift to ${category}`;
+  }, [amountLabel, category, frequencyInfo.adverb, isRecurring]);
+
+  const inputClass = (hasError?: boolean) =>
+    `w-full rounded-lg bg-white/95 px-3.5 py-2.5 text-base sm:text-sm text-gray-900 placeholder:text-gray-400 border transition-colors ${
+      hasError ? 'border-red-400' : 'border-transparent focus:border-[#FF602E]'
+    }`;
+
   return (
-    <motion.section 
-      className="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center overflow-x-hidden pt-20 pb-8 px-2 sm:px-4"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
+    <section className="relative min-h-screen w-full overflow-hidden">
       <Image
         src="/images/backgrounds/BG.png"
-        alt="Donation Hero Background"
+        alt=""
         fill
-        className="object-cover w-full h-full z-0"
         priority
+        className="object-cover z-0"
       />
-      {/* Heading */}
-      <motion.div 
-        className="absolute top-24 left-1/2 -translate-x-1/2 z-20 w-full flex justify-center pointer-events-none"
-        variants={heroVariants}
-      >
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white drop-shadow-lg">Make Donation</h1>
-      </motion.div>
-      {/* Overlay Content */}
-      <div className="relative z-20 w-full flex flex-col md:flex-row items-center justify-center gap-8 pt-32 md:pt-32">
-        <div className="absolute top-28 left-1/2 -translate-x-1/2 z-30 w-full max-w-lg px-4">
-          <div className="rounded-lg bg-black/50 text-white text-sm px-4 py-3 backdrop-blur-sm border border-white/10">
-            <span className="font-semibold">Guest checkout available.</span>{' '}
-            You can give as a guest with your email or{' '}
-            <Link href="/signin" className="text-[#FF602E] underline font-medium">
-              Sign in
-            </Link>{' '}
-            to link donations to your account.
-          </div>
-        </div>
-        {/* Amount Overlay (top on mobile, left on desktop) */}
-        <motion.div 
-          className="w-full md:w-1/2 flex flex-col justify-center items-start max-w-[400px] mx-auto md:mx-0 md:pl-8"
-          variants={itemVariants}
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-black/85 via-black/65 to-black/50" />
+
+      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 px-4 pt-24 pb-12 sm:gap-10 sm:px-6 sm:pt-28 sm:pb-16 lg:grid-cols-[1fr_minmax(0,480px)] lg:gap-16 lg:pt-32">
+        {/* Left: amount */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-white"
         >
-          <motion.label
-            htmlFor="amount"
-            className={`text-[#FF602E] text-lg md:text-xl font-semibold mb-2 cursor-pointer ${errors.amount ? 'text-red-400' : ''}`}
-            onClick={() => setEditingAmount(true)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Enter Donation Amount
-          </motion.label>
-          {editingAmount ? (
-            <motion.input
-              ref={amountInputRef}
-              id="amount"
-              type="number"
-              min="0"
-              step="0.01"
-              value={amount}
-              onChange={e => setAmount(e.target.value)}
-              onBlur={() => setEditingAmount(false)}
-              className="text-[3.5rem] md:text-[5.5rem] font-bold text-[#787878] bg-transparent outline-none focus:ring-0 w-full max-w-[320px] border-0 shadow-none appearance-none no-spinners"
-              style={{ lineHeight: 1, padding: 0 }}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
-          ) : (
-            <motion.div
-              className="text-[3.5rem] md:text-[5.5rem] font-bold select-none leading-none cursor-pointer"
-              style={{ color: '#787878' }}
-              onClick={() => setEditingAmount(true)}
-              tabIndex={0}
-              onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') setEditingAmount(true); }}
-              role="button"
-              aria-label="Edit donation amount"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#FF602E]">Give generously</p>
+          <h1 className="mt-3 text-3xl font-bold sm:text-4xl lg:text-5xl leading-tight">Make a Donation</h1>
+          <p className="mt-4 max-w-md text-white/70 leading-relaxed">
+            &ldquo;Each of you should give what you have decided in your heart to give&hellip; for God loves a
+            cheerful giver.&rdquo; <span className="whitespace-nowrap text-white/50">&mdash; 2 Corinthians 9:7</span>
+          </p>
+
+          <div className="mt-10">
+            <label htmlFor="amount" className="text-sm font-medium text-white/70">
+              Your gift
+            </label>
+            <div
+              className={`mt-2 flex items-baseline gap-2 border-b-2 pb-2 transition-colors ${
+                errors.amount ? 'border-red-400' : 'border-white/20 focus-within:border-[#FF602E]'
+              }`}
             >
-              ${amount || '0.00'}
-            </motion.div>
-          )}
-          {errors.amount && (
-            <motion.p 
-              className="text-red-400 text-sm mt-2 max-w-[320px]"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              {errors.amount}
-            </motion.p>
-          )}
-        </motion.div>
-        {/* Form Overlay (bottom on mobile, right on desktop) */}
-        <motion.div 
-          className="w-full md:w-1/2 flex flex-col justify-center items-end max-w-[600px] mx-auto md:mx-0 md:pr-8"
-          variants={formVariants}
-        >
-            <motion.div 
-              className="w-full max-w-lg min-w-[200px] bg-[#313131b3] rounded-lg shadow-2xl p-3 sm:p-6 backdrop-blur-xl border border-white/10 flex flex-col gap-2 sm:gap-3 transition-all duration-300 mt-24 md:mt-28"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Tabs */}
-            <motion.div 
-              className="flex mb-4"
-              variants={itemVariants}
-            >
-              {hasAuthToken && (
-                <div className="w-full mb-3 rounded border border-white/20 p-2">
-                  <p className="text-white/80 text-xs mb-2">Donor Mode</p>
-                  <div className="flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setDonorMode('account')}
-                      className={`flex-1 py-1.5 rounded text-xs font-semibold ${donorMode === 'account' ? 'bg-[#FF602E] text-white' : 'bg-white/10 text-white/80'}`}
-                    >
-                      Signed-in account
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setDonorMode('guest')}
-                      className={`flex-1 py-1.5 rounded text-xs font-semibold ${donorMode === 'guest' ? 'bg-[#FF602E] text-white' : 'bg-white/10 text-white/80'}`}
-                    >
-                      Guest checkout
-                    </button>
-                  </div>
-                </div>
-              )}
-            </motion.div>
-            <motion.div className="flex mb-4" variants={itemVariants}>
-              <motion.button
-                className={`flex-1 py-1.5 font-semibold rounded-tl-lg rounded-tr-none rounded-bl-lg rounded-br-none transition text-sm ${tab === 'oneoff' ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80 border-b-2 border-white/30'}`}
-                onClick={() => setTab('oneoff')}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Give One-Off
-              </motion.button>
-              <motion.button
-                className={`flex-1 py-1.5 font-semibold rounded-tr-lg rounded-tl-none rounded-br-lg rounded-bl-none transition text-sm ${tab === 'regular' ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80 border-b-2 border-white/30'}`}
-                onClick={() => setTab('regular')}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Regular Donation
-              </motion.button>
-            </motion.div>
-            {donorMode === 'guest' && (
-              <motion.div className="mb-3" variants={itemVariants}>
-                <label htmlFor="guestName" className="block text-white/80 font-medium mb-1 text-sm">
-                  Full Name (optional)
-                </label>
-                <input
-                  id="guestName"
-                  type="text"
-                  value={guestName}
-                  onChange={e => setGuestName(e.target.value)}
-                  placeholder="Guest Donor"
-                  className="w-full px-3 py-1.5 rounded bg-white/80 text-gray-800 border-none focus:ring-2 focus:ring-[#FF602E] outline-none text-sm"
-                />
-              </motion.div>
-            )}
-            {/* Payment Method */}
-            <motion.div 
-              className="mb-3 relative"
-              variants={itemVariants}
-            >
-              <label htmlFor="paymentMethod" className="block text-white/80 font-medium mb-1 text-sm">Payment Method <span className="text-xs text-white/60">(Handled via Stripe once user clicks submit)</span></label>
-              <div className="relative">
-                <select
-                  id="paymentMethod"
-                  value={paymentMethod}
-                  onChange={e => setPaymentMethod(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-white/90 text-gray-800 border-none shadow-lg focus:ring-2 focus:ring-[#FF602E] outline-none appearance-none pr-10 text-sm font-semibold transition"
-                  style={{ WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none' }}
-                >
-                  {paymentMethods.map(method => (
-                    <option key={method} value={method}>{method}</option>
-                  ))}
-                </select>
-                {/* Custom dropdown arrow */}
-                <div className="pointer-events-none absolute top-1/2 right-3 transform -translate-y-1/2 text-[#FF602E] text-lg">
-                  <svg width="16" height="16" fill="none" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="#FF602E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </div>
-              </div>
-            </motion.div>
-            {/* Giving Category */}
-            <motion.div 
-              className="mb-3"
-              variants={itemVariants}
-            >
-              <label htmlFor="category" className="block text-white/80 font-medium mb-1 text-sm">Giving Category</label>
-              <select
-                id="category"
-                value={category}
-                onChange={e => setCategory(e.target.value)}
-                className={`w-full px-3 py-1.5 rounded bg-white/80 text-gray-800 border-none focus:ring-2 focus:ring-[#FF602E] outline-none text-sm ${errors.category ? 'ring-2 ring-red-500' : ''}`}
-              >
-                {givingCategories.map(cat => (
-                  <option key={cat} value={cat}>{cat}</option>
-                ))}
-              </select>
-              {errors.category && (
-                <motion.p 
-                  className="text-red-400 text-xs mt-1"
-                  initial={{ opacity: 0, y: -10 }}
+              <span className="text-[2.75rem] leading-none font-bold text-[#FF602E] sm:text-7xl">$</span>
+              <input
+                id="amount"
+                type="text"
+                inputMode="decimal"
+                autoComplete="off"
+                placeholder="0.00"
+                value={amount}
+                onChange={e => updateAmount(e.target.value)}
+                onBlur={() => hasValidAmount && setAmount(amountValue.toFixed(2))}
+                aria-invalid={Boolean(errors.amount)}
+                aria-describedby={errors.amount ? 'amount-error' : undefined}
+                className="w-full min-w-0 bg-transparent text-[2.75rem] leading-none font-bold text-white placeholder:text-white/30 sm:text-7xl"
+              />
+              <span className="text-lg font-semibold text-white/50">USD</span>
+            </div>
+            <AnimatePresence>
+              {errors.amount && (
+                <motion.p
+                  id="amount-error"
+                  initial={{ opacity: 0, y: -6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
+                  exit={{ opacity: 0 }}
+                  className="mt-2 text-sm text-red-400"
                 >
-                  {errors.category}
+                  {errors.amount}
                 </motion.p>
               )}
-            </motion.div>
-            {/* Frequency for Regular Donation */}
-            {tab === 'regular' && (
-              <motion.div 
-                className="mb-3"
-                variants={itemVariants}
+            </AnimatePresence>
+
+            <div className="mt-5 grid grid-cols-3 gap-2 sm:grid-cols-6">
+              {PRESET_AMOUNTS.map(preset => {
+                const active = amountValue === preset;
+                return (
+                  <button
+                    key={preset}
+                    type="button"
+                    onClick={() => updateAmount(preset.toFixed(2))}
+                    aria-pressed={active}
+                    className={`rounded-lg border py-2 text-sm font-semibold transition-colors ${
+                      active
+                        ? 'border-[#FF602E] bg-[#FF602E] text-white'
+                        : 'border-white/20 bg-white/5 text-white/85 hover:border-white/40 hover:bg-white/10'
+                    }`}
+                  >
+                    ${preset}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <ul className="mt-10 hidden space-y-3 text-sm text-white/70 lg:block">
+            {[
+              'Secure payment processed by Stripe',
+              'Receipt emailed to you instantly',
+              'Recurring gifts can be cancelled anytime',
+            ].map(item => (
+              <li key={item} className="flex items-center gap-3">
+                <svg className="h-5 w-5 flex-shrink-0 text-[#FF602E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        {/* Right: form card */}
+        <motion.form
+          noValidate
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="w-full rounded-2xl border border-white/10 bg-[#1f1f1f]/80 p-5 shadow-2xl backdrop-blur-xl sm:p-7"
+        >
+          {/* Gift type */}
+          <div className="grid grid-cols-2 gap-1 rounded-xl bg-white/5 p-1" role="tablist" aria-label="Gift type">
+            {[
+              { value: false, label: 'One-time' },
+              { value: true, label: 'Recurring' },
+            ].map(option => {
+              const active = isRecurring === option.value;
+              return (
+                <button
+                  key={option.label}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => setIsRecurring(option.value)}
+                  className={`relative rounded-lg py-2.5 text-sm font-semibold transition-colors ${
+                    active ? 'text-white' : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {active && (
+                    <motion.span
+                      layoutId="gift-type-pill"
+                      className="absolute inset-0 rounded-lg bg-[#FF602E]"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative">{option.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <AnimatePresence initial={false}>
+            {isRecurring && (
+              <motion.div
                 initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
+                animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden"
               >
-                <label className="block text-white/80 font-medium mb-1 text-sm">Frequency</label>
-                <div className="flex gap-1">
-                  {frequencies.map(freq => (
-                    <motion.button
-                      key={freq}
+                <p className="mt-5 mb-2 text-sm font-medium text-white/80">How often?</p>
+                <div className="grid grid-cols-3 gap-2">
+                  {FREQUENCIES.map(f => (
+                    <button
+                      key={f.value}
                       type="button"
-                      className={`px-2 py-1 rounded font-semibold text-xs transition border border-white/30 ${frequency === freq ? 'bg-[#FF602E] text-white' : 'bg-transparent text-white/80'} ${errors.frequency ? 'border-red-500' : ''}`}
-                      onClick={() => setFrequency(freq)}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      aria-pressed={frequency === f.value}
+                      onClick={() => setFrequency(f.value)}
+                      className={`rounded-lg border py-2 text-sm font-semibold transition-colors ${
+                        frequency === f.value
+                          ? 'border-[#FF602E] bg-[#FF602E]/15 text-white'
+                          : 'border-white/15 text-white/70 hover:border-white/30 hover:text-white'
+                      }`}
                     >
-                      {freq}
-                    </motion.button>
+                      {f.label}
+                    </button>
                   ))}
                 </div>
-                {errors.frequency && (
-                  <motion.p 
-                    className="text-red-400 text-xs mt-1"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Category */}
+          <fieldset className="mt-5">
+            <legend className="mb-2 text-sm font-medium text-white/80">Where should your gift go?</legend>
+            <div className="grid grid-cols-2 gap-2">
+              {GIVING_CATEGORIES.map(c => {
+                const active = category === c.label;
+                return (
+                  <button
+                    key={c.label}
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => setCategory(c.label)}
+                    className={`rounded-xl border p-3 text-left transition-colors ${
+                      active
+                        ? 'border-[#FF602E] bg-[#FF602E]/15'
+                        : 'border-white/15 bg-white/[0.03] hover:border-white/30'
+                    }`}
                   >
-                    {errors.frequency}
-                  </motion.p>
+                    <span className={`block text-sm font-semibold ${active ? 'text-white' : 'text-white/85'}`}>
+                      {c.label}
+                    </span>
+                    <span className="mt-0.5 block text-xs leading-snug text-white/55">{c.description}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </fieldset>
+
+          {/* Donor details */}
+          {hasAuthToken && (
+            <div className="mt-5">
+              <p className="mb-2 text-sm font-medium text-white/80">Give as</p>
+              <div className="grid grid-cols-2 gap-2">
+                {([
+                  { value: 'account', label: 'My account' },
+                  { value: 'guest', label: 'Guest' },
+                ] as const).map(option => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    aria-pressed={donorMode === option.value}
+                    onClick={() => {
+                      setDonorMode(option.value);
+                      clearError('email');
+                    }}
+                    className={`rounded-lg border py-2 text-sm font-semibold transition-colors ${
+                      donorMode === option.value
+                        ? 'border-[#FF602E] bg-[#FF602E]/15 text-white'
+                        : 'border-white/15 text-white/70 hover:border-white/30 hover:text-white'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <AnimatePresence initial={false}>
+            {donorMode === 'guest' && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden"
+              >
+                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="guestName" className="mb-1.5 block text-sm font-medium text-white/80">
+                      Full name <span className="text-white/40">(optional)</span>
+                    </label>
+                    <input
+                      id="guestName"
+                      type="text"
+                      autoComplete="name"
+                      value={guestName}
+                      onChange={e => setGuestName(e.target.value)}
+                      placeholder="Jane Doe"
+                      className={inputClass()}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-white/80">
+                      Email <span className="text-[#FF602E]">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      autoComplete="email"
+                      value={email}
+                      onChange={e => {
+                        setEmail(e.target.value);
+                        clearError('email');
+                      }}
+                      placeholder="you@example.com"
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
+                      className={inputClass(Boolean(errors.email))}
+                    />
+                  </div>
+                </div>
+                {errors.email ? (
+                  <p id="email-error" className="mt-2 text-xs text-red-400">{errors.email}</p>
+                ) : (
+                  !hasAuthToken && (
+                    <p className="mt-2 text-xs text-white/50">
+                      Giving as a guest.{' '}
+                      <Link href="/signin?redirect=/donate" className="font-medium text-[#FF602E] hover:underline">
+                        Sign in
+                      </Link>{' '}
+                      to link this gift to your account.
+                    </p>
+                  )
                 )}
               </motion.div>
             )}
+          </AnimatePresence>
 
-            {/* Email Field */}
-            <motion.div 
-              className="mb-3"
-              variants={itemVariants}
-            >
-              <label htmlFor="email" className="block text-white/80 font-medium mb-1 text-sm">
-                Email Address {donorMode === 'guest' && <span className="text-red-400">*</span>}
-                <span className="text-xs text-white/60 block">
-                  {donorMode === 'guest'
-                    ? 'Required for guest checkout and Stripe receipts.'
-                    : 'Used only if you switch to guest checkout.'}
-                </span>
-              </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="your.email@example.com"
-                className={`w-full px-3 py-1.5 rounded bg-white/80 text-gray-800 border-none focus:ring-2 focus:ring-[#FF602E] outline-none text-sm ${errors.email ? 'ring-2 ring-red-500' : ''}`}
-              />
-              {errors.email && (
-                <motion.p 
-                  className="text-red-400 text-xs mt-1"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {errors.email}
-                </motion.p>
-              )}
-            </motion.div>
-            {/* General Error Display */}
-            {generalError && (
-              <motion.div 
-                className="mb-3 p-2 bg-red-500/20 border border-red-500/50 rounded text-red-400 text-xs"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {generalError}
-              </motion.div>
+          {/* Summary */}
+          <div className="mt-6 flex items-center justify-between gap-4 rounded-xl bg-white/5 px-4 py-3">
+            <span className="text-sm text-white/60">Summary</span>
+            <span className="text-right text-sm font-semibold text-white">{summary}</span>
+          </div>
+
+          {generalError && (
+            <div role="alert" className="mt-4 rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-300">
+              {generalError}
+            </div>
+          )}
+
+          <motion.button
+            type="submit"
+            disabled={isSubmitting}
+            whileTap={!isSubmitting ? { scale: 0.98 } : undefined}
+            className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#FF602E] py-3.5 text-base font-semibold text-white shadow-lg shadow-[#FF602E]/20 transition hover:bg-[#ff7449] disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {isSubmitting ? (
+              <>
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                Redirecting to checkout&hellip;
+              </>
+            ) : (
+              <>
+                Give {amountLabel}
+                {isRecurring && <span className="font-normal text-white/80">/ {frequencyInfo.label.toLowerCase()}</span>}
+              </>
             )}
+          </motion.button>
 
-            {/* Amount Input (hidden, controlled by left overlay) */}
-            <input
-              id="amount"
-              type="number"
-              min="0"
-              step="0.01"
-              placeholder="$0.00"
-              value={amount}
-              onChange={e => setAmount(e.target.value)}
-              className="hidden"
-              tabIndex={-1}
-              aria-hidden="true"
-            />
-            
-            <motion.button
-              type="button"
-              onClick={handleSubmit}
-              disabled={isSubmitting}
-              className={`w-full mt-3 px-4 py-2 rounded font-semibold text-sm shadow transition relative ${
-                isSubmitting 
-                  ? 'bg-gray-500 cursor-not-allowed' 
-                  : 'bg-[#FF602E] hover:opacity-90'
-              } text-white`}
-              variants={itemVariants}
-              whileHover={!isSubmitting ? { 
-                scale: 1.05,
-                boxShadow: "0 10px 25px rgba(255, 96, 46, 0.3)"
-              } : {}}
-              whileTap={!isSubmitting ? { scale: 0.95 } : {}}
-            >
-              {isSubmitting ? (
-                <div className="flex items-center justify-center">
-                  <motion.div
-                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                  />
-                  Processing...
-                </div>
-              ) : (
-                `Continue to secure checkout (${tab === 'oneoff' ? 'one-time' : 'recurring'})`
-              )}
-            </motion.button>
-          </motion.div>
-        </motion.div>
+          <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-white/50">
+            <svg className="h-3.5 w-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <rect x="5" y="11" width="14" height="10" rx="2" />
+              <path d="M8 11V7a4 4 0 118 0v4" />
+            </svg>
+            Secure checkout with Card, Apple Pay or Google Pay via Stripe
+          </p>
+        </motion.form>
       </div>
-      <style jsx global>{`
-        input[type=number].no-spinners::-webkit-inner-spin-button,
-        input[type=number].no-spinners::-webkit-outer-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-        input[type=number].no-spinners {
-          -moz-appearance: textfield;
-          appearance: textfield;
-        }
-      `}</style>
-    </motion.section>
+    </section>
   );
-} 
+}
