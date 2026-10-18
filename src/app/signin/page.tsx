@@ -22,10 +22,16 @@ export default function SignInPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
+  const isAdminLogin = redirectTo === "/admin" || redirectTo.startsWith("/admin/");
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setRedirectTo(safeRedirect(params.get("redirect")));
-    if (params.get("tab") === "create") setTab("create");
+    const nextRedirect = safeRedirect(params.get("redirect"));
+    setRedirectTo(nextRedirect);
+    const adminOnly = nextRedirect === "/admin" || nextRedirect.startsWith("/admin/");
+    // Admin sign-in is sign-in only — no public account creation on this path.
+    if (adminOnly) setTab("signin");
+    else if (params.get("tab") === "create") setTab("create");
   }, []);
 
   useEffect(() => {
@@ -38,20 +44,27 @@ export default function SignInPage() {
   };
 
   const switchTab = (next: Tab) => {
+    if (isAdminLogin) return;
     setTab(next);
     setError("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isAdminLogin && tab !== "signin") {
+      setError("Admin access is for existing accounts only. Please sign in.");
+      setTab("signin");
+      return;
+    }
     setSubmitting(true);
     setError("");
     try {
-      const res = await fetch(tab === "signin" ? "/api/auth/login" : "/api/auth/register", {
+      const mode = isAdminLogin ? "signin" : tab;
+      const res = await fetch(mode === "signin" ? "/api/auth/login" : "/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(
-          tab === "signin" ? { email: form.email, password: form.password } : form
+          mode === "signin" ? { email: form.email, password: form.password } : form
         ),
       });
       const json = await res.json().catch(() => ({}));
@@ -90,14 +103,17 @@ export default function SignInPage() {
           className="w-full max-w-md rounded-2xl bg-white shadow-xl ring-1 ring-black/5 p-6 sm:p-8"
         >
           <h1 className="text-2xl font-bold text-[#28505A]">
-            {tab === "signin" ? "Welcome back" : "Create your account"}
+            {isAdminLogin ? "Admin sign in" : tab === "signin" ? "Welcome back" : "Create your account"}
           </h1>
           <p className="mt-1 text-sm text-gray-500">
-            {tab === "signin"
-              ? "Sign in to manage your giving and church account."
-              : "Join the All Believers Christian Church family online."}
+            {isAdminLogin
+              ? "Sign in with your admin email to manage the church website."
+              : tab === "signin"
+                ? "Sign in to manage your giving and church account."
+                : "Join the All Believers Christian Church family online."}
           </p>
 
+          {!isAdminLogin && (
           <div className="mt-6 grid grid-cols-2 gap-1 rounded-xl bg-gray-100 p-1" role="tablist">
             {(["signin", "create"] as const).map(t => (
               <button
@@ -117,10 +133,11 @@ export default function SignInPage() {
               </button>
             ))}
           </div>
+          )}
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
             <AnimatePresence initial={false}>
-              {tab === "create" && (
+              {!isAdminLogin && tab === "create" && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
@@ -190,12 +207,18 @@ export default function SignInPage() {
             </button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-gray-500">
-            Just want to give?{" "}
-            <Link href="/donate" className="font-semibold text-[#FF602E] hover:underline">
-              Donate as a guest
-            </Link>
-          </p>
+          {!isAdminLogin ? (
+            <p className="mt-6 text-center text-sm text-gray-500">
+              Just want to give?{" "}
+              <Link href="/donate" className="font-semibold text-[#FF602E] hover:underline">
+                Donate as a guest
+              </Link>
+            </p>
+          ) : (
+            <p className="mt-6 text-center text-sm text-gray-500">
+              New admin accounts are created by a super admin from the dashboard.
+            </p>
+          )}
         </motion.div>
       </main>
     </div>
