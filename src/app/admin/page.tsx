@@ -161,7 +161,7 @@ export default function AdminPage() {
 
   const brand = (
     <div className="flex items-center gap-3 px-6 py-5">
-      <Image src="/images/church-logo.png" alt="" width={36} height={36} className="rounded-full bg-white" />
+      <Image src="/images/logo.png" alt="" width={36} height={36} className="rounded-full bg-white" priority />
       <div>
         <p className="text-sm font-bold text-white">ABC Church</p>
         <p className="text-xs text-white/50">Admin dashboard</p>
@@ -180,7 +180,7 @@ export default function AdminPage() {
 
         <header className="sticky top-0 z-30 flex items-center justify-between bg-[#0C232B] px-4 py-3 lg:hidden">
           <div className="flex items-center gap-2">
-            <Image src="/images/church-logo.png" alt="" width={28} height={28} className="rounded-full bg-white" />
+            <Image src="/images/logo.png" alt="" width={28} height={28} className="rounded-full bg-white" />
             <span className="text-sm font-semibold text-white">{current.label}</span>
           </div>
           <button

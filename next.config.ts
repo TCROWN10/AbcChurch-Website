@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
   // the wrong workspace root; this pins tracing to the project directory.
   outputFileTracingRoot: path.join(__dirname),
 
+  images: {
+    formats: ['image/webp', 'image/avif'],
+    // Keep local public/ images working even if the optimizer has a cold-start hiccup.
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'inline',
+  },
+
   async headers() {
     return [
       {

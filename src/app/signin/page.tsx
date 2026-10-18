@@ -88,7 +88,7 @@ export default function SignInPage() {
     <div className="min-h-screen flex flex-col bg-[#F7F4F2]">
       <header className="w-full bg-[#28505A] h-16 flex items-center px-4 md:px-8">
         <Link href="/home" className="flex items-center gap-3">
-          <Image src="/images/church-logo.png" alt="All Believers Christian Church" width={40} height={40} className="rounded-full" />
+          <Image src="/images/logo.png" alt="All Believers Christian Church" width={40} height={40} className="rounded-full" priority />
           <span className="text-white font-bold text-sm leading-tight hidden sm:block">
             ALL BELIEVERS<br />CHRISTIAN CHURCH
           </span>
