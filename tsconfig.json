@@ -22,16 +22,9 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "@/utils": [
-        "utils"
-      ],
-      "@components": [
-        "components"
       ]
     }
   },
