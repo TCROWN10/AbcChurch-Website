@@ -9,6 +9,9 @@ export const supabaseConfig = {
 
 export const isSupabaseEnabled = Boolean(supabaseConfig.url && supabaseConfig.serviceRoleKey);
 
+/** Vercel Blob — required for video uploads larger than ~4.5 MB on Vercel. */
+export const isBlobEnabled = Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+
 export const postgresConfig = {
   url: process.env.DATABASE_URL ?? '',
 };
@@ -27,7 +30,11 @@ export const uploadDir =
     : process.env.VERCEL
       ? '/tmp/uploads'
       : `${process.cwd()}/data/uploads`);
-export const hasPersistentUploads = isSupabaseEnabled || Boolean(process.env.UPLOAD_DIR || volumePath);
+export const hasPersistentUploads =
+  isSupabaseEnabled || isBlobEnabled || Boolean(process.env.UPLOAD_DIR || volumePath);
+
+/** Vercel serverless request body limit (~4.5 MB). Local disk uploads above this fail with 413. */
+export const VERCEL_BODY_LIMIT_BYTES = 4.5 * 1024 * 1024;
 
 if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE !== 'phase-production-build') {
   if (databaseKind === 'local') {

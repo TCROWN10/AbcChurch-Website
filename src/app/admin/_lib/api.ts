@@ -1,9 +1,13 @@
 "use client";
+import { upload as uploadToBlob } from '@vercel/blob/client';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { MediaItem, MediaKind } from '@/lib/content-types';
-import { validateMedia } from '@/lib/media-rules';
+import { formatBytes, validateMedia } from '@/lib/media-rules';
 
 type ApiResponse<T> = { success: true; data: T } | { success: false; message?: string };
+
+/** Vercel serverless body limit — local API uploads larger than this return HTTP 413. */
+const VERCEL_UPLOAD_LIMIT = 4.5 * 1024 * 1024;
 
 export async function api<T>(url: string, init?: RequestInit & { json?: unknown }): Promise<T> {
   const { json, ...rest } = init ?? {};
@@ -24,6 +28,11 @@ export async function api<T>(url: string, init?: RequestInit & { json?: unknown 
     // non-JSON response
   }
   if (!res.ok || !payload || !payload.success) {
+    if (res.status === 413) {
+      throw new Error(
+        `File is too large for this server (${formatBytes(VERCEL_UPLOAD_LIMIT)} max through the API). Paste a YouTube/Facebook link, or ask an admin to enable Vercel Blob (BLOB_READ_WRITE_TOKEN).`
+      );
+    }
     const message = payload && !payload.success && payload.message ? payload.message : `Request failed (${res.status})`;
     throw new Error(message);
   }
@@ -32,6 +41,7 @@ export async function api<T>(url: string, init?: RequestInit & { json?: unknown 
 
 type UploadTicket =
   | { mode: 'supabase'; path: string; token: string; publicUrl: string; bucket: string }
+  | { mode: 'vercel-blob'; path: string }
   | { mode: 'local'; path: string };
 
 let browserSupabase: SupabaseClient | null = null;
@@ -46,6 +56,13 @@ function getBrowserSupabase() {
 }
 
 function uploadLocal(file: File, path: string, onProgress?: (pct: number) => void) {
+  if (file.size > VERCEL_UPLOAD_LIMIT && typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+    return Promise.reject(
+      new Error(
+        `This file is ${formatBytes(file.size)}. On the live site, uploads over ${formatBytes(VERCEL_UPLOAD_LIMIT)} need Vercel Blob — or paste a YouTube/Facebook link instead.`
+      )
+    );
+  }
   return new Promise<{ url: string; path: string }>((resolve, reject) => {
     const form = new FormData();
     form.append('file', file);
@@ -58,6 +75,14 @@ function uploadLocal(file: File, path: string, onProgress?: (pct: number) => voi
     };
     xhr.onload = () => {
       try {
+        if (xhr.status === 413) {
+          reject(
+            new Error(
+              `Upload blocked (413): file is too large for the server. Paste a YouTube/Facebook link, or enable Vercel Blob.`
+            )
+          );
+          return;
+        }
         const json = JSON.parse(xhr.responseText);
         if (xhr.status >= 200 && xhr.status < 300 && json.success) resolve(json.data);
         else reject(new Error(json.message || `Upload failed (${xhr.status})`));
@@ -98,6 +123,17 @@ export async function uploadMedia(file: File, options: UploadOptions = {}): Prom
       .uploadToSignedUrl(ticket.path, ticket.token, file, { contentType: mimeType });
     if (error) throw new Error(`Upload failed: ${error.message}`);
     url = ticket.publicUrl;
+    path = ticket.path;
+  } else if (ticket.mode === 'vercel-blob') {
+    options.onProgress?.(null);
+    const blob = await uploadToBlob(ticket.path, file, {
+      access: 'public',
+      handleUploadUrl: '/api/admin/uploads/blob',
+      multipart: file.size > 8 * 1024 * 1024,
+      contentType: mimeType,
+      onUploadProgress: ({ percentage }) => options.onProgress?.(Math.round(percentage)),
+    });
+    url = blob.url;
     path = ticket.path;
   } else {
     ({ url, path } = await uploadLocal(file, ticket.path, pct => options.onProgress?.(pct)));

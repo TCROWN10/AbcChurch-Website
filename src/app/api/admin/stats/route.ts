@@ -1,5 +1,5 @@
 import { requireAdmin, toPublicUser } from '@/lib/server/auth';
-import { databaseKind, hasPersistentUploads, isSupabaseEnabled, stripeConfig } from '@/lib/server/config';
+import { databaseKind, hasPersistentUploads, isBlobEnabled, isSupabaseEnabled, stripeConfig } from '@/lib/server/config';
 import { handle, ok } from '@/lib/server/http';
 import { ensureSeeded } from '@/lib/server/seed';
 import { store } from '@/lib/server/store';
@@ -53,7 +53,7 @@ export const GET = handle(async () => {
     latestDevotional: devotionals[0] ?? null,
     setup: {
       database: databaseKind,
-      storage: isSupabaseEnabled ? 'supabase' : hasPersistentUploads ? 'volume' : 'local',
+      storage: isSupabaseEnabled ? 'supabase' : isBlobEnabled ? 'blob' : hasPersistentUploads ? 'volume' : 'local',
       stripe: Boolean(stripeConfig.secretKey),
       stripeWebhook: Boolean(stripeConfig.webhookSecret),
     },

@@ -76,7 +76,10 @@ export default function VideoSourceField({
       ) : (
         <div className="space-y-2">
           <MediaPicker value={isEmbedLink(value) ? '' : value} onChange={url => onChange(url)} kinds={['video']} allowLink={false} />
-          <p className="text-xs text-gray-500">MP4, WebM, or MOV · up to 200 MB. Larger services work better as a YouTube link.</p>
+          <p className="text-xs text-gray-500">
+            MP4, WebM, or MOV · up to 200 MB. On the live site, large files need Vercel Blob — otherwise paste a YouTube
+            link (recommended).
+          </p>
         </div>
       )}
 

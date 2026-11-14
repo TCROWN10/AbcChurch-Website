@@ -15,7 +15,7 @@ interface Stats {
   latestDevotional: Devotional | null;
   setup: {
     database: 'postgres' | 'supabase' | 'local';
-    storage: 'supabase' | 'volume' | 'local';
+    storage: 'supabase' | 'blob' | 'volume' | 'local';
     stripe: boolean;
     stripeWebhook: boolean;
   };
@@ -130,11 +130,13 @@ export default function Overview({ go }: { go: (id: SectionId) => void }) {
               label={
                 setup.storage === 'supabase'
                   ? 'Photos & videos stored in Supabase'
-                  : setup.storage === 'volume'
-                    ? 'Photos & videos stored on a persistent volume'
-                    : 'Photos & videos stored on this computer (development)'
+                  : setup.storage === 'blob'
+                    ? 'Photos & videos stored in Vercel Blob'
+                    : setup.storage === 'volume'
+                      ? 'Photos & videos stored on a persistent volume'
+                      : 'Photos & videos stored on this computer (development)'
               }
-              help="Attach a Railway volume so uploads survive redeploys."
+              help="On Vercel, add BLOB_READ_WRITE_TOKEN so sermon videos can upload without a 413 error."
             />
             <SetupRow ok={setup.stripe} label="Online giving (Stripe)" help="Add STRIPE_SECRET_KEY to accept donations." />
             <SetupRow ok={setup.stripeWebhook} label="Stripe webhook" help="Add STRIPE_WEBHOOK_SECRET so recurring gifts are recorded automatically." />

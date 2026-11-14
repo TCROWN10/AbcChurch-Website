@@ -3,7 +3,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import type { MediaKind } from '@/lib/content-types';
-import { isSupabaseEnabled, supabaseConfig, uploadDir } from './config';
+import { isBlobEnabled, isSupabaseEnabled, supabaseConfig, uploadDir } from './config';
 import { getSupabaseAdmin } from './supabase';
 import { HttpError } from './auth';
 
@@ -36,19 +36,22 @@ export function buildStoragePath(kind: MediaKind, fileName: string) {
 
 export type UploadTicket =
   | { mode: 'supabase'; path: string; token: string; publicUrl: string; bucket: string }
+  | { mode: 'vercel-blob'; path: string }
   | { mode: 'local'; path: string };
 
-/** Prepares an upload. Supabase uploads go straight from the browser using a signed token. */
+/** Prepares an upload. Browser uploads go to Supabase or Vercel Blob when configured. */
 export async function createUploadTicket(kind: MediaKind, fileName: string): Promise<UploadTicket> {
   const storagePath = buildStoragePath(kind, fileName);
-  if (!isSupabaseEnabled) return { mode: 'local', path: storagePath };
-
-  const supabase = getSupabaseAdmin();
-  const bucket = supabaseConfig.bucket;
-  const { data, error } = await supabase.storage.from(bucket).createSignedUploadUrl(storagePath);
-  if (error || !data) throw new HttpError(500, `Could not prepare upload: ${error?.message ?? 'unknown error'}`);
-  const { data: pub } = supabase.storage.from(bucket).getPublicUrl(storagePath);
-  return { mode: 'supabase', path: data.path, token: data.token, publicUrl: pub.publicUrl, bucket };
+  if (isSupabaseEnabled) {
+    const supabase = getSupabaseAdmin();
+    const bucket = supabaseConfig.bucket;
+    const { data, error } = await supabase.storage.from(bucket).createSignedUploadUrl(storagePath);
+    if (error || !data) throw new HttpError(500, `Could not prepare upload: ${error?.message ?? 'unknown error'}`);
+    const { data: pub } = supabase.storage.from(bucket).getPublicUrl(storagePath);
+    return { mode: 'supabase', path: data.path, token: data.token, publicUrl: pub.publicUrl, bucket };
+  }
+  if (isBlobEnabled) return { mode: 'vercel-blob', path: storagePath };
+  return { mode: 'local', path: storagePath };
 }
 
 const STORAGE_PATH_PATTERN = /^(images|videos|documents)\/\d{4}\/\d{2}\/[a-z0-9]{8}-[a-z0-9-]+(\.[a-z0-9]+)?$/;
@@ -66,6 +69,9 @@ export async function deleteStoredFile(storagePath: string) {
   try {
     if (isSupabaseEnabled) {
       await getSupabaseAdmin().storage.from(supabaseConfig.bucket).remove([storagePath]);
+    } else if (isBlobEnabled && /^https?:\/\//.test(storagePath)) {
+      const { del } = await import('@vercel/blob');
+      await del(storagePath);
     } else {
       const target = resolveLocalUpload(storagePath);
       if (target) await fs.rm(target, { force: true });
