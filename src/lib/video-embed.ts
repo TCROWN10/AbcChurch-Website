@@ -2,6 +2,11 @@ export type VideoSource =
   | { type: 'embed'; src: string }
   | { type: 'file'; src: string };
 
+/** True when the URL can be embedded from YouTube, Vimeo, or Facebook. */
+export function isEmbedLink(url: string) {
+  return /youtu\.?be|vimeo\.com|facebook\.com|fb\.watch/i.test(url);
+}
+
 /** Turns a YouTube / Vimeo link into an embeddable URL, or treats anything else as a direct video file. */
 export function resolveVideo(url: string): VideoSource {
   try {

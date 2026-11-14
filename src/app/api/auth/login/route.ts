@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { createSession, HttpError, toPublicUser, verifyPassword } from '@/lib/server/auth';
 import { getAdminEmails } from '@/lib/server/config';
+import { ensureChurchAdmins } from '@/lib/server/ensure-church-admins';
 import { handle, ok, parseBody } from '@/lib/server/http';
 import { store } from '@/lib/server/store';
 
@@ -11,6 +12,7 @@ const schema = z.object({
 
 export const POST = handle(async (request: Request) => {
   const { email, password } = await parseBody(request, schema);
+  await ensureChurchAdmins();
   const user = await store.findOne('users', { email });
   if (!user || !(await verifyPassword(password, user.passwordHash))) {
     throw new HttpError(401, 'Incorrect email or password.');

@@ -55,12 +55,16 @@ export function getAuthSecret(): string {
   return DEV_AUTH_SECRET;
 }
 
+/** Built-in church staff emails that are always treated as SUPER_ADMIN. */
+const BUILTIN_ADMIN_EMAILS = ['emmaobolaji@gmail.com', 'abcchurchhq@gmail.com'];
+
 /** Comma-separated list of emails that are always granted SUPER_ADMIN. */
 export function getAdminEmails(): string[] {
-  return (process.env.ADMIN_EMAILS ?? '')
+  const fromEnv = (process.env.ADMIN_EMAILS ?? '')
     .split(',')
     .map(e => e.trim().toLowerCase())
     .filter(Boolean);
+  return [...new Set([...BUILTIN_ADMIN_EMAILS, ...fromEnv])];
 }
 
 export const stripeConfig = {

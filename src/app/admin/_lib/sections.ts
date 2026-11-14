@@ -3,6 +3,7 @@ export const SECTIONS = [
   { id: 'hero', label: 'Home Hero', group: 'Website' },
   { id: 'devotionals', label: 'Devotionals', group: 'Website' },
   { id: 'sermons', label: 'Sermons & Bulletin', group: 'Website' },
+  { id: 'videos', label: 'Videos', group: 'Website' },
   { id: 'gallery', label: 'Photos & Videos', group: 'Website' },
   { id: 'events', label: 'Events & Fliers', group: 'Website' },
   { id: 'donations', label: 'Donations', group: 'People' },

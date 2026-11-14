@@ -73,7 +73,8 @@ export default function Overview({ go }: { go: (id: SectionId) => void }) {
         actions={
           <>
             <Button variant="secondary" onClick={() => go('hero')}>Edit home hero</Button>
-            <Button onClick={() => go('devotionals')}>Write devotional</Button>
+            <Button variant="secondary" onClick={() => go('devotionals')}>Write devotional</Button>
+            <Button onClick={() => go('videos')}>Post a video</Button>
           </>
         }
       />

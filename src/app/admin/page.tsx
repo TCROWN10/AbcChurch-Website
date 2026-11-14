@@ -10,6 +10,7 @@ import Overview from './_sections/Overview';
 import HeroEditor from './_sections/HeroEditor';
 import DevotionalsManager from './_sections/DevotionalsManager';
 import SermonsManager from './_sections/SermonsManager';
+import VideosManager from './_sections/VideosManager';
 import GalleryManager from './_sections/GalleryManager';
 import EventsManager from './_sections/EventsManager';
 import DonationsView from './_sections/DonationsView';
@@ -22,7 +23,8 @@ const ICONS: Record<SectionId, string> = {
   hero: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm0 10l4-4 4 4 3-3 5 5',
   devotionals: 'M12 6.5C10.5 5.5 8.5 5 6 5H4v13h2c2.5 0 4.5.5 6 1.5m0-13c1.5-1 3.5-1.5 6-1.5h2v13h-2c-2.5 0-4.5.5-6 1.5m0-13v13',
   sermons: 'M19 11a7 7 0 01-14 0m7 7v3m-4 0h8M12 15a3 3 0 01-3-3V5a3 3 0 116 0v7a3 3 0 01-3 3z',
-  gallery: 'M15 10l4.55-2.28A1 1 0 0121 8.62v6.76a1 1 0 01-1.45.9L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z',
+  videos: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z',
+  gallery: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',
   events: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
   donations: 'M12 8c-1.66 0-3 .9-3 2s1.34 2 3 2 3 .9 3 2-1.34 2-3 2m0-8c1.11 0 2.08.4 2.6 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.4-2.6-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
   members: 'M17 20h5v-2a3 3 0 00-5.36-1.86M17 20H7m10 0v-2c0-.66-.13-1.28-.36-1.86M7 20H2v-2a3 3 0 015.36-1.86M7 20v-2c0-.66.13-1.28.36-1.86m0 0a5 5 0 019.28 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
@@ -36,6 +38,7 @@ function SectionView({ id, go }: { id: SectionId; go: (id: SectionId) => void })
     case 'hero': return <HeroEditor />;
     case 'devotionals': return <DevotionalsManager />;
     case 'sermons': return <SermonsManager />;
+    case 'videos': return <VideosManager />;
     case 'gallery': return <GalleryManager />;
     case 'events': return <EventsManager />;
     case 'donations': return <DonationsView />;

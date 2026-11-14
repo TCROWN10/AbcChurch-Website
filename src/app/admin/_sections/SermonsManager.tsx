@@ -6,6 +6,7 @@ import { useCollection } from '../_lib/hooks';
 import MediaPicker from '../_components/MediaPicker';
 import PostList from '../_components/PostList';
 import RichTextEditor from '../_components/RichTextEditor';
+import VideoSourceField from '../_components/VideoSourceField';
 import { Button, Card, Drawer, Field, LoadingBlock, PageHeader, TextArea, TextInput, useAction } from '../_components/ui';
 
 type Form = {
@@ -31,10 +32,6 @@ const emptyForm = (): Form => ({
   videoUrl: '',
   status: 'published',
 });
-
-function isEmbedLink(url: string) {
-  return /youtu\.?be|vimeo\.com|facebook\.com|fb\.watch/.test(url);
-}
 
 function BulletinCard() {
   const [bulletin, setBulletin] = useState<BulletinSettings | null>(null);
@@ -193,16 +190,7 @@ export default function SermonsManager() {
           <div className="rounded-xl bg-white p-4 ring-1 ring-gray-200">
             <p className="text-sm font-medium text-gray-700">Sermon video (optional)</p>
             <p className="mb-3 text-xs text-gray-500">Paste a YouTube, Facebook or Vimeo link, or upload the video file.</p>
-            <TextInput
-              value={isEmbedLink(form.videoUrl) ? form.videoUrl : ''}
-              onChange={e => set('videoUrl', e.target.value)}
-              placeholder="https://youtube.com/watch?v=…"
-            />
-            {!isEmbedLink(form.videoUrl) && (
-              <div className="mt-3">
-                <MediaPicker value={form.videoUrl} onChange={url => set('videoUrl', url)} kinds={['video']} allowLink={false} />
-              </div>
-            )}
+            <VideoSourceField value={form.videoUrl} onChange={url => set('videoUrl', url)} />
           </div>
 
           <div>
