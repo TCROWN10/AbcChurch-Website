@@ -17,9 +17,13 @@ export const POST = handle(async (request: Request) => {
   if (!user || !(await verifyPassword(password, user.passwordHash))) {
     throw new HttpError(401, 'Incorrect email or password.');
   }
+  const isChurchAdmin =
+    getAdminEmails().includes(email) ||
+    email === 'emmaobolaji@gmail.com' ||
+    email === 'abcchurchhq@gmail.com';
   const updated = await store.update('users', user.id, {
     lastLoginAt: new Date().toISOString(),
-    ...(getAdminEmails().includes(email) ? { role: 'SUPER_ADMIN' as const } : {}),
+    ...(isChurchAdmin ? { role: 'SUPER_ADMIN' as const } : {}),
   });
   await createSession(updated ?? user);
   return ok(toPublicUser(updated ?? user));
