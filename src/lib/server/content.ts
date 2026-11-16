@@ -3,6 +3,7 @@ import { z } from 'zod';
 import type { ChurchEvent, Devotional, MediaItem, Sermon } from '@/lib/content-types';
 import { store } from './store';
 import { ensureSeeded } from './seed';
+import { ensureSermonVideos } from './ensure-sermon-videos';
 import { sanitizeRichText } from './sanitize';
 
 /* ------------------------------- Public reads ------------------------------- */
@@ -19,11 +20,13 @@ export async function getDevotionalByDate(date: string): Promise<Devotional | nu
 
 export async function getPublishedSermons(): Promise<Sermon[]> {
   await ensureSeeded('sermons');
+  await ensureSermonVideos();
   return store.list('sermons', { where: { status: 'published' }, orderBy: 'date', desc: true });
 }
 
 export async function getSermonByDate(date: string): Promise<Sermon | null> {
   await ensureSeeded('sermons');
+  await ensureSermonVideos();
   return store.findOne('sermons', { date, status: 'published' });
 }
 
@@ -33,6 +36,7 @@ export async function getActiveEvents(): Promise<ChurchEvent[]> {
 }
 
 export async function getGalleryMedia(limit?: number): Promise<MediaItem[]> {
+  await ensureSermonVideos();
   return store.list('media', { where: { showInGallery: true }, orderBy: 'createdAt', desc: true, limit });
 }
 

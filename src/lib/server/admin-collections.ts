@@ -10,6 +10,7 @@ import {
   sermonSchema,
 } from './content';
 import { ensureSeeded } from './seed';
+import { ensureSermonVideos } from './ensure-sermon-videos';
 import { deleteStoredFile } from './storage';
 import { store, type ListOptions } from './store';
 
@@ -119,6 +120,7 @@ export function getCollectionConfig(name: string) {
 
 export async function listForAdmin(name: CollectionName) {
   await ensureSeeded(name);
+  if (name === 'sermons' || name === 'media') await ensureSermonVideos();
   const { config } = getCollectionConfig(name);
   const rows = await store.list(name, config.list as ListOptions<CollectionName>);
   return config.serialize ? rows.map(r => config.serialize!(r)) : rows;

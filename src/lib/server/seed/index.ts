@@ -3,12 +3,16 @@ import type { CollectionName } from '@/lib/content-types';
 import { store } from '../store';
 import legacy from './legacy-content.json';
 
-const SERMON_DETAILS: Record<string, { preacher?: string; scripture?: string; excerpt?: string }> = {
+const SERMON_DETAILS: Record<
+  string,
+  { preacher?: string; scripture?: string; excerpt?: string; videoUrl?: string }
+> = {
   '2026-05-03': {
     preacher: 'Pastor Emmanuel Bolaji',
     scripture: '1 Samuel 15:22',
     excerpt:
       "Obedience is the master key of God's Kingdom. It is the bridge between instruction and manifestation, between promise and performance, between hearing God and experiencing God.",
+    videoUrl: '/videos/abcchurch-clip-2.mp4',
   },
   '2025-07-27': {
     scripture: 'Luke 13:10-13',

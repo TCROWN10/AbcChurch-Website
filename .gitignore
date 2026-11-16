@@ -45,6 +45,10 @@ next-env.d.ts
 /data/
 /public/uploads/
 
+# raw camera footage (use compressed public/videos/*.mp4 instead)
+/public/*.mov
+/public/*.MOV
+
 # code edior
 .kiro/
 .vscode/

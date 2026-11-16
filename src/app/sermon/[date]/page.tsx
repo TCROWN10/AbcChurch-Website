@@ -62,7 +62,13 @@ export default async function SermonByDatePage({ params }: Params) {
         </Link>
 
         {video && (
-          <div className="mt-8 overflow-hidden rounded-2xl bg-black ring-1 ring-white/10 aspect-video">
+          <div
+            className={
+              video.type === 'file'
+                ? 'mt-8 mx-auto max-w-sm overflow-hidden rounded-2xl bg-black ring-1 ring-white/10 aspect-[9/16]'
+                : 'mt-8 overflow-hidden rounded-2xl bg-black ring-1 ring-white/10 aspect-video'
+            }
+          >
             {video.type === 'embed' ? (
               <iframe
                 src={video.src}
@@ -72,7 +78,13 @@ export default async function SermonByDatePage({ params }: Params) {
                 allowFullScreen
               />
             ) : (
-              <video src={video.src} controls playsInline preload="metadata" className="h-full w-full" />
+              <video
+                src={video.src}
+                controls
+                playsInline
+                preload="metadata"
+                className="h-full w-full object-contain"
+              />
             )}
           </div>
         )}
